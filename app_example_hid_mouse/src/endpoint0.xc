@@ -222,7 +222,6 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket_t s
             /* Required only devices supporting boot protocol devices - this example does not */
             /* Do nothing - i.e. STALL */
             break;
-            
     }
 
     return 0;
@@ -250,8 +249,6 @@ void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             continue;
         } 
 
-
-    
     /* Stick bmRequest type back together for an easier parse... */
     bmRequestType = (sp.bmRequestType.Direction<<7) | (sp.bmRequestType.Type<<5) | (sp.bmRequestType.Recipient);
     

@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<xpd>
+    <components></components>
+    <dependency repo = "sc_xud">
+        <githash>6068d24a88fe9fe7f974991a55575df2284fadf3</githash>
+        <uri>git://git/apps/sc_xud</uri>
+    </dependency>
+    <dependency repo = "sc_usb">
+        <githash>3908a68aa7f966a4abf8d2f1b281728b95a3d718</githash>
+        <uri>git://git/apps/sc_usb</uri>
+    </dependency>
+    <dependency repo = "sc_periph">
+        <githash>7cfd34fdf821b6e810b5ab403cc53586911cd2db</githash>
+        <uri>git@github.com:xcore/sc_periph</uri>
+        <version>1.0.0beta1</version>
+    </dependency>
+    <dependency repo = "sc_util">
+        <githash>2e01d7324df84ad199833e012b5942e43fb0ccbb</githash>
+        <uri>git@github.com:xcore/sc_util</uri>
+    </dependency>
+    <description>Device-Class USB Modules and Applications</description>
+    <location>git://git/apps/sc_usb_device</location>
+    <name>sc_usb_device</name>
+    <maintainer>XMOS</maintainer>
+    <partnumber>XM-002851-DH</partnumber>
+    <subpartnumber>XM-002852-SM</subpartnumber>
+    <vendor>XMOS</vendor>
+    <xpd_version>1.0</xpd_version>
+</xpd>

@@ -178,41 +178,6 @@ static unsigned char hidReportDescriptor[] =
 };
 
 
-
-
-/* Global endpoint status arrays */
-#if (NUM_EP_OUT > 0)
-extern unsigned short g_epStatusOut[16];
-#endif
-extern unsigned short g_epStatusIn[16];
-
-/* Used when setting/clearing EP halt */
-void SetEndpointStatus(unsigned epNum, unsigned status)
-{
-  /* Inspect for IN bit */
-    if( epNum & 0x80 )
-    {
-        epNum &= 0x7f;
-
-        /* Range check */
-        if(epNum < NUM_EP_IN)
-        {
-            g_epStatusIn[ epNum & 0x7F ] = status;  
-        }
-    }
-#if (NUM_EP_OUT > 0)
-    else
-    {
-        if(epNum < NUM_EP_OUT)
-        {
-            g_epStatusOut[ epNum ] = status;  
-        }
-    }
-#endif
-}
-
-
-
 int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket_t sp)
 {
     unsigned char buffer[64];

@@ -181,9 +181,8 @@ static unsigned char hidReportDescriptor[] =
 int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket_t sp)
 {
     unsigned char buffer[64];
-    unsigned tmp, tmp2;
-    switch(sp.bRequest )
 
+    switch(sp.bRequest )
     { 
         case GET_REPORT:        
         

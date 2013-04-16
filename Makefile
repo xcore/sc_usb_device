@@ -41,7 +41,7 @@
 # the directories containing buildable applications (usually
 # prefixed with the app_ prefix)
 #BUILD_SUBDIRS = $(wildcard app_*)
-BUILD_SUBDIRS = app_example_usb_hid
+BUILD_SUBDIRS = app_example_hid_mouse
 
 # This variable should contain a space separated list of all
 # the directories containing buildable plugins (usually

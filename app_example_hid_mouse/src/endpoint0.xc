@@ -178,55 +178,20 @@ static unsigned char hidReportDescriptor[] =
 };
 
 
-
-
-/* Global endpoint status arrays */
-#if (NUM_EP_OUT > 0)
-extern unsigned short g_epStatusOut[16];
-#endif
-extern unsigned short g_epStatusIn[16];
-
-/* Used when setting/clearing EP halt */
-void SetEndpointStatus(unsigned epNum, unsigned status)
-{
-  /* Inspect for IN bit */
-    if( epNum & 0x80 )
-    {
-        epNum &= 0x7f;
-
-        /* Range check */
-        if(epNum < NUM_EP_IN)
-        {
-            g_epStatusIn[ epNum & 0x7F ] = status;  
-        }
-    }
-#if (NUM_EP_OUT > 0)
-    else
-    {
-        if(epNum < NUM_EP_OUT)
-        {
-            g_epStatusOut[ epNum ] = status;  
-        }
-    }
-#endif
-}
-
-
-
 int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket_t sp)
 {
     unsigned char buffer[64];
-    unsigned tmp, tmp2;
-    switch(sp.bRequest )
+    unsigned tmp;
 
+    switch(sp.bRequest )
     { 
         case GET_REPORT:        
         
             /* Mandatory. Allows sending of report over control pipe */
             /* Send back a hid report - note the use of asm due to shared mem */
             asm("ldaw %0, dp[g_reportBuffer]": "=r"(tmp));
-            asm("ldw %0, %1[0]": "=r"(tmp2) : "r"(tmp));
-            (buffer, unsigned[])[0] = tmp2;
+            asm("ldw %0, %1[0]": "=r"(tmp) : "r"(tmp));
+            (buffer, unsigned[])[0] = tmp;
 
             return XUD_DoGetRequest(c_ep0_out, c_ep0_in, buffer, 4, sp.wLength );
             break;

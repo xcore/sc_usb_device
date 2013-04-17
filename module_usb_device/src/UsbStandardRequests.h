@@ -26,6 +26,7 @@
 #define _USB_STANDARD_REQUESTS_H_
 
 #include "usb.h"
+#include "xud.h"
 
 /** 
   * \brief     This function performs some of the common USB standard descriptor requests.
@@ -60,17 +61,11 @@
   */
 int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int devDescLength, unsigned char cfgDesc[], int cfgDescLength,
     unsigned char devQualDesc[], int devQualDescLength, unsigned char oSpeedCfgDesc[], int oSpeedCfgDescLength, 
-    unsigned char  strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test);
-
+    unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test);
 /**
  *  \brief      TBD
  */
 int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp);
-
-/**
-  * \brief Parses a setup data buffer into passed SetupPacket structure 
-  */
-void USB_ParseSetupPacket(unsigned char b[], USB_SetupPacket_t &sp);
 
 /**
  *  \brief Prints out passed SetupPacket struct using debug IO

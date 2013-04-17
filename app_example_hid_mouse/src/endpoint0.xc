@@ -228,24 +228,23 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_SetupPacket
 }
 
 
-void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
+void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
 {
-    unsigned char buffer[1024];
     USB_SetupPacket_t sp;
 
     unsigned bmRequestType; 
     
-    XUD_ep c_ep0_out = XUD_Init_Ep(chan_ep0_out);
-    XUD_ep c_ep0_in  = XUD_Init_Ep(chan_ep0_in);
+    XUD_ep ep0_out = XUD_Init_Ep(chan_ep0_out);
+    XUD_ep ep0_in  = XUD_Init_Ep(chan_ep0_in);
     
     while(1)
     {
 
-        int retVal = USB_GetSetupPacket(c_ep0_out, c_ep0_in, sp);
+        int retVal = USB_GetSetupPacket(ep0_out, ep0_in, sp);
 
         if(retVal == -1) 
         {
-            XUD_ResetEndpoint(c_ep0_out, c_ep0_in);
+            XUD_ResetEndpoint(ep0_out, ep0_in);
             continue;
         } 
 
@@ -260,19 +259,19 @@ void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                 {
                     case GET_DESCRIPTOR:
                         {
-                            /* Look at Descriptor Type (high-byte of wValue */ 
-                            /* HID interface is 0, so this check is fine on its own */
+                            /* Look at Descriptor Type (high-byte of wValue) */ 
+                            /* HID interface is 0, so this check is fine on its own (low byte of wValue = 0) */
                             unsigned short descriptorType = sp.wValue & 0xff00;
             
                             switch(descriptorType)
                             {
                                 case HID:
-                                    retVal = XUD_DoGetRequest(c_ep0_out, c_ep0_in, hidDescriptor, 
+                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor, 
                                         sizeof(hidDescriptor), sp.wLength);
                                     break;
                         
                                 case REPORT:
-                                    retVal = XUD_DoGetRequest(c_ep0_out, c_ep0_in, hidReportDescriptor,
+                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor,
                                         sizeof(hidReportDescriptor), sp.wLength);
                                     break;
                             }
@@ -287,7 +286,7 @@ void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                 /* Inspect for HID interface num */
                 if(sp.wIndex == 0)
                 {
-                    retVal = HidInterfaceClassRequests(c_ep0_out, c_ep0_in, sp);
+                    retVal = HidInterfaceClassRequests(ep0_out, ep0_in, sp);
                 }
                 break;
         }
@@ -296,7 +295,7 @@ void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         /* Do standard enumeration requests */ 
         if(!retVal)
         {
-            retVal = USB_StandardRequests(c_ep0_out, c_ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
+            retVal = USB_StandardRequests(ep0_out, ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
                 hiSpdConfDesc, sizeof(hiSpdConfDesc), fullSpdDesc, sizeof(fullSpdDesc), 
                 fullSpdConfDesc, sizeof(fullSpdConfDesc), stringDescriptors, sp, c_usb_test);
         }

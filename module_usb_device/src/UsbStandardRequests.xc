@@ -45,8 +45,30 @@ unsigned char g_interface_alt[MAX_INTS]; /* Global endpoint status arrays */
 unsigned short g_epStatusOut[MAX_EPS];
 unsigned short g_epStatusIn[MAX_EPS];
 
+void USB_ParseSetupPacket(unsigned char b[], USB_SetupPacket_t &p)
+{
+  // Byte 0: bmRequestType.
+  p.bmRequestType.Recipient = b[0] & 0x1f;
+  p.bmRequestType.Type      = (b[0] & 0x60) >> 5;
+  p.bmRequestType.Direction = b[0] >> 7;
+
+  // Byte 1:  bRequest 
+  p.bRequest = b[1];
+
+  // Bytes [2:3] wValue
+  p.wValue = (b[3] << 8) | (b[2]);
+
+  // Bytes [4:5] wIndex
+  p.wIndex = (b[5] << 8) | (b[4]);
+
+  // Bytes [6:7] wLength
+  p.wLength = (b[7] << 8) | (b[6]);
+
+}
+
+
 #pragma unsafe arrays
-int  XUD_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, XUD_SetupPacket_t &sp)
+int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp)
 {
     unsigned char sbuffer[120];
     int retVal;
@@ -59,10 +81,12 @@ int  XUD_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, XUD_SetupPacket_t &sp)
     }
 
     /* Parse data buffer end populate SetupPacket struct */
-    XUD_ParseSetupPacket(sbuffer, sp);
+    USB_ParseSetupPacket(sbuffer, sp);
 
+    /* Return 0 for success */
     return 0;
 }
+
 /* Used when setting/clearing EP halt */
 int SetEndpointHalt(unsigned epNum, unsigned halt)
 {
@@ -107,9 +131,9 @@ int SetEndpointHalt(unsigned epNum, unsigned halt)
  * is provided and should be extended in the devices EP0 code 
  */
 #pragma unsafe arrays
-int XUD_CommonRequests(XUD_ep c, XUD_ep c_in, uint8 devDesc[], int devDescLength, uint8 cfgDesc[], int cfgDescLength,
-    uint8 devQualDesc[], int devQualDescLength, uint8 oSpeedCfgDesc[], int oSpeedCfgDescLength, 
-    uint8 strDescs[][40], SetupPacket_t &sp, chanend ?c_usb_test)
+int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int devDescLength, unsigned char cfgDesc[], int cfgDescLength,
+    unsigned char devQualDesc[], int devQualDescLength, unsigned char oSpeedCfgDesc[], int oSpeedCfgDescLength, 
+    unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test)
 {
      /* Return value */
     int datalength;

@@ -18,12 +18,14 @@
  *
  **/                                   
 /** 
- * @file       DescriptorRequests.h
  * @brief      DescriptorRequestsi() prototype
  * @author     Ross Owen, XMOS Limited
- * @version    1.0
  */
 
+#ifndef _USB_STANDARD_REQUESTS_H_
+#define _USB_STANDARD_REQUESTS_H_
+
+#include "usb.h"
 
 /** DescriptorRequests()
   * @brief     This function performs some of the common USB standard descriptor requests.
@@ -52,6 +54,24 @@
   *  structure should then be examined for device specific requests.
 
   */
-int XUD_CommonRequests(XUD_ep c, XUD_ep c_in, uint8 devDesc[], int devDescLength, uint8 cfgDesc[], int cfgDescLength,
-    uint8 devQualDesc[], int devQualDescLength, uint8 oSpeedCfgDesc[], int oSpeedCfgDescLength, 
-    uint8 strDescs[][40], SetupPacket_t &sp, chanend ?c_usb_test);
+int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int devDescLength, unsigned char cfgDesc[], int cfgDescLength,
+    unsigned char devQualDesc[], int devQualDescLength, unsigned char oSpeedCfgDesc[], int oSpeedCfgDescLength, 
+    unsigned char  strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test);
+
+/**
+ *  \brief      TBD
+ */
+int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp);
+
+
+/**
+  * \brief Parses a setup data buffer into passed SetupPacket structure 
+  */
+void USB_ParseSetupPacket(unsigned char b[], USB_SetupPacket_t &sp);
+
+/**
+ *  \brief Prints out passed SetupPacket struct using debug IO
+ */
+void USB_PrintSetupPacket(USB_SetupPacket_t sp);
+
+#endif

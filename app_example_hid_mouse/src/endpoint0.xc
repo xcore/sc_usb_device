@@ -178,12 +178,12 @@ static unsigned char hidReportDescriptor[] =
 };
 
 
-int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket_t sp)
+int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_SetupPacket_t sp)
 {
     unsigned char buffer[64];
     unsigned tmp;
 
-    switch(sp.bRequest )
+    switch(sp.bRequest)
     { 
         case GET_REPORT:        
         
@@ -193,7 +193,7 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket_t s
             asm("ldw %0, %1[0]": "=r"(tmp) : "r"(tmp));
             (buffer, unsigned[])[0] = tmp;
 
-            return XUD_DoGetRequest(c_ep0_out, c_ep0_in, buffer, 4, sp.wLength );
+            return XUD_DoGetRequest(c_ep0_out, c_ep0_in, buffer, 4, sp.wLength);
             break;
 
         case GET_IDLE:
@@ -231,7 +231,7 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket_t s
 void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
 {
     unsigned char buffer[1024];
-    XUD_SetupPacket_t sp;
+    USB_SetupPacket_t sp;
 
     unsigned bmRequestType; 
     
@@ -241,7 +241,7 @@ void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     while(1)
     {
 
-        int retVal = XUD_GetSetupPacket(c_ep0_out, c_ep0_in, sp);
+        int retVal = USB_GetSetupPacket(c_ep0_out, c_ep0_in, sp);
 
         if(retVal == -1) 
         {
@@ -300,7 +300,7 @@ void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         /* Do standard enumeration requests */ 
         if(!retVal)
         {
-        retVal = XUD_CommonRequests(c_ep0_out, c_ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
+        retVal = USB_StandardRequests(c_ep0_out, c_ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
             hiSpdConfDesc, sizeof(hiSpdConfDesc), fullSpdDesc, sizeof(fullSpdDesc), 
             fullSpdConfDesc, sizeof(fullSpdConfDesc), stringDescriptors, sp, c_usb_test);
         }

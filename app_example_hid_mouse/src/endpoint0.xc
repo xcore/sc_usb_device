@@ -249,60 +249,56 @@ void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             continue;
         } 
 
-    /* Stick bmRequest type back together for an easier parse... */
-    bmRequestType = (sp.bmRequestType.Direction<<7) | (sp.bmRequestType.Type<<5) | (sp.bmRequestType.Recipient);
+        /* Stick bmRequest type back together for an easier parse... */
+        bmRequestType = (sp.bmRequestType.Direction<<7) | (sp.bmRequestType.Type<<5) | (sp.bmRequestType.Recipient);
     
-    switch(bmRequestType)
-    {
-         case BMREQ_D2H_STANDARD_INT:
+        switch(bmRequestType)
+        {
+            case BMREQ_D2H_STANDARD_INT:
  
-            switch(sp.bRequest)
-            {
-                 case GET_DESCRIPTOR:
-                    {
-                        /* Look at Descriptor Type (high-byte of wValue */ 
-                        /* HID interface is 0, so this check is fine on its own */
-                        unsigned short descriptorType = sp.wValue & 0xff00;
-            
-                        switch(descriptorType)
+                switch(sp.bRequest)
+                {
+                    case GET_DESCRIPTOR:
                         {
-                            case HID:
-                                retVal = XUD_DoGetRequest(c_ep0_out, c_ep0_in, hidDescriptor, 
+                            /* Look at Descriptor Type (high-byte of wValue */ 
+                            /* HID interface is 0, so this check is fine on its own */
+                            unsigned short descriptorType = sp.wValue & 0xff00;
+            
+                            switch(descriptorType)
+                            {
+                                case HID:
+                                    retVal = XUD_DoGetRequest(c_ep0_out, c_ep0_in, hidDescriptor, 
                                             sizeof(hidDescriptor), sp.wLength);
-                                break;
+                                    break;
                         
-                            case REPORT:
-                                        retVal = XUD_DoGetRequest(c_ep0_out, c_ep0_in, hidReportDescriptor, 
-                                            sizeof(hidReportDescriptor), sp.wLength);
-                                break;
+                                case REPORT:
+                                    retVal = XUD_DoGetRequest(c_ep0_out, c_ep0_in, hidReportDescriptor,
+                                        sizeof(hidReportDescriptor), sp.wLength);
+                                    break;
+                            }
                         }
-                    }
-                    break;
+                        break;
+                }
+                break;
 
+            case BMREQ_H2D_CLASS_INT:
+            case BMREQ_D2H_CLASS_INT:
 
-            }
-            break;
-
-        case BMREQ_H2D_CLASS_INT:
-        case BMREQ_D2H_CLASS_INT:
-
-            /* Inspect for HID interface num */
-            if(sp.wIndex == 0)
-            {
-                retVal = HidInterfaceClassRequests(c_ep0_out, c_ep0_in, sp);
-            }
-            break;
-
-
-    }
+                /* Inspect for HID interface num */
+                if(sp.wIndex == 0)
+                {
+                    retVal = HidInterfaceClassRequests(c_ep0_out, c_ep0_in, sp);
+                }
+                break;
+        }
 
         /* Call common requests */
         /* Do standard enumeration requests */ 
         if(!retVal)
         {
-        retVal = USB_StandardRequests(c_ep0_out, c_ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
-            hiSpdConfDesc, sizeof(hiSpdConfDesc), fullSpdDesc, sizeof(fullSpdDesc), 
-            fullSpdConfDesc, sizeof(fullSpdConfDesc), stringDescriptors, sp, c_usb_test);
+            retVal = USB_StandardRequests(c_ep0_out, c_ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
+                hiSpdConfDesc, sizeof(hiSpdConfDesc), fullSpdDesc, sizeof(fullSpdDesc), 
+                fullSpdConfDesc, sizeof(fullSpdConfDesc), stringDescriptors, sp, c_usb_test);
         }
     }
 }

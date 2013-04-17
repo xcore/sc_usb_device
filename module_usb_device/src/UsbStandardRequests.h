@@ -18,26 +18,26 @@
  *
  **/                                   
 /** 
- * @file       DescriptorRequests.h
- * @brief      DescriptorRequestsi() prototype
- * @author     Ross Owen, XMOS Limited
- * @version    1.0
+ * Author     Ross Owen, XMOS Limited
  */
 
-
 /** DescriptorRequests()
-  * @brief     This function performs some of the common USB standard descriptor requests.
+  * \brief     This function performs some of the common USB standard descriptor requests.
   *
-  * @param     c_out Channel to XUD (ep 0)
-  * @param     c_in Channel from XUD (ep 0) 
-  * @param     devDesc Device descriptor
-  * @param     devDescLength Length of device descriptor in bytes
-  * @param     cfgDesc Configuration descriptor
-  * @param     cfgDescLength Length of config descriptor in bytes
-  * @param     devQualDesc Device Qualification Descriptor
-  * @param     sp SetupPacket (passed by ref) in which the setup data is returned
-  * @param     c_usb_test Optional channel param for USB test mode support
-  * @return    1 if dealt with else 
+  * \param     c Channel to XUD (ep 0)
+  * \param     c_in Channel from XUD (ep 0) 
+  * \param     devDesc Device descriptor
+  * \param     devDescLength Length of device descriptor in bytes
+  * \param     cfgDesc Configuration descriptor
+  * \param     cfgDescLength Length of config descriptor in bytes
+  * \param     devQualDesc Device Qualification Descriptor
+  * \param     devQualDescLength
+  * \param     oSpeedCfgDesc
+  * \param     oSpeedCfgDescLength
+  * \param     strDescs
+  * \param     sp SetupPacket (passed by ref) in which the setup data is returned
+  * \param     c_usb_test Optional channel param for USB test mode support
+  * \return    1 if dealt with else 
   *
   * This function handles the following standard requests appropriately using values passed to it:
   *

@@ -23,6 +23,8 @@
  * @author     Ross Owen, XMOS Limited
  */
 
+#include "UsbStandardRequests.h"
+
 #include <safestring.h>
 #include <xs1.h>
 

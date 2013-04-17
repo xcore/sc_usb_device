@@ -16,7 +16,6 @@ int MassStorageEndpoint0Requests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket 
 }
 
 
-
 static unsigned char inquiryAnswer[36] = {
     0x00, 0x80, 0x02, 0x02, 0x1F, 0x00, 0x00, 0x00,
     'X', 'M', 'O', 'S',  0,  ' ', ' ', ' ',

@@ -18,7 +18,7 @@
  *
  **/                                   
 /** 
- * @brief      DescriptorRequestsi() prototype
+ * @brief      USB Device helper functions
  * @author     Ross Owen, XMOS Limited
  */
 
@@ -27,19 +27,23 @@
 
 #include "usb.h"
 
-/** DescriptorRequests()
-  * @brief     This function performs some of the common USB standard descriptor requests.
+/** 
+  * \brief     This function performs some of the common USB standard descriptor requests.
   *
-  * @param     c_out Channel to XUD (ep 0)
-  * @param     c_in Channel from XUD (ep 0) 
-  * @param     devDesc Device descriptor
-  * @param     devDescLength Length of device descriptor in bytes
-  * @param     cfgDesc Configuration descriptor
-  * @param     cfgDescLength Length of config descriptor in bytes
-  * @param     devQualDesc Device Qualification Descriptor
-  * @param     sp SetupPacket (passed by ref) in which the setup data is returned
-  * @param     c_usb_test Optional channel param for USB test mode support
-  * @return    1 if dealt with else 
+  * \param     c Channel to XUD (ep 0)
+  * \param     c_in Channel from XUD (ep 0) 
+  * \param     devDesc Device descriptor
+  * \param     devDescLength Length of device descriptor in bytes
+  * \param     cfgDesc Configuration descriptor
+  * \param     cfgDescLength Length of config descriptor in bytes
+  * \param     devQualDesc Device Qualification Descriptor
+  * \param     devQualDescLength
+  * \param     oSpeedCfgDesc
+  * \param     oSpeedCfgDescLength
+  * \param     strDescs
+  * \param     sp SetupPacket (passed by ref) in which the setup data is returned
+  * \param     c_usb_test Optional channel param for USB test mode support
+  * \return    1 if dealt with else 
   *
   * This function handles the following standard requests appropriately using values passed to it:
   *
@@ -62,7 +66,6 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
  *  \brief      TBD
  */
 int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp);
-
 
 /**
   * \brief Parses a setup data buffer into passed SetupPacket structure 

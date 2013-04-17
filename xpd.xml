@@ -19,6 +19,8 @@
         <uri>git@github.com:xcore/sc_util</uri>
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
+    <exclude_dir>app_example_usb_msc</exclude_dir>
+    <exclude_dir>module_mass_storage</exclude_dir>
     <location>git://git/apps/sc_usb_device</location>
     <name>sc_usb_device</name>
     <maintainer>XMOS</maintainer>

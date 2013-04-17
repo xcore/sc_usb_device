@@ -268,7 +268,7 @@ void Endpoint0( chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                             {
                                 case HID:
                                     retVal = XUD_DoGetRequest(c_ep0_out, c_ep0_in, hidDescriptor, 
-                                            sizeof(hidDescriptor), sp.wLength);
+                                        sizeof(hidDescriptor), sp.wLength);
                                     break;
                         
                                 case REPORT:

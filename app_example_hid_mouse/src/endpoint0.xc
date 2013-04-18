@@ -289,14 +289,14 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                     /* Inspect for HID interface num */
                     if(sp.wIndex == 0)
                     {
+                        /* Returns 0 if handled, 1 if not handled, -1 for bus reset */
                         retVal = HidInterfaceClassRequests(ep0_out, ep0_in, sp);
                     }
                     break;
             }
         }
 
-        /* If we havn't handled the request about, do standard enumeration requests  
-         */
+        /* If we havn't handled the request about, do standard enumeration requests  */
         if(!retVal)
         {
             /* Returns 0 if handled okay, 1 if request was not handled (STALLed), -1 of USB Reset */

@@ -3,84 +3,90 @@
  */
 
 #include <xs1.h>
-#include <print.h>
 #include "xud.h"
 #include "usb.h"
 #include "hid.h"
 #include "UsbStandardRequests.h"
 
-static unsigned char hiSpdDesc[] = { 
-  0x12,                /* 0  bLength */
-  0x01,                /* 1  bdescriptorType */ 
-  0x00,                /* 2  bcdUSB */ 
-  0x02,                /* 3  bcdUSB */ 
-  0x00,                /* 4  bDeviceClass */ 
-  0x00,                /* 5  bDeviceSubClass */ 
-  0x00,                /* 6  bDeviceProtocol */ 
-  0x40,                /* 7  bMaxPacketSize */ 
-  0xb1,                /* 8  idVendor */ 
-  0x20,                /* 9  idVendor */ 
-  0x01,                /* 10 idProduct */ 
-  0x01,                /* 11 idProduct */ 
-  0x10,                /* 12 bcdDevice */
-  0x00,                /* 13 bcdDevice */
-  0x01,                /* 14 iManufacturer */
-  0x02,                /* 15 iProduct */
-  0x00,                /* 16 iSerialNumber */
-  0x01                 /* 17 bNumConfigurations */
+/* TODO
+ * Move null descriptor to module_usb_device 
+ * Check FS vs HS behaviour
+ * Standard requests should patch descriptor type 
+ */
+
+static unsigned char hiSpdDesc[] = 
+{ 
+    0x12,                /* 0  bLength */
+    0x01,                /* 1  bdescriptorType */ 
+    0x00,                /* 2  bcdUSB */ 
+    0x02,                /* 3  bcdUSB */ 
+    0x00,                /* 4  bDeviceClass */ 
+    0x00,                /* 5  bDeviceSubClass */ 
+    0x00,                /* 6  bDeviceProtocol */ 
+    0x40,                /* 7  bMaxPacketSize */ 
+    0xb1,                /* 8  idVendor */ 
+    0x20,                /* 9  idVendor */ 
+    0x01,                /* 10 idProduct */ 
+    0x01,                /* 11 idProduct */ 
+    0x10,                /* 12 bcdDevice */
+    0x00,                /* 13 bcdDevice */
+    0x01,                /* 14 iManufacturer */
+    0x02,                /* 15 iProduct */
+    0x00,                /* 16 iSerialNumber */
+    0x01                 /* 17 bNumConfigurations */
 };
 
 unsigned char fullSpdDesc[] =
 { 
-    0x0a,              /* 0  bLength */
-    DEVICE_QUALIFIER,  /* 1  bDescriptorType */ 
-    0x00,              /* 2  bcdUSB */
-    0x02,              /* 3  bcdUSB */ 
-    0x00,              /* 4  bDeviceClass */ 
-    0x00,              /* 5  bDeviceSubClass */ 
-    0x00,              /* 6  bDeviceProtocol */ 
-    0x40,              /* 7  bMaxPacketSize */ 
-    0x01,              /* 8  bNumConfigurations */ 
-    0x00               /* 9  bReserved  */ 
+    0x0a,               /* 0  bLength */
+    DEVICE_QUALIFIER,   /* 1  bDescriptorType */ 
+    0x00,               /* 2  bcdUSB */
+    0x02,               /* 3  bcdUSB */ 
+    0x00,               /* 4  bDeviceClass */ 
+    0x00,               /* 5  bDeviceSubClass */ 
+    0x00,               /* 6  bDeviceProtocol */ 
+    0x40,               /* 7  bMaxPacketSize */ 
+    0x01,               /* 8  bNumConfigurations */ 
+    0x00                /* 9  bReserved  */ 
 };
 
 static unsigned char hiSpdConfDesc[] = {  
-  0x09,                /* 0  bLength */ 
-  0x02,                /* 1  bDescriptortype */ 
-  0x22, 0x00,          /* 2  wTotalLength */ 
-  0x01,                /* 4  bNumInterfaces */ 
-  0x01,                /* 5  bConfigurationValue */
-  0x04,                /* 6  iConfiguration */
-  0x80,                /* 7  bmAttributes */ 
-  0xC8,                /* 8  bMaxPower */
+  0x09,                 /* 0  bLength */ 
+  0x02,                 /* 1  bDescriptortype */ 
+  0x22, 0x00,           /* 2  wTotalLength */ 
+  0x01,                 /* 4  bNumInterfaces */ 
+  0x01,                 /* 5  bConfigurationValue */
+  0x04,                 /* 6  iConfiguration */
+  0x80,                 /* 7  bmAttributes */ 
+  0xC8,                 /* 8  bMaxPower */
   
-  0x09,                /* 0  bLength */
-  0x04,                /* 1  bDescriptorType */ 
-  0x00,                /* 2  bInterfacecNumber */
-  0x00,                /* 3  bAlternateSetting */
-  0x01,                /* 4: bNumEndpoints */
-  0x03,                /* 5: bInterfaceClass */ 
-  0x00,                /* 6: bInterfaceSubClass */ 
-  0x02,                /* 7: bInterfaceProtocol*/ 
-  0x00,                /* 8  iInterface */ 
+  0x09,                 /* 0  bLength */
+  0x04,                 /* 1  bDescriptorType */ 
+  0x00,                 /* 2  bInterfacecNumber */
+  0x00,                 /* 3  bAlternateSetting */
+  0x01,                 /* 4: bNumEndpoints */
+  0x03,                 /* 5: bInterfaceClass */ 
+  0x00,                 /* 6: bInterfaceSubClass */ 
+  0x02,                 /* 7: bInterfaceProtocol*/ 
+  0x00,                 /* 8  iInterface */ 
   
-  0x09,                /* 0  bLength */                        /* Note this is currently replicated in hidDescriptor[] below */ 
-  0x21,                /* 1  bDescriptorType (HID) */ 
-  0x10,                /* 2  bcdHID */ 
-  0x11,                /* 3  bcdHID */ 
-  0x00,                /* 4  bCountryCode */ 
-  0x01,                /* 5  bNumDescriptors */ 
-  0x22,                /* 6  bDescriptorType[0] (Report) */ 
-  0x48,                /* 7  wDescriptorLength */ 
-  0x00,                /* 8  wDescriptorLength */ 
+  0x09,                 /* 0  bLength */                        /* Note this is currently replicated in hidDescriptor[] below */ 
+  0x21,                 /* 1  bDescriptorType (HID) */ 
+  0x10,                 /* 2  bcdHID */ 
+  0x11,                 /* 3  bcdHID */ 
+  0x00,                 /* 4  bCountryCode */ 
+  0x01,                 /* 5  bNumDescriptors */ 
+  0x22,                 /* 6  bDescriptorType[0] (Report) */ 
+  0x48,                 /* 7  wDescriptorLength */ 
+  0x00,                 /* 8  wDescriptorLength */ 
   
-  0x07,                /* 0  bLength */ 
-  0x05,                /* 1  bDescriptorType */ 
-  0x81,                /* 2  bEndpointAddress */ 
-  0x03,                /* 3  bmAttributes */ 
-  0x40,                /* 4  wMaxPacketSize */ 
-  0x00,                /* 5  wMaxPacketSize */ 
-  0x01                 /* 6  bInterval */ 
+  0x07,                 /* 0  bLength */ 
+  0x05,                 /* 1  bDescriptorType */ 
+  0x81,                 /* 2  bEndpointAddress */ 
+  0x03,                 /* 3  bmAttributes */ 
+  0x40,                 /* 4  wMaxPacketSize */ 
+  0x00,                 /* 5  wMaxPacketSize */ 
+  0x01                  /* 6  bInterval */ 
 }; 
 
 static unsigned char hidDescriptor[] = 
@@ -100,25 +106,25 @@ static unsigned char hidDescriptor[] =
 
 unsigned char fullSpdConfDesc[] =
 {
-    0x09,              /* 0  bLength */
+    0x09,               /* 0  bLength */
     OTHER_SPEED_CONFIGURATION,      /* 1  bDescriptorType */
-    0x12,              /* 2  wTotalLength */
-    0x00,              /* 3  wTotalLength */
-    0x01,              /* 4  bNumInterface: Number of interfaces*/
-    0x00,              /* 5  bConfigurationValue */
-    0x00,              /* 6  iConfiguration */
-    0x80,              /* 7  bmAttributes */
-    0xC8,              /* 8  bMaxPower */
+    0x12,               /* 2  wTotalLength */
+    0x00,               /* 3  wTotalLength */
+    0x01,               /* 4  bNumInterface: Number of interfaces*/
+    0x00,               /* 5  bConfigurationValue */
+    0x00,               /* 6  iConfiguration */
+    0x80,               /* 7  bmAttributes */
+    0xC8,               /* 8  bMaxPower */
 
-    0x09,              /* 0 bLength */
-    0x04,              /* 1 bDescriptorType */
-    0x00,              /* 2 bInterfaceNumber */
-    0x00,              /* 3 bAlternateSetting */
-    0x00,              /* 4 bNumEndpoints */
-    0x00,              /* 5 bInterfaceClass */
-    0x00,              /* 6 bInterfaceSubclass */
-    0x00,              /* 7 bInterfaceProtocol */
-    0x00,              /* 8 iInterface */
+    0x09,               /* 0 bLength */
+    0x04,               /* 1 bDescriptorType */
+    0x00,               /* 2 bInterfaceNumber */
+    0x00,               /* 3 bAlternateSetting */
+    0x00,               /* 4 bNumEndpoints */
+    0x00,               /* 5 bInterfaceClass */
+    0x00,               /* 6 bInterfaceSubclass */
+    0x00,               /* 7 bInterfaceProtocol */
+    0x00,               /* 8 iInterface */
 
 };
 
@@ -224,7 +230,7 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_SetupPacket
             break;
     }
 
-    return 0;
+    return 1;
 }
 
 
@@ -233,71 +239,75 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     USB_SetupPacket_t sp;
 
     unsigned bmRequestType; 
+    unsigned usbBusSpeed;
     
     XUD_ep ep0_out = XUD_Init_Ep(chan_ep0_out);
     XUD_ep ep0_in  = XUD_Init_Ep(chan_ep0_in);
     
     while(1)
     {
-
+        /* Returns 0 on success, < 0 for USB RESET */
         int retVal = USB_GetSetupPacket(ep0_out, ep0_in, sp);
-
-        if(retVal == -1) 
+        
+        if(!retVal) 
         {
-            XUD_ResetEndpoint(ep0_out, ep0_in);
-            continue;
-        } 
-
-        /* Stick bmRequest type back together for an easier parse... */
-        bmRequestType = (sp.bmRequestType.Direction<<7) | (sp.bmRequestType.Type<<5) | (sp.bmRequestType.Recipient);
+            /* Stick bmRequest type back together for an easier parse... */
+            bmRequestType = (sp.bmRequestType.Direction<<7) | (sp.bmRequestType.Type<<5) | (sp.bmRequestType.Recipient);
     
-        switch(bmRequestType)
-        {
-            case BMREQ_D2H_STANDARD_INT:
+            switch(bmRequestType)
+            {
+                case BMREQ_D2H_STANDARD_INT:
  
-                switch(sp.bRequest)
-                {
-                    case GET_DESCRIPTOR:
-                        {
-                            /* Look at Descriptor Type (high-byte of wValue) */ 
-                            /* HID interface is 0, so this check is fine on its own (low byte of wValue = 0) */
-                            unsigned short descriptorType = sp.wValue & 0xff00;
-            
-                            switch(descriptorType)
+                    switch(sp.bRequest)
+                    {
+                        case GET_DESCRIPTOR:
                             {
-                                case HID:
-                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor, 
-                                        sizeof(hidDescriptor), sp.wLength);
-                                    break;
+                                /* Look at Descriptor Type (high-byte of wValue) */ 
+                                /* HID interface is 0, so this check is fine on its own (low byte of wValue = 0) */
+                                unsigned short descriptorType = sp.wValue & 0xff00;
+            
+                                switch(descriptorType)
+                                {
+                                    case HID:
+                                        retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor, 
+                                            sizeof(hidDescriptor), sp.wLength);
+                                        break;
                         
-                                case REPORT:
-                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor,
-                                        sizeof(hidReportDescriptor), sp.wLength);
-                                    break;
+                                    case REPORT:
+                                        retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor,
+                                            sizeof(hidReportDescriptor), sp.wLength);
+                                         break;
+                                }
                             }
-                        }
-                        break;
-                }
-                break;
+                            break;
+                    }
+                    break;
 
-            case BMREQ_H2D_CLASS_INT:
-            case BMREQ_D2H_CLASS_INT:
+                case BMREQ_H2D_CLASS_INT:
+                case BMREQ_D2H_CLASS_INT:
 
-                /* Inspect for HID interface num */
-                if(sp.wIndex == 0)
-                {
-                    retVal = HidInterfaceClassRequests(ep0_out, ep0_in, sp);
-                }
-                break;
+                    /* Inspect for HID interface num */
+                    if(sp.wIndex == 0)
+                    {
+                        retVal = HidInterfaceClassRequests(ep0_out, ep0_in, sp);
+                    }
+                    break;
+            }
         }
 
-        /* Call common requests */
-        /* Do standard enumeration requests */ 
+        /* Do standard enumeration requests  
+         * Returns 0 if handled okay, 1 if request was not handled (STALLed), -1 of USB Reset 
+         */
         if(!retVal)
         {
             retVal = USB_StandardRequests(ep0_out, ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
                 hiSpdConfDesc, sizeof(hiSpdConfDesc), fullSpdDesc, sizeof(fullSpdDesc), 
                 fullSpdConfDesc, sizeof(fullSpdConfDesc), stringDescriptors, sp, c_usb_test);
+        }
+
+        if(retVal < 0)
+        {
+            usbBusSpeed = XUD_ResetEndpoint(ep0_out, ep0_in);
         }
     }
 }

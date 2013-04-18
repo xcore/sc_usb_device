@@ -295,16 +295,17 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             }
         }
 
-        /* Do standard enumeration requests  
-         * Returns 0 if handled okay, 1 if request was not handled (STALLed), -1 of USB Reset 
+        /* If we havn't handled the request about, do standard enumeration requests  
          */
         if(!retVal)
         {
+            /* Returns 0 if handled okay, 1 if request was not handled (STALLed), -1 of USB Reset */
             retVal = USB_StandardRequests(ep0_out, ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
                 hiSpdConfDesc, sizeof(hiSpdConfDesc), fullSpdDesc, sizeof(fullSpdDesc), 
                 fullSpdConfDesc, sizeof(fullSpdConfDesc), stringDescriptors, sp, c_usb_test);
         }
 
+        /* USB bus reset detected, reset EP and get new bus speed */
         if(retVal < 0)
         {
             usbBusSpeed = XUD_ResetEndpoint(ep0_out, ep0_in);

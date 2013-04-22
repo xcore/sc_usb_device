@@ -111,9 +111,12 @@ int SetEndpointHalt(unsigned epNum, unsigned halt)
  * is provided and should be extended in the devices EP0 code 
  */
 #pragma unsafe arrays
-int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int devDescLength, unsigned char cfgDesc[], int cfgDescLength,
-    unsigned char devQualDesc[], int devQualDescLength, unsigned char oSpeedCfgDesc[], int oSpeedCfgDescLength, 
-    unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test)
+int USB_StandardRequests(XUD_ep c, XUD_ep c_in, 
+    unsigned char devDesc_hs[], int devDescLength_hs, 
+    unsigned char cfgDesc_hs[], int cfgDescLength_hs,
+    unsigned char ?devDesc_fs[], int devDescLength_fs, 
+    unsigned char ?cfgDesc_fs[], int cfgDescLength_fs, 
+    unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, unsigned usbBusSpeed)
 {
      /* Return value */
     int datalength;
@@ -246,7 +249,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                     buffer[1] = 0;
                             
                     /* Pull self/bus powered bit from the config descriptor */
-                    if (cfgDesc[7] & 0x40)
+                    if (cfgDesc_hs[7] & 0x40)
                         buffer[0] = 0x1;
                     else
                         buffer[0] = 0;
@@ -275,9 +278,18 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
     
                             /* Currently only 1 device descriptor supported */
                             if((sp.wValue & 0xff) == 0) 
-                            {            
-                                /* Do get request (send descriptor then 0 length status stage) */
-                                return XUD_DoGetRequest(c, c_in, devDesc, devDescLength, sp.wLength); 
+                            { 
+                                if((usbBusSpeed == XUD_SPEED_HS) || (devDescLength_fs == 0))
+                                { 
+                                    /* Return high-speed device descriptor, if no FS desc, send the HS desc */          
+                                    /* Do get request (send descriptor then 0 length status stage) */
+                                    return XUD_DoGetRequest(c, c_in, devDesc_hs, devDescLength_hs, sp.wLength); 
+                                }
+                                else if(usbBusSpeed == XUD_SPEED_FS) 
+                                {
+                                    /* Return full-speed device descriptor */
+                                    return XUD_DoGetRequest(c, c_in, devDesc_fs, devDescLength_fs, sp.wLength); 
+                                }
                             }
                             break;
 
@@ -287,9 +299,18 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                             /* Currently only 1 configuration descriptor supported */
                             /* TODO We currently return the same for all configs */
                             //if((sp.wValue & 0xff) == 0)
-                            {                  
-                                /* Do get request (send descriptor then 0 length status stage) */
-				                return XUD_DoGetRequest(c, c_in,  cfgDesc, cfgDescLength, sp.wLength); 
+                            { 
+                                /* If we are in HS return HS cfg desc, or if we have no FS desc, return HS desc */
+                                if((usbBusSpeed == XUD_SPEED_HS) || (cfgDescLength_fs == 0))
+                                {                 
+                                    /* Do get request (send descriptor then 0 length status stage) */
+				                    return XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
+                                }
+                                else if(usbBusSpeed == XUD_SPEED_FS) 
+                                {
+                                    /* Return full-speed configuration descriptor */
+                                    return XUD_DoGetRequest(c, c_in, cfgDesc_fs, cfgDescLength_fs, sp.wLength); 
+                                }
                             }
                             break;
 
@@ -298,8 +319,43 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
  
                             if((sp.wValue & 0xff) == 0)
                             {
-                                /* Do get request (send descriptor then 0 length status stage) */
-                                return XUD_DoGetRequest(c, c_in, devQualDesc, devQualDescLength, sp.wLength); 
+                                /* Build a device qualifer descriptor from the device descriptor */
+                                unsigned char devQualDesc[10];
+
+                                if((usbBusSpeed == XUD_SPEED_HS) && (devDescLength_fs != 0))
+                                {
+                                    /* Create devQual from FS */ 
+                                    devQualDesc[0] = 10;               /* 0  bLength */
+                                    devQualDesc[1] = DEVICE_QUALIFIER; /* 1  bDescriptorType */
+                                    devQualDesc[2] = devDesc_fs[2];  
+                                    devQualDesc[3] = devDesc_fs[3];  
+                                    devQualDesc[4] = devDesc_fs[4];  
+                                    devQualDesc[5] = devDesc_fs[5];  
+                                    devQualDesc[6] = devDesc_fs[6];  
+                                    devQualDesc[7] = devDesc_fs[7];  
+                                    devQualDesc[8] = devDesc_fs[17];   /* 8  bNumConfigurations */  
+                                    devQualDesc[9] = 0; 
+                                
+                                    /* Do get request (send descriptor then 0 length status stage) */
+                                    return XUD_DoGetRequest(c, c_in, devQualDesc, 10, sp.wLength); 
+                                }
+                                else if(devDescLength_hs != 0)
+                                { 
+                                    /* Create devQual from HS */ 
+                                    devQualDesc[0] = 10;               /* 0  bLength */
+                                    devQualDesc[1] = DEVICE_QUALIFIER; /* 1  bDescriptorType */
+                                    devQualDesc[2] = devDesc_hs[2];  
+                                    devQualDesc[3] = devDesc_hs[3];  
+                                    devQualDesc[4] = devDesc_hs[4];  
+                                    devQualDesc[5] = devDesc_hs[5];  
+                                    devQualDesc[6] = devDesc_hs[6];  
+                                    devQualDesc[7] = devDesc_hs[7];  
+                                    devQualDesc[8] = devDesc_hs[17];   /* 8  bNumConfigurations */  
+                                    devQualDesc[9] = 0; 
+                                
+                                    /* Do get request (send descriptor then 0 length status stage) */
+                                    return XUD_DoGetRequest(c, c_in, devQualDesc, 10, sp.wLength);   
+                                }
                             }
                             break;
 
@@ -308,7 +364,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
     
                             if((sp.wValue & 0xff) == 0)
                             {
-                                return  XUD_DoGetRequest(c, c_in,  oSpeedCfgDesc, oSpeedCfgDescLength, sp.wLength);
+                                //return  XUD_DoGetRequest(c, c_in,  oSpeedCfgDesc, oSpeedCfgDescLength, sp.wLength);
                             }
                             break;
 
@@ -389,9 +445,18 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
 
                     if(sp.wLength == 0)
                     {
+                        int numInterfaces = 0;
+
                         /* Pull number of interfaces from the Configuration Descriptor */
-                        int numInterfaces = cfgDesc[4];
-                           
+                        if((usbBusSpeed == XUD_SPEED_HS) && (cfgDescLength_hs != 0))
+                        {
+                            numInterfaces = cfgDesc_hs[4];
+                        }
+                        else
+                        {
+                            numInterfaces = cfgDesc_fs[4];
+                        }
+
                         /* Record interface change */
                         if((sp.wIndex < numInterfaces) && (sp.wIndex < MAX_INTS))
                         {
@@ -421,8 +486,17 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
 
                     if((sp.wValue == 0) && (sp.wLength == 1))
                     {
+                        int numInterfaces = 0;
+                        
                         /* Pull number of interfaces from the Configuration Descriptor */
-                        int numInterfaces = cfgDesc[4];
+                        if((usbBusSpeed == XUD_SPEED_HS) && (cfgDescLength_hs != 0))
+                        {
+                            numInterfaces = cfgDesc_hs[4];
+                        }
+                        else
+                        {
+                            numInterfaces = cfgDesc_fs[4];
+                        }
 
                         if( (sp.wIndex < numInterfaces) && (sp.wIndex < MAX_INTS))
                         {

@@ -59,9 +59,12 @@
   *  structure should then be examined for device specific requests.
 
   */
-int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in, unsigned char devDesc[], int devDescLength, unsigned char cfgDesc[], int cfgDescLength,
-    unsigned char devQualDesc[], int devQualDescLength, unsigned char oSpeedCfgDesc[], int oSpeedCfgDescLength, 
-    unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test);
+int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in, 
+        unsigned char devDesc_hs[], int devDescLength_hs, 
+        unsigned char cfgDesc_hs[], int cfgDescLength_hs,
+        unsigned char ?devDesc_fs[], int devDescLength_fs, 
+        unsigned char ?cfgDesc_fs[], int cfgDescLength_fs, 
+        unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, unsigned usbBusSpeed);
 /**
  *  \brief      TBD
  */

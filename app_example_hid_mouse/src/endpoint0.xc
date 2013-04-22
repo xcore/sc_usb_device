@@ -11,30 +11,59 @@
  * Check FS vs HS behaviour
  * Standard requests should patch descriptor type 
  * current config doesn't get reset on bus reset
+ * Poll rate changes FS to HS
  */
+#define BCD_DEVICE   0x1000
+#define VENDOR_ID    0x20B1
+#define PRODUCT_ID   0x1010
 
 /* Device Descriptor */
-static unsigned char deviceDesc[] = 
+static unsigned char devDesc[] = 
 { 
-    0x12,                /* 0  bLength */
-    0x01,                /* 1  bdescriptorType */ 
-    0x00,                /* 2  bcdUSB */ 
-    0x02,                /* 3  bcdUSB */ 
-    0x00,                /* 4  bDeviceClass */ 
-    0x00,                /* 5  bDeviceSubClass */ 
-    0x00,                /* 6  bDeviceProtocol */ 
-    0x40,                /* 7  bMaxPacketSize */ 
-    0xb1,                /* 8  idVendor */ 
-    0x20,                /* 9  idVendor */ 
-    0x01,                /* 10 idProduct */ 
-    0x01,                /* 11 idProduct */ 
-    0x10,                /* 12 bcdDevice */
-    0x00,                /* 13 bcdDevice */
-    0x01,                /* 14 iManufacturer */
-    0x02,                /* 15 iProduct */
-    0x00,                /* 16 iSerialNumber */
-    0x01                 /* 17 bNumConfigurations */
+    0x12,                  /* 0  bLength */
+    DEVICE,                /* 1  bdescriptorType */ 
+    0x00,                  /* 2  bcdUSB */ 
+    0x02,                  /* 3  bcdUSB */ 
+    0x00,                  /* 4  bDeviceClass */ 
+    0x00,                  /* 5  bDeviceSubClass */ 
+    0x00,                  /* 6  bDeviceProtocol */ 
+    0x40,                  /* 7  bMaxPacketSize */ 
+    (VENDOR_ID & 0xFF),    /* 8  idVendor */ 
+    (VENDOR_ID >> 8),      /* 9  idVendor */ 
+    (PRODUCT_ID & 0xFF),   /* 10 idProduct */ 
+    (PRODUCT_ID >> 8),     /* 11 idProduct */ 
+    (BCD_DEVICE & 0xFF),   /* 12 bcdDevice */
+    (BCD_DEVICE >> 8),     /* 13 bcdDevice */
+    0x01,                  /* 14 iManufacturer */
+    0x02,                  /* 15 iProduct */
+    0x00,                  /* 16 iSerialNumber */
+    0x01                   /* 17 bNumConfigurations */
 };
+
+/* Device Descriptor for Null Device */
+unsigned char devDesc_Null[] = 
+{
+    0x12,                  /* 0  bLength : Size of descriptor in Bytes (18 Bytes) */ 
+    DEVICE,                /* 1  bdescriptorType */ 
+    0x00,                  /* 2  bcdUSB */ 
+    0x02,                  /* 3  bcdUSB */ 
+    0x00,            	   /* 4  bDeviceClass */ 
+    0x00,                  /* 5  bDeviceSubClass */ 
+    0x00,                  /* 6  bDeviceProtocol */ 
+    0x40,              	   /* 7  bMaxPacketSize */ 
+    (VENDOR_ID & 0xFF),    /* 8  idVendor */ 
+    (VENDOR_ID >> 8),      /* 9  idVendor */ 
+    (PRODUCT_ID & 0xFF),   /* 10 idProduct */ 
+    (PRODUCT_ID >> 8),     /* 11 idProduct */ 
+    (BCD_DEVICE & 0xFF),   /* 12 bcdDevice : Device release number */ 
+    (BCD_DEVICE >> 8),     /* 13 bcdDevice : Device release number */ 
+    0x01,                  /* 14 iManufacturer : Index of manufacturer string */ 
+	0x02,                  /* 15 iProduct : Index of product string descriptor */ 
+    0x00,                  /* 16 iSerialNumber : Index of serial number decriptor */ 
+    0x01             	   /* 17 bNumConfigurations : Number of possible configs */
+};
+
+
 
 unsigned char fullSpdDesc[] =
 { 
@@ -296,9 +325,9 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         if(!retVal)
         {
             /* Returns 0 if handled okay, 1 if request was not handled (STALLed), -1 of USB Reset */
-            retVal = USB_StandardRequests(ep0_out, ep0_in, hiSpdDesc, sizeof(hiSpdDesc), 
-                hiSpdConfDesc, sizeof(hiSpdConfDesc), fullSpdDesc, sizeof(fullSpdDesc), 
-                fullSpdConfDesc, sizeof(fullSpdConfDesc), stringDescriptors, sp, c_usb_test);
+            retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc, sizeof(devDesc), 
+                hiSpdConfDesc, sizeof(hiSpdConfDesc), null, 0, null, 0, 
+                stringDescriptors, sp, c_usb_test, usbBusSpeed);
         }
 
         /* USB bus reset detected, reset EP and get new bus speed */

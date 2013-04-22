@@ -3,10 +3,8 @@
  */
 
 #include <xs1.h>
-#include "xud.h"
-#include "usb.h"
+#include "usb_device.h"
 #include "hid.h"
-#include "UsbStandardRequests.h"
 
 /* TODO
  * Move null descriptor to module_usb_device 
@@ -15,7 +13,8 @@
  * current config doesn't get reset on bus reset
  */
 
-static unsigned char hiSpdDesc[] = 
+/* Device Descriptor */
+static unsigned char deviceDesc[] = 
 { 
     0x12,                /* 0  bLength */
     0x01,                /* 1  bdescriptorType */ 
@@ -242,8 +241,8 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     unsigned bmRequestType; 
     unsigned usbBusSpeed;
     
-    XUD_ep ep0_out = XUD_Init_Ep(chan_ep0_out);
-    XUD_ep ep0_in  = XUD_Init_Ep(chan_ep0_in);
+    XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
+    XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
     
     while(1)
     {

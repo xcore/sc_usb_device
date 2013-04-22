@@ -1,35 +1,13 @@
-/**
- * Module:  module_usb_shared
- * Version: 1v2
- * Build:   bb814601fea4422bae7e88cb0fd65289443c217c
- * File:    DescriptorRequests.xc
- *
- * The copyrights, all other intellectual and industrial 
- * property rights are retained by XMOS and/or its licensors. 
- * Terms and conditions covering the use of this code can
- * be found in the Xmos End User License Agreement.
- *
- * Copyright XMOS Ltd 2010
- *
- * In the case where this code is a modification of existing code
- * under a separate license, the separate license terms are shown
- * below. The modifications to the code are still covered by the 
- * copyright notice above.
- *
- **/                                   
 /** 
- * @file       DescriptorRequests.xc
  * @brief      Implements standard USB requests 
  * @author     Ross Owen, XMOS Limited
  */
-
-#include "UsbStandardRequests.h"
 
 #include <safestring.h>
 #include <xs1.h>
 
 #include "xud.h"     /* XUD Functions and defines */
-#include "usb.h"     /* Defines related to the USB 2.0 Spec */
+#include "usb_device.h"     /* Defines related to the USB 2.0 Spec */
 
 #ifndef MAX_INTS
 /* Maximum number of interfaces supported */
@@ -174,7 +152,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                         int retVal;
 
                         /* Status stage: Send a zero length packet */
-                        retVal = XUD_DoSetRequestStatus(c_in, 0);
+                        retVal = XUD_DoSetRequestStatus(c_in);
                         if(retVal < 0)
                             return retVal;
 
@@ -209,7 +187,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                          g_current_config = sp.wValue;
                         
                         /* No data stage for this request, just do status stage */
-                        return XUD_DoSetRequestStatus(c_in,  0);
+                        return XUD_DoSetRequestStatus(c_in);
                     }
                     break;
 
@@ -240,7 +218,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                                 case WINDEX_TEST_FORCE_ENABLE:    
                                     {
                                         int retVal;
-                                        retVal = XUD_DoSetRequestStatus(c_in, 0);                                      
+                                        retVal = XUD_DoSetRequestStatus(c_in);                                      
                                         if(retVal < 0)
                                             return retVal;
                                                 
@@ -425,7 +403,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                         }
                 
                         /* No data stage for this request, just do data stage */
-                        return XUD_DoSetRequestStatus(c_in, 0);
+                        return XUD_DoSetRequestStatus(c_in);
                     }
                     break;
             }
@@ -476,7 +454,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                             /* Returns 0 on non-error */
                             if(!SetEndpointHalt(sp.wIndex, 1))
                             {
-                                return XUD_DoSetRequestStatus(c_in, 0);
+                                return XUD_DoSetRequestStatus(c_in);
                             }
                         }
                     }
@@ -493,7 +471,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                             /* Returns 0 on non-error */
                             if(!SetEndpointHalt(sp.wIndex, 0))
                             {
-                                return XUD_DoSetRequestStatus(c_in, 0);
+                                return XUD_DoSetRequestStatus(c_in);
                             }
                         }
                     }

@@ -22,8 +22,8 @@
  * @author     Ross Owen, XMOS Limited
  */
 
-#ifndef _USB_STANDARD_REQUESTS_H_
-#define _USB_STANDARD_REQUESTS_H_
+#ifndef _USB_DEVICE_H_
+#define _USB_DEVICE_H_
 
 #include "usb.h"
 #include "xud.h"
@@ -31,9 +31,9 @@
 /** 
   * \brief     This function performs some of the common USB standard descriptor requests.
   *
-  * \param     c Channel to XUD (ep 0)
-  * \param     c_in Channel from XUD (ep 0) 
-  * \param     devDesc Device descriptor
+  * \param     ep_out Channel from XUD (ep 0)
+  * \param     ep_in Channel from XUD (ep 0) 
+  * \param     devDesc The Device descriptor to use, encoded according to the USB standard
   * \param     devDescLength Length of device descriptor in bytes
   * \param     cfgDesc Configuration descriptor
   * \param     cfgDescLength Length of config descriptor in bytes
@@ -59,7 +59,7 @@
   *  structure should then be examined for device specific requests.
 
   */
-int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int devDescLength, unsigned char cfgDesc[], int cfgDescLength,
+int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in, unsigned char devDesc[], int devDescLength, unsigned char cfgDesc[], int cfgDescLength,
     unsigned char devQualDesc[], int devQualDescLength, unsigned char oSpeedCfgDesc[], int oSpeedCfgDescLength, 
     unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test);
 /**

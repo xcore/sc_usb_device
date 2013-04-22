@@ -16,7 +16,12 @@
  * below. The modifications to the code are still covered by the 
  * copyright notice above.
  *
- **/                                   
+ **/ 
+ 
+#define USB_CORE        0
+/* L1 USB Audio Board */
+#define USB_RST_PORT    XS1_PORT_32A
+
 #include <xs1.h>
 #include <platform.h>
 #include <print.h>
@@ -26,19 +31,9 @@
 
 #include "xud.h"
 #include "usb.h"
+
 #define EP_COUNT_OUT   1
 #define EP_COUNT_IN    2
-
-/* L1 USB Audio Board */
-#define USB_RST_PORT    XS1_PORT_32A
-#define USB_CORE        0
-
-out port p_adc_trig = PORT_ADC_TRIGGER;
-clock cl = XS1_CLKBLK_2;
-
-#ifdef ADC
-#define THRESH 20
-#endif
 
 /* Endpoint type tables */
 XUD_EpType epTypeTableOut[EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
@@ -53,8 +48,14 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 /* Global report buffer, global since used by Endpoint0 core */
 unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 
+out port p_adc_trig = PORT_ADC_TRIGGER;
+clock cl = XS1_CLKBLK_2;
 
 #ifdef ADC
+#define THRESH 20
+#endif
+#ifdef ADC
+
 /*
  * This function responds to the HID requests - it moves the pointers x axis based on ADC input
  */
@@ -63,7 +64,7 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
     int lastX = 0;
  
     /* Iniialise the XUD endpoint */   
-    XUD_ep ep_hid = XUD_Init_Ep(c_ep_hid);
+    XUD_ep ep_hid = XUD_InitEp(c_ep_hid);
     
     adc_config_t adc_config = { { 0, 0, 0, 0, 0, 0, 0, 0 }, 0, 0, 0 };
 
@@ -116,7 +117,7 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
     int state = 0;
     int lastX = 0;
     
-    XUD_ep ep_hid = XUD_Init_Ep(chan_ep_hid);
+    XUD_ep ep_hid = XUD_InitEp(chan_ep_hid);
 
     while(1) 
     {

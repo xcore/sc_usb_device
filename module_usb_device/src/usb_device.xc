@@ -304,11 +304,13 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                 if((usbBusSpeed == XUD_SPEED_HS) || (cfgDescLength_fs == 0))
                                 {                 
                                     /* Do get request (send descriptor then 0 length status stage) */
+                                    cfgDesc_hs[1] = CONFIGURATION;
 				                    return XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
                                 else if(usbBusSpeed == XUD_SPEED_FS) 
                                 {
                                     /* Return full-speed configuration descriptor */
+                                    cfgDesc_fs[1] = CONFIGURATION;
                                     return XUD_DoGetRequest(c, c_in, cfgDesc_fs, cfgDescLength_fs, sp.wLength); 
                                 }
                             }
@@ -341,7 +343,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                 }
                                 else if(devDescLength_hs != 0)
                                 { 
-                                    /* Create devQual from HS */ 
+                                    /* Running in FS so create devQual from HS */ 
                                     devQualDesc[0] = 10;               /* 0  bLength */
                                     devQualDesc[1] = DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_hs[2];  
@@ -364,7 +366,16 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
     
                             if((sp.wValue & 0xff) == 0)
                             {
-                                //return  XUD_DoGetRequest(c, c_in,  oSpeedCfgDesc, oSpeedCfgDescLength, sp.wLength);
+                                if((usbBusSpeed == XUD_SPEED_HS) && (cfgDescLength_fs != 0))
+                                {
+                                    cfgDesc_fs[1] = OTHER_SPEED_CONFIGURATION;
+                                    return  XUD_DoGetRequest(c, c_in,  cfgDesc_fs, cfgDescLength_fs, sp.wLength);
+                                }
+                                else if(cfgDescLength_hs != 0)
+                                {
+                                    cfgDesc_hs[1] = OTHER_SPEED_CONFIGURATION;
+                                    return  XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
+                                }
                             }
                             break;
 

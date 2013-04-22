@@ -12,6 +12,7 @@
  * Move null descriptor to module_usb_device 
  * Check FS vs HS behaviour
  * Standard requests should patch descriptor type 
+ * current config doesn't get reset on bus reset
  */
 
 static unsigned char hiSpdDesc[] = 

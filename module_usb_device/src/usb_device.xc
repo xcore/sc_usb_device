@@ -307,7 +307,8 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in, unsigned char devDesc[], int dev
                         case WVALUE_GETDESC_CONFIG:
  
                             /* Currently only 1 configuration descriptor supported */
-                            if((sp.wValue & 0xff) == 0)
+                            /* TODO We currently return the same for all configs */
+                            //if((sp.wValue & 0xff) == 0)
                             {                  
                                 /* Do get request (send descriptor then 0 length status stage) */
 				                return XUD_DoGetRequest(c, c_in,  cfgDesc, cfgDescLength, sp.wLength); 

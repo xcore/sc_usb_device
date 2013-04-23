@@ -515,7 +515,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             numInterfaces = cfgDesc_fs[4];
                         }
 
-                        if( (sp.wIndex < numInterfaces) && (sp.wIndex < MAX_INTS))
+                        if((sp.wIndex < numInterfaces) && (sp.wIndex < MAX_INTS))
                         {
                             buffer[0] = g_interface_alt[sp.wIndex];
                         

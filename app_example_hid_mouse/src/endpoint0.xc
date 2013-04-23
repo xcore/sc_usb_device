@@ -40,44 +40,6 @@ static unsigned char devDesc[] =
     0x01                   /* 17 bNumConfigurations */
 };
 
-/* Device Descriptor for Null Device */
-unsigned char devDesc_Null[] = 
-{
-    0x12,                  /* 0  bLength : Size of descriptor in Bytes (18 Bytes) */ 
-    DEVICE,                /* 1  bdescriptorType */ 
-    0x00,                  /* 2  bcdUSB */ 
-    0x02,                  /* 3  bcdUSB */ 
-    0x00,            	   /* 4  bDeviceClass */ 
-    0x00,                  /* 5  bDeviceSubClass */ 
-    0x00,                  /* 6  bDeviceProtocol */ 
-    0x40,              	   /* 7  bMaxPacketSize */ 
-    (VENDOR_ID & 0xFF),    /* 8  idVendor */ 
-    (VENDOR_ID >> 8),      /* 9  idVendor */ 
-    (PRODUCT_ID & 0xFF),   /* 10 idProduct */ 
-    (PRODUCT_ID >> 8),     /* 11 idProduct */ 
-    (BCD_DEVICE & 0xFF),   /* 12 bcdDevice : Device release number */ 
-    (BCD_DEVICE >> 8),     /* 13 bcdDevice : Device release number */ 
-    0x01,                  /* 14 iManufacturer : Index of manufacturer string */ 
-	0x02,                  /* 15 iProduct : Index of product string descriptor */ 
-    0x00,                  /* 16 iSerialNumber : Index of serial number decriptor */ 
-    0x01             	   /* 17 bNumConfigurations : Number of possible configs */
-};
-
-
-
-unsigned char fullSpdDesc[] =
-{ 
-    0x0a,               /* 0  bLength */
-    DEVICE_QUALIFIER,   /* 1  bDescriptorType */ 
-    0x00,               /* 2  bcdUSB */
-    0x02,               /* 3  bcdUSB */ 
-    0x00,               /* 4  bDeviceClass */ 
-    0x00,               /* 5  bDeviceSubClass */ 
-    0x00,               /* 6  bDeviceProtocol */ 
-    0x40,               /* 7  bMaxPacketSize */ 
-    0x01,               /* 8  bNumConfigurations */ 
-    0x00                /* 9  bReserved  */ 
-};
 
 /* Configuration Descriptor */
 static unsigned char cfgDesc[] = {  
@@ -134,29 +96,6 @@ static unsigned char hidDescriptor[] =
 #define NUM_EP_OUT 1
 #define NUM_EP_IN 2
 
-unsigned char fullSpdConfDesc[] =
-{
-    0x09,               /* 0  bLength */
-    OTHER_SPEED_CONFIGURATION,      /* 1  bDescriptorType */
-    0x12,               /* 2  wTotalLength */
-    0x00,               /* 3  wTotalLength */
-    0x01,               /* 4  bNumInterface: Number of interfaces*/
-    0x00,               /* 5  bConfigurationValue */
-    0x00,               /* 6  iConfiguration */
-    0x80,               /* 7  bmAttributes */
-    0xC8,               /* 8  bMaxPower */
-
-    0x09,               /* 0 bLength */
-    0x04,               /* 1 bDescriptorType */
-    0x00,               /* 2 bInterfaceNumber */
-    0x00,               /* 3 bAlternateSetting */
-    0x00,               /* 4 bNumEndpoints */
-    0x00,               /* 5 bInterfaceClass */
-    0x00,               /* 6 bInterfaceSubclass */
-    0x00,               /* 7 bInterfaceProtocol */
-    0x00,               /* 8 iInterface */
-
-};
 
 /* String table */
 static unsigned char stringDescriptors[][40] = 
@@ -328,7 +267,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         {
             /* Returns 0 if handled okay, 1 if request was not handled (STALLed), -1 of USB Reset */
             retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc, sizeof(devDesc), 
-                hiSpdConfDesc, sizeof(hiSpdConfDesc), null, 0, null, 0, 
+                cfgDesc, sizeof(cfgDesc), null, 0, null, 0, 
                 stringDescriptors, sp, c_usb_test, usbBusSpeed);
         }
 

@@ -187,7 +187,7 @@ int main()
     {
         on stdcore[USB_CORE]: XUD_Manager( c_ep_out, EP_COUNT_OUT, c_ep_in, EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
-                                p_usb_rst, clk, -1, XUD_SPEED_HS, c_usb_test); 
+                                p_usb_rst, clk, -1, XUD_SPEED_FS, c_usb_test); 
 
         on stdcore[USB_CORE]:
         {

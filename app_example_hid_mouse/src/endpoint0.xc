@@ -79,7 +79,8 @@ unsigned char fullSpdDesc[] =
     0x00                /* 9  bReserved  */ 
 };
 
-static unsigned char hiSpdConfDesc[] = {  
+/* Configuration Descriptor */
+static unsigned char cfgDesc[] = {  
   0x09,                 /* 0  bLength */ 
   0x02,                 /* 1  bDescriptortype */ 
   0x22, 0x00,           /* 2  wTotalLength */ 
@@ -157,7 +158,7 @@ unsigned char fullSpdConfDesc[] =
 
 };
 
-
+/* String table */
 static unsigned char stringDescriptors[][40] = 
 {
 	"\\004\\009",                      // Language string
@@ -167,52 +168,53 @@ static unsigned char stringDescriptors[][40] =
  	"Config",   			           // iConfiguration
 };
 
+/* HID Report Descriptor */
 static unsigned char hidReportDescriptor[] = 
 {
-    0x05, 0x01, // Usage page (desktop)
-    0x09, 0x02, // Usage (mouse)
-    0xA1, 0x01, // Collection (app)
-    0x05, 0x09, // Usage page (buttons)
+    0x05, 0x01,   // Usage page (desktop)
+    0x09, 0x02,   // Usage (mouse)
+    0xA1, 0x01,   // Collection (app)
+    0x05, 0x09,   // Usage page (buttons)
     0x19, 0x01, 
     0x29, 0x03,
-    0x15, 0x00,  // Logical min (0)
-    0x25, 0x01,  // Logical max (1)
-    0x95, 0x03,  // Report count (3)
-    0x75, 0x01,  // Report size (1)
-    0x81, 0x02,  // Input (Data, Absolute)
-    0x95, 0x01,  // Report count (1)
-    0x75, 0x05,  // Report size (5)
-    0x81, 0x03,  // Input (Absolute, Constant)
-    0x05, 0x01,  // Usage page (desktop)
-    0x09, 0x01, // Usage (pointer)
-    0xA1, 0x00, // Collection (phys)
-    0x09, 0x30,  // Usage (x)
-    0x09, 0x31,  // Usage (y)
-    0x15, 0x81,  // Logical min (-127)
-    0x25, 0x7F,  // Logical max (127)
-    0x75, 0x08,  // Report size (8)
-    0x95, 0x02,  // Report count (2)
+    0x15, 0x00,   // Logical min (0)
+    0x25, 0x01,   // Logical max (1)
+    0x95, 0x03,   // Report count (3)
+    0x75, 0x01,   // Report size (1)
+    0x81, 0x02,   // Input (Data, Absolute)
+    0x95, 0x01,   // Report count (1)
+    0x75, 0x05,   // Report size (5)
+    0x81, 0x03,   // Input (Absolute, Constant)
+    0x05, 0x01,   // Usage page (desktop)
+    0x09, 0x01,   // Usage (pointer)
+    0xA1, 0x00,   // Collection (phys)
+    0x09, 0x30,   // Usage (x)
+    0x09, 0x31,   // Usage (y)
+    0x15, 0x81,   // Logical min (-127)
+    0x25, 0x7F,   // Logical max (127)
+    0x75, 0x08,   // Report size (8)
+    0x95, 0x02,   // Report count (2)
 #ifdef ADC
-    0x81, 0x02,  // Input (Data, Abs) 0x2 to 0x6 for Rel
+    0x81, 0x02,   // Input (Data, Abs) 0x2 to 0x6 for Rel
 #else
     0x81, 0x06,
 #endif
-    0xC0,        // End collection
-    0x09, 0x38,  // Usage (Wheel)
-    0x95, 0x01,  // Report count (1)
-    0x81, 0x02,  // Input (Data, Relative)
-    0x09, 0x3C,  // Usage (Motion Wakeup)
-    0x15, 0x00,  // Logical min (0)
-    0x25, 0x01,  // Logical max (1)
-    0x75, 0x01,  // Report size (1)
-    0x95, 0x01,  // Report count (1)
-    0xB1, 0x22,  // Feature (No preferred, Variable)
-    0x95, 0x07,  // Report count (7)
-    0xB1, 0x01,  // Feature (Constant)
-    0xC0         // End collection
+    0xC0,         // End collection
+    0x09, 0x38,   // Usage (Wheel)
+    0x95, 0x01,   // Report count (1)
+    0x81, 0x02,   // Input (Data, Relative)
+    0x09, 0x3C,   // Usage (Motion Wakeup)
+    0x15, 0x00,   // Logical min (0)
+    0x25, 0x01,   // Logical max (1)
+    0x75, 0x01,   // Report size (1)
+    0x95, 0x01,   // Report count (1)
+    0xB1, 0x22,   // Feature (No preferred, Variable)
+    0x95, 0x07,   // Report count (7)
+    0xB1, 0x01,   // Feature (Constant)
+    0xC0          // End collection
 };
 
-
+/* HID Class Requests */
 int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_SetupPacket_t sp)
 {
     unsigned char buffer[64];
@@ -262,7 +264,7 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_SetupPacket
     return 1;
 }
 
-
+/* Endpoint 0 Task */
 void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
 {
     USB_SetupPacket_t sp;
@@ -336,4 +338,11 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             usbBusSpeed = XUD_ResetEndpoint(ep0_out, ep0_in);
         }
     }
-}
+}// 
+
+
+ 
+
+
+
+

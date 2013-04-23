@@ -279,13 +279,13 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             /* Currently only 1 device descriptor supported */
                             if((sp.wValue & 0xff) == 0) 
                             { 
-                                if((usbBusSpeed == XUD_SPEED_HS) || (devDescLength_fs == 0))
+                                if(((usbBusSpeed == XUD_SPEED_HS) || (devDescLength_fs == 0)) && devDescLength_hs != 0)
                                 { 
                                     /* Return high-speed device descriptor, if no FS desc, send the HS desc */          
                                     /* Do get request (send descriptor then 0 length status stage) */
                                     return XUD_DoGetRequest(c, c_in, devDesc_hs, devDescLength_hs, sp.wLength); 
                                 }
-                                else if(usbBusSpeed == XUD_SPEED_FS) 
+                                else if((usbBusSpeed == XUD_SPEED_FS) && (devDescLength_fs != 0)) 
                                 {
                                     /* Return full-speed device descriptor */
                                     return XUD_DoGetRequest(c, c_in, devDesc_fs, devDescLength_fs, sp.wLength); 

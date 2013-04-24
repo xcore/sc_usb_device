@@ -458,16 +458,13 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                         int numInterfaces = 0;
 
                         /* Pull number of interfaces from the Configuration Descriptor */
-                        if((usbBusSpeed == XUD_SPEED_HS) || (cfgDescLength_fs == 0))
-                        {
-                            if(cfgDescLength_hs != 0)
-                            {
-                                numInterfaces = cfgDesc_hs[4];
-                            }
-                        }
-                        else if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
+                        if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
                         {
                             numInterfaces = cfgDesc_fs[4];
+                        }
+                        else if(cfgDescLength_hs != 0)
+                        {
+                            numInterfaces = cfgDesc_hs[4];
                         }
 
                         /* Record interface change */
@@ -502,16 +499,13 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                         int numInterfaces = 0;
                         
                         /* Pull number of interfaces from the Configuration Descriptor */
-                        if((usbBusSpeed == XUD_SPEED_HS) || cfgDescLength_fs == 0 )
-                        {
-                            if(cfgDescLength_hs != 0)
-                            {
-                                numInterfaces = cfgDesc_hs[4];
-                            }
-                        }
-                        else if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
+                        if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
                         {
                             numInterfaces = cfgDesc_fs[4];
+                        }
+                        else if(cfgDescLength_hs != 0)
+                        {
+                            numInterfaces = cfgDesc_hs[4];
                         }
 
                         if((sp.wIndex < numInterfaces) && (sp.wIndex < MAX_INTS))

@@ -279,16 +279,16 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             /* Currently only 1 device descriptor supported */
                             if((sp.wValue & 0xff) == 0) 
                             { 
-                                if(((usbBusSpeed == XUD_SPEED_HS) || (devDescLength_fs == 0)) && devDescLength_hs != 0)
+                                if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
                                 { 
+                                    /* Return full-speed device descriptor */
+                                    return XUD_DoGetRequest(c, c_in, devDesc_fs, devDescLength_fs, sp.wLength); 
+                                }
+                                else if(devDescLength_hs != 0)
+                                {
                                     /* Return high-speed device descriptor, if no FS desc, send the HS desc */          
                                     /* Do get request (send descriptor then 0 length status stage) */
                                     return XUD_DoGetRequest(c, c_in, devDesc_hs, devDescLength_hs, sp.wLength); 
-                                }
-                                else if((usbBusSpeed == XUD_SPEED_FS) && (devDescLength_fs != 0)) 
-                                {
-                                    /* Return full-speed device descriptor */
-                                    return XUD_DoGetRequest(c, c_in, devDesc_fs, devDescLength_fs, sp.wLength); 
                                 }
                             }
                             break;
@@ -300,18 +300,17 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             /* TODO We currently return the same for all configs */
                             //if((sp.wValue & 0xff) == 0)
                             { 
-                                /* If we are in HS return HS cfg desc, or if we have no FS desc, return HS desc */
-                                if((usbBusSpeed == XUD_SPEED_HS) || (cfgDescLength_fs == 0))
-                                {                 
-                                    /* Do get request (send descriptor then 0 length status stage) */
-                                    cfgDesc_hs[1] = CONFIGURATION;
-				                    return XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
-                                }
-                                else if(usbBusSpeed == XUD_SPEED_FS) 
+                                if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
                                 {
                                     /* Return full-speed configuration descriptor */
                                     cfgDesc_fs[1] = CONFIGURATION;
                                     return XUD_DoGetRequest(c, c_in, cfgDesc_fs, cfgDescLength_fs, sp.wLength); 
+                                }
+                                else if(cfgDescLength_hs != 0)
+                                {
+                                    /* Do get request (send descriptor then 0 length status stage) */
+                                    cfgDesc_hs[1] = CONFIGURATION;
+				                    return XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
                             }
                             break;

@@ -41,7 +41,7 @@ INCLUDE_ONLY_IN_noadc =
 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
 
-MODULE_LIBRARIES = xud_s
+MODULE_LIBRARIES = xud_u
 
 #=============================================================================
 # The following part of the Makefile includes the common build infrastructure

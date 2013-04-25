@@ -230,21 +230,24 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
  
                     if(sp.bRequest == GET_DESCRIPTOR)
                     {
-                        /* Look at Descriptor Type (high-byte of wValue) */ 
-                        /* HID interface is 0, so this check is fine on its own (low byte of wValue = 0) */
-                        unsigned short descriptorType = sp.wValue & 0xff00;
-            
-                        switch(descriptorType)
+                        /* HID Interface is Interface 0 */
+                        if(sp.wIndex == 0)
                         {
-                            case HID:
-                                retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor, 
-                                    sizeof(hidDescriptor), sp.wLength);
-                                break;
+                            /* Look at Descriptor Type (high-byte of wValue) */ 
+                            unsigned short descriptorType = sp.wValue & 0xff00;
+            
+                            switch(descriptorType)
+                            {
+                                case HID:
+                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor, 
+                                        sizeof(hidDescriptor), sp.wLength);
+                                    break;
                         
-                            case REPORT:
-                                retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor,
-                                    sizeof(hidReportDescriptor), sp.wLength);
-                                break;
+                                case REPORT:
+                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor,
+                                        sizeof(hidReportDescriptor), sp.wLength);
+                                    break;
+                            }
                         }
                     }
                     break;

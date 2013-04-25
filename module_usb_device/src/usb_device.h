@@ -26,20 +26,29 @@
   * \brief     This function performs some of the common USB standard descriptor requests.
   *            It handles the following standard requests appropriately using values passed to it:
   *
-  *   Get Device Descriptor (using devDesc argument)
+  *   Get Device Descriptor (using devDesc_hs/devDesc_fs arguments)
   *
-  *   Get Configuration Descriptor (using cfgDesc argument)
+  *   Get Configuration Descriptor (using cfgDesc_hs/cfgDesc_fs arguments)
   *
   *   String requests (using strDesc argument)
   *
-  *   Get Microsoft OS String Descriptor (usings product ID string)
+  *   Get Microsoft OS String Descriptor (re-uses product ID string)
   *
   *   Get Device_Qualifier Descriptor
   *
-  *   Get Other-Speed Configuration Descriptor (using oSpeedCfgDesc argument)
+  *   Get Other-Speed Configuration Descriptor
   *
-  * \param     ep_out Endpoint from XUD (ep 0)
-  * \param     ep_in Enpoint from XUD (ep 0) 
+  *   Set/Clear Feature (Endpoint Halt)
+  *
+  *   Get/Set Interface
+  *
+  *   Set Configuration
+  *
+  *   If the request is not recognised the endpoint is marked STALLED
+  *
+  *
+  * \param     ep_out   Endpoint from XUD (ep 0)
+  * \param     ep_in    Endpoint from XUD (ep 0) 
   * \param     devDesc_hs The Device descriptor to use, encoded according to the USB standard
   * \param     devDescLength_hs Length of device descriptor in bytes
   * \param     cfgDesc_hs Configuration descriptor
@@ -51,12 +60,9 @@
   * \param     strDescs
   * \param     sp ``USB_SetupPacket_t`` (passed by ref) in which the setup data is returned
   * \param     c_usb_test Optional channel param for USB test mode support
-  * \param     usbBusSpeed TBD
+  * \param     usbBusSpeed The current bus speed (XUD_SPEED_HS or XUD_SPEED_FS)
   *
-  *  \return This function returns 1 if the request has been dealt with successfully, 0 if not. If
-  *          the request has not been dealt with then the ``USB_SetupPacket_t`` structure should
-  *          be examined for device specific requests.
-  *
+  *  \return   Returns 0 if the request has been dealt with successfully, 1 if not. -1 for bus reset 
   */
 int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in, 
         unsigned char devDesc_hs[], int devDescLength_hs, 

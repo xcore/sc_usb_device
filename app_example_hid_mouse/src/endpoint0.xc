@@ -7,12 +7,9 @@
 #include "hid.h"
 
 /* TODO
- * Move null descriptor to module_usb_device 
- * Check FS vs HS behaviour
- * Standard requests should patch descriptor type 
  * current config doesn't get reset on bus reset
- * Poll rate changes FS to HS
  */
+
 #define BCD_DEVICE   0x1000
 #define VENDOR_ID    0x20B1
 #define PRODUCT_ID   0x1010

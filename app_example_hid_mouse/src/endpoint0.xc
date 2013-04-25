@@ -218,7 +218,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     USB_SetupPacket_t sp;
 
     unsigned bmRequestType; 
-    unsigned usbBusSpeed;
+    XUD_BusSpeed usbBusSpeed;
     
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);

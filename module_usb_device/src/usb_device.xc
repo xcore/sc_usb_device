@@ -105,18 +105,14 @@ int SetEndpointHalt(unsigned epNum, unsigned halt)
 
 
 
-/* This function deals with common requests
- * This includes Standard Device Requests listed in table 9-3 of the USB 2.0 Spec
- * all devices must respond to these requests, in some cases a bare minimum implementation 
- * is provided and should be extended in the devices EP0 code 
- */
+
 #pragma unsafe arrays
 int USB_StandardRequests(XUD_ep c, XUD_ep c_in, 
     unsigned char devDesc_hs[], int devDescLength_hs, 
     unsigned char cfgDesc_hs[], int cfgDescLength_hs,
     unsigned char ?devDesc_fs[], int devDescLength_fs, 
     unsigned char ?cfgDesc_fs[], int cfgDescLength_fs, 
-    unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, unsigned usbBusSpeed)
+    unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed)
 {
      /* Return value */
     int datalength;

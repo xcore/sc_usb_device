@@ -23,8 +23,10 @@
 #include "xud.h"
 
 /** 
-  * \brief     This function performs some of the common USB standard descriptor requests.
-  *            It handles the following standard requests appropriately using values passed to it:
+  * \brief    This function deals with common requests This includes Standard Device Requests listed 
+  *           in table 9-3 of the USB 2.0 Spec all devices must respond to these requests, in some 
+  *           cases a bare minimum implementation is provided and should be extended in the devices EP0 code 
+  *           It handles the following standard requests appropriately using values passed to it:
   *
   *   Get Device Descriptor (using devDesc_hs/devDesc_fs arguments)
   *
@@ -69,7 +71,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
         unsigned char cfgDesc_hs[], int cfgDescLength_hs,
         unsigned char ?devDesc_fs[], int devDescLength_fs, 
         unsigned char ?cfgDesc_fs[], int cfgDescLength_fs, 
-        unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, unsigned usbBusSpeed);
+        unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed);
 /**
  *  \brief  Receives a Setup data packet and parses it into the passed USB_SetupPacket_t structure.
  *  \param  ep_out   OUT endpint from XUD

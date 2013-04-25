@@ -1,9 +1,4 @@
-/**
- * Module:  module_usb_shared
- * Version: 1v14
- * Build:   2653f22a66739162bd368f5c7d50da8bd7417fd7
- * File:    DescriptorRequests.h
- *
+/*
  * The copyrights, all other intellectual and industrial 
  * property rights are retained by XMOS and/or its licensors. 
  * Terms and conditions covering the use of this code can
@@ -17,9 +12,8 @@
  * copyright notice above.
  *
  **/                                   
-/** 
+/* 
  * @brief      USB Device helper functions
- * @author     Ross Owen, XMOS Limited
  */
 
 #ifndef _USB_DEVICE_H_
@@ -30,34 +24,39 @@
 
 /** 
   * \brief     This function performs some of the common USB standard descriptor requests.
+  *            It handles the following standard requests appropriately using values passed to it:
+  *
+  *   Get Device Descriptor (using devDesc argument)
+  *
+  *   Get Configuration Descriptor (using cfgDesc argument)
+  *
+  *   String requests (using strDesc argument)
+  *
+  *   Get Microsoft OS String Descriptor (usings product ID string)
+  *
+  *   Get Device_Qualifier Descriptor
+  *
+  *   Get Other-Speed Configuration Descriptor (using oSpeedCfgDesc argument)
   *
   * \param     ep_out Channel from XUD (ep 0)
   * \param     ep_in Channel from XUD (ep 0) 
-  * \param     devDesc The Device descriptor to use, encoded according to the USB standard
-  * \param     devDescLength Length of device descriptor in bytes
-  * \param     cfgDesc Configuration descriptor
-  * \param     cfgDescLength Length of config descriptor in bytes
-  * \param     devQualDesc Device Qualification Descriptor
-  * \param     devQualDescLength
-  * \param     oSpeedCfgDesc
-  * \param     oSpeedCfgDescLength
+  * \param     devDesc_hs The Device descriptor to use, encoded according to the USB standard
+  * \param     devDescLength_hs Length of device descriptor in bytes
+  * \param     cfgDesc_hs Configuration descriptor
+  * \param     cfgDescLength_hs Length of config descriptor in bytes
+  * \param     devDesc_fs The Device descriptor to use, encoded according to the USB standard
+  * \param     devDescLength_fs Length of device descriptor in bytes
+  * \param     cfgDesc_fs Configuration descriptor
+  * \param     cfgDescLength_fs Length of config descriptor in bytes
   * \param     strDescs
-  * \param     sp SetupPacket (passed by ref) in which the setup data is returned
+  * \param     sp ``USB_SetupPacket_t`` (passed by ref) in which the setup data is returned
   * \param     c_usb_test Optional channel param for USB test mode support
-  * \return    1 if dealt with else 
+  * \param     usbBusSpeed TBD
   *
-  * This function handles the following standard requests appropriately using values passed to it:
+  *  \return This function returns 1 if the request has been dealt with successfully, 0 if not. If
+  *          the request has not been dealt with then the ``USB_SetupPacket_t`` structure should
+  *          be examined for device specific requests.
   *
-  *   - Get Device Descriptor (Using devDesc argument)
-  *   - Get Configuration Descriptor (Using cfgDesc argument)
-  *   - String requests (using strDesc argument)
-  *   - Get Micro$oft OS String Descriptor (Usings product ID string) 
-  *   - Get Device_Qualifier Descriptor 
-  *   - Get Other-Speed Configuration Descriptor (using oSpeedCfgDesc argument)
-  *   
-  *  This function returns 1 if the request has been dealt with successfully, 0 if not.  The SetupPacket
-  *  structure should then be examined for device specific requests.
-
   */
 int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in, 
         unsigned char devDesc_hs[], int devDescLength_hs, 
@@ -71,7 +70,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
 int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp);
 
 /**
- *  \brief Prints out passed SetupPacket struct using debug IO
+ *  \brief Prints out passed ``USB_SetupPacket_t`` struct using debug IO
  */
 void USB_PrintSetupPacket(USB_SetupPacket_t sp);
 

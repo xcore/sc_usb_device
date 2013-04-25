@@ -62,7 +62,8 @@ static unsigned char cfgDesc[] = {
   0x02,                 /* 7: bInterfaceProtocol*/ 
   0x00,                 /* 8  iInterface */ 
   
-  0x09,                 /* 0  bLength */                        /* Note this is currently replicated in hidDescriptor[] below */ 
+  0x09,                 /* 0  bLength. Note this is currently
+                              replicated in hidDescriptor[] below */ 
   0x21,                 /* 1  bDescriptorType (HID) */ 
   0x10,                 /* 2  bcdHID */ 
   0x11,                 /* 3  bcdHID */ 
@@ -100,11 +101,11 @@ static unsigned char hidDescriptor[] =
 /* String table */
 static unsigned char stringDescriptors[][40] = 
 {
-	"\\004\\009",                      // Language string
-  	"XMOS",				               // iManufacturer 
- 	"Example HID Mouse", 			   // iProduct
- 	"", 			                   // unUsed
- 	"Config",   			           // iConfiguration
+    "\\004\\009",               // Language string
+    "XMOS",                     // iManufacturer 
+    "Example HID Mouse",        // iProduct
+    "",                         // unUsed
+    "Config",                   // iConfiguration
 };
 
 /* HID Report Descriptor */
@@ -154,7 +155,8 @@ static unsigned char hidReportDescriptor[] =
 };
 
 /* HID Class Requests */
-int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_SetupPacket_t sp)
+int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
+        USB_SetupPacket_t sp)
 {
     unsigned char buffer[64];
     unsigned tmp;
@@ -164,38 +166,48 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_SetupPacket
         case GET_REPORT:        
         
             /* Mandatory. Allows sending of report over control pipe */
-            /* Send back a hid report - note the use of asm due to shared mem */
+            /* Send a hid report - note the use of asm due to shared mem */
             asm("ldaw %0, dp[g_reportBuffer]": "=r"(tmp));
             asm("ldw %0, %1[0]": "=r"(tmp) : "r"(tmp));
             (buffer, unsigned[])[0] = tmp;
 
-            return XUD_DoGetRequest(c_ep0_out, c_ep0_in, buffer, 4, sp.wLength);
+            return XUD_DoGetRequest(c_ep0_out, c_ep0_in,
+                        buffer, 4, sp.wLength);
             break;
 
         case GET_IDLE:
-            /* Return the current Idle rate - this is optional for a HID mouse */
+            /* Return the current Idle rate - optional for a HID mouse */
+
             /* Do nothing - i.e. STALL */
             break;
 
         case GET_PROTOCOL:      
-            /* Required only devices supporting boot protocol devices - this example does not */
+            /* Required only devices supporting boot protocol devices,
+             * which this example does not */
+
             /* Do nothing - i.e. STALL */
             break;
 
          case SET_REPORT: 
-            /* The host sends an Output or Feature report to a HID using a cntrol transfer - optional */
+            /* The host sends an Output or Feature report to a HID
+             * using a cntrol transfer - optional */
+
             /* Do nothing - i.e. STALL */
             break;
 
         case SET_IDLE:      
             /* Set the current Idle rate - this is optional for a HID mouse 
-             * (Bandwidth can be saved by limiting the frequency that an interrupt IN EP when the 
-             * data hasn't changed since the last report */
+             * (Bandwidth can be saved by limiting the frequency that an
+             * interrupt IN EP when the data hasn't changed since the last
+             * report */
+
             /* Do nothing - i.e. STALL */
             break;
             
         case SET_PROTOCOL:     
-            /* Required only devices supporting boot protocol devices - this example does not */
+            /* Required only devices supporting boot protocol devices,
+             * which this example does not */
+
             /* Do nothing - i.e. STALL */
             break;
     }
@@ -222,7 +234,9 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         if(!retVal) 
         {
             /* Stick bmRequest type back together for an easier parse... */
-            bmRequestType = (sp.bmRequestType.Direction<<7) | (sp.bmRequestType.Type<<5) | (sp.bmRequestType.Recipient);
+            bmRequestType = (sp.bmRequestType.Direction<<7) |
+                            (sp.bmRequestType.Type<<5) |
+                            (sp.bmRequestType.Recipient);
     
             switch(bmRequestType)
             {
@@ -231,19 +245,26 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                     if(sp.bRequest == GET_DESCRIPTOR)
                     {
                         /* Look at Descriptor Type (high-byte of wValue) */ 
-                        /* HID interface is 0, so this check is fine on its own (low byte of wValue = 0) */
+                        /* HID interface is 0, so this check is fine on
+                         * its own (low byte of wValue = 0) */
                         unsigned short descriptorType = sp.wValue & 0xff00;
             
                         switch(descriptorType)
                         {
                             case HID:
-                                retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor, 
-                                    sizeof(hidDescriptor), sp.wLength);
+                                retVal = XUD_DoGetRequest(ep0_out,
+                                            ep0_in,
+                                            hidDescriptor,
+                                            sizeof(hidDescriptor),
+                                            sp.wLength);
                                 break;
                         
                             case REPORT:
-                                retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor,
-                                    sizeof(hidReportDescriptor), sp.wLength);
+                                retVal = XUD_DoGetRequest(ep0_out,
+                                            ep0_in,
+                                            hidReportDescriptor,
+                                            sizeof(hidReportDescriptor),
+                                            sp.wLength);
                                 break;
                         }
                     }
@@ -255,20 +276,27 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                     /* Inspect for HID interface num */
                     if(sp.wIndex == 0)
                     {
-                        /* Returns 0 if handled, 1 if not handled, -1 for bus reset */
-                        retVal = HidInterfaceClassRequests(ep0_out, ep0_in, sp);
+                        /* Returns  0 if handled, 
+                         *          1 if not handled,
+                         *         -1 for bus reset */
+                        retVal = HidInterfaceClassRequests(ep0_out,
+                                    ep0_in, sp);
                     }
                     break;
             }
         }
 
-        /* If we havn't handled the request about, do standard enumeration requests  */
+        /* If we havn't handled the request about, 
+         * then do standard enumeration requests  */
         if(!retVal)
         {
-            /* Returns 0 if handled okay, 1 if request was not handled (STALLed), -1 of USB Reset */
-            retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc, sizeof(devDesc), 
-                cfgDesc, sizeof(cfgDesc), null, 0, null, 0, 
-                stringDescriptors, sp, c_usb_test, usbBusSpeed);
+            /* Returns  0 if handled okay,
+             *          1 if request was not handled (STALLed),
+             *         -1 of USB Reset */
+            retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc,
+                        sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
+                        null, 0, null, 0, stringDescriptors, sp,
+                        c_usb_test, usbBusSpeed);
         }
 
         /* USB bus reset detected, reset EP and get new bus speed */
@@ -277,7 +305,8 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             usbBusSpeed = XUD_ResetEndpoint(ep0_out, ep0_in);
         }
     }
-}// 
+}
+//: 
 
 
  

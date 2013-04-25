@@ -32,12 +32,12 @@
 #include "xud.h"
 #include "usb.h"
 
-#define EP_COUNT_OUT   1
-#define EP_COUNT_IN    2
+#define XUD_EP_COUNT_OUT   1
+#define XUD_EP_COUNT_IN    2
 
 /* Endpoint type tables */
-XUD_EpType epTypeTableOut[EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
-XUD_EpType epTypeTableIn[EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
+XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
+XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
 
 /* USB Port declarations */
 on stdcore[USB_CORE]: out port p_usb_rst = USB_RST_PORT;
@@ -169,7 +169,7 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
  */
 int main() 
 {
-    chan c_ep_out[EP_COUNT_OUT], c_ep_in[EP_COUNT_IN];
+    chan c_ep_out[XUD_EP_COUNT_OUT], c_ep_in[XUD_EP_COUNT_IN];
 #ifdef TEST_MODE_SUPPORT
 #warning Building with USB test mode support     
     chan c_usb_test;
@@ -185,7 +185,7 @@ int main()
 
     par 
     {
-        on stdcore[USB_CORE]: XUD_Manager( c_ep_out, EP_COUNT_OUT, c_ep_in, EP_COUNT_IN,
+        on stdcore[USB_CORE]: XUD_Manager( c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
                                 p_usb_rst, clk, -1, XUD_SPEED_HS, c_usb_test); 
 

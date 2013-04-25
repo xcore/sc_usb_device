@@ -310,7 +310,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                 {
                                     /* Do get request (send descriptor then 0 length status stage) */
                                     cfgDesc_hs[1] = CONFIGURATION;
-				                    return XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
+                                    return XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
                             }
                             break;

@@ -38,8 +38,8 @@
   *
   *   Get Other-Speed Configuration Descriptor (using oSpeedCfgDesc argument)
   *
-  * \param     ep_out Channel from XUD (ep 0)
-  * \param     ep_in Channel from XUD (ep 0) 
+  * \param     ep_out Endpoint from XUD (ep 0)
+  * \param     ep_in Enpoint from XUD (ep 0) 
   * \param     devDesc_hs The Device descriptor to use, encoded according to the USB standard
   * \param     devDescLength_hs Length of device descriptor in bytes
   * \param     cfgDesc_hs Configuration descriptor
@@ -65,7 +65,11 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
         unsigned char ?cfgDesc_fs[], int cfgDescLength_fs, 
         unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, unsigned usbBusSpeed);
 /**
- *  \brief      TBD
+ *  \brief  Receives a Setup data packet and parses it into the passed USB_SetupPacket_t structure.
+ *  \param  ep_out   OUT endpint from XUD
+ *  \param  ep_in    IN endpoint to XUD
+ *  \param  sp       SetupPacket structure to be filled in (passed by ref)
+ *  \return          0 on non-error, -1 for bus-reset
  */
 int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp);
 

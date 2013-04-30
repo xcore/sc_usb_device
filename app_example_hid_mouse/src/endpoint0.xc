@@ -230,6 +230,8 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         
         if(!retVal) 
         {
+            retVal = 1;
+
             /* Stick bmRequest type back together for an easier parse... */
             bmRequestType = (sp.bmRequestType.Direction<<7) |
                             (sp.bmRequestType.Type<<5) |
@@ -281,7 +283,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
 
         /* If we havn't handled the request about, 
          * then do standard enumeration requests  */
-        if(!retVal)
+        if(retVal > 0)
         {
             /* Returns  0 if handled okay,
              *          1 if request was not handled (STALLed),

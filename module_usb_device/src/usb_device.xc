@@ -19,8 +19,8 @@
 #define MAX_EPS     16
 #endif
 
-unsigned char g_current_config = 0;
-unsigned char g_interface_alt[MAX_INTS]; /* Global endpoint status arrays */
+unsigned char g_currentConfig = 0;
+unsigned char g_interfaceAlt[MAX_INTS]; /* Global endpoint status arrays */
 
 unsigned short g_epStatusOut[MAX_EPS];
 unsigned short g_epStatusIn[MAX_EPS];
@@ -71,18 +71,16 @@ int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp)
 int SetEndpointHalt(unsigned epNum, unsigned halt)
 {
     /* Inspect for IN bit */
-    if( epNum & 0x80 )
+    if(epNum & 0x80)
     {
-        epNum &= 0x7f;
-
         /* Range check */
-        if(epNum < MAX_EPS)
+        if((epNum&0x7F) < MAX_EPS)
         {
-            g_epStatusIn[ epNum & 0x7F ] = halt;  
+            g_epStatusIn[epNum & 0x7F] = halt;  
             if(halt)
-                XUD_SetStall_In(epNum);
+                XUD_SetStallByAddr(epNum);
             else
-                XUD_ClearStall_In(epNum);
+                XUD_ClearStallByAddr(epNum);
             return 0;
         }
     }
@@ -92,9 +90,9 @@ int SetEndpointHalt(unsigned epNum, unsigned halt)
         {
             g_epStatusOut[epNum] = halt;
             if(halt)
-                XUD_SetStall_Out(epNum);
+                XUD_SetStallByAddr(epNum);
             else
-                XUD_ClearStall_Out(epNum);
+                XUD_ClearStallByAddr(epNum);
             
             return 0;  
         }
@@ -107,7 +105,7 @@ int SetEndpointHalt(unsigned epNum, unsigned halt)
 
 
 #pragma unsafe arrays
-int USB_StandardRequests(XUD_ep c, XUD_ep c_in, 
+int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in, 
     unsigned char devDesc_hs[], int devDescLength_hs, 
     unsigned char cfgDesc_hs[], int cfgDescLength_hs,
     unsigned char ?devDesc_fs[], int devDescLength_fs, 
@@ -151,7 +149,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                         int retVal;
 
                         /* Status stage: Send a zero length packet */
-                        retVal = XUD_DoSetRequestStatus(c_in);
+                        retVal = XUD_DoSetRequestStatus(ep_in);
                         if(retVal < 0)
                             return retVal;
 
@@ -183,10 +181,10 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                          * Note alot of devices maye wish to implement features here since this 
                          * request indicates the device being placed into its "Configured" state
                          * i.e. the host has accepted the device */
-                         g_current_config = sp.wValue;
+                         g_currentConfig = sp.wValue;
                         
                         /* No data stage for this request, just do status stage */
-                        return XUD_DoSetRequestStatus(c_in);
+                        return XUD_DoSetRequestStatus(ep_in);
                     }
                     break;
 
@@ -217,7 +215,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                 case WINDEX_TEST_FORCE_ENABLE:    
                                     {
                                         int retVal;
-                                        retVal = XUD_DoSetRequestStatus(c_in);                                      
+                                        retVal = XUD_DoSetRequestStatus(ep_in);                                      
                                         if(retVal < 0)
                                             return retVal;
                                                 
@@ -250,7 +248,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                     else
                         buffer[0] = 0;
                     
-                    return XUD_DoGetRequest(c, c_in, buffer, 2, sp.wLength);
+                    return XUD_DoGetRequest(ep_out, ep_in, buffer, 2, sp.wLength);
 
                 /* Standard Device Request: GetConfiguration (USB Spec 9.4.2) */
                 case GET_CONFIGURATION:
@@ -258,8 +256,8 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                     /* Return the current configuration of the device */
                     if((sp.wValue == 0) && (sp.wIndex == 0) && (sp.wLength == 1))
                     {
-                        buffer[0] = (char)g_current_config;
-                        return XUD_DoGetRequest(c, c_in, buffer, 1, sp.wLength);
+                        buffer[0] = (char)g_currentConfig;
+                        return XUD_DoGetRequest(ep_out, ep_in, buffer, 1, sp.wLength);
                     }
                     break;
 
@@ -278,13 +276,13 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                 if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
                                 { 
                                     /* Return full-speed device descriptor */
-                                    return XUD_DoGetRequest(c, c_in, devDesc_fs, devDescLength_fs, sp.wLength); 
+                                    return XUD_DoGetRequest(ep_out, ep_in, devDesc_fs, devDescLength_fs, sp.wLength); 
                                 }
                                 else if(devDescLength_hs != 0)
                                 {
                                     /* Return high-speed device descriptor, if no FS desc, send the HS desc */          
                                     /* Do get request (send descriptor then 0 length status stage) */
-                                    return XUD_DoGetRequest(c, c_in, devDesc_hs, devDescLength_hs, sp.wLength); 
+                                    return XUD_DoGetRequest(ep_out, ep_in, devDesc_hs, devDescLength_hs, sp.wLength); 
                                 }
                             }
                             break;
@@ -300,13 +298,13 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                 {
                                     /* Return full-speed configuration descriptor */
                                     cfgDesc_fs[1] = CONFIGURATION;
-                                    return XUD_DoGetRequest(c, c_in, cfgDesc_fs, cfgDescLength_fs, sp.wLength); 
+                                    return XUD_DoGetRequest(ep_out, ep_in, cfgDesc_fs, cfgDescLength_fs, sp.wLength); 
                                 }
                                 else if(cfgDescLength_hs != 0)
                                 {
                                     /* Do get request (send descriptor then 0 length status stage) */
                                     cfgDesc_hs[1] = CONFIGURATION;
-                                    return XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
+                                    return XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
                             }
                             break;
@@ -334,7 +332,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                     devQualDesc[9] = 0; 
                                 
                                     /* Do get request (send descriptor then 0 length status stage) */
-                                    return XUD_DoGetRequest(c, c_in, devQualDesc, 10, sp.wLength); 
+                                    return XUD_DoGetRequest(ep_out, ep_in, devQualDesc, 10, sp.wLength); 
                                 }
                                 else if(devDescLength_hs != 0)
                                 { 
@@ -351,7 +349,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                     devQualDesc[9] = 0; 
                                 
                                     /* Do get request (send descriptor then 0 length status stage) */
-                                    return XUD_DoGetRequest(c, c_in, devQualDesc, 10, sp.wLength);   
+                                    return XUD_DoGetRequest(ep_out, ep_in, devQualDesc, 10, sp.wLength);   
                                 }
                             }
                             break;
@@ -364,19 +362,19 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                                 if((usbBusSpeed == XUD_SPEED_HS) && (cfgDescLength_fs != 0))
                                 {
                                     cfgDesc_fs[1] = OTHER_SPEED_CONFIGURATION;
-                                    return  XUD_DoGetRequest(c, c_in,  cfgDesc_fs, cfgDescLength_fs, sp.wLength);
+                                    return  XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_fs, cfgDescLength_fs, sp.wLength);
                                 }
                                 else if(cfgDescLength_hs != 0)
                                 {
                                     cfgDesc_hs[1] = OTHER_SPEED_CONFIGURATION;
-                                    return  XUD_DoGetRequest(c, c_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
+                                    return  XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
                             }
                             break;
 
                         /* String Descriptor */ 
                         case WVALUE_GETDESC_STRING:
- 
+                            
                             /* Set descriptor type */
                             buffer[1] = STRING;
 
@@ -428,7 +426,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             }
                                     
                             /* Send back string */
-                            return XUD_DoGetRequest(c, c_in, buffer, datalength + 2, sp.wLength); 
+                            return XUD_DoGetRequest(ep_out, ep_in, buffer, datalength + 2, sp.wLength); 
                             break;
                     }
 
@@ -470,11 +468,11 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                              *  It is hard for use to have a generic check for this here (without parsing the descriptors)
                              * If more robust checking is required this should be done in the endpoint 0 implementation
                              */
-                            g_interface_alt[sp.wIndex] = sp.wValue;
+                            g_interfaceAlt[sp.wIndex] = sp.wValue;
                         }
                 
                         /* No data stage for this request, just do data stage */
-                        return XUD_DoSetRequestStatus(c_in);
+                        return XUD_DoSetRequestStatus(ep_in);
                     }
                     break;
             }
@@ -506,9 +504,9 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
 
                         if((sp.wIndex < numInterfaces) && (sp.wIndex < MAX_INTS))
                         {
-                            buffer[0] = g_interface_alt[sp.wIndex];
+                            buffer[0] = g_interfaceAlt[sp.wIndex];
                         
-                            return XUD_DoGetRequest(c, c_in,  buffer, 1, sp.wLength);
+                            return XUD_DoGetRequest(ep_out, ep_in,  buffer, 1, sp.wLength);
                         }
                     }
                     break;
@@ -534,7 +532,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             /* Returns 0 on non-error */
                             if(!SetEndpointHalt(sp.wIndex, 1))
                             {
-                                return XUD_DoSetRequestStatus(c_in);
+                                return XUD_DoSetRequestStatus(ep_in);
                             }
                         }
                     }
@@ -551,7 +549,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             /* Returns 0 on non-error */
                             if(!SetEndpointHalt(sp.wIndex, 0))
                             {
-                                return XUD_DoSetRequestStatus(c_in);
+                                return XUD_DoSetRequestStatus(ep_in);
                             }
                         }
                     }
@@ -584,7 +582,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             {
                                 buffer[0] = ( g_epStatusIn[ sp.wIndex & 0x7F ] & 0xff );
                                 buffer[1] = ( g_epStatusIn[ sp.wIndex & 0x7F ] >> 8 );
-                                return XUD_DoGetRequest(c, c_in, buffer,  2, sp.wLength);
+                                return XUD_DoGetRequest(ep_out, ep_in, buffer,  2, sp.wLength);
                             }
                         }
                         else
@@ -594,7 +592,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
                             {
                                 buffer[0] = ( g_epStatusOut[ sp.wIndex ] & 0xff );
                                 buffer[1] = ( g_epStatusOut[ sp.wIndex ] >> 8 );
-                                return XUD_DoGetRequest(c, c_in, buffer,  2, sp.wLength);
+                                return XUD_DoGetRequest(ep_out, ep_in, buffer,  2, sp.wLength);
                             }
                         }
                                    
@@ -613,7 +611,7 @@ int USB_StandardRequests(XUD_ep c, XUD_ep c_in,
      * transfer, and the STALL condition terminates at the beginning of the 
      * next control transfer (Setup). The remainder of this section refers to 
      * the general case of a functional stall */
-    XUD_SetStall_Out(0);
-    XUD_SetStall_In(0);
+    XUD_SetStall(ep_out);
+    XUD_SetStall(ep_in);
     return 1;
 }

@@ -7,4 +7,5 @@ Device-Class API
 ----------------
 
 .. doxygenfunction:: XUD_CommonRequests
-
+.. doxygenfunction:: USB_GetSetupPacket
+.. doxygenfunction:: USB_PrintSetupPacket

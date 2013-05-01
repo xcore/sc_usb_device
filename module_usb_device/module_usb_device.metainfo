@@ -1,0 +1,25 @@
+-- -*- mode: lua -*-
+
+configPoints = {}
+
+derivedValues = {}
+
+ports = {}
+
+channels = {}
+
+function getConfigStatus()
+   return "Trusted", {}
+end
+
+generatedCode = {
+   includes = {},
+   globals  = "",
+   body  = ""
+}
+
+api = {
+    "USB_StandardRequests",
+    "USB_GetSetupPacket",
+    "USB_PrintSetupPacket"
+}

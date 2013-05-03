@@ -3,20 +3,10 @@
 # or a valid argument for the --target option when compiling.
 
 
-# This example runs on the XS-L1 usb audio board. It doesn't use any of
-# the audio functionality and just uses the USB functionality of the board
-#TARGET = L1_AUDIO
-#TARGET = XDK
-TARGET= xp_skc_su1
-
-#Use G version of XUD
-#export XUD_G=1
-
 
 # The APP_NAME variable determines the name of the final .xe file. It should
 # not include the .xe postfix. If left blank the name will default to 
 # the project name
-
 APP_NAME = app_example_usb_hid
 
 # The flags passed to xcc when building the application
@@ -27,34 +17,47 @@ APP_NAME = app_example_usb_hid
 # If the variable XCC_MAP_FLAGS is set it overrides the flags passed to 
 # xcc for the final link (mapping) stage.
 
-BUILD_FLAGS = -Wall -O2 -report -fsubword-select -DUSB_CORE=0 -DTEST_MODE_SUPPORT -DARCH_S
+BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
 
+# U series using ADC
+XCC_FLAGS_u_adc = $(BUILD_FLAGS) -DADC=1
+INCLUDE_ONLY_IN_u_adc = 
+
+#U series not using ADC
+XCC_FLAGS_u_noadc = $(BUILD_FLAGS)
+INCLUDE_ONLY_IN_u_noadc = 
+
+#L series not using ADC (it has no ADC)
+XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DL_SERIES
+INCLUDE_ONLY_IN_l_noadc = 
+:
 # The USED_MODULES variable lists other module used by the application. 
-
-# Use ADC
-XCC_FLAGS_adc = $(BUILD_FLAGS) -DADC=1
-INCLUDE_ONLY_IN_adc = 
-
-#Don't use ADC
-XCC_FLAGS_noadc = $(BUILD_FLAGS)
-INCLUDE_ONLY_IN_noadc = 
-
 USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
 
-MODULE_LIBRARIES = xud_u
+ifeq ($(CONFIG), u_noadc) 
+	TARGET= xp_skc_su1.xn 
+	MODULE_LIBRARIES = xud_u 
+endif
+
+ifeq ($(CONFIG), u_adc) 
+	TARGET= xp_skc_su1.xn 
+	MODULE_LIBRARIES = xud_u 
+endif
+
+ifeq ($(CONFIG), l_noadc) 
+	TARGET = xr-usb-audio-2.0.xn 
+	MODULE_LIBRARIES = xud_l 
+endif
 
 #=============================================================================
 # The following part of the Makefile includes the common build infrastructure
 # for compiling XMOS applications. You should not need to edit below here.
-
 
 # Use the main Makefile from module_xmos_common
 XMOS_MAKE_DIR ?= ../..
 
-
 #=============================================================================
 # The following part of the Makefile includes the common build infrastructure
 # for compiling XMOS applications. You should not need to edit below here.
-
 XMOS_MAKE_PATH ?= ../..
 include $(XMOS_MAKE_PATH)/xcommon/module_xcommon/build/Makefile.common

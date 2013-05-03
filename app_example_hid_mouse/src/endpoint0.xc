@@ -6,10 +6,6 @@
 #include "usb_device.h"
 #include "hid.h"
 
-/* TODO
- * current config doesn't get reset on bus reset
- */
-
 #define BCD_DEVICE   0x1000
 #define VENDOR_ID    0x20B1
 #define PRODUCT_ID   0x1010

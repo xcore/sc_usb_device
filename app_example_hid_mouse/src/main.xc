@@ -18,10 +18,6 @@
  *
  **/ 
  
-#define USB_CORE        0
-/* L1 USB Audio Board */
-#define USB_RST_PORT    XS1_PORT_32A
-
 #include <xs1.h>
 #include <platform.h>
 #include <print.h>
@@ -35,27 +31,39 @@
 #define XUD_EP_COUNT_OUT   1
 #define XUD_EP_COUNT_IN    2
 
-/* Endpoint type tables */
+/* Prototype for Endpoint0 function in endpoint0.xc */
+void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
+
+/* Endpoint type tables - infoms XUD what the transfer types for each Endpoint in use and also
+ * if the endpoint wishes to be informed of USB bus resets 
+ */
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
 
-/* USB Port declarations */
-on stdcore[USB_CORE]: out port p_usb_rst = USB_RST_PORT;
-on stdcore[USB_CORE]: clock    clk       = XS1_CLKBLK_3;
+#ifdef L_SERIES
+/* USB reset port de_usb_clarations for L series on L1 USB Audio board */
+on stdcore[0]: out port p_usb_rst        = XS1_PORT_32A;
+on stdcore[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
+#else
+/* USB Reset not required for U series - pass null to XUD */
+#define p_usb_rst null
+#define clk_usb_rst null
+#endif
 
-void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 
 /* Global report buffer, global since used by Endpoint0 core */
 unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 
-out port p_adc_trig = PORT_ADC_TRIGGER;
-clock cl = XS1_CLKBLK_2;
-
 #ifdef ADC
+#ifdef L_SERIES
+#error NO ADC IN SERIES
+#endif
+/* Port for ADC triggering */
+out port p_adc_trig = PORT_ADC_TRIGGER;
 #define THRESH 20
 #endif
-#ifdef ADC
 
+#ifdef ADC
 /*
  * This function responds to the HID requests - it moves the pointers x axis based on ADC input
  */
@@ -65,7 +73,8 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
  
     /* Iniialise the XUD endpoint */   
     XUD_ep ep_hid = XUD_InitEp(c_ep_hid);
-    
+ 
+    /* Configure and enable the ADC in the U device */   
     adc_config_t adc_config = { { 0, 0, 0, 0, 0, 0, 0, 0 }, 0, 0, 0 };
 
     adc_config.input_enable[0] = 1;
@@ -75,6 +84,7 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
 
     adc_enable(xs1_su, c_adc, p_adc_trig, adc_config);
 
+    /* Initialise the HID report buffer */
     g_reportBuffer[1] = 0;
     g_reportBuffer[2] = 0;
     
@@ -115,7 +125,6 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 {
     int counter = 0;
     int state = 0;
-    int lastX = 0;
     
     XUD_ep ep_hid = XUD_InitEp(chan_ep_hid);
 
@@ -164,8 +173,8 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 
 /*
  * The main function runs thress cores: the XUD manager, Endpoint 0, and a HID endpoint. An array of
- * channels is used for both IN and OUT endpoints, endpoint zero requires both, hid is just an
- * IN endpoint.
+ * channels is used for both IN and OUT endpoints, endpoint zero requires both, HID requires just an
+ * IN endpoint to send HID reports to the host.
  */
 int main() 
 {
@@ -185,21 +194,13 @@ int main()
 
     par 
     {
-        on stdcore[USB_CORE]: XUD_Manager( c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
+        on stdcore[0]: XUD_Manager( c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
-                                p_usb_rst, clk, -1, XUD_SPEED_HS, c_usb_test); 
+                                p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test); 
 
-        on stdcore[USB_CORE]:
-        {
-            set_thread_fast_mode_on();
-            Endpoint0( c_ep_out[0], c_ep_in[0], c_usb_test);
-        }
+        on stdcore[0]: Endpoint0( c_ep_out[0], c_ep_in[0], c_usb_test);
        
-        on stdcore[USB_CORE]:
-        {
-            set_thread_fast_mode_on();
-            hid_mouse(c_ep_in[1], c_adc);
-        }
+        on stdcore[0]: hid_mouse(c_ep_in[1], c_adc);
         
 #ifdef ADC
         xs1_su_adc_service(c_adc);

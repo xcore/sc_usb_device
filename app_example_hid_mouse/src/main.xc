@@ -59,7 +59,6 @@ unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 #endif
 /* Port for ADC triggering */
 out port p_adc_trig = PORT_ADC_TRIGGER;
-//clock clk_adc = XS1_CLKBLK_2;
 #define THRESH 20
 #endif
 

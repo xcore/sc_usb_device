@@ -44,6 +44,7 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
 on stdcore[USB_CORE]: out port p_usb_rst        = USB_RST_PORT;
 on stdcore[USB_CORE]: clock    clk_usb_rst      = XS1_CLKBLK_3;
 #else
+/* USB Reset not required for U series */
 #define p_usb_rst null
 #define clk_usb_rst null
 #endif

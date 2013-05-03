@@ -19,8 +19,6 @@
  **/ 
  
 #define USB_CORE        0
-/* L1 USB Audio Board */
-#define USB_RST_PORT    XS1_PORT_32A
 
 #include <xs1.h>
 #include <platform.h>
@@ -35,21 +33,26 @@
 #define XUD_EP_COUNT_OUT   1
 #define XUD_EP_COUNT_IN    2
 
-/* Endpoint type tables */
+
+/* Prototype for Endpoint0 function in endpoint0.xc */
+void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
+
+/* Endpoint type tables - infoms XUD what the transfer types for each Endpoint in use and also
+ * if the endpoint wishes to be informed of USB bus resets 
+ */
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
 
 #ifdef L_SERIES
-/* USB reset port de_usb_clarations for L series */
-on stdcore[USB_CORE]: out port p_usb_rst        = USB_RST_PORT;
+/* USB reset port de_usb_clarations for L series on L1 USB Audio board */
+on stdcore[USB_CORE]: out port p_usb_rst        = XS1_PORT_32A;
 on stdcore[USB_CORE]: clock    clk_usb_rst      = XS1_CLKBLK_3;
 #else
-/* USB Reset not required for U series */
+/* USB Reset not required for U series - pass null to XUD */
 #define p_usb_rst null
 #define clk_usb_rst null
 #endif
 
-void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 
 /* Global report buffer, global since used by Endpoint0 core */
 unsigned char g_reportBuffer[] = {0, 0, 0, 0};
@@ -171,8 +174,8 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 
 /*
  * The main function runs thress cores: the XUD manager, Endpoint 0, and a HID endpoint. An array of
- * channels is used for both IN and OUT endpoints, endpoint zero requires both, hid is just an
- * IN endpoint.
+ * channels is used for both IN and OUT endpoints, endpoint zero requires both, HID requires just an
+ * IN endpoint to send HID reports to the host.
  */
 int main() 
 {

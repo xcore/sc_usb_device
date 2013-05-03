@@ -39,23 +39,31 @@
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
 
-/* USB Port declarations */
-on stdcore[USB_CORE]: out port p_usb_rst = USB_RST_PORT;
-on stdcore[USB_CORE]: clock    clk       = XS1_CLKBLK_3;
+#ifdef L_SERIES
+/* USB reset port de_usb_clarations for L series */
+on stdcore[USB_CORE]: out port p_usb_rst        = USB_RST_PORT;
+on stdcore[USB_CORE]: clock    clk_usb_rst      = XS1_CLKBLK_3;
+#else
+#define p_usb_rst null
+#define clk_usb_rst null
+#endif
 
 void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 
 /* Global report buffer, global since used by Endpoint0 core */
 unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 
-out port p_adc_trig = PORT_ADC_TRIGGER;
-clock cl = XS1_CLKBLK_2;
-
 #ifdef ADC
+#ifdef L_SERIES
+#error NO ADC IN SERIES
+#endif
+/* Port for ADC triggering */
+out port p_adc_trig = PORT_ADC_TRIGGER;
+//clock clk_adc = XS1_CLKBLK_2;
 #define THRESH 20
 #endif
-#ifdef ADC
 
+#ifdef ADC
 /*
  * This function responds to the HID requests - it moves the pointers x axis based on ADC input
  */
@@ -115,7 +123,6 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 {
     int counter = 0;
     int state = 0;
-    int lastX = 0;
     
     XUD_ep ep_hid = XUD_InitEp(chan_ep_hid);
 
@@ -187,19 +194,11 @@ int main()
     {
         on stdcore[USB_CORE]: XUD_Manager( c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
-                                p_usb_rst, clk, -1, XUD_SPEED_HS, c_usb_test); 
+                                p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test); 
 
-        on stdcore[USB_CORE]:
-        {
-            set_thread_fast_mode_on();
-            Endpoint0( c_ep_out[0], c_ep_in[0], c_usb_test);
-        }
+        on stdcore[USB_CORE]: Endpoint0( c_ep_out[0], c_ep_in[0], c_usb_test);
        
-        on stdcore[USB_CORE]:
-        {
-            set_thread_fast_mode_on();
-            hid_mouse(c_ep_in[1], c_adc);
-        }
+        on stdcore[USB_CORE]: hid_mouse(c_ep_in[1], c_adc);
         
 #ifdef ADC
         xs1_su_adc_service(c_adc);

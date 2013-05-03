@@ -281,7 +281,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             }
         }
 
-        /* If we havn't handled the request about, 
+        /* If we haven't handled the request about, 
          * then do standard enumeration requests  */
         if(retVal > 0)
         {

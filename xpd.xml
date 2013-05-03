@@ -1,6 +1,11 @@
 <?xml version="1.0" ?>
 <xpd>
-    <components></components>
+    <components>
+        <component name = "Shared USB Device Code" type = "component" buildresults_path = "module_usb_device/.module_usb_device.buildinfo" scope = "General Use" path = "module_usb_device" metainfo_path = "module_usb_device/module_usb_device.metainfo" local = "false" id = "module_usb_device" description = "Shared USB device code">
+            <keyword>usb</keyword>
+            <keyword>endpoint</keyword>
+        </component>
+    </components>
     <dependency repo = "sc_xud">
         <githash>6068d24a88fe9fe7f974991a55575df2284fadf3</githash>
         <uri>git://git/apps/sc_xud</uri>

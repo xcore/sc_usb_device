@@ -73,7 +73,8 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
  
     /* Iniialise the XUD endpoint */   
     XUD_ep ep_hid = XUD_InitEp(c_ep_hid);
-    
+ 
+    /* Configure and enable the ADC in the U device */   
     adc_config_t adc_config = { { 0, 0, 0, 0, 0, 0, 0, 0 }, 0, 0, 0 };
 
     adc_config.input_enable[0] = 1;
@@ -83,6 +84,7 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
 
     adc_enable(xs1_su, c_adc, p_adc_trig, adc_config);
 
+    /* Initialise the HID report buffer */
     g_reportBuffer[1] = 0;
     g_reportBuffer[2] = 0;
     

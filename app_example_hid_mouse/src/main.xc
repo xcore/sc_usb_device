@@ -18,8 +18,6 @@
  *
  **/ 
  
-#define USB_CORE        0
-
 #include <xs1.h>
 #include <platform.h>
 #include <print.h>
@@ -33,7 +31,6 @@
 #define XUD_EP_COUNT_OUT   1
 #define XUD_EP_COUNT_IN    2
 
-
 /* Prototype for Endpoint0 function in endpoint0.xc */
 void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 
@@ -45,8 +42,8 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
 
 #ifdef L_SERIES
 /* USB reset port de_usb_clarations for L series on L1 USB Audio board */
-on stdcore[USB_CORE]: out port p_usb_rst        = XS1_PORT_32A;
-on stdcore[USB_CORE]: clock    clk_usb_rst      = XS1_CLKBLK_3;
+on stdcore[0]: out port p_usb_rst        = XS1_PORT_32A;
+on stdcore[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
 #else
 /* USB Reset not required for U series - pass null to XUD */
 #define p_usb_rst null
@@ -195,13 +192,13 @@ int main()
 
     par 
     {
-        on stdcore[USB_CORE]: XUD_Manager( c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
+        on stdcore[0]: XUD_Manager( c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
                                 p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test); 
 
-        on stdcore[USB_CORE]: Endpoint0( c_ep_out[0], c_ep_in[0], c_usb_test);
+        on stdcore[0]: Endpoint0( c_ep_out[0], c_ep_in[0], c_usb_test);
        
-        on stdcore[USB_CORE]: hid_mouse(c_ep_in[1], c_adc);
+        on stdcore[0]: hid_mouse(c_ep_in[1], c_adc);
         
 #ifdef ADC
         xs1_su_adc_service(c_adc);

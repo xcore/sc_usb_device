@@ -194,11 +194,11 @@ int main()
 
     par 
     {
-        on stdcore[0]: XUD_Manager( c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
+        on stdcore[0]: XUD_Manager(c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
                                 p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test); 
 
-        on stdcore[0]: Endpoint0( c_ep_out[0], c_ep_in[0], c_usb_test);
+        on stdcore[0]: Endpoint0(c_ep_out[0], c_ep_in[0], c_usb_test);
        
         on stdcore[0]: hid_mouse(c_ep_in[1], c_adc);
         

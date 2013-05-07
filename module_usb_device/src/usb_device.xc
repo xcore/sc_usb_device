@@ -46,6 +46,24 @@ void USB_ParseSetupPacket(unsigned char b[], USB_SetupPacket_t &p)
 
 }
 
+void USB_PrintSetupPacket(USB_SetupPacket_t sp)
+{
+    printstr("Setup data\n");
+    printstr("bmRequestType.Recipient: ");
+    printhexln(sp.bmRequestType.Recipient);
+    printstr("bmRequestType.Type: ");
+    printhexln(sp.bmRequestType.Type);
+    printstr("bmRequestType.Direction: ");
+    printhexln(sp.bmRequestType.Direction);  
+    printstr("bRequest: ");
+    printhexln(sp.bRequest); 
+    printstr("bmRequestType.wValue: ");
+    printhexln(sp.wValue);   
+    printstr("bmRequestType.wIndex: ");
+    printhexln(sp.wIndex);
+    printstr("bmRequestType.wLength: ");
+    printhexln(sp.wLength);
+}
 
 #pragma unsafe arrays
 int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp)

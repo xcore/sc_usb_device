@@ -156,7 +156,7 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
 
     switch(sp.bRequest)
     { 
-        case GET_REPORT:        
+        case HID_GET_REPORT:        
         
             /* Mandatory. Allows sending of report over control pipe */
             /* Send a hid report - note the use of asm due to shared mem */
@@ -168,27 +168,27 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
                         buffer, 4, sp.wLength);
             break;
 
-        case GET_IDLE:
+        case HID_GET_IDLE:
             /* Return the current Idle rate - optional for a HID mouse */
 
             /* Do nothing - i.e. STALL */
             break;
 
-        case GET_PROTOCOL:      
+        case HID_GET_PROTOCOL:      
             /* Required only devices supporting boot protocol devices,
              * which this example does not */
 
             /* Do nothing - i.e. STALL */
             break;
 
-         case SET_REPORT: 
+         case HID_SET_REPORT: 
             /* The host sends an Output or Feature report to a HID
              * using a cntrol transfer - optional */
 
             /* Do nothing - i.e. STALL */
             break;
 
-        case SET_IDLE:      
+        case HID_SET_IDLE:      
             /* Set the current Idle rate - this is optional for a HID mouse 
              * (Bandwidth can be saved by limiting the frequency that an
              * interrupt IN EP when the data hasn't changed since the last
@@ -197,7 +197,7 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
             /* Do nothing - i.e. STALL */
             break;
             
-        case SET_PROTOCOL:     
+        case HID_SET_PROTOCOL:     
             /* Required only devices supporting boot protocol devices,
              * which this example does not */
 
@@ -247,12 +247,12 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             
                             switch(descriptorType)
                             {
-                                case HID:
+                                case HID_HID:
                                     retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor, 
                                         sizeof(hidDescriptor), sp.wLength);
                                     break;
                         
-                                case REPORT:
+                                case HID_REPORT:
                                     retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor,
                                         sizeof(hidReportDescriptor), sp.wLength);
                                     break;

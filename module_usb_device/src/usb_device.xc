@@ -143,13 +143,13 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     switch(bmRequestType)
     {
         /* Standard Device Requests - To Device */
-        case BMREQ_H2D_STANDARD_DEV:
+        case USB_BMREQ_H2D_STANDARD_DEV:
  
             /* Inspect for actual request */
             switch(sp.bRequest)
             {
                 /* Standard Device Request: ClearFeature (USB Spec 9.4.1) */
-                case CLEAR_FEATURE:
+                case USB_CLEAR_FEATURE:
                             
                     /* Device Features than could potenially be cleared are as follows (See Figure 9-4)
                      * Self Powered: Cannot be changed by SetFeature() or ClearFeature()
@@ -160,7 +160,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     
                 /* Standard Device Request: Set Address (USB spec 9.6.4) */
                 /* This is a unique request since the operation is not completed until after the status stage */
-                case SET_ADDRESS:
+                case USB_SET_ADDRESS:
                     
                     if((sp.wValue < 128) && (sp.wIndex == 0) && (sp.wLength == 0))
                     {
@@ -189,7 +189,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     break;
                     
                 /* Standard Device Request: SetConfiguration (USB Spec 9.4.7) */
-                case SET_CONFIGURATION:
+                case USB_SET_CONFIGURATION:
 
                     if((sp.wLength == 0) && (sp.wIndex == 0))
                     {                        
@@ -207,7 +207,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     break;
 
                 /* Standard Device Request: SetDescriptor (USB Spec 9.4.8) */
-                case SET_DESCRIPTOR: 
+                case USB_SET_DESCRIPTOR: 
 
                     /* Optional request for updating or adding new descriptors */
                     /* Not implemented by default */
@@ -216,21 +216,21 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     
 #ifdef TEST_MODE_SUPPORT
                  /* Standard Device Request: SetFeature (USB Spec 9.4.9) */
-                 case SET_FEATURE:
+                 case USB_SET_FEATURE:
 
                     /* Check we have a test mode channel to XUD.. */
                     if(!isnull(c_usb_test))
                     {
-                        if((sp.wValue == TEST_MODE) && (sp.wLength == 0))
+                        if((sp.wValue == USB_TEST_MODE) && (sp.wLength == 0))
                         {
                             /* Inspect for Test Selector (high byte of wIndex, lower byte must be zero) */
                             switch(sp.wIndex)
                             {
-                                case WINDEX_TEST_J:
-                                case WINDEX_TEST_K:
-                                case WINDEX_TEST_SE0_NAK:         
-                                case WINDEX_TEST_PACKET:          
-                                case WINDEX_TEST_FORCE_ENABLE:    
+                                case USB_WINDEX_TEST_J:
+                                case USB_WINDEX_TEST_K:
+                                case USB_WINDEX_TEST_SE0_NAK:         
+                                case USB_WINDEX_TEST_PACKET:          
+                                case USB_WINDEX_TEST_FORCE_ENABLE:    
                                     {
                                         int retVal;
                                         retVal = XUD_DoSetRequestStatus(ep_in);                                      
@@ -250,12 +250,12 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
             break;
 
         /* Standard Device Requests - To Host */
-        case BMREQ_D2H_STANDARD_DEV:
+        case USB_BMREQ_D2H_STANDARD_DEV:
 
             switch(sp.bRequest)
             {
                 /* Standard Device Request: GetStatus (USB Spec 9.4.5)*/
-                case GET_STATUS:
+                case USB_GET_STATUS:
                         
                     /* Remote wakeup not supported */
                     buffer[1] = 0;
@@ -269,7 +269,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     return XUD_DoGetRequest(ep_out, ep_in, buffer, 2, sp.wLength);
 
                 /* Standard Device Request: GetConfiguration (USB Spec 9.4.2) */
-                case GET_CONFIGURATION:
+                case USB_GET_CONFIGURATION:
 
                     /* Return the current configuration of the device */
                     if((sp.wValue == 0) && (sp.wIndex == 0) && (sp.wLength == 1))
@@ -280,13 +280,13 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     break;
 
                 /* Standard Device Request: GetDescriptor (USB Spec 9.4.3)*/
-                case GET_DESCRIPTOR:
+                case USB_GET_DESCRIPTOR:
               
                     /* Inspect for which Type of descriptor is required (high byte of wValue) */
                     switch(sp.wValue & 0xff00)
                     {
                         /* Device descriptor */
-                        case WVALUE_GETDESC_DEV:              
+                        case USB_WVALUE_GETDESC_DEV:              
     
                             /* Currently only 1 device descriptor supported */
                             if((sp.wValue & 0xff) == 0) 
@@ -306,7 +306,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             break;
 
                         /* Configuration Descriptor */
-                        case WVALUE_GETDESC_CONFIG:
+                        case USB_WVALUE_GETDESC_CONFIG:
  
                             /* Currently only 1 configuration descriptor supported */
                             /* TODO We currently return the same for all configs */
@@ -315,20 +315,20 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
                                 {
                                     /* Return full-speed configuration descriptor */
-                                    cfgDesc_fs[1] = CONFIGURATION;
+                                    cfgDesc_fs[1] = USB_CONFIGURATION;
                                     return XUD_DoGetRequest(ep_out, ep_in, cfgDesc_fs, cfgDescLength_fs, sp.wLength); 
                                 }
                                 else if(cfgDescLength_hs != 0)
                                 {
                                     /* Do get request (send descriptor then 0 length status stage) */
-                                    cfgDesc_hs[1] = CONFIGURATION;
+                                    cfgDesc_hs[1] = USB_CONFIGURATION;
                                     return XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
                             }
                             break;
 
                         /* Device qualifier descriptor */
-                        case WVALUE_GETDESC_DEVQUAL:
+                        case USB_WVALUE_GETDESC_DEVQUAL:
  
                             if((sp.wValue & 0xff) == 0)
                             {
@@ -338,15 +338,15 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 if((usbBusSpeed == XUD_SPEED_HS) && (devDescLength_fs != 0))
                                 {
                                     /* Create devQual from FS */ 
-                                    devQualDesc[0] = 10;               /* 0  bLength */
-                                    devQualDesc[1] = DEVICE_QUALIFIER; /* 1  bDescriptorType */
+                                    devQualDesc[0] = 10;                   /* 0  bLength */
+                                    devQualDesc[1] = USB_DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_fs[2];  
                                     devQualDesc[3] = devDesc_fs[3];  
                                     devQualDesc[4] = devDesc_fs[4];  
                                     devQualDesc[5] = devDesc_fs[5];  
                                     devQualDesc[6] = devDesc_fs[6];  
                                     devQualDesc[7] = devDesc_fs[7];  
-                                    devQualDesc[8] = devDesc_fs[17];   /* 8  bNumConfigurations */  
+                                    devQualDesc[8] = devDesc_fs[17];       /* 8  bNumConfigurations */  
                                     devQualDesc[9] = 0; 
                                 
                                     /* Do get request (send descriptor then 0 length status stage) */
@@ -355,15 +355,15 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 else if(devDescLength_hs != 0)
                                 { 
                                     /* Running in FS so create devQual from HS */ 
-                                    devQualDesc[0] = 10;               /* 0  bLength */
-                                    devQualDesc[1] = DEVICE_QUALIFIER; /* 1  bDescriptorType */
+                                    devQualDesc[0] = 10;                   /* 0  bLength */
+                                    devQualDesc[1] = USB_DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_hs[2];  
                                     devQualDesc[3] = devDesc_hs[3];  
                                     devQualDesc[4] = devDesc_hs[4];  
                                     devQualDesc[5] = devDesc_hs[5];  
                                     devQualDesc[6] = devDesc_hs[6];  
                                     devQualDesc[7] = devDesc_hs[7];  
-                                    devQualDesc[8] = devDesc_hs[17];   /* 8  bNumConfigurations */  
+                                    devQualDesc[8] = devDesc_hs[17];       /* 8  bNumConfigurations */  
                                     devQualDesc[9] = 0; 
                                 
                                     /* Do get request (send descriptor then 0 length status stage) */
@@ -373,28 +373,28 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             break;
 
                         /* Other Speed Configuration Descriptor */
-                        case WVALUE_GETDESC_OSPEED_CFG:
+                        case USB_WVALUE_GETDESC_OSPEED_CFG:
     
                             if((sp.wValue & 0xff) == 0)
                             {
                                 if((usbBusSpeed == XUD_SPEED_HS) && (cfgDescLength_fs != 0))
                                 {
-                                    cfgDesc_fs[1] = OTHER_SPEED_CONFIGURATION;
+                                    cfgDesc_fs[1] = USB_OTHER_SPEED_CONFIGURATION;
                                     return  XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_fs, cfgDescLength_fs, sp.wLength);
                                 }
                                 else if(cfgDescLength_hs != 0)
                                 {
-                                    cfgDesc_hs[1] = OTHER_SPEED_CONFIGURATION;
+                                    cfgDesc_hs[1] = USB_OTHER_SPEED_CONFIGURATION;
                                     return  XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
                             }
                             break;
 
                         /* String Descriptor */ 
-                        case WVALUE_GETDESC_STRING:
+                        case USB_WVALUE_GETDESC_STRING:
                             
                             /* Set descriptor type */
-                            buffer[1] = STRING;
+                            buffer[1] = USB_STRING;
 
                             /* Send the string that was requested (low byte of wValue) */
                             /* First, generate valid descriptor from string */
@@ -455,12 +455,12 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
          * Type: Standard
          * Recipient: Interface
          */
-        case BMREQ_H2D_STANDARD_INT:
+        case USB_BMREQ_H2D_STANDARD_INT:
  
             switch(sp.bRequest)
             {
                 /* Standard Interface Request: SetInterface (USB Spec 9.4.10) */
-                case SET_INTERFACE:
+                case USB_SET_INTERFACE:
                     /* Note it is likely that a lot of devices will over-ride this request in their endpoint 0 code 
                     * For example, in an audio device this request would show the intent of the host to start streaming
                     */
@@ -500,11 +500,11 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
          * Type: Standard
          * Recipient: Interface
          */
-        case BMREQ_D2H_STANDARD_INT:
+        case USB_BMREQ_D2H_STANDARD_INT:
 
             switch(sp.bRequest)
             {
-                case GET_INTERFACE:
+                case USB_GET_INTERFACE:
 
                     if((sp.wValue == 0) && (sp.wLength == 1))
                     {
@@ -535,17 +535,17 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
          * Type: Standard
          * Recipient: Endpoint
          */
-        case BMREQ_H2D_STANDARD_EP:
+        case USB_BMREQ_H2D_STANDARD_EP:
 
             switch(sp.bRequest)
             {
                 /* Standard Endpoint Request: SetFeature (USB Spec 9.4.9) */
-                case SET_FEATURE:
+                case USB_SET_FEATURE:
                
                     if(sp.wLength == 0)
                     {
                         /* The only Endpoint feature selector is HALT (bit 0) see figure 9-6 */ 
-                        if(sp.wValue == ENDPOINT_HALT)  
+                        if(sp.wValue == USB_ENDPOINT_HALT)  
                         {
                             /* Returns 0 on non-error */
                             if(!SetEndpointHalt(sp.wIndex, 1))
@@ -557,12 +557,12 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     break;
 
                 /* Standard Endpoint Request: ClearFeature (USB Spec 9.4.1) */
-                case CLEAR_FEATURE:
+                case USB_CLEAR_FEATURE:
 
                     if(sp.wLength == 0)
                     {
                         /* The only feature selector for Endpoint is ENDPOINT_HALT */
-                        if(sp.wValue == ENDPOINT_HALT)
+                        if(sp.wValue == USB_ENDPOINT_HALT)
                         {
                             /* Returns 0 on non-error */
                             if(!SetEndpointHalt(sp.wIndex, 0))
@@ -579,12 +579,12 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
          * Type: Standard
          * Recipient: Endpoint
          */
-        case BMREQ_D2H_STANDARD_EP:
+        case USB_BMREQ_D2H_STANDARD_EP:
 
             switch(sp.bRequest)
             {
                 /* Standard Endpoint Request: GetStatus (USB Spec 9.4.5) */
-                case GET_STATUS:
+                case USB_GET_STATUS:
 
                     /* Note: The only status for an EP is Halt (bit 0) */
                     /* Note: Without parsing the descriptors we don't know how many endpoints the device has... */

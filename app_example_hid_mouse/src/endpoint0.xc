@@ -14,7 +14,7 @@
 static unsigned char devDesc[] = 
 { 
     0x12,                  /* 0  bLength */
-    DEVICE,                /* 1  bdescriptorType */ 
+    USB_DEVICE,            /* 1  bdescriptorType */ 
     0x00,                  /* 2  bcdUSB */ 
     0x02,                  /* 3  bcdUSB */ 
     0x00,                  /* 4  bDeviceClass */ 
@@ -235,9 +235,9 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     
             switch(bmRequestType)
             {
-                case BMREQ_D2H_STANDARD_INT:
+                case USB_BMREQ_D2H_STANDARD_INT:
  
-                    if(sp.bRequest == GET_DESCRIPTOR)
+                    if(sp.bRequest == USB_GET_DESCRIPTOR)
                     {
                         /* HID Interface is Interface 0 */
                         if(sp.wIndex == 0)
@@ -261,8 +261,8 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                     }
                     break;
 
-                case BMREQ_H2D_CLASS_INT:
-                case BMREQ_D2H_CLASS_INT:
+                case USB_BMREQ_H2D_CLASS_INT:
+                case USB_BMREQ_D2H_CLASS_INT:
 
                     /* Inspect for HID interface num */
                     if(sp.wIndex == 0)

@@ -19,6 +19,9 @@
 #ifndef _USB_DEVICE_H_
 #define _USB_DEVICE_H_
 
+/* Define used by the main.xc when created using code generation */
+#define USB_DEVICE_EXISTS
+
 #include "usb.h"
 #include "xud.h"
 

@@ -10,7 +10,7 @@
 #endif
 
 #ifndef PRODUCT_ID
-#define PRODUCT_ID
+#define PRODUCT_ID 0x0001
 #warning PRODUCT_ID not defined using 0x0001 as a default
 #endif
 
@@ -32,11 +32,11 @@
 unsigned char devDesc_Null[] = 
 {
     18,                             /* 0  bLength : Size of descriptor in Bytes (18 Bytes) */ 
-    DEVICE,                         /* 1  bdescriptorType */ 
+    USB_DEVICE,                     /* 1  bdescriptorType */ 
     0,                              /* 2  bcdUSB */ 
     2,                              /* 3  bcdUSB */ 
     0x0,                            /* 4  bDeviceClass */ 
-    0x0  ,                          /* 5  bDeviceSubClass */ 
+    0x0,                            /* 5  bDeviceSubClass */ 
     0x00,                           /* 6  bDeviceProtocol */ 
     64,                             /* 7  bMaxPacketSize */ 
     (VENDOR_ID & 0xFF),             /* 8  idVendor */ 
@@ -53,7 +53,7 @@ unsigned char devDesc_Null[] =
 unsigned char cfgDesc_Null[] = 
 {
     0x09,                           /* 0  bLength */
-    CONFIGURATION,                  /* 1  bDescriptorType */
+    USB_CONFIGURATION,              /* 1  bDescriptorType */
     0x12,                           /* 2  wTotalLength */
     0x00,                           /* 3  wTotalLength */
     0x01,                           /* 4  bNumInterface: Number of interfaces*/

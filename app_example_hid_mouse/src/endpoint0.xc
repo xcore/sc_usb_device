@@ -87,9 +87,6 @@ static unsigned char hidDescriptor[] =
     0x48,               /* 7  wDescriptorLength */ 
     0x00,               /* 8  wDescriptorLength */ 
 };
-#define NUM_EP_OUT 1
-#define NUM_EP_IN 2
-
 
 /* String table */
 static unsigned char stringDescriptors[][40] = 

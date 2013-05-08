@@ -1,6 +1,9 @@
 .build*
+*.xe
+bin
 *.xmt
 *.*~
+*~
 *.swn
 *.swo
 *.swp

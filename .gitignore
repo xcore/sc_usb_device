@@ -1,3 +1,6 @@
-./build/*
+.build*
 *.xmt
 *.*~
+*.swn
+*.swo
+*.swp

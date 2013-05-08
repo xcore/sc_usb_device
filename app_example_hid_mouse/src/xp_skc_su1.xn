@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 
   <Declarations>
-    <Declaration>core stdcore[1]</Declaration>
-    <Declaration>core xs1_su</Declaration>
+    <Declaration>tileref tile[1]</Declaration>
+    <Declaration>tileref xs1_su</Declaration>
   </Declarations>
 
   <Packages>
@@ -16,7 +16,7 @@
           <Boot>
             <Source Location="SPI:bootFlash"/>
           </Boot>
-          <Core Number="0" Reference="stdcore[0]">
+          <Core Number="0" Reference="tile[0]">
             <Port Location="XS1_PORT_1A"  Name="PORT_SPI_MISO"/>
             <Port Location="XS1_PORT_1B"  Name="PORT_SPI_SS"/>
             <Port Location="XS1_PORT_1C"  Name="PORT_SPI_CLK"/>

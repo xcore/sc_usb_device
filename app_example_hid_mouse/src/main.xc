@@ -42,8 +42,8 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
 
 #ifdef L_SERIES
 /* USB reset port de_usb_clarations for L series on L1 USB Audio board */
-on stdcore[0]: out port p_usb_rst        = XS1_PORT_32A;
-on stdcore[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
+on tile[0]: out port p_usb_rst        = XS1_PORT_32A;
+on tile[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
 #else
 /* USB Reset not required for U series - pass null to XUD */
 #define p_usb_rst null
@@ -194,13 +194,13 @@ int main()
 
     par 
     {
-        on stdcore[0]: XUD_Manager(c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
+        on tile[0]: XUD_Manager(c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
                                 p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test); 
 
-        on stdcore[0]: Endpoint0(c_ep_out[0], c_ep_in[0], c_usb_test);
+        on tile[0]: Endpoint0(c_ep_out[0], c_ep_in[0], c_usb_test);
        
-        on stdcore[0]: hid_mouse(c_ep_in[1], c_adc);
+        on tile[0]: hid_mouse(c_ep_in[1], c_adc);
         
 #ifdef ADC
         xs1_su_adc_service(c_adc);

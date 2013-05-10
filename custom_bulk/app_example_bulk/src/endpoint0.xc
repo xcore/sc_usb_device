@@ -95,7 +95,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         {
             /* Returns  0 if handled okay,
              *          1 if request was not handled (STALLed),
-             *         -1 of USB Reset */
+             *         -1 for USB Reset */
             retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc,
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
                         null, 0, null, 0, stringDescriptors, sp,

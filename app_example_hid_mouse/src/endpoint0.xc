@@ -1,5 +1,5 @@
 /*
- * @brief Implements endpoint zero for an HID device.
+ * @brief Implements endpoint zero for an example HID mouse device.
  */
 
 #include <xs1.h>
@@ -41,7 +41,7 @@ static unsigned char cfgDesc[] = {
   0x22, 0x00,           /* 2  wTotalLength */ 
   0x01,                 /* 4  bNumInterfaces */ 
   0x01,                 /* 5  bConfigurationValue */
-  0x04,                 /* 6  iConfiguration */
+  0x03,                 /* 6  iConfiguration */
   0x80,                 /* 7  bmAttributes */ 
   0xC8,                 /* 8  bMaxPower */
   
@@ -94,7 +94,6 @@ static unsigned char stringDescriptors[][40] =
     "\\004\\009",               // Language string
     "XMOS",                     // iManufacturer 
     "Example HID Mouse",        // iProduct
-    "",                         // unUsed
     "Config",                   // iConfiguration
 };
 
@@ -223,6 +222,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         
         if(!retVal) 
         {
+            /* Set retVal to non-zero, we expect it to get set to 0 if a request is handled */
             retVal = 1;
 
             /* Stick bmRequest type back together for an easier parse... */
@@ -232,6 +232,10 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     
             switch(bmRequestType)
             {
+                /* Direction: Device-to-host
+                 * Type: Standard
+                 * Recipient: Interface
+                 */
                 case USB_BMREQ_D2H_STANDARD_INT:
  
                     if(sp.bRequest == USB_GET_DESCRIPTOR)
@@ -258,6 +262,10 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                     }
                     break;
 
+                /* Direction: Device-to-host and Host-to-device
+                 * Type: Class
+                 * Recipient: Interface
+                 */
                 case USB_BMREQ_H2D_CLASS_INT:
                 case USB_BMREQ_D2H_CLASS_INT:
 
@@ -267,8 +275,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                         /* Returns  0 if handled, 
                          *          1 if not handled,
                          *         -1 for bus reset */
-                        retVal = HidInterfaceClassRequests(ep0_out,
-                                    ep0_in, sp);
+                        retVal = HidInterfaceClassRequests(ep0_out, ep0_in, sp);
                     }
                     break;
             }
@@ -280,7 +287,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         {
             /* Returns  0 if handled okay,
              *          1 if request was not handled (STALLed),
-             *         -1 of USB Reset */
+             *         -1 for USB Reset */
             retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc,
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
                         null, 0, null, 0, stringDescriptors, sp,

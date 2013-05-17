@@ -30,7 +30,12 @@ INCLUDE_ONLY_IN_u_noadc =
 #L series not using ADC (it has no ADC)
 XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DL_SERIES
 INCLUDE_ONLY_IN_l_noadc = 
-:
+
+#U16 series not using ADC
+XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DARCH_S
+INCLUDE_ONLY_IN_u16_noadc = 
+
+
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
 
@@ -47,6 +52,11 @@ endif
 ifeq ($(CONFIG), l_noadc) 
 	TARGET = xr-usb-audio-2.0.xn 
 	MODULE_LIBRARIES = xud_l 
+endif
+
+ifeq ($(CONFIG), u16_noadc) 
+	TARGET = xp-skc-u16.xn 
+	MODULE_LIBRARIES = xud_s 
 endif
 
 #=============================================================================

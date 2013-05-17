@@ -7,7 +7,7 @@
 # The APP_NAME variable determines the name of the final .xe file. It should
 # not include the .xe postfix. If left blank the name will default to 
 # the project name
-APP_NAME = app_example_usb_hid
+APP_NAME = app_example_hid_mouse
 
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
@@ -27,26 +27,44 @@ INCLUDE_ONLY_IN_u_adc =
 XCC_FLAGS_u_noadc = $(BUILD_FLAGS)
 INCLUDE_ONLY_IN_u_noadc = 
 
-#L series not using ADC (it has no ADC)
-XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DL_SERIES
+# U16 series using ADC
+XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1
+INCLUDE_ONLY_IN_u_adc = 
+
+# U16 series not using ADC
+XCC_FLAGS_u16_noadc = $(BUILD_FLAGS)
+INCLUDE_ONLY_IN_u_noadc = 
+
+# L series not using ADC (it has no ADC)
+XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_ON_L_SERIES
 INCLUDE_ONLY_IN_l_noadc = 
-:
+
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
 
-ifeq ($(CONFIG), u_noadc) 
-	TARGET= xp_skc_su1.xn 
+ifeq ($(CONFIG), u_adc) 
+	TARGET= xp-skc-su1.xn 
 	MODULE_LIBRARIES = xud_u 
 endif
 
-ifeq ($(CONFIG), u_adc) 
-	TARGET= xp_skc_su1.xn 
+ifeq ($(CONFIG), u_noadc) 
+	TARGET= xp-skc-su1.xn 
 	MODULE_LIBRARIES = xud_u 
 endif
 
 ifeq ($(CONFIG), l_noadc) 
 	TARGET = xr-usb-audio-2.0.xn 
 	MODULE_LIBRARIES = xud_l 
+endif
+
+ifeq ($(CONFIG), u16_adc) 
+	TARGET = xp-skc-u16.xn 
+	MODULE_LIBRARIES = xud_u 
+endif
+
+ifeq ($(CONFIG), u16_noadc) 
+	TARGET = xp-skc-u16.xn
+	MODULE_LIBRARIES = xud_u 
 endif
 
 #=============================================================================

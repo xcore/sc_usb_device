@@ -19,11 +19,9 @@
  **/ 
  
 #include <xs1.h>
-#include <platform.h>
 #include <print.h>
 #include <stdio.h>
 #include <xs1_su.h>
-#include "u_series_support.h"
 
 #include "xud.h"
 #include "usb.h"
@@ -32,7 +30,7 @@
 #define XUD_EP_COUNT_IN    2
 
 /* Prototype for Endpoint0 function in endpoint0.xc */
-void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
+void Endpoint0(chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 
 /* Endpoint type tables - infoms XUD what the transfer types for each Endpoint in use and also
  * if the endpoint wishes to be informed of USB bus resets 
@@ -40,26 +38,26 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
 
-#ifdef L_SERIES
-/* USB reset port de_usb_clarations for L series on L1 USB Audio board */
-on tile[0]: out port p_usb_rst        = XS1_PORT_32A;
-on tile[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
+#ifdef XUD_ON_U_SERIES
+  #include "u_series_support.h"
+  /* USB Reset not required for U series - pass null to XUD */
+  #define p_usb_rst null
+  #define clk_usb_rst null
 #else
-/* USB Reset not required for U series - pass null to XUD */
-#define p_usb_rst null
-#define clk_usb_rst null
+  /* USB reset port de_usb_clarations for L series on L1 USB Audio board */
+  on USB_TILE: out port p_usb_rst   = XS1_PORT_32A;
+  on USB_TILE: clock    clk_usb_rst = XS1_CLKBLK_3;
 #endif
-
 
 /* Global report buffer, global since used by Endpoint0 core */
 unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 
 #ifdef ADC
-#ifdef L_SERIES
-#error NO ADC IN SERIES
+#ifdef XUD_ON_L_SERIES
+#error NO ADC ON L-SERIES
 #endif
 /* Port for ADC triggering */
-out port p_adc_trig = PORT_ADC_TRIGGER;
+on USB_TILE: out port p_adc_trig = PORT_ADC_TRIGGER;
 #define THRESH 20
 #endif
 

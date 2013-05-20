@@ -10,7 +10,7 @@
 /* the device's vendor and product id */
 #define XMOS_BULK_VID 0x20b1
 #define XMOS_BULK_PID 0xb1
-#define XMOS_BULK_EP_IN 0x82
+#define XMOS_BULK_EP_IN 0x81
 #define XMOS_BULK_EP_OUT 0x01
 
 #ifdef _WIN32
@@ -178,6 +178,7 @@ int main(int argc, char **argv) {
   unsigned int data[BUFFERSIZE];
   unsigned expected = 10;
   unsigned buffers = 10;
+  int failed = 0;
 
   if (open_bulk_device() < 0) {
     return 1;
@@ -186,25 +187,28 @@ int main(int argc, char **argv) {
     buffers = atoi(argv[1]);
   }
 
-  printf("Sending %d buffers .....\n", buffers);
   printf("XMOS Bulk USB device opened .....\n");
+  printf("XMOS Bulk USB device sending %d buffers .....\n", buffers);
 
   for (j = 0; j < buffers; j++) {
     for (i = 0; i < BUFFERSIZE; i++) {
       data[i] = expected + i;
     }
     write_bulk_device((char *)data, BUFFERSIZE*4, 1000);
-    //printf("  data[0] = %d --- data[%d] = %d\n", data[0], BUFFERSIZE - 1, data[BUFFERSIZE - 1]);
     read_bulk_device((char *)data, BUFFERSIZE*4, 1000);
-    //printf("  data[0] = %d --- data[%d] = %d\n", data[0], BUFFERSIZE - 1, data[BUFFERSIZE - 1]);
     // Device increments by one
     expected++;
     for (i = 0; i < BUFFERSIZE; i++) {
       if (data[i] != (expected + i)) {
         printf("*** At data[%d]: Expected %d, got %d\n", i, expected, data[i]);
-        return -1;
-      }
+        failed = 1;
+        break;
+      } 
     }
+  }
+
+  if (!failed) {
+    printf("XMOS Bulk USB device data processed correctly .....\n");
   }
 
   if (close_bulk_device() < 0) {

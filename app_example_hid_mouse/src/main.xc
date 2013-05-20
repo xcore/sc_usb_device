@@ -80,7 +80,7 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
     adc_config.samples_per_packet = 1;
     adc_config.calibration_mode = 0;
 
-    adc_enable(xs1_su, c_adc, p_adc_trig, adc_config);
+    adc_enable(xs1_su_periph, c_adc, p_adc_trig, adc_config);
 
     /* Initialise the HID report buffer */
     g_reportBuffer[1] = 0;

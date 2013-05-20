@@ -19,19 +19,28 @@ APP_NAME = app_example_usb_custom_bulk
 
 BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
 
-#U series
-XCC_FLAGS_u = $(BUILD_FLAGS)
-INCLUDE_ONLY_IN_u = 
+#SU1
+XCC_FLAGS_su1 = $(BUILD_FLAGS) -DXUD_ON_L_SERIES
+INCLUDE_ONLY_IN_su1 = 
+
+#U16
+XCC_FLAGS_u16 = $(BUILD_FLAGS) -DXUD_ON_L_SERIES
+INCLUDE_ONLY_IN_u16 = 
 
 #L series 
-XCC_FLAGS_l = $(BUILD_FLAGS) -DL_SERIES
+XCC_FLAGS_l = $(BUILD_FLAGS) -DXUD_ON_L_SERIES
 INCLUDE_ONLY_IN_l = 
 :
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
 
-ifeq ($(CONFIG), u) 
-	TARGET= xp_skc_su1.xn 
+ifeq ($(CONFIG), su1) 
+	TARGET= xp-skc-su1.xn 
+	MODULE_LIBRARIES = xud_u 
+endif
+
+ifeq ($(CONFIG), u16) 
+	TARGET= xp-skc-u16.xn 
 	MODULE_LIBRARIES = xud_u 
 endif
 

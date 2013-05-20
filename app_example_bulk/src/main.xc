@@ -1,4 +1,6 @@
+//#include <xs1.h>
 #include <platform.h>
+#include <stdio.h>
 
 #include "xud.h"
 #include "usb.h"
@@ -7,22 +9,22 @@
 #define XUD_EP_COUNT_IN    2
 
 /* Prototype for Endpoint0 function in endpoint0.xc */
-void Endpoint0(chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
+void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 
 /* Endpoint type tables - infoms XUD what the transfer types for each Endpoint in use and also
  * if the endpoint wishes to be informed of USB bus resets 
  */
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL | XUD_STATUS_ENABLE};
-XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
+XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL | XUD_STATUS_ENABLE};
 
-#ifdef XUD_ON_U_SERIES
-  /* USB Reset not required for U series - pass null to XUD */
-  #define p_usb_rst null
-  #define clk_usb_rst null
+#ifdef L_SERIES
+/* USB reset port declarations for L series on L1 USB Audio board */
+on stdcore[0]: out port p_usb_rst        = XS1_PORT_32A;
+on stdcore[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
 #else
-  /* USB reset port declarations for L series on L1 USB Audio board */
-  on stdcore[0]: out port p_usb_rst        = XS1_PORT_32A;
-  on stdcore[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
+/* USB Reset not required for U series - pass null to XUD */
+#define p_usb_rst null
+#define clk_usb_rst null
 #endif
 
 void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host) 
@@ -30,20 +32,20 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
     int host_transfer_buf[256];
     int host_transfer_length = 0;
 
+    
     XUD_ep ep_from_host = XUD_InitEp(chan_ep_from_host);
     XUD_ep ep_to_host = XUD_InitEp(chan_ep_to_host);
 
     while(1) 
     {
         host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[256 * 4]));
-
         if (host_transfer_length >= 0) {
-            for (int i = 0; i < host_transfer_length/4; i++) {
-                host_transfer_buf[i]++;
-            }
-            XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[256 * 4]), host_transfer_length);
+          for (int i = 0; i < host_transfer_length/4; i++) {
+            host_transfer_buf[i]++;
+          }
+          XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[256 * 4]), host_transfer_length);
         } else {
-            XUD_ResetEndpoint(ep_from_host, ep_to_host);
+          XUD_ResetEndpoint(ep_from_host, ep_to_host);
         }
     }
 }

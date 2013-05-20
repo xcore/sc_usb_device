@@ -8,7 +8,7 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
   <!-- File Version 1V0 -->
 
   <Declarations>
-    <Declaration>core stdcore[2]</Declaration>
+    <Declaration>tileref tile[2]</Declaration>
   </Declarations>
 
   <Nodes>
@@ -17,7 +17,7 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
         <Source Location="SPI:bootFlash"/>
         <Bootee NodeId="1"/>
       </Boot>
-      <Core Number="0" Reference="stdcore[0]">
+      <Tile Number="0" Reference="tile[0]">
         <!-- SPI FLASH -->
         <Port Location="XS1_PORT_1A" Name="PORT_SPI_MISO"/>
         <Port Location="XS1_PORT_1B" Name="PORT_SPI_SS"/>
@@ -25,15 +25,15 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
         <Port Location="XS1_PORT_1D" Name="PORT_SPI_MOSI"/>
 
         <Port Location="XS1_PORT_32A" Name="PORT_LEDS"/>
-      </Core>
+      </Tile>
     </Node>
     <Node Id="1" Type="XS1-L1A" Oscillator="48MHz" SystemFrequency="500MHz" referenceFrequency="100MHz">
       <Boot>
         <Source Location="XMOSLINK"/>
       </Boot>
-      <Core Number="0" Reference="stdcore[1]">
+      <Tile Number="0" Reference="tile[1]">
 
-      </Core>
+      </Tile>
     </Node>
   </Nodes>
 
@@ -63,7 +63,7 @@ xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
   </Packages>
 
   <ExternalDevices>
-    <Device NodeId="0" Core="0" Class="SPIFlash" Name="bootFlash" Type="AT25DF041A">
+    <Device NodeId="0" Tile="0" Class="SPIFlash" Name="bootFlash" Type="AT25DF041A">
       <Attribute Name="PORT_SPI_MISO" Value="PORT_SPI_MISO"/>
       <Attribute Name="PORT_SPI_SS"   Value="PORT_SPI_SS"/>
       <Attribute Name="PORT_SPI_CLK"  Value="PORT_SPI_CLK"/>

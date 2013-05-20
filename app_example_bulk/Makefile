@@ -9,6 +9,9 @@
 # the project name
 APP_NAME = app_example_usb_custom_bulk
 
+SOURCE_DIRS = src/*
+INCLUDE_DIRS = src/*
+
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
 #
@@ -20,11 +23,11 @@ APP_NAME = app_example_usb_custom_bulk
 BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
 
 #SU1
-XCC_FLAGS_su1 = $(BUILD_FLAGS) -DXUD_ON_L_SERIES
+XCC_FLAGS_su1 = $(BUILD_FLAGS) -DXUD_ON_U_SERIES
 INCLUDE_ONLY_IN_su1 = 
 
 #U16
-XCC_FLAGS_u16 = $(BUILD_FLAGS) -DXUD_ON_L_SERIES
+XCC_FLAGS_u16 = $(BUILD_FLAGS) -DXUD_ON_U_SERIES
 INCLUDE_ONLY_IN_u16 = 
 
 #L series 

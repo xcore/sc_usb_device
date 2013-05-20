@@ -4,7 +4,7 @@
     xsi:schemaLocation="http://www.xmos.com http://www.xmos.com">
 
     <Declarations>
-        <Declaration>core stdcore[1]</Declaration>
+        <Declaration>tileref tile[1]</Declaration>
     </Declarations>
 
     <Packages>
@@ -14,7 +14,7 @@
                     <Boot>
                         <Source Location="SPI:bootFlash"/>
                     </Boot>
-                    <Core Number="0" Reference="stdcore[0]">
+                    <Tile Number="0" Reference="tile[0]">
                         <Port Location="XS1_PORT_1A"  Name="PORT_SPI_MISO"/>
                         <Port Location="XS1_PORT_1B"  Name="PORT_SPI_SS"/>
                         <Port Location="XS1_PORT_1C"  Name="PORT_SPI_CLK"/>
@@ -31,14 +31,14 @@
                         <Port Location="XS1_PORT_4D"  Name="PORT_BUTTONS"/>
                         <Port Location="XS1_PORT_8D"  Name="PORT_MIDI_OUT"/>
                         <Port Location="XS1_PORT_32A" Name="PORT_GENERAL_OUT"/>
-                    </Core>
+                    </Tile>
                 </Node>
             </Nodes>
         </Package>
     </Packages>
 
     <ExternalDevices>
-        <Device NodeId="0" Core="0" Class="SPIFlash" Name="bootFlash" Type="M25P10">
+        <Device NodeId="0" Tile="0" Class="SPIFlash" Name="bootFlash" Type="M25P10">
             <Attribute Name="PORT_SPI_MISO" Value="PORT_SPI_MISO"/>
             <Attribute Name="PORT_SPI_SS"   Value="PORT_SPI_SS"/>
             <Attribute Name="PORT_SPI_CLK"  Value="PORT_SPI_CLK"/>

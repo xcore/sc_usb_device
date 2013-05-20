@@ -4,7 +4,7 @@
 
 #define BCD_DEVICE   0x1000
 #define VENDOR_ID    0x20B1
-#define PRODUCT_ID   0xB100
+#define PRODUCT_ID   0x00B1
 
 /* Device Descriptor */
 static unsigned char devDesc[] = 
@@ -37,7 +37,7 @@ static unsigned char cfgDesc[] = {
   0x20, 0x00,           /* 2  wTotalLength */ 
   0x01,                 /* 4  bNumInterfaces */ 
   0x01,                 /* 5  bConfigurationValue */
-  0x04,                 /* 6  iConfiguration */
+  0x00,                 /* 6  iConfiguration */
   0x80,                 /* 7  bmAttributes */ 
   0xFA,                 /* 8  bMaxPower */
   
@@ -91,11 +91,11 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         /* Returns 0 on success, < 0 for USB RESET */
         int retVal = USB_GetSetupPacket(ep0_out, ep0_in, sp);
         
-        if(retVal > 0)
+        if(retVal == 0)
         {
             /* Returns  0 if handled okay,
              *          1 if request was not handled (STALLed),
-             *         -1 for USB Reset */
+             *         -1 of USB Reset */
             retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc,
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
                         null, 0, null, 0, stringDescriptors, sp,

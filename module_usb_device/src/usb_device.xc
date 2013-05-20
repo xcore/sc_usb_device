@@ -447,6 +447,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             return XUD_DoGetRequest(ep_out, ep_in, buffer, datalength + 2, sp.wLength); 
                             break;
                     }
+                    break;
 
             } //switch(sp.bRequest)
             break;

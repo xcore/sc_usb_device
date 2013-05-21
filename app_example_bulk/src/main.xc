@@ -54,14 +54,14 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
         for (int buffer = 0; buffer < num_buffers; buffer++)
         {
             host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]));
-            if (host_transfer_length != (BUFFER_SIZE * 4))
+            if (host_transfer_length < 0)
                 num_buffers = 0;
 
             for (int i = 0; i < host_transfer_length/4; i++) {
                 host_transfer_buf[i]++;
             }
             host_transfer_length = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length);
-            if (host_transfer_length != (BUFFER_SIZE * 4))
+            if (host_transfer_length < 0)
                 num_buffers = 0;
         }
 
@@ -69,7 +69,7 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
         for (int buffer = 0; buffer < num_buffers; buffer++)
         {
             host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]));
-            if (host_transfer_length != (BUFFER_SIZE * 4))
+            if (host_transfer_length < 0)
                 num_buffers = 0;
         }
 
@@ -77,7 +77,7 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
         for (int buffer = 0; buffer < num_buffers; buffer++)
         {
             host_transfer_length = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), BUFFER_SIZE * 4);
-            if (host_transfer_length != (BUFFER_SIZE * 4))
+            if (host_transfer_length < 0)
                 num_buffers = 0;
         }
 

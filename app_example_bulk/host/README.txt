@@ -11,19 +11,19 @@ Compilation instructions
 
 Win32
 -----
-cl -o bulktest bulktest.cpp -I ..\libusb\Win32 ..\libusb\Win32\libusb.lib
+cl -o bulktest ..\bulktest.cpp -I ..\libusb\Win32 ..\libusb\Win32\libusb.lib
 
 OSX
 ---
-g++ -o bulktest bulktest.cpp -I ../libusb/OSX ../libusb/OSX/libusb-1.0.0.dylib -m32
+g++ -o bulktest ../bulktest.cpp -I ../libusb/OSX ../libusb/OSX/libusb-1.0.0.dylib -m32
 
 Linux32
 -------
-g++ -o bulktest bulktest.cpp -I ../libusb/Linux32 ../libusb/Linux32/libusb-1.0.a -lpthread -lrt
+g++ -o bulktest ../bulktest.cpp -I ../libusb/Linux32 ../libusb/Linux32/libusb-1.0.a -lpthread -lrt
 
 Linux64
 -------
-g++ -o bulktest bulktest.cpp -I ../libusb/Linux64 ../libusb/Linux64/libusb-1.0.a -lpthread -lrt
+g++ -o bulktest ../bulktest.cpp -I ../libusb/Linux64 ../libusb/Linux64/libusb-1.0.a -lpthread -lrt
 
 Windows Driver
 --------------

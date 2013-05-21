@@ -85,6 +85,19 @@ int write_bulk_device(char *data, unsigned int length, unsigned int timeout) {
   return result;
 }
 
+// Timing code
+#include <Windows.h>
+
+static int getMilliCount() {
+  // Rolls over every 49.7 days
+  return GetTickCount();
+}
+
+static int getMilliSpan(int startTime) {
+  int milliSpan = GetTickCount() - startTime;
+  return milliSpan;
+}
+
 #else 
 static libusb_device_handle *devh = NULL;
 
@@ -169,53 +182,110 @@ static int write_bulk_device(char *data, unsigned int length, unsigned int timeo
   result = bulk_device_io(XMOS_BULK_EP_OUT, data, length, timeout);
   return result;
 }
+
+// Timing code
+#include <sys/timeb.h>
+
+static int getMilliCount() {
+  // Something like GetTickCount but portable
+  // It rolls over every ~ 12.1 days (0x100000/24/60/60)
+  // Use getMilliSpan to correct for rollover
+  timeb tb;
+  ftime(&tb);
+  int startTime = tb.millitm + (tb.time & 0xfffff) * 1000;
+  return startTime;
+}
+
+static int getMilliSpan( int startTime ) {
+  int milliSpan = getMilliCount() - startTime;
+  if (milliSpan < 0)
+    milliSpan += 0x100000 * 1000;
+  return milliSpan;
+}
 #endif
 
-#define BUFFERSIZE 128
-int main(int argc, char **argv) {
-  int i = 0;
-  int j = 0;
-  unsigned int data[BUFFERSIZE];
+#define BUFFER_SIZE 128
+
+int time_transfers(int buffers, bool do_write, bool do_read) {
+  unsigned int data[BUFFER_SIZE];
   unsigned expected = 10;
-  unsigned buffers = 10;
   int failed = 0;
 
-  if (open_bulk_device() < 0) {
+  if (!do_write && !do_read) {
+    printf("Error: must time transfers in at least one direction\n");
     return 1;
   }
-  if (argc > 1) {
-    buffers = atoi(argv[1]);
+  
+  printf("Timing USB device %d buffers (%s%s).....", buffers,
+          do_write ? "write" : "", do_write && do_read ? "/read" : do_read ? "read" : "");
+  int startTime = getMilliCount();
+  for (int j = 0; j < buffers; j++) {
+    if (do_write && do_read) {
+        // No need to initialise the data unless it is being checked
+        for (int i = 0; i < BUFFER_SIZE; i++) {
+          data[i] = expected + i;
+        }
+    }
+    if (do_write)
+        write_bulk_device((char *)data, BUFFER_SIZE*4, 1000);
+    if (do_read)
+        read_bulk_device((char *)data, BUFFER_SIZE*4, 1000);
+
+    if (do_write && do_read) {
+      // Only check expected results if values are written and read
+      // Device increments by one
+      expected++;
+      for (int i = 0; i < BUFFER_SIZE; i++) {
+        if (data[i] != (expected + i)) {
+          printf("*** At data[%d]: Expected %d, got %d\n", i, expected, data[i]);
+          failed = 1;
+          break;
+        } 
+      }
+    }
   }
+  int milliSec = getMilliSpan(startTime);
+  double megaBytes =  ((double)buffers * (128 * 4)) / (1024 * 1024);
+  if (do_write && do_read)
+      megaBytes *= 2.0;
+
+  double megaBytesPerSec = (megaBytes / (double)milliSec) * 1000;
+  printf(" %d ms (%.2f MB/s)\n", milliSec, megaBytesPerSec);
+
+  return failed;
+}
+
+int main(int argc, char **argv) {
+  unsigned buffers = 1000;
+
+  if (open_bulk_device() < 0)
+    return 1;
 
   printf("XMOS Bulk USB device opened .....\n");
-  printf("XMOS Bulk USB device sending %d buffers .....\n", buffers);
 
-  for (j = 0; j < buffers; j++) {
-    for (i = 0; i < BUFFERSIZE; i++) {
-      data[i] = expected + i;
-    }
-    write_bulk_device((char *)data, BUFFERSIZE*4, 1000);
-    read_bulk_device((char *)data, BUFFERSIZE*4, 1000);
-    // Device increments by one
-    expected++;
-    for (i = 0; i < BUFFERSIZE; i++) {
-      if (data[i] != (expected + i)) {
-        printf("*** At data[%d]: Expected %d, got %d\n", i, expected, data[i]);
-        failed = 1;
-        break;
-      } 
-    }
-  }
+  if (argc > 1)
+    buffers = atoi(argv[1]);
 
-  if (!failed) {
+  // Tell device how many buffers to expect before changing mode
+  write_bulk_device((char *)&buffers, 4, 1000);
+
+  int failed = 0;
+
+  // Time write/read
+  failed |= time_transfers(buffers, true, true);
+
+  // Time writes
+  failed |= time_transfers(buffers, true, false);
+
+  // Time reads
+  failed |= time_transfers(buffers, false, true);
+
+  if (!failed)
     printf("XMOS Bulk USB device data processed correctly .....\n");
-  }
 
-  if (close_bulk_device() < 0) {
+  if (close_bulk_device() < 0)
     return 1;
-  }
 
   printf("XMOS Bulk USB device closed .....\n");
-
-  return 0;
+  return failed;
 }

@@ -40,48 +40,17 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
 
     while(1) 
     {
-        // Number of buffers to test - setting it to 0 indicates an error which will stop the tests
-        // and reset the endpoint
-        int num_buffers = 0;
-
-        host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[4]));
-        if (host_transfer_length >= 0)
-            num_buffers = host_transfer_buf[0];
-        else
-            num_buffers = 0;
-
-        // Write/read
-        for (int buffer = 0; buffer < num_buffers; buffer++)
-        {
-            host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]));
-            if (host_transfer_length < 0)
-                num_buffers = 0;
-
-            for (int i = 0; i < host_transfer_length/4; i++) {
-                host_transfer_buf[i]++;
-            }
-            host_transfer_length = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length);
-            if (host_transfer_length < 0)
-                num_buffers = 0;
+        host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]));
+        if (host_transfer_length < 0) {
+            XUD_ResetEndpoint(ep_from_host, ep_to_host);
+            continue;
         }
 
-        // Writes
-        for (int buffer = 0; buffer < num_buffers; buffer++)
-        {
-            host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]));
-            if (host_transfer_length < 0)
-                num_buffers = 0;
+        for (int i = 0; i < host_transfer_length/4; i++) {
+            host_transfer_buf[i]++;
         }
-
-        // Reads
-        for (int buffer = 0; buffer < num_buffers; buffer++)
-        {
-            host_transfer_length = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), BUFFER_SIZE * 4);
-            if (host_transfer_length < 0)
-                num_buffers = 0;
-        }
-
-        if (num_buffers == 0)
+        host_transfer_length = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length);
+        if (host_transfer_length < 0)
             XUD_ResetEndpoint(ep_from_host, ep_to_host);
     }
 }

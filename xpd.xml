@@ -9,11 +9,11 @@
         </component>
     </components>
     <dependency repo = "sc_xud">
-        <githash>734d0bee4f6f3d9d93aaab9cb32dff220a13e1e6</githash>
+        <githash>a9217431048cb2d6f08d59cbbd6ce1e6c3e0a565</githash>
         <uri>git://git/apps/sc_xud</uri>
     </dependency>
     <dependency repo = "sc_usb">
-        <githash>6915c297e07620ba1651cb278dd2ed567c3330f1</githash>
+        <githash>8a0c37e2619db8a2b01e1fbe37fcd89b6e24864f</githash>
         <uri>git://git/apps/sc_usb</uri>
     </dependency>
     <dependency repo = "sc_periph">
@@ -22,8 +22,9 @@
         <version>1.0.0beta1</version>
     </dependency>
     <dependency repo = "sc_util">
-        <githash>2e01d7324df84ad199833e012b5942e43fb0ccbb</githash>
+        <githash>1ed35a50e2d9cc98fcff4c7cc3fb399385ec5d70</githash>
         <uri>git@github.com:xcore/sc_util</uri>
+        <version>1.0.1rc0</version>
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
     <exclude_dir>app_example_usb_msc</exclude_dir>

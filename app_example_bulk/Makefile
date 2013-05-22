@@ -33,7 +33,7 @@ INCLUDE_ONLY_IN_u16 =
 #L series 
 XCC_FLAGS_l = $(BUILD_FLAGS) -DXUD_ON_L_SERIES
 INCLUDE_ONLY_IN_l = 
-:
+
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
 
@@ -53,15 +53,8 @@ ifeq ($(CONFIG), l)
 endif
 
 #=============================================================================
-#=============================================================================
 # The following part of the Makefile includes the common build infrastructure
 # for compiling XMOS applications. You should not need to edit below here.
 
 XMOS_MAKE_PATH ?= ../..
-ifneq ($(wildcard $(XMOS_MAKE_PATH)/xcommon/module_xcommon/build/Makefile.common),)
 include $(XMOS_MAKE_PATH)/xcommon/module_xcommon/build/Makefile.common
-else
-include ../module_xcommon/build/Makefile.common
-endif
-
-

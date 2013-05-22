@@ -1,18 +1,18 @@
-USB HID Device Demonstration Application
-========================================
+USB Bulk Device Demonstration Application
+=========================================
 
 .. toctree::
 
-app_example_hid_mouse Quick Start Guide
----------------------------------------
+app_example_bulk Quick Start Guide
+----------------------------------
 
-This application demonstrates how to create a USB 2.0 HID class device. It 
-uses the XMOS U16 Slicekit Core Board (XP-SKC-U16) in conjunction with the Mixed
-Signal Slice Card (XA-SK-???).
+This application demonstrates how to create a USB 2.0 bulk transfer device. It 
+uses the XMOS U16 Slicekit Core Board (XP-SKC-U16) in conjunction with the USB 
+Signal (XA-SK-USB-AB).
 
 The application provides:
 
-    * A USB HID-class device which provides a two-button mouse implementation.
+    * A USB HID-class device which provides a mouse implementation.
     * The mouse is controlled by the joystick on the Mixed Signal Slice.
 
 Hardware Setup
@@ -20,8 +20,7 @@ Hardware Setup
 
 To setup the hardware:
 
-    #. Connect the XA-SK-??? Mixed Signal Slice Card to the XP-SKC-U16 Slicekit Core Board using the connector
-       marked with the ``???``. 
+    #. Connect the XA-SK-USB-AB Slice Card to slot marked ``USB`` on the XP-SKC-U16 Slicekit Core Board. 
     #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 Slicekit core board (via the supplied adaptor board)
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired)
     #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core board
@@ -31,17 +30,17 @@ To setup the hardware:
    :width: 300px
    :align: center
 
-   Hardware Setup for USB HID device example
+   Hardware Setup for USB bulk device example
 
 Import and Build the Application
 ++++++++++++++++++++++++++++++++
 
    #. Open xTimeComposer and open the edit perspective (Window->Open Perspective->XMOS Edit).
-   #. Locate the ``USB HID Mouse Example`` item in the xSOFTip pane on the bottom left
+   #. Locate the ``USB Bulk Example`` item in the xSOFTip pane on the bottom left
       of the window and drag it into the Project Explorer window in the xTimeComposer.
       This will also cause the modules on which this application depends (in this case,
       module_usb_device, module_xud, module_usb) to be imported as well. 
-   #. Click on the ``app_example_hid_mouse`` item in the Explorer pane then click on the
+   #. Click on the ``app_example_bulk`` item in the Explorer pane then click on the
       build icon (hammer) in xTimeComposer. Check the console window to verify that the
       application has built successfully.
 

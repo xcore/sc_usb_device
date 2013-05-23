@@ -18,7 +18,7 @@ The application provides:
 Hardware Setup
 ++++++++++++++
 
-To setup the hardware:
+To setup the hardware (:ref:`hid_example_hardware_setup`):
 
     #. Connect the XA-SK-??? Mixed Signal Slice Card to the XP-SKC-U16 Slicekit Core Board using the connector
        marked with the ``???``. 
@@ -26,6 +26,8 @@ To setup the hardware:
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired)
     #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core board
     #. Connect the USB connector on the XP-SKC-U16 Slicekit Core Board to the host PC
+
+.. _hid_example_hardware_setup:
 
 .. figure:: images/hw_setup.png
    :width: 300px
@@ -71,4 +73,5 @@ Next Steps
 ++++++++++
 
    #. Take a look at the other USB example application TBD
+
 

@@ -32,7 +32,7 @@
 /* Prototype for Endpoint0 function in endpoint0.xc */
 void Endpoint0(chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 
-/* Endpoint type tables - infoms XUD what the transfer types for each Endpoint in use and also
+/* Endpoint type tables - informs XUD what the transfer types for each Endpoint in use and also
  * if the endpoint wishes to be informed of USB bus resets 
  */
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
@@ -58,59 +58,100 @@ unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 #endif
 /* Port for ADC triggering */
 on USB_TILE: out port p_adc_trig = PORT_ADC_TRIGGER;
-#define THRESH 20
 #endif
 
 #ifdef ADC
+
+#ifdef U16
+#define BITS 3
+#define DEAD_ZONE 2
+#else
+#define BITS 8
+#define DEAD_ZONE 0
+#endif
+
+#define SHIFT  (32 - BITS)
+#define MASK   ((1 << BITS) - 1)
+#define OFFSET (1 << (BITS - 1))
+
 /*
  * This function responds to the HID requests - it moves the pointers x axis based on ADC input
  */
 void hid_mouse(chanend c_ep_hid, chanend c_adc) 
 {
-    int lastX = 0;
+    int initialDone = 0;
+    int initialX = 0;
+#ifdef U16
+    int initialY = 0;
+#endif
  
-    /* Iniialise the XUD endpoint */   
+    /* Initialise the XUD endpoint */   
     XUD_ep ep_hid = XUD_InitEp(c_ep_hid);
  
     /* Configure and enable the ADC in the U device */   
     adc_config_t adc_config = { { 0, 0, 0, 0, 0, 0, 0, 0 }, 0, 0, 0 };
 
+#ifdef U16
+    adc_config.input_enable[2] = 1;
+    adc_config.input_enable[3] = 1;
+    adc_config.samples_per_packet = 2;
+#else
     adc_config.input_enable[0] = 1;
-    adc_config.bits_per_sample = ADC_32_BPS;
     adc_config.samples_per_packet = 1;
+#endif
+    adc_config.bits_per_sample = ADC_32_BPS;
     adc_config.calibration_mode = 0;
 
     adc_enable(xs1_su_periph, c_adc, p_adc_trig, adc_config);
 
-    /* Initialise the HID report buffer */
-    g_reportBuffer[1] = 0;
-    g_reportBuffer[2] = 0;
-    
     while(1) 
     {
-        unsigned data[1];
+        unsigned data[2];
         int x;
+#ifdef U16
+        int y;
+#endif
+
+        /* Initialise the HID report buffer */
+        g_reportBuffer[1] = 0;
+#ifdef U16
+        g_reportBuffer[2] = 0;
+#endif
 
         /* Get ADC input */
         adc_trigger_packet(p_adc_trig, adc_config);
         adc_read_packet(c_adc, adc_config, data);
         x = data[0];
-
+#ifdef U16
+        y = data[1];
+#endif
         /* Move horizontal axis of pointer based on ADC val (absolute) */
-        x = x>>20;
-        x &= 0xff;
- 
-        x-= 128;
+        x = ((x>>SHIFT) & MASK) - OFFSET - initialX;
+        if (x > DEAD_ZONE)
+            g_reportBuffer[1] = x - DEAD_ZONE;
+        else if (x < -DEAD_ZONE)
+            g_reportBuffer[1] = x + DEAD_ZONE;
 
-        if((x+THRESH > lastX) && (x-THRESH < lastX))
-        {
-            g_reportBuffer[1] = x;
-        }
+#ifdef U16
+        /* Move vertical axis of pointer based on ADC val (absolute) */
+        y = ((y>>SHIFT) & MASK) - OFFSET - initialY;
+        if (y > DEAD_ZONE)
+            g_reportBuffer[2] = y - DEAD_ZONE;
+        else if (y < -DEAD_ZONE)
+            g_reportBuffer[2] = y + DEAD_ZONE;
+#endif
 
-        lastX = x;
-        
         /* Send the buffer off to the host.  Note this will return when complete */
         XUD_SetBuffer(ep_hid, g_reportBuffer, 4);
+
+#ifdef U16
+        if (!initialDone)
+        {
+            initialX = x;
+            initialY = y;
+            initialDone = 1;
+        }
+#endif
     }
 }
 
@@ -170,7 +211,7 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 #endif
 
 /*
- * The main function runs thress cores: the XUD manager, Endpoint 0, and a HID endpoint. An array of
+ * The main function runs three cores: the XUD manager, Endpoint 0, and a HID endpoint. An array of
  * channels is used for both IN and OUT endpoints, endpoint zero requires both, HID requires just an
  * IN endpoint to send HID reports to the host.
  */

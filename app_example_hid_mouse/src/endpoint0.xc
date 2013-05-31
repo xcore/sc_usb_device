@@ -124,9 +124,13 @@ static unsigned char hidReportDescriptor[] =
     0x75, 0x08,   // Report size (8)
     0x95, 0x02,   // Report count (2)
 #ifdef ADC
-    0x81, 0x02,   // Input (Data, Abs) 0x2 to 0x6 for Rel
+#ifdef U16
+    0x81, 0x06,   // Input (Data, Rel)
 #else
-    0x81, 0x06,
+    0x81, 0x02,   // Input (Data, Abs)
+#endif
+#else
+    0x81, 0x06,   // Input (Data, Rel)
 #endif
     0xC0,         // End collection
     0x09, 0x38,   // Usage (Wheel)

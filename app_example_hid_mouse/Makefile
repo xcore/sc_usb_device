@@ -20,20 +20,20 @@ APP_NAME = app_example_hid_mouse
 BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
 
 # U series using ADC
-XCC_FLAGS_u_adc = $(BUILD_FLAGS) -DADC=1 -DXUD_ON_U_SERIES=1
-INCLUDE_ONLY_IN_u_adc = 
+XCC_FLAGS_u8_adc = $(BUILD_FLAGS) -DADC=1 -DXUD_ON_U_SERIES=1
+INCLUDE_ONLY_IN_u8_adc = 
 
 #U series not using ADC
-XCC_FLAGS_u_noadc = $(BUILD_FLAGS) -DXUD_ON_U_SERIES=1
-INCLUDE_ONLY_IN_u_noadc = 
+XCC_FLAGS_u8_noadc = $(BUILD_FLAGS) -DXUD_ON_U_SERIES=1
+INCLUDE_ONLY_IN_u8_noadc = 
 
 # U16 series using ADC
 XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1 -DU16=1 -DXUD_ON_U_SERIES=1
-INCLUDE_ONLY_IN_u_adc = 
+INCLUDE_ONLY_IN_u16_adc = 
 
 # U16 series not using ADC
 XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DXUD_ON_U_SERIES=1
-INCLUDE_ONLY_IN_u_noadc = 
+INCLUDE_ONLY_IN_u16_noadc = 
 
 # L series not using ADC (it has no ADC)
 XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_ON_L_SERIES=1
@@ -42,19 +42,14 @@ INCLUDE_ONLY_IN_l_noadc =
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
 
-ifeq ($(CONFIG), u_adc) 
+ifeq ($(CONFIG), u8_adc) 
 	TARGET= xp-skc-su1.xn 
 	MODULE_LIBRARIES = xud_u 
 endif
 
-ifeq ($(CONFIG), u_noadc) 
+ifeq ($(CONFIG), u8_noadc) 
 	TARGET= xp-skc-su1.xn 
 	MODULE_LIBRARIES = xud_u 
-endif
-
-ifeq ($(CONFIG), l_noadc) 
-	TARGET = xr-usb-audio-2.0.xn 
-	MODULE_LIBRARIES = xud_l 
 endif
 
 ifeq ($(CONFIG), u16_adc) 
@@ -65,6 +60,11 @@ endif
 ifeq ($(CONFIG), u16_noadc) 
 	TARGET = xp-skc-u16.xn
 	MODULE_LIBRARIES = xud_u 
+endif
+
+ifeq ($(CONFIG), l_noadc) 
+	TARGET = xr-usb-audio-2.0.xn 
+	MODULE_LIBRARIES = xud_l 
 endif
 
 #=============================================================================

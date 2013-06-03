@@ -22,9 +22,9 @@ INCLUDE_DIRS = src/*
 
 BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
 
-#SU1
-XCC_FLAGS_su1 = $(BUILD_FLAGS) -DXUD_ON_U_SERIES
-INCLUDE_ONLY_IN_su1 = 
+#U8
+XCC_FLAGS_u8 = $(BUILD_FLAGS) -DXUD_ON_U_SERIES
+INCLUDE_ONLY_IN_u8 = 
 
 #U16
 XCC_FLAGS_u16 = $(BUILD_FLAGS) -DXUD_ON_U_SERIES
@@ -37,7 +37,7 @@ INCLUDE_ONLY_IN_l =
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
 
-ifeq ($(CONFIG), su1) 
+ifeq ($(CONFIG), u8) 
 	TARGET= xp-skc-su1.xn 
 	MODULE_LIBRARIES = xud_u 
 endif

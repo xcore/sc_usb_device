@@ -35,7 +35,7 @@
         </component>
     </components>
     <dependency repo = "sc_xud">
-        <githash>e61f4d0cec03ca16cb58c041c72207c12b14fb2a</githash>
+        <githash>4e50160f02d6a075343bd39bd3109d8de6103e75</githash>
         <uri>git://git/apps/sc_xud</uri>
     </dependency>
     <dependency repo = "sc_usb">

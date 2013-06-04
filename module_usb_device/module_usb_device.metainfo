@@ -13,7 +13,6 @@ if they change from the default series.
         type = "string",
         default = "U-Series",
         options = { ["U-Series"] = 1, ["L-Series"] = 2},
-        define = "XUD_DEVICE_SERIES"
     },
     num_ep_in = {
         short = "Number of IN endpoints",
@@ -25,7 +24,6 @@ The number of IN endpoints.
         default = "1",
         min = 2,
         max = 2,
-        define = "XUD_EP_COUNT_IN"
     },
     num_ep_out = {
         short = "Number of OUT endpoints",
@@ -37,11 +35,12 @@ The number of OUT endpoints.
         default = "1",
         min = 1,
         max = 1,
-        define = "XUD_EP_COUNT_OUT"
     }
 }
 
 derivedValues = {}
+
+buildResultsTarget = "XP-SKC-U16"
 
 ports = {
   p_usb_clock = {
@@ -118,18 +117,19 @@ ports = {
   }
 }
 
-reset_port = ""
+device_code = ""
 if swblock.params.series == "2" then
   -- L-Series
-  reset_port = reset_port .. "/* USB Port declarations */\n"
-  reset_port = reset_port .. "#define USB_RST_PORT    XS1_PORT_32A\n"
-  reset_port = reset_port .. "on tile[0]: out port p_usb_rst   = USB_RST_PORT;\n"
-  reset_port = reset_port .. "on tile[0]: clock    clk_usb_rst = XS1_CLKBLK_3;\n"
+  device_code = device_code .. "#warning \"You need to change the makefile to use the L-Series library\""
+  device_code = device_code .. "/* USB Port declarations */\n"
+  device_code = device_code .. "#define USB_RST_PORT    XS1_PORT_32A\n"
+  device_code = device_code .. "on tile[0]: out port p_usb_rst   = USB_RST_PORT;\n"
+  device_code = device_code .. "on tile[0]: clock    clk_usb_rst = XS1_CLKBLK_3;\n"
 
 else
   -- U-Series
-  reset_port = reset_port .. "#define p_usb_rst null\n"
-  reset_port = reset_port .. "#define clk_usb_rst null\n"
+  device_code = device_code .. "#define p_usb_rst null\n"
+  device_code = device_code .. "#define clk_usb_rst null\n"
 end
 
 channels = {
@@ -155,11 +155,6 @@ generatedCode = {
    includes = {"usb.h", "xud.h", "usb_device.h", "hid.h", "null_descs.h"},
    globals  = 
        [[
-#define XUD_DEVICE_SERIES ${swblock.params.series}
-#if XUD_DEVICE_SERIES == 2
-#warning "You need to change the makefile to use the L-Series library"
-#endif
-
 #define XUD_EP_COUNT_OUT ${swblock.params.num_ep_out}
 #define XUD_EP_COUNT_IN  ${swblock.params.num_ep_in}
 
@@ -167,7 +162,7 @@ generatedCode = {
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
 
-${reset_port}
+${device_code}
 
 /* String table */
 static unsigned char stringDescriptors[][40] = 

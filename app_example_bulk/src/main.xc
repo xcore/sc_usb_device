@@ -17,14 +17,14 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL | XUD_STATUS_ENABLE};
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL | XUD_STATUS_ENABLE};
 
-#ifdef L_SERIES
-/* USB reset port declarations for L series on L1 USB Audio board */
-on tile[0]: out port p_usb_rst        = XS1_PORT_32A;
-on tile[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
+#if (XUD_SERIES_SUPPORT == XUD_L_SERIES)
+  /* USB reset port declarations for L series on L1 USB Audio board */
+  on tile[0]: out port p_usb_rst        = XS1_PORT_32A;
+  on tile[0]: clock    clk_usb_rst      = XS1_CLKBLK_3;
 #else
-/* USB Reset not required for U series - pass null to XUD */
-#define p_usb_rst null
-#define clk_usb_rst null
+  /* USB Reset not required for U series - pass null to XUD */
+  #define p_usb_rst null
+  #define clk_usb_rst null
 #endif
 
 #define BUFFER_SIZE 128

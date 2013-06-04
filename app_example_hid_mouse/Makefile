@@ -20,23 +20,23 @@ APP_NAME = app_example_hid_mouse
 BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
 
 # U series using ADC
-XCC_FLAGS_u8_adc = $(BUILD_FLAGS) -DADC=1 -DXUD_ON_U_SERIES=1
+XCC_FLAGS_u8_adc = $(BUILD_FLAGS) -DADC=1 -DXUD_SERIES_SUPPORT=1
 INCLUDE_ONLY_IN_u8_adc = 
 
 #U series not using ADC
-XCC_FLAGS_u8_noadc = $(BUILD_FLAGS) -DXUD_ON_U_SERIES=1
+XCC_FLAGS_u8_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=1
 INCLUDE_ONLY_IN_u8_noadc = 
 
 # U16 series using ADC
-XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1 -DU16=1 -DXUD_ON_U_SERIES=1
+XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1 -DU16=1 -DXUD_SERIES_SUPPORT=1
 INCLUDE_ONLY_IN_u16_adc = 
 
 # U16 series not using ADC
-XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DXUD_ON_U_SERIES=1
+XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DU16=1 -DXUD_SERIES_SUPPORT=1
 INCLUDE_ONLY_IN_u16_noadc = 
 
 # L series not using ADC (it has no ADC)
-XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_ON_L_SERIES=1
+XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
 INCLUDE_ONLY_IN_l_noadc = 
 
 # The USED_MODULES variable lists other module used by the application. 

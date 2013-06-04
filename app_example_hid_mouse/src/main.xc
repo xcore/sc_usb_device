@@ -38,7 +38,7 @@ void Endpoint0(chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
 
-#ifdef XUD_ON_U_SERIES
+#if (XUD_SERIES_SUPPORT == XUD_U_SERIES)
   #include "u_series_support.h"
   /* USB Reset not required for U series - pass null to XUD */
   #define p_usb_rst null
@@ -53,11 +53,11 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
 unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 
 #ifdef ADC
-#ifdef XUD_ON_L_SERIES
-#error NO ADC ON L-SERIES
-#endif
-/* Port for ADC triggering */
-on USB_TILE: out port p_adc_trig = PORT_ADC_TRIGGER;
+  #if (XUD_SERIES_SUPPORT == XUD_L_SERIES)
+  #error NO ADC ON L-SERIES
+  #endif
+  /* Port for ADC triggering */
+  on USB_TILE: out port p_adc_trig = PORT_ADC_TRIGGER;
 #endif
 
 #ifdef ADC
@@ -125,6 +125,7 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
 #ifdef U16
         y = data[1];
 #endif
+
         /* Move horizontal axis of pointer based on ADC val (absolute) */
         x = ((x>>SHIFT) & MASK) - OFFSET - initialX;
         if (x > DEAD_ZONE)
@@ -145,6 +146,7 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
         XUD_SetBuffer(ep_hid, g_reportBuffer, 4);
 
 #ifdef U16
+        /* Only do initial offset on U16 with relative mode */
         if (!initialDone)
         {
             initialX = x;

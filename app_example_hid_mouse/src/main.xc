@@ -1,15 +1,10 @@
 /**
- * Module:  app_l1_usb_hid
- * Version: 1v5
- * Build:   85182b6a76f9342326aad3e7c15c1d1a3111f60e
- * File:    main.xc
- *
  * The copyrights, all other intellectual and industrial 
  * property rights are retained by XMOS and/or its licensors. 
  * Terms and conditions covering the use of this code can
  * be found in the Xmos End User License Agreement.
  *
- * Copyright XMOS Ltd 2010
+ * Copyright XMOS Ltd 2013
  *
  * In the case where this code is a modification of existing code
  * under a separate license, the separate license terms are shown
@@ -18,8 +13,6 @@
  *
  **/ 
  
-#include <xs1.h>
-#include <print.h>
 #include <stdio.h>
 #include <xs1_su.h>
 
@@ -39,7 +32,6 @@ XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};
 
 #if (XUD_SERIES_SUPPORT == XUD_U_SERIES)
-  #include "u_series_support.h"
   /* USB Reset not required for U series - pass null to XUD */
   #define p_usb_rst null
   #define clk_usb_rst null
@@ -54,8 +46,11 @@ unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 
 #ifdef ADC
   #if (XUD_SERIES_SUPPORT == XUD_L_SERIES)
-  #error NO ADC ON L-SERIES
+    #error NO ADC ON L-SERIES
   #endif
+
+  #include "u_series_support.h"
+
   /* Port for ADC triggering */
   on USB_TILE: out port p_adc_trig = PORT_ADC_TRIGGER;
 #endif
@@ -235,13 +230,13 @@ int main()
 
     par 
     {
-        on tile[0]: XUD_Manager(c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
+        on USB_TILE: XUD_Manager(c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
                                 p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test); 
 
-        on tile[0]: Endpoint0(c_ep_out[0], c_ep_in[0], c_usb_test);
+        on USB_TILE: Endpoint0(c_ep_out[0], c_ep_in[0], c_usb_test);
        
-        on tile[0]: hid_mouse(c_ep_in[1], c_adc);
+        on USB_TILE: hid_mouse(c_ep_in[1], c_adc);
         
 #ifdef ADC
         xs1_su_adc_service(c_adc);

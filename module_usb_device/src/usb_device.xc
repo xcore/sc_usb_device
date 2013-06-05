@@ -3,11 +3,12 @@
  * @author     Ross Owen, XMOS Limited
  */
 
-#include <safestring.h>
-#include <xs1.h>
-
 #include "xud.h"     /* XUD Functions and defines */
 #include "usb_device.h"     /* Defines related to the USB 2.0 Spec */
+
+#include <safestring.h>
+#include <xs1.h>
+#include <print.h>
 
 #ifndef MAX_INTS
 /* Maximum number of interfaces supported */

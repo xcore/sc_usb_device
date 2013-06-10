@@ -1,6 +1,5 @@
-
 sc_usb_device
-............
+.............
 
 :Latest release: 1.0.0alpha1
 :Maintainer: XMOS

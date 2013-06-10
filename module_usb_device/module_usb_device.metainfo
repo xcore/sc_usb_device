@@ -13,6 +13,7 @@ if they change from the default series.
         type = "string",
         default = "U-Series",
         options = { ["U-Series"] = 1, ["L-Series"] = 2},
+        define = "XUD_SERIES_SUPPORT"
     },
     num_ep_in = {
         short = "Number of IN endpoints",
@@ -41,13 +42,6 @@ The number of OUT endpoints.
 derivedValues = {}
 
 buildResultsTarget = "XP-SKC-U16"
-if swblock.params.series == "2" then
-    buildResultsXccFlags = "-DXUD_SERIES_SUPPORT=2"
-    buildResultsModuleLibraries = "xud_l"
-else
-    buildResultsXccFlags = "-DXUD_SERIES_SUPPORT=1"
-    buildResultsModuleLibraries = "xud_u"
-end
 
 ports = {
   p_usb_clock = {
@@ -277,6 +271,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
        ]]
 }
 
+files = {["module_usb_device/xud_conf_example.h"] = "src/xud_conf.h"}
 api = {
     "USB_StandardRequests",
     "USB_GetSetupPacket",

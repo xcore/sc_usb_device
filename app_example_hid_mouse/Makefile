@@ -20,19 +20,19 @@ APP_NAME = app_example_hid_mouse
 BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
 
 # U series using ADC
-XCC_FLAGS_u8_adc = $(BUILD_FLAGS) -DADC=1 -DXUD_SERIES_SUPPORT=1
+XCC_FLAGS_u8_adc = $(BUILD_FLAGS) -DADC=1
 INCLUDE_ONLY_IN_u8_adc = 
 
 #U series not using ADC
-XCC_FLAGS_u8_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=1
+XCC_FLAGS_u8_noadc = $(BUILD_FLAGS)
 INCLUDE_ONLY_IN_u8_noadc = 
 
 # U16 series using ADC
-XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1 -DU16=1 -DXUD_SERIES_SUPPORT=1
+XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1 -DU16=1
 INCLUDE_ONLY_IN_u16_adc = 
 
 # U16 series not using ADC
-XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DU16=1 -DXUD_SERIES_SUPPORT=1
+XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DU16=1
 INCLUDE_ONLY_IN_u16_noadc = 
 
 # L series not using ADC (it has no ADC)

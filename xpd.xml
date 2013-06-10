@@ -62,4 +62,7 @@
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <xpd_version>1.0</xpd_version>
+    <docdir>../sc_xud/module_xud/doc</docdir>
+    <docdir>app_example_hid_mouse/doc_quickstart</docdir>
+    <docdir>app_example_bulk/doc_quickstart</docdir>
 </xpd>

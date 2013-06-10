@@ -1,5 +1,5 @@
-<Insert Repo name> Change Log
-=============================
+sc_usb_device Change Log
+========================
 
 1.1.0
 -----

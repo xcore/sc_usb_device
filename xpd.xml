@@ -35,7 +35,7 @@
         </component>
     </components>
     <dependency repo = "sc_xud">
-        <githash>4e50160f02d6a075343bd39bd3109d8de6103e75</githash>
+        <githash>f0dd957b92bd02b2e017901c1254af713fa6ffb6</githash>
         <uri>git://git/apps/sc_xud</uri>
     </dependency>
     <dependency repo = "sc_usb">
@@ -53,16 +53,16 @@
         <version>1.0.1rc0</version>
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
+    <docdir>../sc_xud/module_xud/doc</docdir>
+    <docdir>app_example_hid_mouse/doc_quickstart</docdir>
+    <docdir>app_example_bulk/doc_quickstart</docdir>
     <location>git://git/apps/sc_usb_device</location>
     <name>sc_usb_device</name>
     <maintainer>XMOS</maintainer>
     <partnumber>XM-002851-DH</partnumber>
     <release parenthash = "2d757fce5b2c903e3ceb6c806c169a5d0a7ba09c" version = "1.0.0alpha0" githash = "f4e60cad5e786f63651bd820ac73606a1e574ac3"></release>
-    <release parenthash = "62918b98b526bf2ec26efb5722d31b0b356161b8" version = "1.0.0alpha1"></release>
+    <release parenthash = "62918b98b526bf2ec26efb5722d31b0b356161b8" version = "1.0.0alpha1" githash = "9f314c3aa9f66cbb01cf546ba49d1ad03893904e"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <xpd_version>1.0</xpd_version>
-    <docdir>../sc_xud/module_xud/doc</docdir>
-    <docdir>app_example_hid_mouse/doc_quickstart</docdir>
-    <docdir>app_example_bulk/doc_quickstart</docdir>
 </xpd>

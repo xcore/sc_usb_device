@@ -1,8 +1,6 @@
 USB Bulk Device Demonstration Application
 =========================================
 
-.. toctree::
-
 app_example_bulk Quick Start Guide
 ----------------------------------
 

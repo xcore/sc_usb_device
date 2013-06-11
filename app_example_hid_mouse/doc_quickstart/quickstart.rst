@@ -1,8 +1,6 @@
 USB HID Device Demonstration Application
 ========================================
 
-.. toctree::
-
 app_example_hid_mouse Quick Start Guide
 ---------------------------------------
 

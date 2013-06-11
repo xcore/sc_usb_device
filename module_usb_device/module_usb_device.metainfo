@@ -6,9 +6,9 @@ configPoints = {
         long = "The devices series for which the library will be compiled",
         help = [[
 The XUD library supports both the U-Series and L-Series devices. The library provides
-binaries for each device series. However, the tools currently don't fully support
-changing libraries and will hence require the user to make a change to the Makefile
-if they change from the default series.
+binaries for each device series. However, only the 13.0 and newer tools support changing
+the libraries on generation. Therefore, if using tools older than the 13.0 tools the line
+"MODULE_LIBRARIES = xud_l" must be added to the Makefile if using an L-Series device.
                 ]],
         type = "string",
         default = "U-Series",
@@ -127,10 +127,13 @@ if swblock.params.series == "2" then
   device_code = device_code .. "on tile[0]: out port p_usb_rst   = USB_RST_PORT;\n"
   device_code = device_code .. "on tile[0]: clock    clk_usb_rst = XS1_CLKBLK_3;\n"
 
+  moduleLibraries = "xud_l"
 else
   -- U-Series
   device_code = device_code .. "#define p_usb_rst null\n"
   device_code = device_code .. "#define clk_usb_rst null\n"
+
+  moduleLibraries = "xud_u"
 end
 
 channels = {

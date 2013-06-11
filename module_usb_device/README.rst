@@ -7,4 +7,5 @@ Shared USB Device Code
 
 Shared USB device code.
 
-**Note:** if using this library on the L-Series the ``Makefile`` needs to be modified (see :ref:`usb_device_building_for_l_series`)
+**Note:** if using this library on the L-Series the ``Makefile`` needs to be modified
+(see :ref:`usb_device_building_for_l_series`)

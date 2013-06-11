@@ -11,7 +11,7 @@ the libraries on generation. Therefore, if using tools older than the 13.0 tools
 "MODULE_LIBRARIES = xud_l" must be added to the Makefile if using an L-Series device.
                 ]],
         type = "string",
-        default = "U-Series",
+        default = 1,
         options = { ["U-Series"] = 1, ["L-Series"] = 2},
         define = "XUD_SERIES_SUPPORT"
     },
@@ -22,7 +22,7 @@ the libraries on generation. Therefore, if using tools older than the 13.0 tools
 The number of IN endpoints.
                 ]],
         type = "int",
-        default = "2",
+        default = 2,
         min = 2,
         max = 4,
     },
@@ -33,7 +33,7 @@ The number of IN endpoints.
 The number of OUT endpoints.
                 ]],
         type = "int",
-        default = "1",
+        default = 1,
         min = 1,
         max = 4,
     }

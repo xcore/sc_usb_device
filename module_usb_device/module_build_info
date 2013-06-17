@@ -13,5 +13,3 @@ MODULE_XCC_FLAGS = $(XCC_FLAGS) -O3
 
 DEPENDENT_MODULES = module_xud
 
-OPTIONAL_HEADERS += xud_conf.h
-

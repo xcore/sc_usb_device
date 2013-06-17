@@ -25,6 +25,7 @@ The number of IN endpoints.
         default = 2,
         min = 2,
         max = 4,
+        define = "XUD_EP_COUNT_IN"
     },
     num_ep_out = {
         short = "Number of OUT endpoints",
@@ -36,6 +37,7 @@ The number of OUT endpoints.
         default = 1,
         min = 1,
         max = 4,
+        define = "XUD_EP_COUNT_OUT"
     }
 }
 
@@ -159,9 +161,6 @@ generatedCode = {
    includes = {"usb.h", "xud.h", "usb_device.h", "hid.h", "null_descs.h"},
    globals  = 
        [[
-#define XUD_EP_COUNT_OUT ${swblock.params.num_ep_out}
-#define XUD_EP_COUNT_IN  ${swblock.params.num_ep_in}
-
 /* Endpoint type tables */
 XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE};
 XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL};

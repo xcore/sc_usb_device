@@ -5,7 +5,6 @@ sc_usb_device
 :Maintainer: XMOS
 :Description: Device-Class USB Modules and Applications
 
-
 Description
 ===========
 
@@ -15,7 +14,8 @@ Key Features
 ============
 
 * Common USB device-class functions
-* Example USB HID application
+* USB HID class example application - a simple mouse
+* USB custom bulk example application including host drivers
 
 Firmware Overview
 =================

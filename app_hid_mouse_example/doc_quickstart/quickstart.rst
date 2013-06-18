@@ -27,8 +27,8 @@ To setup the hardware (:ref:`hid_example_hardware_setup`):
 
 .. _hid_example_hardware_setup:
 
-.. figure:: images/hw_setup.png
-   :width: 300px
+.. figure:: images/hw_setup.*
+   :width: 120mm
    :align: center
 
    Hardware Setup for USB HID device example

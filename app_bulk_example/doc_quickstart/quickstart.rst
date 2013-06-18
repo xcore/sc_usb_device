@@ -5,13 +5,12 @@ app_bulk_example Quick Start Guide
 ----------------------------------
 
 This application demonstrates how to create a USB 2.0 bulk transfer device. It 
-uses the XMOS U16 Slicekit Core Board (XP-SKC-U16) in conjunction with the USB 
-Signal (XA-SK-USB-AB).
+uses the XMOS U16 Slicekit Core Board (XP-SKC-U16).
 
 The application provides:
 
-    * A USB HID-class device which provides a mouse implementation.
-    * The mouse is controlled by the joystick on the Mixed Signal Slice.
+    * A custom bulk device which performs some data processing (increment data value).
+    * Host application code to send data to the USB device and receive processed data.
 
 Hardware Setup
 ++++++++++++++
@@ -26,8 +25,8 @@ To setup the hardware (:ref:`bulk_example_hardware_setup`):
 
 .. _bulk_example_hardware_setup:
 
-.. figure:: images/hw_setup.png
-   :width: 300px
+.. figure:: images/hw_setup.*
+   :width: 120mm
    :align: center
 
    Hardware Setup for USB bulk device example
@@ -61,9 +60,10 @@ into the xCORE multicore microcontroller.
 
    #. Click on the ``Run`` icon (the white arrow in the green circle). A dialog will appear
       asking which device to connect to. Select ``XMOS XTAG2``.
-   #. The application will now be running and the host PC should detect a new USB device.
-   #. Controlling the joystick on the Mixed Signal Slice Card should move the mouse of the
-      host machine.
+   #. The application will now be running and the host PC should detect a new USB device
+      called ``XMOS Custom Bulk Transfer Device``.
+   #. Run the ``bulktest`` binary from the relevant ``host/`` subfolder. This will measure
+      the USB transfer rate of the bulk device.
    #. Terminating the application will cause the USB device to be removed.
 
 Next Steps

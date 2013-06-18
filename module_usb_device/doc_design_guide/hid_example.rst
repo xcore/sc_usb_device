@@ -136,7 +136,7 @@ any classes the device implements.
 
 For the HID Mouse example this descriptor looks like the following:
 
-.. literalinclude:: sc_usb_device/app_example_hid_mouse/src/endpoint0.xc
+.. literalinclude:: sc_usb_device/app_hid_mouse_example/src/endpoint0.xc
     :start-after: /* Device Descriptor 
     :end-before: };
 
@@ -166,7 +166,7 @@ This descriptor includes Interface and Endpoint Descriptors. Every device
 must have at least one configuration, in our example there is only one
 configuration. The configuration descriptor is presented below:
 
-.. literalinclude:: sc_usb_device/app_example_hid_mouse/src/endpoint0.xc
+.. literalinclude:: sc_usb_device/app_hid_mouse_example/src/endpoint0.xc
     :start-after: /* Configuration Descriptor 
     :end-before: };
 
@@ -189,7 +189,7 @@ supplied” when used as an index value.  The ``USB_StandardRequests()``
 function deals with requests for strings using the table of strings
 passed to it.  The string table for the HID mouse example is shown below:
 
-.. literalinclude:: sc_usb_device/app_example_hid_mouse/src/endpoint0.xc
+.. literalinclude:: sc_usb_device/app_hid_mouse_example/src/endpoint0.xc
     :start-after: /* String table 
     :end-before: };
 
@@ -225,7 +225,7 @@ available for download on the usb.org website.
 
 The HID report descriptor for the HID mouse example is shown below:
 
-.. literalinclude:: sc_usb_device/app_example_hid_mouse/src/endpoint0.xc
+.. literalinclude:: sc_usb_device/app_hid_mouse_example/src/endpoint0.xc
     :start-after: /* HID Report Descriptor
     :end-before: };
 
@@ -237,7 +237,7 @@ functionality for a request, then allow ``USB_StandardRequests()`` to finalize.
 
 The complete code listing for the main endpoint 0 task is show below:
 
-.. literalinclude:: sc_usb_device/app_example_hid_mouse/src/endpoint0.xc
+.. literalinclude:: sc_usb_device/app_hid_mouse_example/src/endpoint0.xc
     :start-after: /* Endpoint 0 Task
     :end-before: //:
 
@@ -246,7 +246,7 @@ The skeleton ``HidInterfaceClassRequests()`` function deals with any
 outstanding HID requests. See the USB HID Specification for full request
 details:
 
-.. literalinclude:: sc_usb_device/app_example_hid_mouse/src/endpoint0.xc
+.. literalinclude:: sc_usb_device/app_hid_mouse_example/src/endpoint0.xc
     :start-after: /* HID Class Requests
     :end-before: /* Endpoint 0 Task
 

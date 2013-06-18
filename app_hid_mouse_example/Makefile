@@ -7,10 +7,7 @@
 # The APP_NAME variable determines the name of the final .xe file. It should
 # not include the .xe postfix. If left blank the name will default to 
 # the project name
-APP_NAME = app_example_usb_custom_bulk
-
-SOURCE_DIRS = src/*
-INCLUDE_DIRS = src/*
+APP_NAME = app_example_hid_mouse
 
 # The flags passed to xcc when building the application
 # You can also set the following to override flags for a particular language:
@@ -22,32 +19,50 @@ INCLUDE_DIRS = src/*
 
 BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
 
-#U8
-XCC_FLAGS_u8 = $(BUILD_FLAGS)
-INCLUDE_ONLY_IN_u8 = 
+# U series using ADC
+XCC_FLAGS_u8_adc = $(BUILD_FLAGS) -DADC=1
+INCLUDE_ONLY_IN_u8_adc = 
 
-#U16
-XCC_FLAGS_u16 = $(BUILD_FLAGS)
-INCLUDE_ONLY_IN_u16 = 
+#U series not using ADC
+XCC_FLAGS_u8_noadc = $(BUILD_FLAGS)
+INCLUDE_ONLY_IN_u8_noadc = 
 
-#L series 
-XCC_FLAGS_l = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
-INCLUDE_ONLY_IN_l = 
+# U16 series using ADC
+XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1 -DU16=1
+INCLUDE_ONLY_IN_u16_adc = 
+
+# U16 series not using ADC
+XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DU16=1
+INCLUDE_ONLY_IN_u16_noadc = 
+
+# L series not using ADC (it has no ADC)
+XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
+INCLUDE_ONLY_IN_l_noadc = 
 
 # The USED_MODULES variable lists other module used by the application. 
-USED_MODULES = module_usb_shared module_usb_device module_xud module_u_series_support module_logging module_xassert
+USED_MODULES = module_usb_shared module_usb_device module_xud module_usb_tile_support module_logging module_xassert
 
-ifeq ($(CONFIG), u8) 
+ifeq ($(CONFIG), u8_adc) 
 	TARGET= xp-skc-su1.xn 
 	MODULE_LIBRARIES = xud_u 
 endif
 
-ifeq ($(CONFIG), u16) 
-	TARGET= xp-skc-u16.xn 
+ifeq ($(CONFIG), u8_noadc) 
+	TARGET= xp-skc-su1.xn 
 	MODULE_LIBRARIES = xud_u 
 endif
 
-ifeq ($(CONFIG), l) 
+ifeq ($(CONFIG), u16_adc) 
+	TARGET = xp-skc-u16.xn 
+	MODULE_LIBRARIES = xud_u 
+endif
+
+ifeq ($(CONFIG), u16_noadc) 
+	TARGET = xp-skc-u16.xn
+	MODULE_LIBRARIES = xud_u 
+endif
+
+ifeq ($(CONFIG), l_noadc) 
 	TARGET = xr-usb-audio-2.0.xn 
 	MODULE_LIBRARIES = xud_l 
 endif

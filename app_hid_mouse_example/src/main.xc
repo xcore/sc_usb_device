@@ -49,7 +49,7 @@ unsigned char g_reportBuffer[] = {0, 0, 0, 0};
     #error NO ADC ON L-SERIES
   #endif
 
-  #include "u_series_support.h"
+  #include "usb_tile_support.h"
 
   /* Port for ADC triggering */
   on USB_TILE: out port p_adc_trig = PORT_ADC_TRIGGER;

@@ -1,7 +1,7 @@
-USB Bulk Device Demonstration Application
-=========================================
+USB Bulk Device Example
+=======================
 
-app_example_bulk Quick Start Guide
+app_bulk_example Quick Start Guide
 ----------------------------------
 
 This application demonstrates how to create a USB 2.0 bulk transfer device. It 
@@ -35,22 +35,22 @@ To setup the hardware (:ref:`bulk_example_hardware_setup`):
 Import and Build the Application
 ++++++++++++++++++++++++++++++++
 
-   #. Open xTimeComposer and open the edit perspective (Window->Open Perspective->XMOS Edit).
+   #. Open xTIMEcomposer and open the edit perspective (Window->Open Perspective->XMOS Edit).
    #. Locate the ``USB Bulk Example`` item in the xSOFTip pane on the bottom left
-      of the window and drag it into the Project Explorer window in the xTimeComposer.
+      of the window and drag it into the Project Explorer window in the xTIMEcomposer.
       This will also cause the modules on which this application depends (in this case,
       module_usb_device, module_xud, module_usb) to be imported as well. 
-   #. Click on the ``app_example_bulk`` item in the Explorer pane then click on the
-      build icon (hammer) in xTimeComposer. Check the console window to verify that the
+   #. Click on the ``app_bulk_example`` item in the Explorer pane then click on the
+      build icon (hammer) in xTIMEcomposer. Check the console window to verify that the
       application has built successfully.
 
-Note that the Developer Column in the xTimeComposer on the right hand side of your screen
+Note that the Developer Column in the xTIMEcomposer on the right hand side of your screen
 provides information on the xSOFTip components you are using. Select the module_xud
 component in the Project Explorer, and you will see its description together with API
 documentation. Having done this, click the `back` icon until you return to this
 quickstart guide within the Developer Column.
 
-For help in using xTimeComposer, try the xTimeComposer tutorial (See Help->Tutorials in xTIMEcomposer).
+For help in using xTIMEcomposer, try the xTIMEcomposer tutorial (See Help->Tutorials in xTIMEcomposer).
 
 Run the Application
 +++++++++++++++++++
@@ -69,5 +69,5 @@ into the xCORE multicore microcontroller.
 Next Steps
 ++++++++++
 
-   #. Take a look at the other USB example application TBD
+   #. Take a look at the USB HID Mouse example application.
 

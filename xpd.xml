@@ -1,27 +1,24 @@
 <?xml version="1.0" ?>
 <xpd>
     <components>
-        <component description = "An example vendor specific bulk example" type = "demoCode" scope = "General Use" path = "app_bulk_example" local = "false" id = "app_bulk_example" name = "Custom Class Bulk USB Device Example">
-            <componentDependency>module_periph</componentDependency>
-            <componentDependency>module_usb_shared</componentDependency>
-            <componentDependency>module_logging</componentDependency>
-            <componentDependency>module_usb_device</componentDependency>
+        <component description = "An example vendor specific bulk example" type = "demoCode" scope = "General Use" path = "app_bulk_example" local = "false" id = "app_bulk_example" name = "Example Custom Class Bulk USB Device">
             <componentDependency>module_xud</componentDependency>
+            <componentDependency>module_logging</componentDependency>
+            <componentDependency>module_usb_shared</componentDependency>
+            <componentDependency>module_usb_device</componentDependency>
             <componentDependency>module_xassert</componentDependency>
-            <componentDependency>module_u_series_support</componentDependency>
             <keyword>usb</keyword>
             <keyword>bulk</keyword>
             <keyword>custom</keyword>
             <keyword>device</keyword>
         </component>
-        <component description = "An example HID class device - a mouse application." type = "demoCode" scope = "General Use" path = "app_hid_mouse_example" local = "false" id = "app_hid_mouse_example" name = "HID Class USB Device Example">
-            <componentDependency>module_periph</componentDependency>
+        <component description = "An example HID class device - a mouse application." type = "demoCode" scope = "General Use" path = "app_hid_mouse_example" local = "false" id = "app_hid_mouse_example" name = "Example HID Class USB Device">
             <componentDependency>module_usb_shared</componentDependency>
+            <componentDependency>module_usb_tile_support</componentDependency>
             <componentDependency>module_logging</componentDependency>
             <componentDependency>module_usb_device</componentDependency>
             <componentDependency>module_xud</componentDependency>
             <componentDependency>module_xassert</componentDependency>
-            <componentDependency>module_u_series_support</componentDependency>
             <keyword>usb</keyword>
             <keyword>mouse</keyword>
             <keyword>hid</keyword>
@@ -44,9 +41,9 @@
         <uri>git://git/apps/sc_usb</uri>
     </dependency>
     <dependency repo = "sc_periph">
-        <githash>7cfd34fdf821b6e810b5ab403cc53586911cd2db</githash>
+        <githash>aac5278bcfba9e10632bf9aec413303d56360fb5</githash>
         <uri>git@github.com:xcore/sc_periph</uri>
-        <version>1.0.0beta1</version>
+        <version>1.0.0beta4</version>
     </dependency>
     <dependency repo = "sc_util">
         <githash>1ed35a50e2d9cc98fcff4c7cc3fb399385ec5d70</githash>

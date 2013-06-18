@@ -3,8 +3,8 @@
 <cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
     <storageModule moduleId="org.eclipse.cdt.core.settings">
               
-        <cconfiguration id="com.xmos.cdt.toolchain.99926054">
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.xmos.cdt.toolchain.99926054" moduleId="org.eclipse.cdt.core.settings" name="l">
+        <cconfiguration id="com.xmos.cdt.toolchain.28821700">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.xmos.cdt.toolchain.28821700" moduleId="org.eclipse.cdt.core.settings" name="l">
                 <externalSettings />
                 <extensions>
                     <extension id="com.xmos.cdt.core.XEBinaryParser" point="org.eclipse.cdt.core.BinaryParser" />
@@ -33,17 +33,17 @@
                 </buildTargets>
             </storageModule>
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-                <configuration buildProperties="" description="" id="com.xmos.cdt.toolchain.99926054" name="l" parent="org.eclipse.cdt.build.core.emptycfg">
-                    <folderInfo id="com.xmos.cdt.toolchain.99926054.1127281840" name="/" resourcePath="">
-                        <toolChain id = "com.xmos.cdt.toolchain.69503446" name="com.xmos.cdt.toolchain" superClass="com.xmos.cdt.toolchain">
-                            <targetPlatform archList="all" binaryParser="com.xmos.cdt.core.XEBinaryParser" id = "com.xmos.cdt.core.platform.39071158" isAbstract="false" osList="linux,win32,macosx" superClass="com.xmos.cdt.core.platform" />
-                            <builder arguments="CONFIG=l" id = "com.xmos.cdt.builder.base.22010317" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="com.xmos.cdt.builder.base">
+                <configuration buildProperties="" description="" id="com.xmos.cdt.toolchain.28821700" name="l" parent="org.eclipse.cdt.build.core.emptycfg">
+                    <folderInfo id="com.xmos.cdt.toolchain.28821700.1127281840" name="/" resourcePath="">
+                        <toolChain id = "com.xmos.cdt.toolchain.36922195" name="com.xmos.cdt.toolchain" superClass="com.xmos.cdt.toolchain">
+                            <targetPlatform archList="all" binaryParser="com.xmos.cdt.core.XEBinaryParser" id = "com.xmos.cdt.core.platform.49857470" isAbstract="false" osList="linux,win32,macosx" superClass="com.xmos.cdt.core.platform" />
+                            <builder arguments="CONFIG=l" id = "com.xmos.cdt.builder.base.11027117" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="com.xmos.cdt.builder.base">
                                 <outputEntries>
                                     <entry flags="VALUE_WORKSPACE_PATH" kind="outputPath" name="bin/l" />
                                 </outputEntries>
                             </builder>
-                            <tool id = "com.xmos.cdt.xc.compiler.59145345" name="com.xmos.cdt.xc.compiler" superClass="com.xmos.cdt.xc.compiler">
-                                <option id = "com.xmos.c.compiler.option.defined.symbols.37581011" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
+                            <tool id = "com.xmos.cdt.xc.compiler.70894840" name="com.xmos.cdt.xc.compiler" superClass="com.xmos.cdt.xc.compiler">
+                                <option id = "com.xmos.c.compiler.option.defined.symbols.46537488" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
                                     <listOptionValue builtIn="false" value="__SHRT_MAX__=32767"/>
                                     <listOptionValue builtIn="false" value="__SCHAR_MAX__=127"/>
                                     <listOptionValue builtIn="false" value="__SIZE_TYPE__=unsigned"/>
@@ -153,46 +153,43 @@
                                     <listOptionValue builtIn="false" value="__EXCEPTIONS=1"/>
                                     <listOptionValue builtIn="false" value="__WCHAR_UNSIGNED__=1"/>
                                 </option>
-								<option id = "com.xmos.xc.compiler.option.include.paths.84958577" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.xc.compiler.option.include.paths.94947096" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.xc.compiler.input.85370176" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
+								<inputType id = "com.xmos.cdt.xc.compiler.input.44128736" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
                             </tool>
-							<tool id = "com.xmos.cdt.c.compiler.87884171" name="com.xmos.cdt.c.compiler" superClass="com.xmos.cdt.c.compiler">
-								<option id = "com.xmos.c.compiler.option.defined.symbols.14589664" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
+							<tool id = "com.xmos.cdt.c.compiler.36861046" name="com.xmos.cdt.c.compiler" superClass="com.xmos.cdt.c.compiler">
+								<option id = "com.xmos.c.compiler.option.defined.symbols.98604276" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__STDC__=1"/>
 									<listOptionValue builtIn="false" value="__STDC_VERSION__=199901L"/>
 									<listOptionValue builtIn="false" value="__STDC_HOSTED__=1"/>
@@ -295,46 +292,43 @@
 									<listOptionValue builtIn="false" value="XCC_VERSION_MINOR=0"/>
 									<listOptionValue builtIn="false" value="__XCC_HAVE_FLOAT__=1"/>
 								</option>
-								<option id = "com.xmos.c.compiler.option.include.paths.11246580" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.c.compiler.option.include.paths.75400223" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.c.compiler.input.c.26239130" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
+								<inputType id = "com.xmos.cdt.c.compiler.input.c.45281148" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
 							</tool>
-							<tool id = "com.xmos.cdt.cxx.compiler.42196573" name="com.xmos.cdt.cxx.compiler" superClass="com.xmos.cdt.cxx.compiler">
-								<option id = "com.xmos.cxx.compiler.option.defined.symbols.59833538" name="com.xmos.cxx.compiler.option.defined.symbols" superClass="com.xmos.cxx.compiler.option.defined.symbols" valueType="definedSymbols">
+							<tool id = "com.xmos.cdt.cxx.compiler.1590319" name="com.xmos.cdt.cxx.compiler" superClass="com.xmos.cdt.cxx.compiler">
+								<option id = "com.xmos.cxx.compiler.option.defined.symbols.64685905" name="com.xmos.cxx.compiler.option.defined.symbols" superClass="com.xmos.cxx.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__STDC__=1"/>
 									<listOptionValue builtIn="false" value="__cplusplus=1"/>
 									<listOptionValue builtIn="false" value="__STDC_HOSTED__=1"/>
@@ -441,45 +435,42 @@
 									<listOptionValue builtIn="false" value="XCC_VERSION_MINOR=0"/>
 									<listOptionValue builtIn="false" value="__XCC_HAVE_FLOAT__=1"/>
 								</option>
-								<option id = "com.xmos.cxx.compiler.option.include.paths.97757457" name="com.xmos.cxx.compiler.option.include.paths" superClass="com.xmos.cxx.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.cxx.compiler.option.include.paths.48035939" name="com.xmos.cxx.compiler.option.include.paths" superClass="com.xmos.cxx.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.cxx.compiler.input.cpp.38102440" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
+								<inputType id = "com.xmos.cdt.cxx.compiler.input.cpp.40119774" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
 							</tool>
                         </toolChain>
                     </folderInfo>
@@ -577,8 +568,8 @@
             <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings" />
         </cconfiguration>
 
-        <cconfiguration id="com.xmos.cdt.toolchain.81377878">
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.xmos.cdt.toolchain.81377878" moduleId="org.eclipse.cdt.core.settings" name="u8">
+        <cconfiguration id="com.xmos.cdt.toolchain.37383795">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.xmos.cdt.toolchain.37383795" moduleId="org.eclipse.cdt.core.settings" name="u8">
                 <externalSettings />
                 <extensions>
                     <extension id="com.xmos.cdt.core.XEBinaryParser" point="org.eclipse.cdt.core.BinaryParser" />
@@ -607,17 +598,17 @@
                 </buildTargets>
             </storageModule>
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-                <configuration buildProperties="" description="" id="com.xmos.cdt.toolchain.81377878" name="u8" parent="org.eclipse.cdt.build.core.emptycfg">
-                    <folderInfo id="com.xmos.cdt.toolchain.81377878.1127281840" name="/" resourcePath="">
-                        <toolChain id = "com.xmos.cdt.toolchain.45455003" name="com.xmos.cdt.toolchain" superClass="com.xmos.cdt.toolchain">
-                            <targetPlatform archList="all" binaryParser="com.xmos.cdt.core.XEBinaryParser" id = "com.xmos.cdt.core.platform.69355733" isAbstract="false" osList="linux,win32,macosx" superClass="com.xmos.cdt.core.platform" />
-                            <builder arguments="CONFIG=u8" id = "com.xmos.cdt.builder.base.60456596" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="com.xmos.cdt.builder.base">
+                <configuration buildProperties="" description="" id="com.xmos.cdt.toolchain.37383795" name="u8" parent="org.eclipse.cdt.build.core.emptycfg">
+                    <folderInfo id="com.xmos.cdt.toolchain.37383795.1127281840" name="/" resourcePath="">
+                        <toolChain id = "com.xmos.cdt.toolchain.37632727" name="com.xmos.cdt.toolchain" superClass="com.xmos.cdt.toolchain">
+                            <targetPlatform archList="all" binaryParser="com.xmos.cdt.core.XEBinaryParser" id = "com.xmos.cdt.core.platform.52107709" isAbstract="false" osList="linux,win32,macosx" superClass="com.xmos.cdt.core.platform" />
+                            <builder arguments="CONFIG=u8" id = "com.xmos.cdt.builder.base.95741287" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="com.xmos.cdt.builder.base">
                                 <outputEntries>
                                     <entry flags="VALUE_WORKSPACE_PATH" kind="outputPath" name="bin/u8" />
                                 </outputEntries>
                             </builder>
-                            <tool id = "com.xmos.cdt.xc.compiler.73682206" name="com.xmos.cdt.xc.compiler" superClass="com.xmos.cdt.xc.compiler">
-                                <option id = "com.xmos.c.compiler.option.defined.symbols.85207463" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
+                            <tool id = "com.xmos.cdt.xc.compiler.99317116" name="com.xmos.cdt.xc.compiler" superClass="com.xmos.cdt.xc.compiler">
+                                <option id = "com.xmos.c.compiler.option.defined.symbols.47391972" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
                                     <listOptionValue builtIn="false" value="__SHRT_MAX__=32767"/>
                                     <listOptionValue builtIn="false" value="__SCHAR_MAX__=127"/>
                                     <listOptionValue builtIn="false" value="__SIZE_TYPE__=unsigned"/>
@@ -727,46 +718,43 @@
                                     <listOptionValue builtIn="false" value="__EXCEPTIONS=1"/>
                                     <listOptionValue builtIn="false" value="__WCHAR_UNSIGNED__=1"/>
                                 </option>
-								<option id = "com.xmos.xc.compiler.option.include.paths.81076144" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.xc.compiler.option.include.paths.41677885" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.xc.compiler.input.98705352" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
+								<inputType id = "com.xmos.cdt.xc.compiler.input.97324915" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
                             </tool>
-							<tool id = "com.xmos.cdt.c.compiler.6608364" name="com.xmos.cdt.c.compiler" superClass="com.xmos.cdt.c.compiler">
-								<option id = "com.xmos.c.compiler.option.defined.symbols.5725959" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
+							<tool id = "com.xmos.cdt.c.compiler.49280801" name="com.xmos.cdt.c.compiler" superClass="com.xmos.cdt.c.compiler">
+								<option id = "com.xmos.c.compiler.option.defined.symbols.64394394" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__STDC__=1"/>
 									<listOptionValue builtIn="false" value="__STDC_VERSION__=199901L"/>
 									<listOptionValue builtIn="false" value="__STDC_HOSTED__=1"/>
@@ -869,46 +857,43 @@
 									<listOptionValue builtIn="false" value="XCC_VERSION_MINOR=0"/>
 									<listOptionValue builtIn="false" value="__XCC_HAVE_FLOAT__=1"/>
 								</option>
-								<option id = "com.xmos.c.compiler.option.include.paths.33415786" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.c.compiler.option.include.paths.88376448" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.c.compiler.input.c.7479637" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
+								<inputType id = "com.xmos.cdt.c.compiler.input.c.15365083" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
 							</tool>
-							<tool id = "com.xmos.cdt.cxx.compiler.58051368" name="com.xmos.cdt.cxx.compiler" superClass="com.xmos.cdt.cxx.compiler">
-								<option id = "com.xmos.cxx.compiler.option.defined.symbols.22079667" name="com.xmos.cxx.compiler.option.defined.symbols" superClass="com.xmos.cxx.compiler.option.defined.symbols" valueType="definedSymbols">
+							<tool id = "com.xmos.cdt.cxx.compiler.64134975" name="com.xmos.cdt.cxx.compiler" superClass="com.xmos.cdt.cxx.compiler">
+								<option id = "com.xmos.cxx.compiler.option.defined.symbols.41109669" name="com.xmos.cxx.compiler.option.defined.symbols" superClass="com.xmos.cxx.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__STDC__=1"/>
 									<listOptionValue builtIn="false" value="__cplusplus=1"/>
 									<listOptionValue builtIn="false" value="__STDC_HOSTED__=1"/>
@@ -1015,45 +1000,42 @@
 									<listOptionValue builtIn="false" value="XCC_VERSION_MINOR=0"/>
 									<listOptionValue builtIn="false" value="__XCC_HAVE_FLOAT__=1"/>
 								</option>
-								<option id = "com.xmos.cxx.compiler.option.include.paths.88101612" name="com.xmos.cxx.compiler.option.include.paths" superClass="com.xmos.cxx.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.cxx.compiler.option.include.paths.90058100" name="com.xmos.cxx.compiler.option.include.paths" superClass="com.xmos.cxx.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.cxx.compiler.input.cpp.26014857" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
+								<inputType id = "com.xmos.cdt.cxx.compiler.input.cpp.13233531" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
 							</tool>
                         </toolChain>
                     </folderInfo>
@@ -1151,8 +1133,8 @@
             <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings" />
         </cconfiguration>
 
-        <cconfiguration id="com.xmos.cdt.toolchain.4249351">
-            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.xmos.cdt.toolchain.4249351" moduleId="org.eclipse.cdt.core.settings" name="u16">
+        <cconfiguration id="com.xmos.cdt.toolchain.15888076">
+            <storageModule buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider" id="com.xmos.cdt.toolchain.15888076" moduleId="org.eclipse.cdt.core.settings" name="u16">
                 <externalSettings />
                 <extensions>
                     <extension id="com.xmos.cdt.core.XEBinaryParser" point="org.eclipse.cdt.core.BinaryParser" />
@@ -1181,17 +1163,17 @@
                 </buildTargets>
             </storageModule>
             <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-                <configuration buildProperties="" description="" id="com.xmos.cdt.toolchain.4249351" name="u16" parent="org.eclipse.cdt.build.core.emptycfg">
-                    <folderInfo id="com.xmos.cdt.toolchain.4249351.1127281840" name="/" resourcePath="">
-                        <toolChain id = "com.xmos.cdt.toolchain.21384923" name="com.xmos.cdt.toolchain" superClass="com.xmos.cdt.toolchain">
-                            <targetPlatform archList="all" binaryParser="com.xmos.cdt.core.XEBinaryParser" id = "com.xmos.cdt.core.platform.89903206" isAbstract="false" osList="linux,win32,macosx" superClass="com.xmos.cdt.core.platform" />
-                            <builder arguments="CONFIG=u16" id = "com.xmos.cdt.builder.base.62557956" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="com.xmos.cdt.builder.base">
+                <configuration buildProperties="" description="" id="com.xmos.cdt.toolchain.15888076" name="u16" parent="org.eclipse.cdt.build.core.emptycfg">
+                    <folderInfo id="com.xmos.cdt.toolchain.15888076.1127281840" name="/" resourcePath="">
+                        <toolChain id = "com.xmos.cdt.toolchain.61592408" name="com.xmos.cdt.toolchain" superClass="com.xmos.cdt.toolchain">
+                            <targetPlatform archList="all" binaryParser="com.xmos.cdt.core.XEBinaryParser" id = "com.xmos.cdt.core.platform.42801626" isAbstract="false" osList="linux,win32,macosx" superClass="com.xmos.cdt.core.platform" />
+                            <builder arguments="CONFIG=u16" id = "com.xmos.cdt.builder.base.77479348" keepEnvironmentInBuildfile="false" managedBuildOn="false" superClass="com.xmos.cdt.builder.base">
                                 <outputEntries>
                                     <entry flags="VALUE_WORKSPACE_PATH" kind="outputPath" name="bin/u16" />
                                 </outputEntries>
                             </builder>
-                            <tool id = "com.xmos.cdt.xc.compiler.29171762" name="com.xmos.cdt.xc.compiler" superClass="com.xmos.cdt.xc.compiler">
-                                <option id = "com.xmos.c.compiler.option.defined.symbols.62068968" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
+                            <tool id = "com.xmos.cdt.xc.compiler.718464" name="com.xmos.cdt.xc.compiler" superClass="com.xmos.cdt.xc.compiler">
+                                <option id = "com.xmos.c.compiler.option.defined.symbols.73325793" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
                                     <listOptionValue builtIn="false" value="__SHRT_MAX__=32767"/>
                                     <listOptionValue builtIn="false" value="__SCHAR_MAX__=127"/>
                                     <listOptionValue builtIn="false" value="__SIZE_TYPE__=unsigned"/>
@@ -1301,46 +1283,43 @@
                                     <listOptionValue builtIn="false" value="__EXCEPTIONS=1"/>
                                     <listOptionValue builtIn="false" value="__WCHAR_UNSIGNED__=1"/>
                                 </option>
-								<option id = "com.xmos.xc.compiler.option.include.paths.68829998" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.xc.compiler.option.include.paths.64058813" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.xc.compiler.input.61616283" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
+								<inputType id = "com.xmos.cdt.xc.compiler.input.36084741" name="XC" superClass="com.xmos.cdt.xc.compiler.input"/>
                             </tool>
-							<tool id = "com.xmos.cdt.c.compiler.22461150" name="com.xmos.cdt.c.compiler" superClass="com.xmos.cdt.c.compiler">
-								<option id = "com.xmos.c.compiler.option.defined.symbols.50915763" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
+							<tool id = "com.xmos.cdt.c.compiler.27106573" name="com.xmos.cdt.c.compiler" superClass="com.xmos.cdt.c.compiler">
+								<option id = "com.xmos.c.compiler.option.defined.symbols.55217947" name="com.xmos.c.compiler.option.defined.symbols" superClass="com.xmos.c.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__STDC__=1"/>
 									<listOptionValue builtIn="false" value="__STDC_VERSION__=199901L"/>
 									<listOptionValue builtIn="false" value="__STDC_HOSTED__=1"/>
@@ -1443,46 +1422,43 @@
 									<listOptionValue builtIn="false" value="XCC_VERSION_MINOR=0"/>
 									<listOptionValue builtIn="false" value="__XCC_HAVE_FLOAT__=1"/>
 								</option>
-								<option id = "com.xmos.c.compiler.option.include.paths.34351421" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.c.compiler.option.include.paths.63303476" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.c.compiler.input.c.88329932" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
+								<inputType id = "com.xmos.cdt.c.compiler.input.c.90920914" name="C" superClass="com.xmos.cdt.c.compiler.input.c"/>
 							</tool>
-							<tool id = "com.xmos.cdt.cxx.compiler.52376208" name="com.xmos.cdt.cxx.compiler" superClass="com.xmos.cdt.cxx.compiler">
-								<option id = "com.xmos.cxx.compiler.option.defined.symbols.12120413" name="com.xmos.cxx.compiler.option.defined.symbols" superClass="com.xmos.cxx.compiler.option.defined.symbols" valueType="definedSymbols">
+							<tool id = "com.xmos.cdt.cxx.compiler.21434821" name="com.xmos.cdt.cxx.compiler" superClass="com.xmos.cdt.cxx.compiler">
+								<option id = "com.xmos.cxx.compiler.option.defined.symbols.46474741" name="com.xmos.cxx.compiler.option.defined.symbols" superClass="com.xmos.cxx.compiler.option.defined.symbols" valueType="definedSymbols">
 									<listOptionValue builtIn="false" value="__STDC__=1"/>
 									<listOptionValue builtIn="false" value="__cplusplus=1"/>
 									<listOptionValue builtIn="false" value="__STDC_HOSTED__=1"/>
@@ -1589,45 +1565,42 @@
 									<listOptionValue builtIn="false" value="XCC_VERSION_MINOR=0"/>
 									<listOptionValue builtIn="false" value="__XCC_HAVE_FLOAT__=1"/>
 								</option>
-								<option id = "com.xmos.cxx.compiler.option.include.paths.38482850" name="com.xmos.cxx.compiler.option.include.paths" superClass="com.xmos.cxx.compiler.option.include.paths" valueType="includePath">
+								<option id = "com.xmos.cxx.compiler.option.include.paths.14121464" name="com.xmos.cxx.compiler.option.include.paths" superClass="com.xmos.cxx.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_periph/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux64}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Win32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/OSX}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Win32}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/Linux32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Win32}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/OSX}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux32}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host/Linux64}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_u_series_support/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_example_bulk/host/libusb/Linux64}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_bulk_example/host}&quot;' />
 
 								</option>
-								<inputType id = "com.xmos.cdt.cxx.compiler.input.cpp.74778004" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
+								<inputType id = "com.xmos.cdt.cxx.compiler.input.cpp.96146006" name="C++" superClass="com.xmos.cdt.cxx.compiler.input.cpp"/>
 							</tool>
                         </toolChain>
                     </folderInfo>
@@ -1727,6 +1700,6 @@
 
     </storageModule>
     <storageModule moduleId="cdtBuildSystem" version="4.0.0">
-        <project id = "app_example_bulk.null.45349005" name="app_example_bulk" />
+        <project id = "app_bulk_example.null.2609835" name="app_bulk_example" />
     </storageModule>
 </cproject>

@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <xpd>
     <components>
-        <component description = "An example vendor specific bulk example" type = "demoCode" scope = "General Use" path = "app_bulk_example" local = "false" id = "app_bulk_example" name = "Example Custom Class Bulk USB Device">
-            <componentDependency>module_xud</componentDependency>
+        <component description = "A demo custom class (vendor specific) USB device" type = "demoCode" scope = "General Use" path = "app_bulk_demo" local = "false" id = "app_bulk_demo" name = "Custom Class USB Device Demo">
+            <componentDependency>module_xmud</componentDependency>
             <componentDependency>module_logging</componentDependency>
             <componentDependency>module_usb_shared</componentDependency>
             <componentDependency>module_usb_device</componentDependency>
@@ -12,7 +12,7 @@
             <keyword>custom</keyword>
             <keyword>device</keyword>
         </component>
-        <component description = "An example HID class device - a mouse application." type = "demoCode" scope = "General Use" path = "app_hid_mouse_example" local = "false" id = "app_hid_mouse_example" name = "Example HID Class USB Device">
+        <component description = "A demo HID class USB device - a simple mouse" type = "demoCode" scope = "General Use" path = "app_hid_mouse_demo" local = "false" id = "app_hid_mouse_demo" name = "HID Class USB Device Demo">
             <componentDependency>module_usb_shared</componentDependency>
             <componentDependency>module_usb_tile_support</componentDependency>
             <componentDependency>module_logging</componentDependency>
@@ -32,18 +32,19 @@
         </component>
     </components>
     <dependency repo = "sc_xud">
-        <githash>66078939390de340cf795bd6f551456a11a72740</githash>
+        <githash>5464ad520df716a1752a0a4e45c94d65a610fd13</githash>
         <uri>git://git/apps/sc_xud</uri>
-        <version>1.0.0alpha2</version>
+        <version>1.0.0rc0</version>
     </dependency>
     <dependency repo = "sc_usb">
-        <githash>a04385760343826cb48a7e1f653d91f8fb6089de</githash>
+        <githash>fbf504b18f7a7d68a3bdefdf24def0fc65ff9acc</githash>
         <uri>git://git/apps/sc_usb</uri>
+        <version>1.0.0rc0</version>
     </dependency>
     <dependency repo = "sc_periph">
-        <githash>aac5278bcfba9e10632bf9aec413303d56360fb5</githash>
+        <githash>133fe49deb5ff1d277d8fc5f32ee0eade56cbd12</githash>
         <uri>git@github.com:xcore/sc_periph</uri>
-        <version>1.0.0beta4</version>
+        <version>1.0.0rc0</version>
     </dependency>
     <dependency repo = "sc_util">
         <githash>1ed35a50e2d9cc98fcff4c7cc3fb399385ec5d70</githash>
@@ -51,9 +52,10 @@
         <version>1.0.1rc0</version>
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
-    <docdir>app_hid_mouse_example/doc_quickstart</docdir>
-    <docdir>app_bulk_example/doc_quickstart</docdir>
+    <docdir>app_hid_mouse_demo/doc_quickstart</docdir>
+    <docdir>app_bulk_demo/doc_quickstart</docdir>
     <docdir>module_usb_device/doc_design_guide</docdir>
+    <exclude_dir>mass_storage</exclude_dir>
     <location>git://git/apps/sc_usb_device</location>
     <name>sc_usb_device</name>
     <maintainer>XMOS</maintainer>
@@ -64,7 +66,7 @@
     <release parenthash = "5f0897584fae189eb5ccb1257b902573c6305ab1" version = "1.0.0alpha3" githash = "11f182b8aa754f1f11589361b92549e6de31fa1c"></release>
     <release parenthash = "485f24511f8ab7f84b6e8987b9fd7dc17716799d" version = "1.0.0alpha4" githash = "67501aed9cf685809ed0ed3736843dc976ff5894"></release>
     <release parenthash = "0fffbde0a34ec2311c902dc30458642b2bf3030d" version = "1.0.0alpha5" githash = "703b998c0d05598c4d3aabf9ccea4858ec6da333"></release>
-    <release parenthash = "dd9a3c2ff2c210ad945ee8968dc910ff42afb4bc" version = "1.0.0alpha6"></release>
+    <release parenthash = "dd9a3c2ff2c210ad945ee8968dc910ff42afb4bc" version = "1.0.0alpha6" githash = "a28efbb13891a1e79dc4704e4dbb4945305ac589"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <xpd_version>1.0</xpd_version>

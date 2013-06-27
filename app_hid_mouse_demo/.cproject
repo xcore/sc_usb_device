@@ -156,7 +156,8 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.20098719" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -286,7 +287,8 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.70759873" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -422,7 +424,8 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -694,7 +697,8 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.3702751" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -824,7 +828,8 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.48775305" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -960,7 +965,8 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -1232,7 +1238,8 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.75592522" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -1362,7 +1369,8 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.18782025" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -1498,7 +1506,8 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -1770,7 +1779,8 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.7372224" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -1900,7 +1910,8 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.69732300" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -2036,7 +2047,8 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -2308,7 +2320,8 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.19050153" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -2438,7 +2451,8 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.15480249" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
@@ -2574,7 +2588,8 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_example}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />

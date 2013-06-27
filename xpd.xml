@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <xpd>
     <components>
-        <component description = "A demo custom class (vendor specific) USB device" type = "demoCode" scope = "General Use" path = "app_bulk_demo" local = "false" id = "app_bulk_demo" name = "Custom Class USB Device Demo">
-            <componentDependency>module_xmud</componentDependency>
+        <component description = "An example custom class USB device" type = "demoCode" scope = "General Use" path = "app_custom_demo" local = "false" id = "app_custom_demo" name = "Custom Class USB Device Demo">
+            <componentDependency>module_xud</componentDependency>
             <componentDependency>module_logging</componentDependency>
             <componentDependency>module_usb_shared</componentDependency>
             <componentDependency>module_usb_device</componentDependency>
@@ -12,7 +12,7 @@
             <keyword>custom</keyword>
             <keyword>device</keyword>
         </component>
-        <component description = "A demo HID class USB device - a simple mouse" type = "demoCode" scope = "General Use" path = "app_hid_mouse_demo" local = "false" id = "app_hid_mouse_demo" name = "HID Class USB Device Demo">
+        <component description = "An example HID class device - a mouse application." type = "demoCode" scope = "General Use" path = "app_hid_mouse_demo" local = "false" id = "app_hid_mouse_demo" name = "HID Class USB Device Demo">
             <componentDependency>module_usb_shared</componentDependency>
             <componentDependency>module_usb_tile_support</componentDependency>
             <componentDependency>module_logging</componentDependency>

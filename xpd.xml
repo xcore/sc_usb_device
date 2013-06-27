@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <xpd>
     <components>
-        <component description = "An example custom class USB device" type = "demoCode" scope = "General Use" path = "app_custom_demo" local = "false" id = "app_custom_demo" name = "Custom Class USB Device Demo">
+        <component description = "An example custom class USB device" type = "demoCode" scope = "General Use" path = "app_custom_bulk_demo" local = "false" id = "app_custom_bulk_demo" name = "Custom Class USB Device Demo">
             <componentDependency>module_xud</componentDependency>
             <componentDependency>module_logging</componentDependency>
             <componentDependency>module_usb_shared</componentDependency>
@@ -53,7 +53,7 @@
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
     <docdir>app_hid_mouse_demo/doc_quickstart</docdir>
-    <docdir>app_bulk_demo/doc_quickstart</docdir>
+    <docdir>app_custom_bulk_demo/doc_quickstart</docdir>
     <docdir>module_usb_device/doc_design_guide</docdir>
     <exclude_dir>mass_storage</exclude_dir>
     <location>git://git/apps/sc_usb_device</location>
@@ -67,7 +67,7 @@
     <release parenthash = "485f24511f8ab7f84b6e8987b9fd7dc17716799d" version = "1.0.0alpha4" githash = "67501aed9cf685809ed0ed3736843dc976ff5894"></release>
     <release parenthash = "0fffbde0a34ec2311c902dc30458642b2bf3030d" version = "1.0.0alpha5" githash = "703b998c0d05598c4d3aabf9ccea4858ec6da333"></release>
     <release parenthash = "dd9a3c2ff2c210ad945ee8968dc910ff42afb4bc" version = "1.0.0alpha6" githash = "a28efbb13891a1e79dc4704e4dbb4945305ac589"></release>
-    <release parenthash = "3f055f5bf3455bb51b7e2934c8481e3f6217606c" version = "1.0.0alpha7"></release>
+    <release parenthash = "3f055f5bf3455bb51b7e2934c8481e3f6217606c" version = "1.0.0alpha7" githash = "c3c436ed387229a32b51703b8bb468b430d70242"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <xpd_version>1.0</xpd_version>

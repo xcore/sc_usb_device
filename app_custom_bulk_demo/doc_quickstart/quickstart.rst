@@ -39,7 +39,7 @@ Import and Build the Application
       of the window and drag it into the Project Explorer window in the xTIMEcomposer.
       This will also cause the modules on which this application depends (in this case,
       module_usb_device, module_xud, module_usb) to be imported as well. 
-   #. Click on the ``app_custom_demo`` item in the Explorer pane then click on the
+   #. Click on the ``app_custom_bulk_demo`` item in the Explorer pane then click on the
       build icon (hammer) in xTIMEcomposer. Check the console window to verify that the
       application has built successfully.
 
@@ -63,9 +63,13 @@ into the xCORE multicore microcontroller.
    #. The application will now be running and the host PC should detect a new USB device
       called ``XMOS Custom Bulk Transfer Device``.
    #. Run the ``bulktest`` binary from the relevant ``host/`` subfolder. This will measure
-      the USB transfer rate of the custom device. *Note* that the transfer rate will vary
-      drastically between hosts and operating systems.
+      the USB transfer rate of the custom device. 
    #. Terminating the application will cause the USB device to be removed.
+
+*Note:* on Mac OSX it is necessary to source the ``host/OSX/setup.sh`` before running
+``bulktest``.
+
+*Note:* the transfer rate will vary drastically between hosts and operating systems.
 
 Next Steps
 ++++++++++

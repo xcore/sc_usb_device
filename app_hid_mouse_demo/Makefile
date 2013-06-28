@@ -39,7 +39,7 @@ XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
 INCLUDE_ONLY_IN_l_noadc = 
 
 # The USED_MODULES variable lists other module used by the application. 
-USED_MODULES = module_usb_shared module_usb_device module_xud module_usb_tile_support module_logging module_xassert
+USED_MODULES = module_usb_shared module_usb_device module_xud module_usb_tile_support
 
 ifeq ($(CONFIG), u8_adc) 
 	TARGET= xp-skc-su1.xn 

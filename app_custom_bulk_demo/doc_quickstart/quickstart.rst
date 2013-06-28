@@ -1,5 +1,5 @@
-USB Custom Class Device Demo
-============================
+USB Custom Class Device Demo Quick Start
+========================================
 
 app_custom_demo Quick Start Guide
 ---------------------------------
@@ -17,10 +17,12 @@ Hardware Setup
 
 To setup the hardware (:ref:`custom_demo_hardware_setup`):
 
-    #. Connect the XA-SK-USB-AB Slice Card to slot marked ``USB`` on the XP-SKC-U16 Slicekit Core Board.
-    #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 Slicekit core board (via the supplied adaptor board).
+    #. Connect the XA-SK-USB-AB Slice Card to slot marked ``USB`` on
+       the XP-SKC-U16 Slicekit Core Board.
+    #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 Slicekit
+       Core Board (via the supplied adaptor board).
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired).
-    #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core board.
+    #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core Board.
     #. Connect the USB connector on the XP-SKC-U16 Slicekit Core Board to the host PC.
 
 .. _custom_demo_hardware_setup:
@@ -38,18 +40,24 @@ Import and Build the Application
    #. Locate the ``Custom Class USB Device Demo`` item in the xSOFTip pane on the bottom left
       of the window and drag it into the Project Explorer window in the xTIMEcomposer.
       This will also cause the modules on which this application depends (in this case,
-      module_usb_device, module_xud, module_usb) to be imported as well. 
+      module_usb_device, module_xud, module_usb_shared) to be imported as well. 
+   #. *Note:* if the ``app_hid_mouse_demo`` has already been imported then a warning will
+      be displayed that some components already exist and will be overwritten. Unless
+      you have other projects in your workspace you can simply press ``Yes``. If you do
+      have other projects you don't want to overwrite then click ``No`` and change
+      workspace first (File->Switch Workspace).
    #. Click on the ``app_custom_bulk_demo`` item in the Explorer pane then click on the
       build icon (hammer) in xTIMEcomposer. Check the console window to verify that the
       application has built successfully.
 
-Note that the Developer Column in the xTIMEcomposer on the right hand side of your screen
+*Note:* the Developer Column in the xTIMEcomposer on the right hand side of your screen
 provides information on the xSOFTip components you are using. Select the module_xud
 component in the Project Explorer, and you will see its description together with API
 documentation. Having done this, click the ``back`` icon until you return to this
 quickstart guide within the Developer Column.
 
-For help in using xTIMEcomposer, try the xTIMEcomposer tutorial (See Help->Tutorials in xTIMEcomposer).
+For help in using xTIMEcomposer, try the xTIMEcomposer tutorial
+(see Help->Tutorials in xTIMEcomposer).
 
 Run the Application
 +++++++++++++++++++

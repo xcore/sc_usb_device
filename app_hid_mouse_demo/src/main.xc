@@ -58,11 +58,13 @@ unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 #ifdef ADC
 
 #ifdef U16
-#define BITS 3
-#define DEAD_ZONE 2
+#define BITS 5          // Overall precision
+#define DEAD_ZONE 2     // Ensure that the mouse is stable when the joystick is not used
+#define SENSITIVITY 1   // Sensitivity range 0 - 9
 #else
-#define BITS 8
-#define DEAD_ZONE 0
+#define BITS 8          // Overall precision
+#define DEAD_ZONE 0     // Ensure that the mouse is stable when the joystick is not used
+#define SENSITIVITY 0   // Sensitivity range 0 - 9
 #endif
 
 #define SHIFT  (32 - BITS)
@@ -124,17 +126,17 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
         /* Move horizontal axis of pointer based on ADC val (absolute) */
         x = ((x>>SHIFT) & MASK) - OFFSET - initialX;
         if (x > DEAD_ZONE)
-            g_reportBuffer[1] = x - DEAD_ZONE;
+            g_reportBuffer[1] = (x - DEAD_ZONE)/(10 - SENSITIVITY);
         else if (x < -DEAD_ZONE)
-            g_reportBuffer[1] = x + DEAD_ZONE;
+            g_reportBuffer[1] = (x + DEAD_ZONE)/(10 - SENSITIVITY);
 
 #ifdef U16
         /* Move vertical axis of pointer based on ADC val (absolute) */
         y = ((y>>SHIFT) & MASK) - OFFSET - initialY;
         if (y > DEAD_ZONE)
-            g_reportBuffer[2] = y - DEAD_ZONE;
+            g_reportBuffer[2] = (y - DEAD_ZONE)/(10 - SENSITIVITY);
         else if (y < -DEAD_ZONE)
-            g_reportBuffer[2] = y + DEAD_ZONE;
+            g_reportBuffer[2] = (y + DEAD_ZONE)/(10 - SENSITIVITY);
 #endif
 
         /* Send the buffer off to the host.  Note this will return when complete */
@@ -216,7 +218,6 @@ int main()
 {
     chan c_ep_out[XUD_EP_COUNT_OUT], c_ep_in[XUD_EP_COUNT_IN];
 #ifdef TEST_MODE_SUPPORT
-#warning Building with USB test mode support     
     chan c_usb_test;
 #else
 #define c_usb_test null

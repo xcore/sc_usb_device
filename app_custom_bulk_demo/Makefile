@@ -19,7 +19,7 @@ INCLUDE_DIRS = src/*
 # If the variable XCC_MAP_FLAGS is set it overrides the flags passed to 
 # xcc for the final link (mapping) stage.
 
-BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT
+BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT -Xmapper --wno226
 
 #U8
 XCC_FLAGS_u8 = $(BUILD_FLAGS)

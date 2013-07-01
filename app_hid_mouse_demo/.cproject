@@ -156,25 +156,33 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.26570481" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -287,25 +295,33 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.49717294" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -424,25 +440,33 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -697,25 +721,33 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.29190478" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -828,25 +860,33 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.9467411" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -965,25 +1005,33 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -1238,25 +1286,33 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.24476295" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -1369,25 +1425,33 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.3857677" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -1506,25 +1570,33 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -1779,25 +1851,33 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.80264637" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -1910,25 +1990,33 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.23253107" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -2047,25 +2135,33 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -2320,25 +2416,33 @@
 								<option id = "com.xmos.xc.compiler.option.include.paths.75145174" name="com.xmos.xc.compiler.option.include.paths" superClass="com.xmos.xc.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -2451,25 +2555,33 @@
 								<option id = "com.xmos.c.compiler.option.include.paths.18401028" name="com.xmos.c.compiler.option.include.paths" superClass="com.xmos.c.compiler.option.include.paths" valueType="includePath">
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>
@@ -2588,25 +2700,33 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
-                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
+                                    <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/included}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/include/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/lib/xs1b}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib/xs1b}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/export/module_xud/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/libsrc/glx_support}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/lib}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_logging/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/app_hid_mouse_demo/src}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xassert}&quot;' />
-<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_tile_support/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
 
 								</option>

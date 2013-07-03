@@ -66,10 +66,8 @@ Due to I/O timing requirements, the library requires a guaranteed MIPS rate to
 ensure correct operation. This means that core count restrictions must
 be observed. The XUD core must run at at least 80 MIPS.
 
-This means that for an xCORE device running at 400MHz there should be no more
-than five cores executing at any time when using the XUD. For
-a 500MHz device no more than six cores shall execute at any one time
-when using the XUD.
+This means that for an xCORE device running at 500MHz no more than six
+cores shall execute at any one time when using the XUD.
 
 This restriction is only a requirement on the tile on which the XUD is running. 
 For example, a different tile on an L16 device is unaffected by this restriction.

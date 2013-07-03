@@ -5,31 +5,35 @@
 
 #include <xs1.h>
 
-#define BCD_DEVICE   0x1000
-#define VENDOR_ID    0x20B1
-#define PRODUCT_ID   0x00B1
+#define BCD_DEVICE              0x1000
+#define VENDOR_ID               0x20B1
+#define PRODUCT_ID              0x00B1
+#define MANUFACTURER_STR_INDEX  0x0001
+#define PRODUCT_STR_INDEX       0x0002
+
+#include "null_descs.h" 
 
 /* Device Descriptor */
 static unsigned char devDesc[] = 
 { 
-    0x12,                  /* 0  bLength */
-    USB_DEVICE,            /* 1  bdescriptorType */ 
-    0x00,                  /* 2  bcdUSB */ 
-    0x02,                  /* 3  bcdUSB */ 
-    0xFF,                  /* 4  bDeviceClass */ 
-    0xFF,                  /* 5  bDeviceSubClass */ 
-    0xFF,                  /* 6  bDeviceProtocol */ 
-    0x40,                  /* 7  bMaxPacketSize */ 
-    (VENDOR_ID & 0xFF),    /* 8  idVendor */ 
-    (VENDOR_ID >> 8),      /* 9  idVendor */ 
-    (PRODUCT_ID & 0xFF),   /* 10 idProduct */ 
-    (PRODUCT_ID >> 8),     /* 11 idProduct */ 
-    (BCD_DEVICE & 0xFF),   /* 12 bcdDevice */
-    (BCD_DEVICE >> 8),     /* 13 bcdDevice */
-    0x01,                  /* 14 iManufacturer */
-    0x02,                  /* 15 iProduct */
-    0x00,                  /* 16 iSerialNumber */
-    0x01                   /* 17 bNumConfigurations */
+    0x12,                   /* 0  bLength */
+    USB_DEVICE,             /* 1  bdescriptorType */ 
+    0x00,                   /* 2  bcdUSB */ 
+    0x02,                   /* 3  bcdUSB */ 
+    0xFF,                   /* 4  bDeviceClass */ 
+    0xFF,                   /* 5  bDeviceSubClass */ 
+    0xFF,                   /* 6  bDeviceProtocol */ 
+    0x40,                   /* 7  bMaxPacketSize */ 
+    (VENDOR_ID & 0xFF),     /* 8  idVendor */ 
+    (VENDOR_ID >> 8),       /* 9  idVendor */ 
+    (PRODUCT_ID & 0xFF),    /* 10 idProduct */ 
+    (PRODUCT_ID >> 8),      /* 11 idProduct */ 
+    (BCD_DEVICE & 0xFF),    /* 12 bcdDevice */
+    (BCD_DEVICE >> 8),      /* 13 bcdDevice */
+    MANUFACTURER_STR_INDEX, /* 14 iManufacturer */
+    PRODUCT_STR_INDEX,      /* 15 iProduct */
+    0x00,                   /* 16 iSerialNumber */
+    0x01                    /* 17 bNumConfigurations */
 };
 
 
@@ -60,7 +64,7 @@ static unsigned char cfgDesc[] = {
   0x02,                 /* 3  bmAttributes */ 
   0x00,                 /* 4  wMaxPacketSize */ 
   0x02,                 /* 5  wMaxPacketSize */ 
-  0x01,                  /* 6  bInterval */ 
+  0x01,                 /* 6  bInterval */ 
   
   0x07,                 /* 0  bLength */ 
   0x05,                 /* 1  bDescriptorType */ 
@@ -74,10 +78,10 @@ static unsigned char cfgDesc[] = {
 /* String table */
 static unsigned char stringDescriptors[][40] = 
 {
-    "\\004\\009",                              // Language string
+    "  ",                                      // Language string
     "XMOS",                                    // iManufacturer 
     "XMOS Custom Bulk Transfer Device",        // iProduct
-    "",                                        // unUsed
+    "Custom Interface",                        // iInterface
     "Config",                                  // iConfiguration
 };
 
@@ -88,6 +92,10 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     XUD_BusSpeed usbBusSpeed;
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
+
+    // Set language string to US English
+    stringDescriptors[0][0] = 0x9;
+    stringDescriptors[0][1] = 0x4;
     
     while(1)
     {
@@ -115,8 +123,9 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
              *         -1 of USB Reset */
             retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc,
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
-                        null, 0, null, 0, stringDescriptors, sp,
-                        c_usb_test, usbBusSpeed);
+                        devDesc_Null, sizeof(devDesc_Null),
+                        cfgDesc_Null, sizeof(cfgDesc_Null),
+                        stringDescriptors, sp, c_usb_test, usbBusSpeed);
         }
 
         /* USB bus reset detected, reset EP and get new bus speed */

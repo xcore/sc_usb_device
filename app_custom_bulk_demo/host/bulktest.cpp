@@ -19,12 +19,11 @@ static usb_dev_handle *devh = NULL;
 static int find_xmos_bulk_device(unsigned int id) {
   struct usb_bus *bus;
   struct usb_device *dev;
-  int found = 0;
 
-  for (bus = usb_get_busses(); bus; bus = bus->next) {
+  for (bus = usb_get_busses(); bus && !devh; bus = bus->next) {
     for (dev = bus->devices; dev; dev = dev->next) {
-      if (dev->descriptor.idVendor == XMOS_BULK_VID && dev->descriptor.idProduct == XMOS_BULK_PID) {
-        if (found == id) {
+      if ((dev->descriptor.idVendor == XMOS_BULK_VID) &&
+              (dev->descriptor.idProduct == XMOS_BULK_PID)) {
           devh = usb_open(dev);
           break;
         }

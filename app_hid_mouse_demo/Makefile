@@ -19,19 +19,19 @@ APP_NAME = app_hid_mouse_demo
 BUILD_FLAGS = -Wall -O3 -report -fsubword-select -DTEST_MODE_SUPPORT -Xmapper --wno226
 
 # U series using ADC
-XCC_FLAGS_u8_adc = $(BUILD_FLAGS) -DADC=1
+XCC_FLAGS_u8_adc = $(BUILD_FLAGS) -DADC=1 -DUSE_XSCOPE=1 -fxscope
 INCLUDE_ONLY_IN_u8_adc = 
 
 #U series not using ADC
-XCC_FLAGS_u8_noadc = $(BUILD_FLAGS)
+XCC_FLAGS_u8_noadc = $(BUILD_FLAGS) -DUSE_XSCOPE=1 -fxscope 
 INCLUDE_ONLY_IN_u8_noadc = 
 
 # U16 series using ADC
-XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1 -DU16=1
+XCC_FLAGS_u16_adc = $(BUILD_FLAGS) -DADC=1 -DU16=1 -DUSE_XSCOPE=1 -fxscope 
 INCLUDE_ONLY_IN_u16_adc = 
 
 # U16 series not using ADC
-XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DU16=1
+XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DU16=1 -DUSE_XSCOPE=1 -fxscope 
 INCLUDE_ONLY_IN_u16_noadc = 
 
 # L series not using ADC (it has no ADC)
@@ -39,7 +39,7 @@ XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
 INCLUDE_ONLY_IN_l_noadc = 
 
 # The USED_MODULES variable lists other module used by the application. 
-USED_MODULES = module_usb_shared module_usb_device module_xud module_usb_tile_support
+USED_MODULES = module_usb_shared module_usb_device module_xud module_usb_tile_support module_logging
 
 ifeq ($(CONFIG), u8_adc) 
 	TARGET= xp-skc-su1.xn 

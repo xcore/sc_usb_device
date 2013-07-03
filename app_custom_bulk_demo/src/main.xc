@@ -13,11 +13,20 @@
  *
  **/ 
 
+#include "custom_bulk_demo.h"
+#include "xud.h"
+#include "usb.h"
+#include "debug_print.h"
+
 #include <platform.h>
 #include <stdio.h>
 
-#include "xud.h"
-#include "usb.h"
+#if (USE_XSCOPE == 1)
+void xscope_user_init(void) {
+    xscope_register(0, 0, "", 0, "");
+    xscope_config_io(XSCOPE_IO_BASIC);
+}
+#endif
 
 #define XUD_EP_COUNT_OUT   2
 #define XUD_EP_COUNT_IN    2
@@ -53,7 +62,7 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
     while(1) 
     {
         host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]));
-        if (host_transfer_length < 0) {
+        if(host_transfer_length < 0) {
             XUD_ResetEndpoint(ep_from_host, ep_to_host);
             continue;
         }
@@ -62,7 +71,7 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
             host_transfer_buf[i]++;
 
         host_transfer_length = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length);
-        if (host_transfer_length < 0)
+        if(host_transfer_length < 0)
             XUD_ResetEndpoint(ep_from_host, ep_to_host);
     }
 }
@@ -80,7 +89,7 @@ int main()
     {
         on USB_TILE: XUD_Manager(c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                    null, epTypeTableOut, epTypeTableIn,
-                                   p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, null); 
+                                   p_usb_rst, clk_usb_rst, -1, XUD_SPEED_FS, null); 
 
         on USB_TILE: Endpoint0(c_ep_out[0], c_ep_in[0], null);
        

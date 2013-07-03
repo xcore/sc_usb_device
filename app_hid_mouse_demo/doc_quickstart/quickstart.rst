@@ -14,7 +14,7 @@ The application provides:
     * The mouse is controlled by the joystick on the Mixed Signal Slice.
 
 Hardware Setup
-++++++++++++++
+--------------
 
 To setup the hardware (:ref:`hid_mouse_demo_hardware_setup`):
 
@@ -24,6 +24,7 @@ To setup the hardware (:ref:`hid_mouse_demo_hardware_setup`):
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired).
     #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core Board.
     #. Connect the USB B-type connector on the XP-SKC-USB-AB Slice Card to the host PC.
+    #. Switch the ``XLINK`` switch near the XTAG-2 connector to ``ON``.
 
 .. _hid_mouse_demo_hardware_setup:
 
@@ -34,7 +35,7 @@ To setup the hardware (:ref:`hid_mouse_demo_hardware_setup`):
    Hardware Setup for USB HID device example
 
 Import and Build the Application
-++++++++++++++++++++++++++++++++
+--------------------------------
 
    #. Open xTIMEcomposer and open the edit perspective (Window->Open Perspective->XMOS Edit).
    #. Locate the ``HID Class USB Device Demo`` item in the xSOFTip pane on the bottom left
@@ -62,7 +63,7 @@ For help in using xTIMEcomposer, try the xTIMEcomposer tutorial
 (see Help->Tutorials in xTIMEcomposer).
 
 Run the Application
-+++++++++++++++++++
+-------------------
 
 Now that the application has been compiled, the next step is to run it on the Slicekit Core
 Board using the tools to load the application over JTAG into the xCORE multicore microcontroller.
@@ -70,7 +71,8 @@ Board using the tools to load the application over JTAG into the xCORE multicore
    #. Click on the ``app_hid_mouse_demo`` item in the Project Explorer pane and then 
       click on the ``Run`` icon (the white arrow in the green circle). A dialog will appear
       asking which device to connect to. Select ``XMOS XTAG-2``.
-   #. The application will now be running and the host PC should detect a new USB device.
+   #. You should see ``Address allocated`` and the USB address that the host has allocated
+      to the device when the host has detected the device.
    #. Controlling the joystick on the Mixed Signal Slice Card should move the mouse of the
       host machine.
    #. Terminating the application will cause the USB device to be removed.
@@ -86,7 +88,22 @@ If the run dialog does not appear and let you select the XTAG then do the follow
    #. Click the ``Run`` button on the bottom right of the dialog window.
 
 Next Steps
-++++++++++
+----------
 
+   #. Open ``app_hid_mouse_demo/src/main.xc`` and look at the ``main()`` function.
+      You will see that there are three parallel tasks running; ``XUD_Manager``,
+      ``Endpoint0`` and ``hid_mouse``. The first two are common to any USB device
+      application and the ``hid_mouse`` is the core of the application.
+   #. There are two implementations of the ``hid_mouse`` function, one for use with
+      the joystick which uses the ADC and one for use when no Mixed Signal Slice is
+      available.
+   #. If you look at the first implementation of ``hid_mouse`` you will see the
+      configuration of the ADC. For the U16 board it uses two ADCs, one for each
+      axis. The main loop then reads ADC values, which are 32-bit values of which
+      the 12 most significant bits contain the ADC reading. The ``x`` and ``y``
+      values are scaled and used only if they are outside of a dead zone. Try changing
+      the ``SENSITIVITY`` define from ``1`` to ``9``.
+   #. Open ``app_custom_bulk_demo/src/endpoint0.xc``. You will see the device descriptors
+      which configure the USB device.
    #. Take a look at the USB Bulk Device Demo application.
 

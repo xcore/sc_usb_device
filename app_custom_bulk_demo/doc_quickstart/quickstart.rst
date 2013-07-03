@@ -15,7 +15,7 @@ The application provides:
       widely between hosts and operating systems.
 
 Hardware Setup
-++++++++++++++
+--------------
 
 To setup the hardware (:ref:`custom_bulk_demo_hardware_setup`):
 
@@ -26,6 +26,7 @@ To setup the hardware (:ref:`custom_bulk_demo_hardware_setup`):
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired).
     #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core Board.
     #. Connect the USB B-type connector on the XP-SKC-USB-AB Slice Card to the host PC.
+    #. Switch the ``XLINK`` switch near the XTAG-2 connector to ``ON``.
 
 .. _custom_bulk_demo_hardware_setup:
 
@@ -36,7 +37,7 @@ To setup the hardware (:ref:`custom_bulk_demo_hardware_setup`):
    Hardware Setup for USB Custom Class device demo
 
 Import and Build the Application
-++++++++++++++++++++++++++++++++
+--------------------------------
 
    #. Open xTIMEcomposer and open the edit perspective (Window->Open Perspective->XMOS Edit).
    #. Locate the ``Custom Class USB Device Demo`` item in the xSOFTip pane on the bottom left
@@ -63,7 +64,7 @@ For help in using xTIMEcomposer, try the xTIMEcomposer tutorial
 (see Help->Tutorials in xTIMEcomposer).
 
 Run the Application
-+++++++++++++++++++
+-------------------
 
 Now that the application has been compiled, the next step is to run it on the Slicekit Core
 Board using the tools to load the application over JTAG into the xCORE multicore microcontroller.
@@ -71,12 +72,9 @@ Board using the tools to load the application over JTAG into the xCORE multicore
    #. Click on the ``app_custom_bulk_demo`` item in the Project Explorer pane then click
       on the ``Run`` icon (the white arrow in the green circle). A dialog will appear
       asking which device to connect to. Select ``XMOS XTAG-2``.
-   #. The application will now be running and the host PC should detect a new USB device
-      called ``XMOS Custom Bulk Transfer Device``.
-   #. On Linux and MacOSX to source the relevant ``app_custom_bulk_demo/host/<OS>/setup.sh``.
-   #. Run the ``bulktest`` binary from the relevant ``host/`` subfolder. This will measure
-      the USB transfer rate of the custom device.
-   #. Terminating the application will cause the USB device to be removed.
+   #. You should see ``Address allocated`` and the USB address that the host has allocated
+      to the device when the host has detected the device. The device will be called
+      ``XMOS Custom Bulk Transfer Device``.
 
 If the run dialog does not appear and let you select the XTAG then do the following:
 
@@ -88,8 +86,50 @@ If the run dialog does not appear and let you select the XTAG then do the follow
    #. From the ``Target`` drop-down select the ``XMOS XTAG-2``.
    #. Click the ``Run`` button on the bottom right of the dialog window.
 
-Next Steps
-++++++++++
+Windows
++++++++
 
+   #. Windows will detect a USB device and attempt to install a driver for it but this will
+      fail.
+   #. Open the Device Manager (Start -> Control Panel -> Device Manager)
+   #. Locate the ``Unknown device`` under ``Other devices``.
+   #. Right click on it and select ``Update Driver Software`` and then select
+      ``Browse my computer for driver software`` and select the ``host/libusb/Win32``
+      folder.
+   #. The device should be installed and recognized as ``XMOS Simple Bulk Transfer Example``.
+   #. Run the ``bulktest`` binary from the relevant ``host/`` subfolder. This will measure
+      the USB transfer rate of the custom device.
+   #. Terminating the application will cause the USB device to be removed.
+
+Linux
++++++
+
+   #. On Linux source the relevant ``app_custom_bulk_demo/host/Linux[32|64]/setup.sh``.
+   #. Run the ``bulktest`` binary from the relevant ``app_custom_bulk_demo/host/Linux[32|64]/``
+      subfolder. This will measure the USB transfer rate of the custom device.
+      *Note: this must be run as administrator.*
+   #. Terminating the application will cause the USB device to be removed.
+
+MacOSX
+++++++
+
+   #. On MacOSX source ``app_custom_bulk_demo/host/OSX/setup.sh``.
+   #. Run the ``bulktest`` binary from ``app_custom_bulk_demo/host/OSX``. This will measure
+      the USB transfer rate of the custom device.
+   #. Terminating the application will cause the USB device to be removed.
+
+Next Steps
+----------
+
+   #. Open ``app_custom_bulk_demo/src/main.xc`` and look at the ``main()`` function.
+      You will see that there are three parallel tasks running; ``XUD_Manager``,
+      ``Endpoint0`` and ``bulk_endpoint``. The first two are common to any USB device
+      application and the ``bulk_endpoint`` is the core of the application.
+   #. Look at the ``bulk_endpoint`` function. It receives a buffer from the host using
+      ``XUD_GetBuffer``, increments the contents and then sends it back to the host
+      using ``XUD_SetBuffer``. It needs to ensure that if either function indicates
+      an error (returns < 0) then the endpoint is reset and the communication restarts.
+   #. Open ``app_custom_bulk_demo/src/endpoint0.xc``. You will see the device descriptors
+      which configure the USB device.
    #. Take a look at the USB HID Mouse Demo application.
 

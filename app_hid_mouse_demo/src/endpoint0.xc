@@ -2,9 +2,12 @@
  * @brief Implements endpoint zero for an example HID mouse device.
  */
 
-#include <xs1.h>
+#include "hid_mouse_demo.h"
 #include "usb_device.h"
 #include "hid.h"
+#include "debug_print.h"
+
+#include <xs1.h>
 
 #define BCD_DEVICE   0x1000
 #define VENDOR_ID    0x20B1
@@ -233,6 +236,20 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             bmRequestType = (sp.bmRequestType.Direction<<7) |
                             (sp.bmRequestType.Type<<5) |
                             (sp.bmRequestType.Recipient);
+
+            if(USE_XSCOPE)
+            {
+                /* Stick bmRequest type back together for an easier parse... */
+                unsigned bmRequestType = (sp.bmRequestType.Direction<<7) |
+                                         (sp.bmRequestType.Type<<5) |
+                                         (sp.bmRequestType.Recipient);
+
+                if ((bmRequestType == USB_BMREQ_H2D_STANDARD_DEV) &&
+                    (sp.bRequest == USB_SET_ADDRESS))
+                {
+                    debug_printf("Address allocated %d\n", sp.wValue);
+                }
+            }
     
             switch(bmRequestType)
             {

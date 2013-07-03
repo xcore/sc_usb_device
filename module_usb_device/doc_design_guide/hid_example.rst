@@ -4,10 +4,14 @@ Basic Example HS Device: USB HID device
 This section contains a full worked example of a HID device. Note, this
 is provided as a simple example, not a full HID Mouse reference design.
 
-The example code in this document is intended for XS1-U8 family processors.
-The code would be very similar for an XS1-L processor (with external ULPI
-transceiver), with only the declarations and call to ``XUD_Manager()`` being
-different.
+The example code in this document is intended for xCORE-USB (U-Series) devices.
+The code would be very similar for an xCORE General Purpose (L-Series) devices 
+with external ULPI transceiver, with only the declarations and call to
+``XUD_Manager()`` being different.
+
+The full source for this demo is released as the ``HID Class USB Device Demo``
+available through the XMOS xTIMEcomposer tool. The tool can be downloaded
+free from www.xmos.com.
 
 Declarations
 ------------
@@ -110,7 +114,7 @@ Note, this endpoint does not receive or check for status data. It always
 performs IN transactions.  Since it's behaviour is not modified based on
 bus speed the mouse cursor will move more slowly when connected via a
 full-speed port.  Ideally the device would either modify its required
-polling rate in its descriptors (`'bInterval`` in the endpoint descriptor)
+polling rate in its descriptors (``bInterval`` in the endpoint descriptor)
 or the counter value it is using in the ``hid_mouse()`` function. 
 
 Should processing take longer that the host IN polls, the ``XUD_Manager``
@@ -240,7 +244,6 @@ The complete code listing for the main endpoint 0 task is show below:
 .. literalinclude:: sc_usb_device/app_hid_mouse_demo/src/endpoint0.xc
     :start-after: /* Endpoint 0 Task
     :end-before: //:
-
 
 The skeleton ``HidInterfaceClassRequests()`` function deals with any
 outstanding HID requests. See the USB HID Specification for full request

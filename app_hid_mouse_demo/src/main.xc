@@ -13,11 +13,16 @@
  *
  **/ 
  
-#include <stdio.h>
-#include <xs1_su.h>
-
+#include "hid_mouse_demo.h"
 #include "xud.h"
 #include "usb.h"
+
+#if (USE_XSCOPE == 1)
+void xscope_user_init(void) {
+    xscope_register(0, 0, "", 0, "");
+    xscope_config_io(XSCOPE_IO_BASIC);
+}
+#endif
 
 #define XUD_EP_COUNT_OUT   1
 #define XUD_EP_COUNT_IN    2
@@ -49,6 +54,7 @@ unsigned char g_reportBuffer[] = {0, 0, 0, 0};
     #error NO ADC ON L-SERIES
   #endif
 
+  #include <xs1_su.h>
   #include "usb_tile_support.h"
 
   /* Port for ADC triggering */
@@ -60,12 +66,12 @@ unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 #ifdef U16
 #define BITS 5          // Overall precision
 #define DEAD_ZONE 2     // Ensure that the mouse is stable when the joystick is not used
-#define SENSITIVITY 1   // Sensitivity range 0 - 9
 #else
 #define BITS 8          // Overall precision
 #define DEAD_ZONE 0     // Ensure that the mouse is stable when the joystick is not used
-#define SENSITIVITY 0   // Sensitivity range 0 - 9
 #endif
+
+#define SENSITIVITY 1   // Sensitivity range 0 - 9
 
 #define SHIFT  (32 - BITS)
 #define MASK   ((1 << BITS) - 1)
@@ -78,9 +84,7 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
 {
     int initialDone = 0;
     int initialX = 0;
-#ifdef U16
     int initialY = 0;
-#endif
  
     /* Initialise the XUD endpoint */   
     XUD_ep ep_hid = XUD_InitEp(c_ep_hid);
@@ -88,73 +92,70 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
     /* Configure and enable the ADC in the U device */   
     adc_config_t adc_config = { { 0, 0, 0, 0, 0, 0, 0, 0 }, 0, 0, 0 };
 
-#ifdef U16
-    adc_config.input_enable[2] = 1;
-    adc_config.input_enable[3] = 1;
-    adc_config.samples_per_packet = 2;
-#else
-    adc_config.input_enable[0] = 1;
-    adc_config.samples_per_packet = 1;
-#endif
+    if (U16)
+    {
+        adc_config.input_enable[2] = 1;
+        adc_config.input_enable[3] = 1;
+        adc_config.samples_per_packet = 2;
+    }
+    else
+    {
+        adc_config.input_enable[0] = 1;
+        adc_config.samples_per_packet = 1;
+    }
     adc_config.bits_per_sample = ADC_32_BPS;
     adc_config.calibration_mode = 0;
 
     adc_enable(xs1_su_periph, c_adc, p_adc_trig, adc_config);
 
-    while(1) 
+    while (1) 
     {
         unsigned data[2];
         int x;
-#ifdef U16
         int y;
-#endif
 
         /* Initialise the HID report buffer */
         g_reportBuffer[1] = 0;
-#ifdef U16
         g_reportBuffer[2] = 0;
-#endif
 
         /* Get ADC input */
         adc_trigger_packet(p_adc_trig, adc_config);
         adc_read_packet(c_adc, adc_config, data);
         x = data[0];
-#ifdef U16
-        y = data[1];
-#endif
+        if (U16)
+            y = data[1];
 
         /* Move horizontal axis of pointer based on ADC val (absolute) */
-        x = ((x>>SHIFT) & MASK) - OFFSET - initialX;
+        x = ((x >> SHIFT) & MASK) - OFFSET - initialX;
         if (x > DEAD_ZONE)
             g_reportBuffer[1] = (x - DEAD_ZONE)/(10 - SENSITIVITY);
         else if (x < -DEAD_ZONE)
             g_reportBuffer[1] = (x + DEAD_ZONE)/(10 - SENSITIVITY);
 
-#ifdef U16
-        /* Move vertical axis of pointer based on ADC val (absolute) */
-        y = ((y>>SHIFT) & MASK) - OFFSET - initialY;
-        if (y > DEAD_ZONE)
-            g_reportBuffer[2] = (y - DEAD_ZONE)/(10 - SENSITIVITY);
-        else if (y < -DEAD_ZONE)
-            g_reportBuffer[2] = (y + DEAD_ZONE)/(10 - SENSITIVITY);
-#endif
+        if (U16)
+        {
+            /* Move vertical axis of pointer based on ADC val (absolute) */
+            y = ((y >> SHIFT) & MASK) - OFFSET - initialY;
+            if (y > DEAD_ZONE)
+                g_reportBuffer[2] = (y - DEAD_ZONE)/(10 - SENSITIVITY);
+            else if (y < -DEAD_ZONE)
+                g_reportBuffer[2] = (y + DEAD_ZONE)/(10 - SENSITIVITY);
+
+            /* Only do initial offset on U16 with relative mode */
+            if (!initialDone)
+            {
+                initialX = x;
+                initialY = y;
+                initialDone = 1;
+            }
+        }
 
         /* Send the buffer off to the host.  Note this will return when complete */
         XUD_SetBuffer(ep_hid, g_reportBuffer, 4);
-
-#ifdef U16
-        /* Only do initial offset on U16 with relative mode */
-        if (!initialDone)
-        {
-            initialX = x;
-            initialY = y;
-            initialDone = 1;
-        }
-#endif
     }
 }
 
-#else
+#else // ADC
 /*
  * This function responds to the HID requests - it draws a square using the mouse moving 40 pixels
  * in each direction in sequence every 100 requests.
@@ -166,7 +167,7 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
     
     XUD_ep ep_hid = XUD_InitEp(chan_ep_hid);
 
-    while(1) 
+    while (1) 
     {
         int x;
         g_reportBuffer[1] = 0;
@@ -174,28 +175,28 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 
         /* Move the pointer around in a square (relative) */
         counter++;
-        if(counter >= 500 ) 
+        if (counter >= 500) 
         {
             counter = 0;
-            if(state == 0) 
+            if (state == 0) 
             {
                 g_reportBuffer[1] = 40;
                 g_reportBuffer[2] = 0; 
                 state+=1;
             } 
-            else if(state == 1) 
+            else if (state == 1) 
             {
                 g_reportBuffer[1] = 0;
                 g_reportBuffer[2] = 40;
                 state+=1;
             } 
-            else if(state == 2) 
+            else if (state == 2) 
             {
                 g_reportBuffer[1] = -40;
                 g_reportBuffer[2] = 0; 
                 state+=1;
             } 
-            else if(state == 3) 
+            else if (state == 3) 
             {
                 g_reportBuffer[1] = 0;
                 g_reportBuffer[2] = -40;
@@ -207,7 +208,7 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
         XUD_SetBuffer(ep_hid, g_reportBuffer, 4);
     }
 }
-#endif
+#endif // ADC
 
 /*
  * The main function runs three cores: the XUD manager, Endpoint 0, and a HID endpoint. An array of

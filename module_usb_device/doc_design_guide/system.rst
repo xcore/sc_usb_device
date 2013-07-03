@@ -98,7 +98,7 @@ whether the endpoint wishes to be informed about bus-resets (see :ref:`xud_statu
 
 *Note:* endpoints can also be marked as disabled.
 
-Endpoints that are not used will ``NAK`` any traffic from the host.
+Traffic to Endpoints that are not in used will be ``NAKed``.
 
 .. _xud_status_reporting:
 

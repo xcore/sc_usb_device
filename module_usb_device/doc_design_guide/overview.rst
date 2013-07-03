@@ -62,7 +62,7 @@ to use another clock block.
 Core Speed
 ++++++++++
 
-Due to I/O requirements, the library requires a guaranteed MIPS rate to
+Due to I/O timing requirements, the library requires a guaranteed MIPS rate to
 ensure correct operation. This means that core count restrictions must
 be observed. The XUD core must run at at least 80 MIPS.
 

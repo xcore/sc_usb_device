@@ -56,9 +56,9 @@
   * \param     cfgDesc_hs Configuration descriptor
   * \param     cfgDescLength_hs Length of config descriptor in bytes
   * \param     devDesc_fs The Device descriptor to use, encoded according to the USB standard
-  * \param     devDescLength_fs Length of device descriptor in bytes
+  * \param     devDescLength_fs Length of device descriptor in bytes. If 0 the HS device descriptor is used.
   * \param     cfgDesc_fs Configuration descriptor
-  * \param     cfgDescLength_fs Length of config descriptor in bytes
+  * \param     cfgDescLength_fs Length of config descriptor in bytes. If 0 the HS config descriptor is used.
   * \param     strDescs
   * \param     sp ``USB_SetupPacket_t`` (passed by ref) in which the setup data is returned
   * \param     c_usb_test Optional channel param for USB test mode support

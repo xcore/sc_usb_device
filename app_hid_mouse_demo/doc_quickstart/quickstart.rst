@@ -18,8 +18,10 @@ Hardware Setup
 
 To setup the hardware (:ref:`hid_mouse_demo_hardware_setup`):
 
+    #. Connect the XA-SK-USB-AB Slice Card to slot marked ``U`` on the
+       XP-SKC-U16 Slicekit Core Board.
     #. Connect the XA-SK-MIXED SIGNAL Slice Card to the XP-SKC-U16 Slicekit Core Board
-       using the connector marked with the ``MIXED SIGNAL``. 
+       using the connector marked with the ``A``. 
     #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 Slicekit Core Board.
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired).
     #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core Board.

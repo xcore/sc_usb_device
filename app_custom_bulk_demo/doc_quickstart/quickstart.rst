@@ -19,8 +19,8 @@ Hardware Setup
 
 To setup the hardware (:ref:`custom_bulk_demo_hardware_setup`):
 
-    #. Connect the XA-SK-USB-AB Slice Card to slot marked ``USB`` on
-       the XP-SKC-U16 Slicekit Core Board.
+    #. Connect the XA-SK-USB-AB Slice Card to slot marked ``U`` on the
+       XP-SKC-U16 Slicekit Core Board.
     #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 Slicekit
        Core Board.
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired).
@@ -63,6 +63,27 @@ quickstart guide within the Developer Column.
 For help in using xTIMEcomposer, try the xTIMEcomposer tutorial
 (see Help->Tutorials in xTIMEcomposer).
 
+Windows driver
+--------------
+
+On Windows you must first install the USB driver before running the application.
+
+   #. Run ``host/libusb/Win32/dpinst64.exe`` (or ``dpinst32.exe`` on 32-bit systems).
+   #. When User Access Control asks whether you want to let the program make changes
+      to the computer, click ``Yes``.
+   #. A Device Driver Updater dialog will appear. Click ``Next`` and it will install
+      the driver.
+
+If this fails, then run the application so that the USB device is connected to the machine
+and then you can install the driver manually with the following steps:
+
+   #. Open the Device Manager (Start -> Control Panel -> Device Manager)
+   #. Locate the ``Unknown device`` under ``Other devices``.
+   #. Right click on it and select ``Update Driver Software`` and then select
+      ``Browse my computer for driver software`` and select the ``host/libusb/Win32/driver``
+      folder.
+   #. The device should be installed and recognized as ``XMOS Simple Bulk Transfer Example``.
+
 Run the Application
 -------------------
 
@@ -89,14 +110,9 @@ If the run dialog does not appear and let you select the XTAG then do the follow
 Windows
 +++++++
 
-   #. Windows will detect a USB device and attempt to install a driver for it but this will
-      fail.
-   #. Open the Device Manager (Start -> Control Panel -> Device Manager)
-   #. Locate the ``Unknown device`` under ``Other devices``.
-   #. Right click on it and select ``Update Driver Software`` and then select
-      ``Browse my computer for driver software`` and select the ``host/libusb/Win32``
-      folder.
-   #. The device should be installed and recognized as ``XMOS Simple Bulk Transfer Example``.
+   #. When the device runs Windows should detect the device and install the driver for it
+      as long as you pre-installed the driver as detailed above. Otherwise follow the
+      instructions above for manually installing the driver.
    #. Run the ``bulktest`` binary from the relevant ``host/`` subfolder. This will measure
       the USB transfer rate of the custom device.
    #. Terminating the application will cause the USB device to be removed.

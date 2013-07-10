@@ -4,15 +4,19 @@ USB Custom Class Device Demo Quick Start
 app_custom_bulk_demo Quick Start Guide
 --------------------------------------
 
-This application demonstrates how to create a USB 2.0 custom class device. It 
+This application demonstrates how to create a High Speed USB 2.0 Custom Class device. It 
 uses the XMOS U16 Slicekit Core Board (XP-SKC-U16).
 
-The application provides:
+The demonstration provides:
 
-    * A custom device which performs some data processing (increment data value).
+    * A custom device application which performs some data processing
+      (increment data value).
     * Host application code to send data to the USB device and receive processed data
       and time the data rate of the transfer. *Note:* the transfer rate will vary
-      widely between hosts and operating systems.
+      widely between hosts and operating systems. The theoretical maximum bandwidth
+      for 512-byte transfers is about 50MB/s, but in a real system this is likely
+      to be more like 1-10MB/s.
+    * A driver for Windows (none required for MacOSX/Linux).
 
 Hardware Setup
 --------------
@@ -68,6 +72,9 @@ Windows driver
 
 On Windows you must first install the USB driver before running the application.
 
+   #. The drier is included in the project directory, but cannot be run from within
+      the xTIMEcomposer so open a Windows Explorer and locate the
+      ``app_custom_bulk_demo/host`` in your workspace.
    #. Run ``host/libusb/Win32/dpinst64.exe`` (or ``dpinst32.exe`` on 32-bit systems).
    #. When User Access Control asks whether you want to let the program make changes
       to the computer, click ``Yes``.
@@ -83,6 +90,11 @@ and then you can install the driver manually with the following steps:
       ``Browse my computer for driver software`` and select the ``host/libusb/Win32/driver``
       folder.
    #. The device should be installed and recognized as ``XMOS Simple Bulk Transfer Example``.
+      
+MacOSX/Linux driver
+-------------------
+
+There is no need to install a driver on either MacOSX or Linux.
 
 Run the Application
 -------------------

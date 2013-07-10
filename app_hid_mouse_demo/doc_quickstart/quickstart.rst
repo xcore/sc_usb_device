@@ -4,14 +4,17 @@ HID Class USB Device Demo Quick Start Guide
 app_hid_mouse_demo Quick Start Guide
 ------------------------------------
 
-This application demonstrates how to create a USB 2.0 HID class device. It 
+This application demonstrates how to create a High Speed USB 2.0 HID class device. It 
 uses the XMOS U16 Slicekit Core Board (XP-SKC-U16) in conjunction with the Mixed
 Signal Slice Card (XA-SK-MIXED SIGNAL).
 
 The application provides:
 
-    * A USB HID-class device which provides a two-button mouse implementation.
+    * A USB HID-class device which provides a simple mouse implementation with no buttons.
     * The mouse is controlled by the joystick on the Mixed Signal Slice.
+
+*Note:* this application provides a standard USB HID Device and 
+as a result will not require drivers to run on Windows, Mac or Linux.
 
 Hardware Setup
 --------------

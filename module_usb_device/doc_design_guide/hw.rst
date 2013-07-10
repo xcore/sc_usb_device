@@ -1,17 +1,22 @@
 Evaluation Platforms
 ====================
 
+The XMOS USB Device Library supports both the xCORE-USB (U-Series) devices and the
+xCORE General Purpose (L-Series) devices. However, not all development kits support
+implementing USB devices.
+
 Recommended Hardware
 --------------------
 
 U16 Slicekit
 ++++++++++++
 
-The USB device library is best evaluated using the U16 Slicekit Modular Development Platform.
-The required boards are:
+The USB device capabilities are best evaluated using the U16 Slicekit Modular
+Development Platform. The required boards are:
 
     * ``XP-SKC-U16`` (Slicekit U16 Core Board) plus ``XA-SK-USB-AB`` (USB Slice)
-    * Optionally: ``XA-SK-MIXED SIGNAL`` (Mixed Signal Slice) for the HID Class USB Device Demo
+    * Optionally: ``XA-SK-MIXED SIGNAL`` (Mixed Signal Slice) for the HID
+      Class USB Device Demo
 
 Demonstration Applications
 --------------------------
@@ -27,8 +32,9 @@ This application demonstrates how to write a Human Interface Device (HID) Class 
 Custom Class USB Device Demo
 ++++++++++++++++++++++++++++
 
-This application demonstrates how to write a Custom Class USB Device and using bulk transfers.
-It provides both the xCORE application and the host drivers.
+This application demonstrates how to write a Custom Class USB Device using bulk transfers.
+It provides both the xCORE application, host application and Windows drivers (drivers not
+required on MacOSX and Linux).
 
     * Package: Custom Class USB Device Demo
     * Application: app_custom_bulk_demo

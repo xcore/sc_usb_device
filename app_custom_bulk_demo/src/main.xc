@@ -51,6 +51,11 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
 #endif
 
 #define BUFFER_SIZE 128
+/* A basic endpoint function that receives 512-byte packets of data, processes
+ * them and sends them back to the host. If at any point an error is detected
+ * (return value < 0) then the process needs to be started again so that
+ * both host and device stay in sync.
+ */
 void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host) 
 {
     int host_transfer_buf[BUFFER_SIZE];
@@ -61,15 +66,18 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
 
     while(1) 
     {
+        /* Receive a buffer (512-bytes) of data from the host */
         host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]));
         if(host_transfer_length < 0) {
             XUD_ResetEndpoint(ep_from_host, ep_to_host);
             continue;
         }
 
+        /* Perform basic processing (increment data) */
         for (int i = 0; i < host_transfer_length/4; i++)
             host_transfer_buf[i]++;
 
+        /* Send the modified buffer back to the host */
         host_transfer_length = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length);
         if(host_transfer_length < 0)
             XUD_ResetEndpoint(ep_from_host, ep_to_host);
@@ -77,9 +85,10 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
 }
 
 /*
- * The main function runs three tasks: the XUD manager, Endpoint 0, and bulk endpoint. An array of
- * channels is used for both IN and OUT endpoints, endpoint zero requires both, buly requires an IN 
- * and an OUT endpoint to receive and send a data buffer to the host.
+ * The main function runs three tasks: the XUD manager, Endpoint 0, and bulk
+ * endpoint. An array of channels is used for both IN and OUT endpoints,
+ * endpoint zero requires both, bulk endpoint requires an IN and an OUT endpoint
+ * to receive and send a data buffer to the host.
  */
 int main() 
 {

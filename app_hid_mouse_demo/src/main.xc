@@ -106,7 +106,7 @@ void hid_mouse(chanend c_ep_hid, chanend c_adc)
     adc_config.bits_per_sample = ADC_32_BPS;
     adc_config.calibration_mode = 0;
 
-    adc_enable(xs1_su_periph, c_adc, p_adc_trig, adc_config);
+    adc_enable(usb_tile, c_adc, p_adc_trig, adc_config);
 
     while (1) 
     {

@@ -102,22 +102,20 @@ Run the Application
 Now that the application has been compiled, the next step is to run it on the Slicekit Core
 Board using the tools to load the application over JTAG into the xCORE multicore microcontroller.
 
-   #. Click on the ``app_custom_bulk_demo`` item in the Project Explorer pane then click
-      on the ``Run`` icon (the white arrow in the green circle). A dialog will appear
-      asking which device to connect to. Select ``XMOS XTAG-2``.
-   #. You should see ``Address allocated`` and the USB address that the host has allocated
-      to the device when the host has detected the device. The device will be called
-      ``XMOS Custom Bulk Transfer Device``.
-
-If the run dialog does not appear and let you select the XTAG then do the following:
-
-   #. From the drop-down next to the ``Run`` icon select ``Run Configurations``.
+   #. Click on the ``app_custom_bulk_demo`` item in the Project Explorer pane and then
+      from the drop-down next to the ``Run`` icon (the white arrow in the green circle) 
+      select ``Run Configurations``.
    #. Select ``xCORE Application`` and press the ``New`` icon (white sheet 
       with small yellow ``+`` symbol in the corner).
    #. Ensure the Project is ``app_custom_bulk_demo`` and the Build configuration is
       ``u16``.
    #. From the ``Target`` drop-down select the ``XMOS XTAG-2``.
+   #. Select ``Run XScope output server`` to ensure that the output from the application
+      will be displayed in the console.
    #. Click the ``Run`` button on the bottom right of the dialog window.
+   #. You should see ``Address allocated`` and the USB address that the host has allocated
+      to the device when the host has detected the device. The device will be called
+      ``XMOS Custom Bulk Transfer Device``.
 
 Windows
 +++++++
@@ -150,12 +148,12 @@ Next Steps
 ----------
 
    #. Open ``app_custom_bulk_demo/src/main.xc`` and look at the ``main()`` function.
-      You will see that there are three parallel tasks running; ``XUD_Manager``,
-      ``Endpoint0`` and ``bulk_endpoint``. The first two are common to any USB device
-      application and the ``bulk_endpoint`` is the core of the application.
-   #. Look at the ``bulk_endpoint`` function. It receives a buffer from the host using
-      ``XUD_GetBuffer``, increments the contents and then sends it back to the host
-      using ``XUD_SetBuffer``. It needs to ensure that if either function indicates
+      You will see that there are three parallel tasks running; ``XUD_Manager()``,
+      ``Endpoint0()`` and ``bulk_endpoint()``. The first two are common to any USB device
+      application and the ``bulk_endpoint()`` is the core of the application.
+   #. Look at the ``bulk_endpoint()`` function. It receives a buffer from the host using
+      ``XUD_GetBuffer()``, increments the contents and then sends it back to the host
+      using ``XUD_SetBuffer()``. It needs to ensure that if either function indicates
       an error (returns < 0) then the endpoint is reset and the communication restarts.
    #. Open ``app_custom_bulk_demo/src/endpoint0.xc``. You will see the device descriptors
       which configure the USB device.

@@ -42,13 +42,13 @@
     </dependency>
     <dependency repo = "sc_periph">
         <githash>b7c1188208cd3cd1f4c8674cef34aa0cb9dd59fe</githash>
-        <uri>git@github.com:xcore/sc_periph</uri>
+        <uri>git://github.com/xcore/sc_periph</uri>
         <version>1.0.0rc1</version>
     </dependency>
     <dependency repo = "sc_util">
-        <githash>1ed35a50e2d9cc98fcff4c7cc3fb399385ec5d70</githash>
-        <uri>git@github.com:xcore/sc_util</uri>
-        <version>1.0.1rc0</version>
+        <githash>d0531d7c68ab67334582c324828e36d617baf8b3</githash>
+        <uri>git://github.com/xcore/sc_util</uri>
+        <version>1.0.3rc0</version>
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
     <docdir>app_hid_mouse_demo/doc_quickstart</docdir>
@@ -70,7 +70,7 @@
     <release parenthash = "77e69641a2dc0e68ccbf7a897f9df07e4aa368a8" version = "1.0.0alpha8" githash = "ae7a4af820f1d493f8c7d14beb141be71936396e"></release>
     <release parenthash = "91fb8c09f7915bdbc964bbbfc001b6263c5086f4" version = "1.0.0beta0" githash = "e71eb01df758aa35b042c43f157cbc7f276f769b"></release>
     <release parenthash = "bc4e8fc426e5ebd3c02ec46f71c0fbc6444cdc76" version = "1.0.0beta1" githash = "a351cd014a0c76e6b9f6ff0f819f2a34aebcb0e5"></release>
-    <release parenthash = "fc50774bd66825ca5bb4792820dbca1c656d930f" version = "1.0.0beta2"></release>
+    <release parenthash = "fc50774bd66825ca5bb4792820dbca1c656d930f" version = "1.0.0beta2" githash = "afc64ad15ee0e8918692f885430c752b27769b29"></release>
     <release parenthash = "be5e7076066e723dbaead4299ad49a90cf8f0c41" version = "1.0.0rc0" githash = "47e3160dbacacb8bfefcd47aad6c6134ef56b3d8"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>

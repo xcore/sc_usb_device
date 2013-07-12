@@ -74,35 +74,33 @@ Now that the application has been compiled, the next step is to run it on the Sl
 Board using the tools to load the application over JTAG into the xCORE multicore microcontroller.
 
    #. Click on the ``app_hid_mouse_demo`` item in the Project Explorer pane and then 
-      click on the ``Run`` icon (the white arrow in the green circle). A dialog will appear
-      asking which device to connect to. Select ``XMOS XTAG-2``.
+      from the drop-down next to the ``Run`` icon (the white arrow in the green circle)
+      select ``Run Configurations``.
+   #. Select ``xCORE Application`` and press the ``New`` icon (white sheet 
+      with small yellow ``+`` symbol in the corner).
+   #. Ensure the Project is ``app_hid_mouse_demo`` and the Build configuration is
+      ``u16_adc``.
+   #. From the ``Target`` drop-down select the ``XMOS XTAG-2``.
+   #. Select ``Run XScope output server`` to ensure that the output from the application
+      will be displayed in the console.
+   #. Click the ``Run`` button on the bottom right of the dialog window.
    #. You should see ``Address allocated`` and the USB address that the host has allocated
       to the device when the host has detected the device.
    #. Controlling the joystick on the Mixed Signal Slice Card should move the mouse of the
       host machine.
    #. Terminating the application will cause the USB device to be removed.
 
-If the run dialog does not appear and let you select the XTAG then do the following:
-
-   #. From the drop-down next to the ``Run`` icon select ``Run Configurations``.
-   #. Select ``xCORE Application`` and press the ``New`` icon (white sheet 
-      with small yellow ``+`` symbol in the corner).
-   #. Ensure the Project is ``app_hid_mouse_demo`` and the Build configuration is
-      ``u16_adc``.
-   #. From the ``Target`` drop-down select the ``XMOS XTAG-2``.
-   #. Click the ``Run`` button on the bottom right of the dialog window.
-
 Next Steps
 ----------
 
    #. Open ``app_hid_mouse_demo/src/main.xc`` and look at the ``main()`` function.
-      You will see that there are three parallel tasks running; ``XUD_Manager``,
-      ``Endpoint0`` and ``hid_mouse``. The first two are common to any USB device
-      application and the ``hid_mouse`` is the core of the application.
-   #. There are two implementations of the ``hid_mouse`` function, one for use with
+      You will see that there are three parallel tasks running; ``XUD_Manager()``,
+      ``Endpoint0()`` and ``hid_mouse()``. The first two are common to any USB device
+      application and the ``hid_mouse()`` is the core of the application.
+   #. There are two implementations of the ``hid_mouse()`` function, one for use with
       the joystick which uses the ADC and one for use when no Mixed Signal Slice is
       available.
-   #. If you look at the first implementation of ``hid_mouse`` you will see the
+   #. If you look at the first implementation of ``hid_mouse()`` you will see the
       configuration of the ADC. For the U16 board it uses two ADCs, one for each
       axis. The main loop then reads ADC values, which are 32-bit values of which
       the 12 most significant bits contain the ADC reading. The ``x`` and ``y``
@@ -111,4 +109,37 @@ Next Steps
    #. Open ``app_custom_bulk_demo/src/endpoint0.xc``. You will see the device descriptors
       which configure the USB device.
    #. Take a look at the USB Bulk Device Demo application.
+   #. Use the Light Dependent Resistor (LDR) on the Mixed Signal Slice to control the x-axis.
+      Open ``app_hid_mouse_demo/src/main.xc`` and look at first implementation of
+      ``hid_mouse()``. To change the x-axis to be controlled by the LDR change the
+      ADC input being used by changing:
+
+::
+
+   adc_config.input_enable[2] = 1;
+
+to:
+
+::
+
+   adc_config.input_enable[0] = 1;
+
+However, the LDR is not as sensitivie as the joystick, so it is good to also increase
+the number of bits of the ADC being used by changing:
+
+::
+
+   #ifdef U16
+   #define BITS 5          // Overall precision
+   
+to:
+
+::
+
+   #ifdef U16
+   #define BITS 8          // Overall precision
+
+As the application starts it calibrates itself so you should hold your hand
+about 5cm above the Mixed Signal Slice when you press ``Run``. Once it is
+running you should be able to cover/uncover the slice to control the x-axis.
 

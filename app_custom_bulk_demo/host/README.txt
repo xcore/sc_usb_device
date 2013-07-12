@@ -1,3 +1,14 @@
+Licensing
+---------
+
+libusb is written in C and licensed under the LGPL-2.1 (see COPYING).
+
+The host application is written by XMOS and covered by our Standard
+Software License (see ../../LICENSE.txt).
+
+Overview
+--------
+
 This simple host example demonstrates simple bulk transfer requests between
 the host processor and the XMOS device.
 

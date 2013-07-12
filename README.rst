@@ -38,6 +38,6 @@ Required software (dependencies)
 
   * sc_xud (git://git/apps/sc_xud)
   * sc_usb (git://git/apps/sc_usb)
-  * sc_periph (git@github.com:xcore/sc_periph)
-  * sc_util (git@github.com:xcore/sc_util)
+  * sc_periph (git://github.com/xcore/sc_periph)
+  * sc_util (git://github.com/xcore/sc_util)
 

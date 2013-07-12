@@ -159,7 +159,7 @@ static unsigned char hidReportDescriptor[] =
 int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
         USB_SetupPacket_t sp)
 {
-    unsigned char buffer[64];
+    unsigned buffer[64];
     unsigned tmp;
 
     switch(sp.bRequest)
@@ -170,10 +170,10 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
             /* Send a hid report - note the use of asm due to shared mem */
             asm("ldaw %0, dp[g_reportBuffer]": "=r"(tmp));
             asm("ldw %0, %1[0]": "=r"(tmp) : "r"(tmp));
-            (buffer, unsigned[])[0] = tmp;
+            buffer[0] = tmp;
 
             return XUD_DoGetRequest(c_ep0_out, c_ep0_in,
-                        buffer, 4, sp.wLength);
+                        (buffer, unsigned char []), 4, sp.wLength);
             break;
 
         case HID_GET_IDLE:

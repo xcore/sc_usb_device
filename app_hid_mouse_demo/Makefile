@@ -35,11 +35,11 @@ XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DU16=1 -DUSE_XSCOPE=1 -fxscope
 INCLUDE_ONLY_IN_u16_noadc = 
 
 # L8 series not using ADC (it has no ADC)
-XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
+XCC_FLAGS_l8_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
 INCLUDE_ONLY_IN_l8_noadc = 
 
 # L16 series not using ADC (it has no ADC)
-XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
+XCC_FLAGS_l16_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
 INCLUDE_ONLY_IN_l16_noadc = 
 
 # The USED_MODULES variable lists other module used by the application. 

@@ -1,14 +1,15 @@
-Shared USB Device Code
-======================
+xCORE-USB Device Library
+========================
 
 :scope: General Use
-:description: Shared USB device code
+:description: Library providing USB-device capabilities on xCORE-USB devices.
 :keywords: usb, endpoint
 
-Shared USB device code.
+The xCORE-USB Device Library provides support for creating USB devices on the
+xCORE-USB family of devices. There are two demonstration applications for using
+the library; a HID Class demo and a Custom Class demo.
 
-**Note:** if using this library on the L-Series the ``Makefile`` needs to be modified
-(see :ref:`usb_device_building_for_l_series`)
+The Design Guide for more information on using this library to create USB devices.
 
-See the design guide (:ref:`usb_device_design_guide`) for more information on creating
-USB devices.
+**Note:** this library can be used with the L-Series but the ``Makefile`` will
+need to be modified as described in the Design Guide.

@@ -1,6 +1,10 @@
 API
 ===
 
+The XMOS USB Device library is provided by ``module_xud`` and the
+USB Device Helper Functions are provided by ``module_usb_device``. The
+APIs of both of these modules are detailed in this section.
+
 module_xud
 ----------
 
@@ -23,10 +27,14 @@ module_xud
 
 .. doxygenfunction:: XUD_InitEp
 
+.. _sec_xud_get_buffer:
+
 ``XUD_GetBuffer()``
 ~~~~~~~~~~~~~~~~~~
 
 .. doxygenfunction:: XUD_GetBuffer
+
+.. _sec_xud_set_buffer:
 
 ``XUD_SetBuffer()``
 ~~~~~~~~~~~~~~~~~~~

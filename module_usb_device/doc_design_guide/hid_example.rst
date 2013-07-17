@@ -1,10 +1,10 @@
+.. _usb_device_hid_example:
+
 Basic Example HS Device: USB HID device
 =======================================
 
-This section contains a full worked example of a HID device. Note, this
-is provided as a simple example, not a full HID Mouse reference design.
-
-The example code in this document is intended for xCORE-USB (U-Series) devices.
+This section contains a full worked example of a High Speed USB 2.0 HID Class
+device. The example code in this document is intended for xCORE-USB (U-Series) devices.
 The code would be very similar for an xCORE General Purpose (L-Series) devices 
 with external ULPI transceiver, with only the declarations and call to
 ``XUD_Manager()`` being different.
@@ -62,7 +62,7 @@ parameter.  ``XUD_SPEED_HS`` is passed for the ``desiredSpeed`` parameter as we
 wish to run as a high-speed device.  Test mode support is not important for this
 example to ``null`` is also passed to the ``c_usb_testmode`` parameter.
 
-HID response function
+HID Response Function
 ---------------------
 
 This function responds to the HID requests—it draws a square using the
@@ -229,49 +229,9 @@ available for download on the usb.org website.
 
 The HID report descriptor for the HID mouse example is shown below:
 
-::
-
-   /* HID Report Descriptor */
-   static unsigned char hidReportDescriptor[] = 
-   {
-       0x05, 0x01,   // Usage page (desktop)
-       0x09, 0x02,   // Usage (mouse)
-       0xA1, 0x01,   // Collection (app)
-       0x05, 0x09,   // Usage page (buttons)
-       0x19, 0x01, 
-       0x29, 0x03,
-       0x15, 0x00,   // Logical min (0)
-       0x25, 0x01,   // Logical max (1)
-       0x95, 0x03,   // Report count (3)
-       0x75, 0x01,   // Report size (1)
-       0x81, 0x02,   // Input (Data, Absolute)
-       0x95, 0x01,   // Report count (1)
-       0x75, 0x05,   // Report size (5)
-       0x81, 0x03,   // Input (Absolute, Constant)
-       0x05, 0x01,   // Usage page (desktop)
-       0x09, 0x01,   // Usage (pointer)
-       0xA1, 0x00,   // Collection (phys)
-       0x09, 0x30,   // Usage (x)
-       0x09, 0x31,   // Usage (y)
-       0x15, 0x81,   // Logical min (-127)
-       0x25, 0x7F,   // Logical max (127)
-       0x75, 0x08,   // Report size (8)
-       0x95, 0x02,   // Report count (2)
-       0x81, 0x06,   // Input (Data, 0x06==Rel/0x02==Abs)
-       0xC0,         // End collection
-       0x09, 0x38,   // Usage (Wheel)
-       0x95, 0x01,   // Report count (1)
-       0x81, 0x02,   // Input (Data, Relative)
-       0x09, 0x3C,   // Usage (Motion Wakeup)
-       0x15, 0x00,   // Logical min (0)
-       0x25, 0x01,   // Logical max (1)
-       0x75, 0x01,   // Report size (1)
-       0x95, 0x01,   // Report count (1)
-       0xB1, 0x22,   // Feature (No preferred, Variable)
-       0x95, 0x07,   // Report count (7)
-       0xB1, 0x01,   // Feature (Constant)
-       0xC0          // End collection
-   };
+.. literalinclude:: sc_usb_device/app_hid_mouse_demo/src/endpoint0.xc
+    :start-after: /* HID Report Descriptor
+    :end-before: };
 
 The request for this descriptor (and the other required requests) should be
 implemented before making the call to ``USB_StandardRequests()``. The programmer

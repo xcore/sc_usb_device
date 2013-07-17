@@ -1,7 +1,7 @@
 sc_usb_device
 .............
 
-:Latest release: 1.0.0beta1
+:Latest release: 1.0.0rc0
 :Maintainer: XMOS
 :Description: Device-Class USB Modules and Applications
 
@@ -38,6 +38,6 @@ Required software (dependencies)
 
   * sc_xud (git://git/apps/sc_xud)
   * sc_usb (git://git/apps/sc_usb)
-  * sc_periph (git@github.com:xcore/sc_periph)
-  * sc_util (git@github.com:xcore/sc_util)
+  * sc_periph (git://github.com/xcore/sc_periph)
+  * sc_util (git://github.com/xcore/sc_util)
 

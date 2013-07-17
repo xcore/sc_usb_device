@@ -4,15 +4,19 @@ USB Custom Class Device Demo Quick Start
 app_custom_bulk_demo Quick Start Guide
 --------------------------------------
 
-This application demonstrates how to create a USB 2.0 custom class device. It 
+This application demonstrates how to create a High Speed USB 2.0 Custom Class device. It 
 uses the XMOS U16 Slicekit Core Board (XP-SKC-U16).
 
-The application provides:
+The demonstration provides:
 
-    * A custom device which performs some data processing (increment data value).
+    * A custom device application which performs some data processing
+      (increment data value).
     * Host application code to send data to the USB device and receive processed data
       and time the data rate of the transfer. *Note:* the transfer rate will vary
-      widely between hosts and operating systems.
+      widely between hosts and operating systems. The theoretical maximum bandwidth
+      for 512-byte transfers is about 50MB/s, but in a real system this is likely
+      to be more like 1-10MB/s.
+    * A driver for Windows (none required for MacOSX/Linux).
 
 Hardware Setup
 --------------
@@ -68,6 +72,9 @@ Windows driver
 
 On Windows you must first install the USB driver before running the application.
 
+   #. The drier is included in the project directory, but cannot be run from within
+      the xTIMEcomposer so open a Windows Explorer and locate the
+      ``app_custom_bulk_demo/host`` in your workspace.
    #. Run ``host/libusb/Win32/dpinst64.exe`` (or ``dpinst32.exe`` on 32-bit systems).
    #. When User Access Control asks whether you want to let the program make changes
       to the computer, click ``Yes``.
@@ -83,6 +90,11 @@ and then you can install the driver manually with the following steps:
       ``Browse my computer for driver software`` and select the ``host/libusb/Win32/driver``
       folder.
    #. The device should be installed and recognized as ``XMOS Simple Bulk Transfer Example``.
+      
+MacOSX/Linux driver
+-------------------
+
+There is no need to install a driver on either MacOSX or Linux.
 
 Run the Application
 -------------------
@@ -90,22 +102,20 @@ Run the Application
 Now that the application has been compiled, the next step is to run it on the Slicekit Core
 Board using the tools to load the application over JTAG into the xCORE multicore microcontroller.
 
-   #. Click on the ``app_custom_bulk_demo`` item in the Project Explorer pane then click
-      on the ``Run`` icon (the white arrow in the green circle). A dialog will appear
-      asking which device to connect to. Select ``XMOS XTAG-2``.
-   #. You should see ``Address allocated`` and the USB address that the host has allocated
-      to the device when the host has detected the device. The device will be called
-      ``XMOS Custom Bulk Transfer Device``.
-
-If the run dialog does not appear and let you select the XTAG then do the following:
-
-   #. From the drop-down next to the ``Run`` icon select ``Run Configurations``.
+   #. Click on the ``app_custom_bulk_demo`` item in the Project Explorer pane and then
+      from the drop-down next to the ``Run`` icon (the white arrow in the green circle) 
+      select ``Run Configurations``.
    #. Select ``xCORE Application`` and press the ``New`` icon (white sheet 
       with small yellow ``+`` symbol in the corner).
    #. Ensure the Project is ``app_custom_bulk_demo`` and the Build configuration is
       ``u16``.
    #. From the ``Target`` drop-down select the ``XMOS XTAG-2``.
+   #. Select ``Run XScope output server`` to ensure that the output from the application
+      will be displayed in the console.
    #. Click the ``Run`` button on the bottom right of the dialog window.
+   #. You should see ``Address allocated`` and the USB address that the host has allocated
+      to the device when the host has detected the device. The device will be called
+      ``XMOS Custom Bulk Transfer Device``.
 
 Windows
 +++++++
@@ -138,12 +148,12 @@ Next Steps
 ----------
 
    #. Open ``app_custom_bulk_demo/src/main.xc`` and look at the ``main()`` function.
-      You will see that there are three parallel tasks running; ``XUD_Manager``,
-      ``Endpoint0`` and ``bulk_endpoint``. The first two are common to any USB device
-      application and the ``bulk_endpoint`` is the core of the application.
-   #. Look at the ``bulk_endpoint`` function. It receives a buffer from the host using
-      ``XUD_GetBuffer``, increments the contents and then sends it back to the host
-      using ``XUD_SetBuffer``. It needs to ensure that if either function indicates
+      You will see that there are three parallel tasks running; ``XUD_Manager()``,
+      ``Endpoint0()`` and ``bulk_endpoint()``. The first two are common to any USB device
+      application and the ``bulk_endpoint()`` is the core of the application.
+   #. Look at the ``bulk_endpoint()`` function. It receives a buffer from the host using
+      ``XUD_GetBuffer()``, increments the contents and then sends it back to the host
+      using ``XUD_SetBuffer()``. It needs to ensure that if either function indicates
       an error (returns < 0) then the endpoint is reset and the communication restarts.
    #. Open ``app_custom_bulk_demo/src/endpoint0.xc``. You will see the device descriptors
       which configure the USB device.

@@ -9,6 +9,19 @@
 
 #include <xs1.h>
 
+/* Select the type of positional data sent from the device,
+ * either relative or absolute
+ */
+#ifdef ADC
+#ifdef U16
+  #define POSITION_TYPE 0x06   // Relative
+#else
+  #define POSITION_TYPE 0x02   // Absolute
+#endif
+#else
+  #define POSITION_TYPE 0x06   // Relative
+#endif
+
 #define BCD_DEVICE   0x1000
 #define VENDOR_ID    0x20B1
 #define PRODUCT_ID   0x1010
@@ -39,43 +52,43 @@ static unsigned char devDesc[] =
 
 /* Configuration Descriptor */
 static unsigned char cfgDesc[] = {  
-  0x09,                 /* 0  bLength */ 
-  0x02,                 /* 1  bDescriptortype */ 
-  0x22, 0x00,           /* 2  wTotalLength */ 
-  0x01,                 /* 4  bNumInterfaces */ 
-  0x01,                 /* 5  bConfigurationValue */
-  0x03,                 /* 6  iConfiguration */
-  0x80,                 /* 7  bmAttributes */ 
-  0xC8,                 /* 8  bMaxPower */
-  
-  0x09,                 /* 0  bLength */
-  0x04,                 /* 1  bDescriptorType */ 
-  0x00,                 /* 2  bInterfacecNumber */
-  0x00,                 /* 3  bAlternateSetting */
-  0x01,                 /* 4: bNumEndpoints */
-  0x03,                 /* 5: bInterfaceClass */ 
-  0x00,                 /* 6: bInterfaceSubClass */ 
-  0x02,                 /* 7: bInterfaceProtocol*/ 
-  0x00,                 /* 8  iInterface */ 
-  
-  0x09,                 /* 0  bLength. Note this is currently
-                              replicated in hidDescriptor[] below */ 
-  0x21,                 /* 1  bDescriptorType (HID) */ 
-  0x10,                 /* 2  bcdHID */ 
-  0x11,                 /* 3  bcdHID */ 
-  0x00,                 /* 4  bCountryCode */ 
-  0x01,                 /* 5  bNumDescriptors */ 
-  0x22,                 /* 6  bDescriptorType[0] (Report) */ 
-  0x48,                 /* 7  wDescriptorLength */ 
-  0x00,                 /* 8  wDescriptorLength */ 
-  
-  0x07,                 /* 0  bLength */ 
-  0x05,                 /* 1  bDescriptorType */ 
-  0x81,                 /* 2  bEndpointAddress */ 
-  0x03,                 /* 3  bmAttributes */ 
-  0x40,                 /* 4  wMaxPacketSize */ 
-  0x00,                 /* 5  wMaxPacketSize */ 
-  0x01                  /* 6  bInterval */ 
+    0x09,                 /* 0  bLength */ 
+    0x02,                 /* 1  bDescriptortype */ 
+    0x22, 0x00,           /* 2  wTotalLength */ 
+    0x01,                 /* 4  bNumInterfaces */ 
+    0x01,                 /* 5  bConfigurationValue */
+    0x03,                 /* 6  iConfiguration */
+    0x80,                 /* 7  bmAttributes */ 
+    0xC8,                 /* 8  bMaxPower */
+    
+    0x09,                 /* 0  bLength */
+    0x04,                 /* 1  bDescriptorType */ 
+    0x00,                 /* 2  bInterfacecNumber */
+    0x00,                 /* 3  bAlternateSetting */
+    0x01,                 /* 4: bNumEndpoints */
+    0x03,                 /* 5: bInterfaceClass */ 
+    0x00,                 /* 6: bInterfaceSubClass */ 
+    0x02,                 /* 7: bInterfaceProtocol*/ 
+    0x00,                 /* 8  iInterface */ 
+    
+    0x09,                 /* 0  bLength. Note this is currently
+                                replicated in hidDescriptor[] below */ 
+    0x21,                 /* 1  bDescriptorType (HID) */ 
+    0x10,                 /* 2  bcdHID */ 
+    0x11,                 /* 3  bcdHID */ 
+    0x00,                 /* 4  bCountryCode */ 
+    0x01,                 /* 5  bNumDescriptors */ 
+    0x22,                 /* 6  bDescriptorType[0] (Report) */ 
+    0x48,                 /* 7  wDescriptorLength */ 
+    0x00,                 /* 8  wDescriptorLength */ 
+    
+    0x07,                 /* 0  bLength */ 
+    0x05,                 /* 1  bDescriptorType */ 
+    0x81,                 /* 2  bEndpointAddress */ 
+    0x03,                 /* 3  bmAttributes */ 
+    0x40,                 /* 4  wMaxPacketSize */ 
+    0x00,                 /* 5  wMaxPacketSize */ 
+    0x01                  /* 6  bInterval */ 
 }; 
 
 static unsigned char hidDescriptor[] = 
@@ -103,58 +116,50 @@ static unsigned char stringDescriptors[][40] =
 /* HID Report Descriptor */
 static unsigned char hidReportDescriptor[] = 
 {
-    0x05, 0x01,   // Usage page (desktop)
-    0x09, 0x02,   // Usage (mouse)
-    0xA1, 0x01,   // Collection (app)
-    0x05, 0x09,   // Usage page (buttons)
+    0x05, 0x01,          // Usage page (desktop)
+    0x09, 0x02,          // Usage (mouse)
+    0xA1, 0x01,          // Collection (app)
+    0x05, 0x09,          // Usage page (buttons)
     0x19, 0x01, 
     0x29, 0x03,
-    0x15, 0x00,   // Logical min (0)
-    0x25, 0x01,   // Logical max (1)
-    0x95, 0x03,   // Report count (3)
-    0x75, 0x01,   // Report size (1)
-    0x81, 0x02,   // Input (Data, Absolute)
-    0x95, 0x01,   // Report count (1)
-    0x75, 0x05,   // Report size (5)
-    0x81, 0x03,   // Input (Absolute, Constant)
-    0x05, 0x01,   // Usage page (desktop)
-    0x09, 0x01,   // Usage (pointer)
-    0xA1, 0x00,   // Collection (phys)
-    0x09, 0x30,   // Usage (x)
-    0x09, 0x31,   // Usage (y)
-    0x15, 0x81,   // Logical min (-127)
-    0x25, 0x7F,   // Logical max (127)
-    0x75, 0x08,   // Report size (8)
-    0x95, 0x02,   // Report count (2)
-#ifdef ADC
-#ifdef U16
-    0x81, 0x06,   // Input (Data, Rel)
-#else
-    0x81, 0x02,   // Input (Data, Abs)
-#endif
-#else
-    0x81, 0x06,   // Input (Data, Rel)
-#endif
-    0xC0,         // End collection
-    0x09, 0x38,   // Usage (Wheel)
-    0x95, 0x01,   // Report count (1)
-    0x81, 0x02,   // Input (Data, Relative)
-    0x09, 0x3C,   // Usage (Motion Wakeup)
-    0x15, 0x00,   // Logical min (0)
-    0x25, 0x01,   // Logical max (1)
-    0x75, 0x01,   // Report size (1)
-    0x95, 0x01,   // Report count (1)
-    0xB1, 0x22,   // Feature (No preferred, Variable)
-    0x95, 0x07,   // Report count (7)
-    0xB1, 0x01,   // Feature (Constant)
-    0xC0          // End collection
+    0x15, 0x00,          // Logical min (0)
+    0x25, 0x01,          // Logical max (1)
+    0x95, 0x03,          // Report count (3)
+    0x75, 0x01,          // Report size (1)
+    0x81, 0x02,          // Input (Data, Absolute)
+    0x95, 0x01,          // Report count (1)
+    0x75, 0x05,          // Report size (5)
+    0x81, 0x03,          // Input (Absolute, Constant)
+    0x05, 0x01,          // Usage page (desktop)
+    0x09, 0x01,          // Usage (pointer)
+    0xA1, 0x00,          // Collection (phys)
+    0x09, 0x30,          // Usage (x)
+    0x09, 0x31,          // Usage (y)
+    0x15, 0x81,          // Logical min (-127)
+    0x25, 0x7F,          // Logical max (127)
+    0x75, 0x08,          // Report size (8)
+    0x95, 0x02,          // Report count (2)
+    0x81, POSITION_TYPE, // Input (Data, Rel=0x6, Abs=0x2)
+    0xC0,                // End collection
+    0x09, 0x38,          // Usage (Wheel)
+    0x95, 0x01,          // Report count (1)
+    0x81, 0x02,          // Input (Data, Relative)
+    0x09, 0x3C,          // Usage (Motion Wakeup)
+    0x15, 0x00,          // Logical min (0)
+    0x25, 0x01,          // Logical max (1)
+    0x75, 0x01,          // Report size (1)
+    0x95, 0x01,          // Report count (1)
+    0xB1, 0x22,          // Feature (No preferred, Variable)
+    0x95, 0x07,          // Report count (7)
+    0xB1, 0x01,          // Feature (Constant)
+    0xC0                 // End collection
 };
 
 /* HID Class Requests */
 int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
         USB_SetupPacket_t sp)
 {
-    unsigned char buffer[64];
+    unsigned buffer[64];
     unsigned tmp;
 
     switch(sp.bRequest)
@@ -165,10 +170,10 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
             /* Send a hid report - note the use of asm due to shared mem */
             asm("ldaw %0, dp[g_reportBuffer]": "=r"(tmp));
             asm("ldw %0, %1[0]": "=r"(tmp) : "r"(tmp));
-            (buffer, unsigned[])[0] = tmp;
+            buffer[0] = tmp;
 
             return XUD_DoGetRequest(c_ep0_out, c_ep0_in,
-                        buffer, 4, sp.wLength);
+                        (buffer, unsigned char []), 4, sp.wLength);
             break;
 
         case HID_GET_IDLE:

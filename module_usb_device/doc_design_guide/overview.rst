@@ -3,20 +3,21 @@
 Overview
 ========
 
-This document describes how to create an Endpoint 0 implementation
-and provides a worked example that uses the XUD library; a USB Human
-Interface Device (HID) Class compliant mouse.
+This document describes the XMOS USB Device Library, its API and provides a worked
+example of a USB Human Interface Device (HID) Class compliant mouse using the
+library. This library is aimed primarily for use with xCORE-USB (U-Series) 
+devices but it does also support L-Series devices (see :ref:`l_series_support`).
 
-This document assumes familiarity with the XMOS xCORE
-architecture, the Universal Serial Bus 2.0 Specification (and
-related specifications), the XMOS tool chain and XC language.
+This document assumes familiarity with the XMOS xCORE architecture, the Universal
+Serial Bus 2.0 Specification (and related specifications), the XMOS tool chain
+and XC language.
 
 Features
 ++++++++
 
    * Support for USB 2.0 full and high speed devices.
 
-Memory requirements
+Memory Requirements
 +++++++++++++++++++
 
 The approximate memory usage for the USB device library including the XUD
@@ -30,34 +31,28 @@ library is:
 | Program          | 12kB          |
 +------------------+---------------+
 
-Resource requirements
+Resource Requirements
 +++++++++++++++++++++
 
-The resources used by the USB device and XUD libraries combined are shown below:
+The resources used by the device application and libraries on the xCORE-USB
+are shown below:
 
-+------------------+-----------------+-----------------+
-|                  | U-Series        | L-Series        |
-+==================+=================+=================+
-| Logical Cores    | 2 plus one per  | 2 plus one per  |
-|                  | endpoint        | endpoint        |
-+------------------+-----------------+-----------------+
-| Channels         | 2 for Endpoint0 | 2 for Endpoint0 |
-|                  | and 1 additional| and 1 additional|
-|                  | per IN and OUT  | per IN and OUT  |
-|                  | endpoint        | endpoint        |
-+------------------+-----------------+-----------------+
-| Timers           | 4 timers        | 4 timers        |
-+------------------+-----------------+-----------------+
-| Clock blocks     | Clock blocks    | Clock block 0   |
-|                  | 4 and 5         |                 |
-+------------------+-----------------+-----------------+
-
-*Note:* On the L-Series the XUD library uses clock block 0 and configures it 
-to be clocked by the 60MHz clock from the ULPI transceiver. The ports it
-uses are in turn clocked from the clock block. Since clock block 0 is
-the default for all ports when enabled it is important that if a port
-is not required to be clocked from this 60MHz clock, then it is configured
-to use another clock block.
++------------------+-----------------+
+| Resource         | Requirements    |
++==================+=================+
+| Logical Cores    | 2 plus 1 per    |
+|                  | endpoint        |
++------------------+-----------------+
+| Channels         | 2 for Endpoint0 |
+|                  | and 1 additional|
+|                  | per IN and OUT  |
+|                  | endpoint        |
++------------------+-----------------+
+| Timers           | 4 timers        |
++------------------+-----------------+
+| Clock blocks     | Clock blocks    |
+|                  | 4 and 5         |
++------------------+-----------------+
 
 Core Speed
 ++++++++++
@@ -70,63 +65,10 @@ This means that for an xCORE device running at 500MHz no more than six
 cores shall execute at any one time when using the XUD.
 
 This restriction is only a requirement on the tile on which the XUD is running. 
-For example, a different tile on an L16 device is unaffected by this restriction.
+For example, a different tile on an U16 device is unaffected by this restriction.
 
 Ports/Pins
 ++++++++++
-
-L-Series
-........
-
-The ports used for the physical connection to the external ULPI transceiver must
-be connected as shown in :ref:`table_usb_device_ulpi_required_pin_port`.
-
-.. _table_usb_device_ulpi_required_pin_port:
-
-.. table:: L-Series required pin/port connections
-    :class: horizontal-borders vertical_borders
-
-    +-------+-------+------+-------+---------------------+
-    | Pin   | Port                 | Signal              |
-    |       +-------+------+-------+---------------------+
-    |       | 1b    | 4b   | 8b    |                     |
-    +=======+=======+======+=======+=====================+
-    | X0D12 | P1E0  |              | ULPI_STP            |
-    +-------+-------+------+-------+---------------------+
-    | X0D13 | P1F0  |              | ULPI_NXT            |
-    +-------+-------+------+-------+---------------------+
-    | X0D14 |       | P4C0 | P8B0  | ULPI_DATA[7:0]      |
-    +-------+       +------+-------+                     |
-    | X0D15 |       | P4C1 | P8B1  |                     |
-    +-------+       +------+-------+                     |
-    | X0D16 |       | P4D0 | P8B2  |                     |
-    +-------+       +------+-------+                     |
-    | X0D17 |       | P4D1 | P8B3  |                     |
-    +-------+       +------+-------+                     |
-    | X0D18 |       | P4D2 | P8B4  |                     |
-    +-------+       +------+-------+                     |
-    | X0D19 |       | P4D3 | P8B5  |                     |
-    +-------+       +------+-------+                     |
-    | X0D20 |       | P4C2 | P8B6  |                     |
-    +-------+       +------+-------+                     |
-    | X0D21 |       | P4C3 | P8B7  |                     |
-    +-------+-------+------+-------+---------------------+
-    | X0D22 | P1G0  |              | ULPI_DIR            |
-    +-------+-------+------+-------+---------------------+
-    | X0D23 | P1H0  |              | ULPI_CLK            |
-    +-------+-------+------+-------+---------------------+
-    | X0D24 | P1I0  |              | ULPI_RST_N          |
-    +-------+-------+------+-------+---------------------+
-
-In addition some ports are used internally when the XUD library is in
-operation. For example pins X0D2-X0D9, X0D26-X0D33 and X0D37-X0D43 on
-an XS1-L8-128 device should not be used. 
-
-Please refer to the device datasheet for further information on which ports
-are available.
-
-U-Series
-........
 
 The U-Series of processors has an integrated USB transceiver. Some ports
 are used to communicate with the USB transceiver inside the U-Series packages.

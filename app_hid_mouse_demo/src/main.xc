@@ -41,7 +41,7 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
   #define p_usb_rst null
   #define clk_usb_rst null
 #else
-  /* USB reset port de_usb_clarations for L series on L1 USB Audio board */
+  /* USB reset port declarations for L series */
   on USB_TILE: out port p_usb_rst   = PORT_USB_RESET;
   on USB_TILE: clock    clk_usb_rst = XS1_CLKBLK_3;
 #endif

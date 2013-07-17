@@ -34,9 +34,13 @@ INCLUDE_ONLY_IN_u16_adc =
 XCC_FLAGS_u16_noadc = $(BUILD_FLAGS) -DU16=1 -DUSE_XSCOPE=1 -fxscope 
 INCLUDE_ONLY_IN_u16_noadc = 
 
-# L series not using ADC (it has no ADC)
+# L8 series not using ADC (it has no ADC)
 XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
-INCLUDE_ONLY_IN_l_noadc = 
+INCLUDE_ONLY_IN_l8_noadc = 
+
+# L16 series not using ADC (it has no ADC)
+XCC_FLAGS_l_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
+INCLUDE_ONLY_IN_l16_noadc = 
 
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_usb_tile_support module_logging
@@ -61,10 +65,16 @@ ifeq ($(CONFIG), u16_noadc)
 	MODULE_LIBRARIES = xud_u 
 endif
 
-ifeq ($(CONFIG), l_noadc) 
+ifeq ($(CONFIG), l8_noadc) 
 	TARGET = xr-usb-audio-2.0.xn 
 	MODULE_LIBRARIES = xud_l 
 endif
+
+ifeq ($(CONFIG), l16_noadc) 
+	TARGET = xr-usb-audio-2.0-mc.xn 
+	MODULE_LIBRARIES = xud_l 
+endif
+
 
 #=============================================================================
 # The following part of the Makefile includes the common build infrastructure

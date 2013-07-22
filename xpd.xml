@@ -31,9 +31,9 @@
         </component>
     </components>
     <dependency repo = "sc_xud">
-        <githash>9e79e69ded962a8df406595f6159d4957ca3cda8</githash>
+        <githash>bb30be3e5c463878380dcead2ca690026a3e7b64</githash>
         <uri>git://git/apps/sc_xud</uri>
-        <version>1.0.0rc3</version>
+        <version>1.0.0rc5</version>
     </dependency>
     <dependency repo = "sc_usb">
         <githash>fbf504b18f7a7d68a3bdefdf24def0fc65ff9acc</githash>
@@ -41,7 +41,7 @@
         <version>1.0.0rc0</version>
     </dependency>
     <dependency repo = "sc_periph">
-        <githash>b7c1188208cd3cd1f4c8674cef34aa0cb9dd59fe</githash>
+        <githash>28460a6d9ed5dbd31d420b321d56c68d52f9ed8c</githash>
         <uri>git://github.com/xcore/sc_periph</uri>
         <version>1.0.0rc1</version>
     </dependency>
@@ -71,9 +71,11 @@
     <release parenthash = "91fb8c09f7915bdbc964bbbfc001b6263c5086f4" version = "1.0.0beta0" githash = "e71eb01df758aa35b042c43f157cbc7f276f769b"></release>
     <release parenthash = "bc4e8fc426e5ebd3c02ec46f71c0fbc6444cdc76" version = "1.0.0beta1" githash = "a351cd014a0c76e6b9f6ff0f819f2a34aebcb0e5"></release>
     <release parenthash = "fc50774bd66825ca5bb4792820dbca1c656d930f" version = "1.0.0beta2" githash = "afc64ad15ee0e8918692f885430c752b27769b29"></release>
-    <release parenthash = "6f2ac8c509d1fcb6dae7aab0df6a06f8182520f2" version = "1.0.0beta3"></release>
+    <release parenthash = "6f2ac8c509d1fcb6dae7aab0df6a06f8182520f2" version = "1.0.0beta3" githash = "0dcc7585e700cf86fd1ca848b1ffbe3100b08974"></release>
     <release parenthash = "be5e7076066e723dbaead4299ad49a90cf8f0c41" version = "1.0.0rc0" githash = "47e3160dbacacb8bfefcd47aad6c6134ef56b3d8"></release>
+    <release parenthash = "2f6f7535ee246229601579331b59da113bcfc1a9" version = "1.0.0rc1"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
+    <version_defines></version_defines>
     <xpd_version>1.0</xpd_version>
 </xpd>

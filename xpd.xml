@@ -59,7 +59,8 @@
     <name>sc_usb_device</name>
     <maintainer>XMOS</maintainer>
     <partnumber>XM-002851-DH</partnumber>
-    <release parenthash = "2f6f7535ee246229601579331b59da113bcfc1a9" version = "1.0.0rc1"></release>
+    <release parenthash = "2f6f7535ee246229601579331b59da113bcfc1a9" version = "1.0.0rc1" githash = "7c85c1b294bf5954677d2a3c3fb35ebc522ac721"></release>
+    <release parenthash = "5e1e84cd4486bf6381913a2e14e16517c562f058" version = "1.0.0rc2"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <version_defines></version_defines>

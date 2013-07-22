@@ -59,20 +59,6 @@
     <name>sc_usb_device</name>
     <maintainer>XMOS</maintainer>
     <partnumber>XM-002851-DH</partnumber>
-    <release parenthash = "2d757fce5b2c903e3ceb6c806c169a5d0a7ba09c" version = "1.0.0alpha0" githash = "f4e60cad5e786f63651bd820ac73606a1e574ac3"></release>
-    <release parenthash = "62918b98b526bf2ec26efb5722d31b0b356161b8" version = "1.0.0alpha1" githash = "9f314c3aa9f66cbb01cf546ba49d1ad03893904e"></release>
-    <release parenthash = "14dbbaecfaa19087e2ff5e33340a64f42ca78043" version = "1.0.0alpha2" githash = "843a731de1f78dd929b380680d967eafa6386cc9"></release>
-    <release parenthash = "5f0897584fae189eb5ccb1257b902573c6305ab1" version = "1.0.0alpha3" githash = "11f182b8aa754f1f11589361b92549e6de31fa1c"></release>
-    <release parenthash = "485f24511f8ab7f84b6e8987b9fd7dc17716799d" version = "1.0.0alpha4" githash = "67501aed9cf685809ed0ed3736843dc976ff5894"></release>
-    <release parenthash = "0fffbde0a34ec2311c902dc30458642b2bf3030d" version = "1.0.0alpha5" githash = "703b998c0d05598c4d3aabf9ccea4858ec6da333"></release>
-    <release parenthash = "dd9a3c2ff2c210ad945ee8968dc910ff42afb4bc" version = "1.0.0alpha6" githash = "a28efbb13891a1e79dc4704e4dbb4945305ac589"></release>
-    <release parenthash = "3f055f5bf3455bb51b7e2934c8481e3f6217606c" version = "1.0.0alpha7" githash = "c3c436ed387229a32b51703b8bb468b430d70242"></release>
-    <release parenthash = "77e69641a2dc0e68ccbf7a897f9df07e4aa368a8" version = "1.0.0alpha8" githash = "ae7a4af820f1d493f8c7d14beb141be71936396e"></release>
-    <release parenthash = "91fb8c09f7915bdbc964bbbfc001b6263c5086f4" version = "1.0.0beta0" githash = "e71eb01df758aa35b042c43f157cbc7f276f769b"></release>
-    <release parenthash = "bc4e8fc426e5ebd3c02ec46f71c0fbc6444cdc76" version = "1.0.0beta1" githash = "a351cd014a0c76e6b9f6ff0f819f2a34aebcb0e5"></release>
-    <release parenthash = "fc50774bd66825ca5bb4792820dbca1c656d930f" version = "1.0.0beta2" githash = "afc64ad15ee0e8918692f885430c752b27769b29"></release>
-    <release parenthash = "6f2ac8c509d1fcb6dae7aab0df6a06f8182520f2" version = "1.0.0beta3" githash = "0dcc7585e700cf86fd1ca848b1ffbe3100b08974"></release>
-    <release parenthash = "be5e7076066e723dbaead4299ad49a90cf8f0c41" version = "1.0.0rc0" githash = "47e3160dbacacb8bfefcd47aad6c6134ef56b3d8"></release>
     <release parenthash = "2f6f7535ee246229601579331b59da113bcfc1a9" version = "1.0.0rc1"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>

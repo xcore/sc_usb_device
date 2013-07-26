@@ -1,7 +1,7 @@
 sc_usb_device
 .............
 
-:Latest release: 1.0.0rc4
+:Latest release: 1.0.1rc0
 :Maintainer: XMOS
 :Description: Device-Class USB Modules and Applications
 

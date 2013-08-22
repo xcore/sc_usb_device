@@ -376,7 +376,8 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                         /* Other Speed Configuration Descriptor */
                         case USB_WVALUE_GETDESC_OSPEED_CFG:
     
-                            if((sp.wValue & 0xff) == 0)
+                            /* Accepts any configuration number */
+                            //if((sp.wValue & 0xff) == 0)
                             {
                                 if((usbBusSpeed == XUD_SPEED_HS) && (cfgDescLength_fs != 0))
                                 {

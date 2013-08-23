@@ -210,6 +210,12 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 }
 #endif // ADC
 
+#ifdef U16
+#define PWR_MODE XUD_PWR_SELF
+#else
+#define PWR_MODE XUD_PWR_BUS
+#endif
+
 /*
  * The main function runs three cores: the XUD manager, Endpoint 0, and a HID endpoint. An array of
  * channels is used for both IN and OUT endpoints, endpoint zero requires both, HID requires just an
@@ -234,7 +240,7 @@ int main()
     {
         on USB_TILE: XUD_Manager(c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
-                                p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test, XUD_PWR_BUS); 
+                                p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test, PWR_MODE); 
 
         on USB_TILE: Endpoint0(c_ep_out[0], c_ep_in[0], c_usb_test);
        

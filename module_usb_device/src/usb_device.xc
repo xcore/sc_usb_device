@@ -416,7 +416,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             }
 
                             /* String table bounds check */
-                            if(stringID < stringDescs_length)
+                            if(stringID < strDescsLength)
                             {
 
                                 datalength = safestrlen(strDescs[ stringID ] );

@@ -129,7 +129,8 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     unsigned char cfgDesc_hs[], int cfgDescLength_hs,
     unsigned char ?devDesc_fs[], int devDescLength_fs, 
     unsigned char ?cfgDesc_fs[], int cfgDescLength_fs, 
-    unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed)
+    unsigned char strDescs[][40], int strDescsLength,
+    USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed)
 {
      /* Return value */
     int datalength;
@@ -195,6 +196,12 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     if((sp.wLength == 0) && (sp.wIndex == 0))
                     {                        
                         /* We can ignore sp.Direction if sp.wLength is 0. See USB Spec 9.3.1 */
+
+                        /* USB 2.0 Spec 9.1.1.5 states that configuring a device should cause all
+                         * the status and configuration values associated with the endpoints in the 
+                         * affected interfaces to be set to their default values.  This includes setting
+                         * the data toggle of any endpoint using data toggles to the value DATA0 */
+
 
                         /* Update global configuration value 
                          * Note alot of devices maye wish to implement features here since this 
@@ -400,7 +407,6 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
 
                             /* Send the string that was requested (low byte of wValue) */
                             /* First, generate valid descriptor from string */
-                            /* TODO Bounds check */
                             stringID = sp.wValue & 0xff;
 
                             /* Microsoft OS String special case, send product ID string */
@@ -409,44 +415,49 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 stringID = 2;
                             }
 
-                            datalength = safestrlen(strDescs[ stringID ] );
-                
-                            /* String 0 (LangIDs) is a special case*/ 
-                            if( stringID == 0 )
+                            /* String table bounds check */
+                            if(stringID < stringDescs_length)
                             {
-                                buffer[0] = datalength + 2;
-                                if( sp.wLength < datalength + 2 )
-                                {
-                                    datalength = sp.wLength - 2; 
-                                }
-                                for(int i = 0; i < datalength; i += 1 )
-                                {
-                                    buffer[i+2] = strDescs[stringID][i];
-                                }
-                            }
-                            else
-                            { 
-                                 /* Datalength *= 2 due to unicode */
-                                datalength <<= 1;
-                      
-                                /* Set data length in descriptor (+2 due to 2 byte datalength)*/
-                                buffer[0] = datalength + 2;
 
-                                if(sp.wLength < datalength + 2)
+                                datalength = safestrlen(strDescs[ stringID ] );
+                
+                                /* String 0 (LangIDs) is a special case*/ 
+                                if( stringID == 0 )
                                 {
-                                    datalength = sp.wLength - 2; 
+                                    buffer[0] = datalength + 2;
+                                    if( sp.wLength < datalength + 2 )
+                                    {
+                                        datalength = sp.wLength - 2; 
+                                    }
+                                    for(int i = 0; i < datalength; i += 1 )
+                                    {
+                                        buffer[i+2] = strDescs[stringID][i];
+                                    }
                                 }
-                                /* Add zero bytes for unicode.. */
-                                for(int i = 0; i < datalength; i+=2)
-                                {
-                                    buffer[i+2] = strDescs[ stringID ][i>>1];
-                                    buffer[i+3] = 0;
+                                else
+                                { 
+                                    /* Datalength *= 2 due to unicode */
+                                    datalength <<= 1;
+                      
+                                    /* Set data length in descriptor (+2 due to 2 byte datalength)*/
+                                    buffer[0] = datalength + 2;
+
+                                    if(sp.wLength < datalength + 2)
+                                    {
+                                        datalength = sp.wLength - 2; 
+                                    }
+                                    /* Add zero bytes for unicode.. */
+                                    for(int i = 0; i < datalength; i+=2)
+                                    {
+                                        buffer[i+2] = strDescs[ stringID ][i>>1];
+                                        buffer[i+3] = 0;
+                                    }
                                 }
-                                       
-                            }
                                     
-                            /* Send back string */
-                            return XUD_DoGetRequest(ep_out, ep_in, buffer, datalength + 2, sp.wLength); 
+                                /* Send back string */
+                                return XUD_DoGetRequest(ep_out, ep_in, buffer, datalength + 2, sp.wLength); 
+                            } /* if(stringID < stringDescs_length) */
+                        
                             break;
                     }
                     break;

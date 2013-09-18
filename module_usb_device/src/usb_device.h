@@ -60,6 +60,7 @@
   * \param     cfgDesc_fs Configuration descriptor
   * \param     cfgDescLength_fs Length of config descriptor in bytes. If 0 the HS config descriptor is used.
   * \param     strDescs
+  * \param     strDescsLength
   * \param     sp ``USB_SetupPacket_t`` (passed by ref) in which the setup data is returned
   * \param     c_usb_test Optional channel param for USB test mode support
   * \param     usbBusSpeed The current bus speed (XUD_SPEED_HS or XUD_SPEED_FS)
@@ -71,7 +72,8 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
         unsigned char cfgDesc_hs[], int cfgDescLength_hs,
         unsigned char ?devDesc_fs[], int devDescLength_fs, 
         unsigned char ?cfgDesc_fs[], int cfgDescLength_fs, 
-        unsigned char strDescs[][40], USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed);
+        unsigned char strDescs[][40], int strDescsLength,
+        USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed);
 /**
  *  \brief  Receives a Setup data packet and parses it into the passed USB_SetupPacket_t structure.
  *  \param  ep_out   OUT endpint from XUD

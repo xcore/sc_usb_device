@@ -409,12 +409,6 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             /* First, generate valid descriptor from string */
                             stringID = sp.wValue & 0xff;
 
-                            /* Microsoft OS String special case, send product ID string */
-                            if (sp.wValue == 0x03ee)
-                            {
-                                stringID = 2;
-                            }
-
                             /* String table bounds check */
                             if(stringID < strDescsLength)
                             {

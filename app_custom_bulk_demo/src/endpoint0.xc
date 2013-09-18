@@ -125,7 +125,8 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
                         devDesc_Null, sizeof(devDesc_Null),
                         cfgDesc_Null, sizeof(cfgDesc_Null),
-                        stringDescriptors, sp, c_usb_test, usbBusSpeed);
+                        stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]), 
+                        sp, c_usb_test, usbBusSpeed);
         }
 
         /* USB bus reset detected, reset EP and get new bus speed */

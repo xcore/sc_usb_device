@@ -1,6 +1,10 @@
 sc_usb_device Change Log
 ========================
 
+1.0.2
+-----
+  * USB_StandardRequests() function now takes length of string table as an extra parameter such that bounds checking can be performed.
+
 1.0.1
 -----
   * Moving to sc_xud 1.0.0rc6

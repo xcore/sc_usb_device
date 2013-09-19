@@ -17,7 +17,7 @@
 
 #ifndef MAX_EPS
 /* Maximum number of EP's supported */
-#define MAX_EPS     16
+#define MAX_EPS     XUD_MAX_NUM_EP
 #endif
 
 unsigned char g_currentConfig = 0;
@@ -202,6 +202,16 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                          * affected interfaces to be set to their default values.  This includes setting
                          * the data toggle of any endpoint using data toggles to the value DATA0 */
 
+                        /* Note: currently assume all EP's related to config (apart from 0) */
+                        for(unsigned i = 1; i < XUD_MAX_NUM_EP_IN; i++)
+                        {
+                            XUD_ResetEpStateByAddr(i | 0x80 );   
+                        } 
+
+                        for(unsigned i = 1; i < XUD_MAX_NUM_EP_OUT; i++)
+                        {
+                            XUD_ResetEpStateByAddr(i);   
+                        } 
 
                         /* Update global configuration value 
                          * Note alot of devices maye wish to implement features here since this 

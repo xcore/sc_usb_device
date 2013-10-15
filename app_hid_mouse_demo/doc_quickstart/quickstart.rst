@@ -5,7 +5,7 @@ app_hid_mouse_demo Quick Start Guide
 ------------------------------------
 
 This application demonstrates how to create a High Speed USB 2.0 HID class device. It 
-uses the XMOS U16 Slicekit Core Board (XP-SKC-U16) in conjunction with the Mixed
+uses the XMOS U16 sliceKIT Core Board (XP-SKC-U16) in conjunction with the Mixed
 Signal Slice Card (XA-SK-MIXED SIGNAL).
 
 The application provides:
@@ -22,12 +22,12 @@ Hardware Setup
 To setup the hardware (:ref:`hid_mouse_demo_hardware_setup`):
 
     #. Connect the XA-SK-USB-AB Slice Card to slot marked ``U`` on the
-       XP-SKC-U16 Slicekit Core Board.
-    #. Connect the XA-SK-MIXED SIGNAL Slice Card to the XP-SKC-U16 Slicekit Core Board
+       XP-SKC-U16 sliceKIT Core Board.
+    #. Connect the XA-SK-MIXED SIGNAL Slice Card to the XP-SKC-U16 sliceKIT Core Board
        using the connector marked with the ``A``. 
-    #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 Slicekit Core Board.
+    #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 sliceKIT Core Board.
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired).
-    #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core Board.
+    #. Connect the 12V power supply to the XP-SKC-U16 sliceKIT Core Board.
     #. Connect the USB B-type connector on the XP-SKC-USB-AB Slice Card to the host PC.
     #. Switch the ``XLINK`` switch near the XTAG-2 connector to ``ON``.
 
@@ -70,7 +70,7 @@ For help in using xTIMEcomposer, try the xTIMEcomposer tutorial
 Run the Application
 -------------------
 
-Now that the application has been compiled, the next step is to run it on the Slicekit Core
+Now that the application has been compiled, the next step is to run it on the sliceKIT Core
 Board using the tools to load the application over JTAG into the xCORE multicore microcontroller.
 
    #. Click on the ``app_hid_mouse_demo`` item in the Project Explorer pane and then 
@@ -98,7 +98,7 @@ Next Steps
       ``Endpoint0()`` and ``hid_mouse()``. The first two are common to any USB device
       application and the ``hid_mouse()`` is the core of the application.
    #. There are two implementations of the ``hid_mouse()`` function, one for use with
-      the joystick which uses the ADC and one for use when no Mixed Signal Slice is
+      the joystick which uses the ADC and another for use when no Mixed Signal Slice is
       available.
    #. If you look at the first implementation of ``hid_mouse()`` you will see the
       configuration of the ADC. For the U16 board it uses two ADCs, one for each
@@ -112,7 +112,7 @@ Next Steps
    #. Use the Light Dependent Resistor (LDR) on the Mixed Signal Slice to control the x-axis.
       Open ``app_hid_mouse_demo/src/main.xc`` and look at first implementation of
       ``hid_mouse()``. To change the x-axis to be controlled by the LDR change the
-      ADC input being used by changing:
+      ADC input being used by changing the following line in the ``hid_mouse()`` function:
 
 ::
 

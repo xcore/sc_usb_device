@@ -5,7 +5,7 @@ app_custom_bulk_demo Quick Start Guide
 --------------------------------------
 
 This application demonstrates how to create a High Speed USB 2.0 Custom Class device. It 
-uses the XMOS U16 Slicekit Core Board (XP-SKC-U16).
+uses the XMOS U16 sliceKIT Core Board (XP-SKC-U16).
 
 The demonstration provides:
 
@@ -24,11 +24,11 @@ Hardware Setup
 To setup the hardware (:ref:`custom_bulk_demo_hardware_setup`):
 
     #. Connect the XA-SK-USB-AB Slice Card to slot marked ``U`` on the
-       XP-SKC-U16 Slicekit Core Board.
-    #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 Slicekit
+       XP-SKC-U16 sliceKIT Core Board.
+    #. Connect the XTAG-2 USB debug adaptor to the XP-SKC-U16 sliceKIT
        Core Board.
     #. Connect the XTAG-2 to host PC (via a USB extension cable if desired).
-    #. Connect the 12V power supply to the XP-SKC-U16 Slicekit Core Board.
+    #. Connect the 12V power supply to the XP-SKC-U16 sliceKIT Core Board.
     #. Connect the USB B-type connector on the XP-SKC-USB-AB Slice Card to the host PC.
     #. Switch the ``XLINK`` switch near the XTAG-2 connector to ``ON``.
 
@@ -67,12 +67,12 @@ quickstart guide within the Developer Column.
 For help in using xTIMEcomposer, try the xTIMEcomposer tutorial
 (see Help->Tutorials in xTIMEcomposer).
 
-Windows driver
+Windows Driver
 --------------
 
 On Windows you must first install the USB driver before running the application.
 
-   #. The drier is included in the project directory, but cannot be run from within
+   #. The driver is included in the project directory, but cannot be run from within
       the xTIMEcomposer so open a Windows Explorer and locate the
       ``app_custom_bulk_demo/host`` in your workspace.
    #. Run ``host/libusb/Win32/dpinst64.exe`` (or ``dpinst32.exe`` on 32-bit systems).
@@ -91,7 +91,7 @@ and then you can install the driver manually with the following steps:
       folder.
    #. The device should be installed and recognized as ``XMOS Simple Bulk Transfer Example``.
       
-MacOSX/Linux driver
+MacOSX/Linux Driver
 -------------------
 
 There is no need to install a driver on either MacOSX or Linux.
@@ -99,7 +99,7 @@ There is no need to install a driver on either MacOSX or Linux.
 Run the Application
 -------------------
 
-Now that the application has been compiled, the next step is to run it on the Slicekit Core
+Now that the application has been compiled, the next step is to run it on the sliceKIT Core
 Board using the tools to load the application over JTAG into the xCORE multicore microcontroller.
 
    #. Click on the ``app_custom_bulk_demo`` item in the Project Explorer pane and then

@@ -1,8 +1,8 @@
-USB Custom Class Device Demo Quick Start
+USB custom class device demo quick start
 ========================================
 
-app_custom_bulk_demo Quick Start Guide
---------------------------------------
+Quick start guide (app_custom_bulk_demo)
+----------------------------------------
 
 This application demonstrates how to create a High Speed USB 2.0 Custom Class device. It 
 uses the XMOS U16 sliceKIT Core Board (XP-SKC-U16).
@@ -18,7 +18,7 @@ The demonstration provides:
       to be more like 1-10MB/s.
     * A driver for Windows (none required for MacOSX/Linux).
 
-Hardware Setup
+Hardware setup
 --------------
 
 To setup the hardware (:ref:`custom_bulk_demo_hardware_setup`):
@@ -40,7 +40,7 @@ To setup the hardware (:ref:`custom_bulk_demo_hardware_setup`):
 
    Hardware Setup for USB Custom Class device demo
 
-Import and Build the Application
+Import and build the application
 --------------------------------
 
    #. Open xTIMEcomposer and open the edit perspective (Window->Open Perspective->XMOS Edit).
@@ -67,7 +67,7 @@ quickstart guide within the Developer Column.
 For help in using xTIMEcomposer, try the xTIMEcomposer tutorial
 (see Help->Tutorials in xTIMEcomposer).
 
-Windows Driver
+Windows driver
 --------------
 
 On Windows you must first install the USB driver before running the application.
@@ -91,12 +91,12 @@ and then you can install the driver manually with the following steps:
       folder.
    #. The device should be installed and recognized as ``XMOS Simple Bulk Transfer Example``.
       
-MacOSX/Linux Driver
+MacOSX/Linux driver
 -------------------
 
 There is no need to install a driver on either MacOSX or Linux.
 
-Run the Application
+Run the application
 -------------------
 
 Now that the application has been compiled, the next step is to run it on the sliceKIT Core
@@ -144,7 +144,7 @@ MacOSX
       the USB transfer rate of the custom device.
    #. Terminating the application will cause the USB device to be removed.
 
-Next Steps
+Next steps
 ----------
 
    #. Open ``app_custom_bulk_demo/src/main.xc`` and look at the ``main()`` function.

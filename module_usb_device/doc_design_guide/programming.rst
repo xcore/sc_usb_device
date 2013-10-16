@@ -1,4 +1,4 @@
-Programming Guide
+Programming guide
 =================
 
 This section provides information on how to create an application using the USB
@@ -39,7 +39,7 @@ The endpoint types are:
 And ``XUD_STATUS_ENABLE`` is ORed in to the endpoints that wish to be informed of
 USB bus resets (see :ref:`xud_status_reporting`).
 
-Endpoint 0 Implementation
+Endpoint 0 implementation
 -------------------------
 
 It is necessary to create an implementation for endpoint 0 which takes two channels,
@@ -137,21 +137,21 @@ passed to an endpoint (either endpoint 0 or an application specific endpoint).
 Application specific endpoints are connected using channel ends so the IN and OUT
 channel arrays need to be extended for each endpoint.
 
-Endpoint Addresses
+Endpoint addresses
 ------------------
 
 Endpoint 0 uses index 0 of both the endpoint type table and the channel array.
 The address of other endpoints must also correspond to their index in the
 endpoint table and the channel array.
 
-Sending/Receiving Data
-----------------------
+Sending and receiving data
+--------------------------
 
 An application specific endpoint can send data using ``XUD_SetBuffer()``
 (see :ref:`sec_xud_set_buffer`) and receive data using ``XUD_GetBuffer()``
 (see :ref:`sec_xud_get_buffer`).
 
-Device Descriptors
+Device descriptors
 ------------------
 
 USB device descriptors must be provided for each USB device. They are used
@@ -159,7 +159,7 @@ to identify the USB device's vendor ID, product ID and detail all the
 attributes of the advice as specified in the USB 2.0 standard. It is beyond
 the scope of this document to give details of writing a descriptor.
 
-Worked Example
+Worked example
 --------------
 
 For more details see the worked HID Class example (:ref:`usb_device_hid_example`).

@@ -97,7 +97,7 @@ module_usb_device
 
 .. _usb_setup_packet_t:
 
-Data Structure
+Data structure
 ++++++++++++++
 
 This structure closely matches the structure defined in the USB 2.0 Specification:
@@ -108,7 +108,7 @@ This structure closely matches the structure defined in the USB 2.0 Specificatio
 
 .. _usb_get_setup_packet:
 
-Setup Function
+Setup function
 ++++++++++++++
 
 .. doxygenfunction:: USB_GetSetupPacket
@@ -117,7 +117,7 @@ Note, this function can return -1 to indicate a bus-reset condition.
 
 .. _usb_standard_requests:
 
-Standard Requests
+Standard requests
 +++++++++++++++++
 
 This function takes a populated ``USB_SetupPacket_t`` structure as an argument. 
@@ -126,7 +126,7 @@ This function takes a populated ``USB_SetupPacket_t`` structure as an argument.
 
 .. _usb_standard_request_types:
 
-Standard Device Request Types
+Standard device request types
 +++++++++++++++++++++++++++++
 
 - ``SET_ADDRESS``
@@ -176,7 +176,7 @@ In addition the following test mode requests are dealt with (with the correct te
 
     - ``FORCE_ENABLE``
 
-Standard Interface Requests
+Standard interface requests
 +++++++++++++++++++++++++++
 
 - ``SET_INTERFACE``
@@ -188,7 +188,7 @@ Standard Interface Requests
 
     - Returns the value written by ``SET_INTERFACE``.
 
-Standard Endpoint Requests
+Standard endpoint requests
 ++++++++++++++++++++++++++
 
 - ``SET_FEATURE``

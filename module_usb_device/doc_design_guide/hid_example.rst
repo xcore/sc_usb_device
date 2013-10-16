@@ -1,6 +1,6 @@
 .. _usb_device_hid_example:
 
-Basic Example HS Device: USB HID device
+Basic example HS device: USB HID device
 =======================================
 
 This section contains a full worked example of a High Speed USB 2.0 HID Class
@@ -62,7 +62,7 @@ parameter.  ``XUD_SPEED_HS`` is passed for the ``desiredSpeed`` parameter as we
 wish to run as a high-speed device.  Test mode support is not important for this
 example to ``null`` is also passed to the ``c_usb_testmode`` parameter.
 
-HID Response Function
+HID response function
 ---------------------
 
 This function responds to the HID requests—it draws a square using the
@@ -123,13 +123,13 @@ return when the packet transmission is complete.
 
 .. _sec_hid_ex_descriptors:
 
-Standard Descriptors
+Standard descriptors
 --------------------
 
 The ``USB_StandardRequests()`` function expects descriptors be declared as
 arrays of characters.  Descriptors are looked at in depth in this section.
 
-Device Descriptor
+Device descriptor
 ~~~~~~~~~~~~~~~~~
 The device descriptor contains basic information about the device. This
 descriptor is the first descriptor the host reads during its enumeration
@@ -144,7 +144,7 @@ For the HID Mouse example this descriptor looks like the following:
     :start-after: /* Device Descriptor 
     :end-before: };
 
-Device Qualifier Descriptor
+Device qualifier descriptor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Devices which support both full and high-speeds must implement a device
@@ -162,7 +162,7 @@ device descriptor.  The ``USB_StandardRequest`` function will build a
 device qualifier from the device descriptors passed to it based on the
 speed the device is currently running at.
 
-Configuration Descriptor
+Configuration descriptor
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 The configuration descriptor contains the devices features and abilities.
@@ -174,7 +174,7 @@ configuration. The configuration descriptor is presented below:
     :start-after: /* Configuration Descriptor 
     :end-before: };
 
-Other Speed Configuration Descriptor
+Other speed configuration descriptor
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A other speed configuration for similar reasons as the device qualifier
@@ -184,7 +184,7 @@ the bus speed it is currently running at.  For the HID mouse example
 we used the same configuration Descriptors if running on full-speed
 or high-speed.
 
-String Descriptors 
+String descriptors 
 ~~~~~~~~~~~~~~~~~~
 An array of strings supplies all the strings that are referenced from
 the descriptors (using fields such as ‘iInterface’, ‘iProduct’ etc.).
@@ -201,7 +201,7 @@ Note that the ``null`` values and length ``0`` is passed for the full-speed
 descriptors, this means that the same descriptors will be used whether the
 device is running in full or high-speed.
 
-Application and Class Specific Requests 
+Application and class specific requests 
 ---------------------------------------
 
 Although the ``USB_StandardRequests()`` function deals with many of the

@@ -1,8 +1,8 @@
-HID Class USB Device Demo Quick Start Guide
+HID class USB device demo quick start guide
 ===========================================
 
-app_hid_mouse_demo Quick Start Guide
-------------------------------------
+Quick start guide (app_hid_mouse_demo)
+--------------------------------------
 
 This application demonstrates how to create a High Speed USB 2.0 HID class device. It 
 uses the XMOS U16 sliceKIT Core Board (XP-SKC-U16) in conjunction with the Mixed
@@ -16,7 +16,7 @@ The application provides:
 *Note:* this application provides a standard USB HID Device and 
 as a result will not require drivers to run on Windows, Mac or Linux.
 
-Hardware Setup
+Hardware setup
 --------------
 
 To setup the hardware (:ref:`hid_mouse_demo_hardware_setup`):
@@ -39,7 +39,7 @@ To setup the hardware (:ref:`hid_mouse_demo_hardware_setup`):
 
    Hardware Setup for USB HID device example
 
-Import and Build the Application
+Import and build the application
 --------------------------------
 
    #. Open xTIMEcomposer and open the edit perspective (Window->Open Perspective->XMOS Edit).
@@ -67,7 +67,7 @@ quickstart guide within the Developer Column.
 For help in using xTIMEcomposer, try the xTIMEcomposer tutorial
 (see Help->Tutorials in xTIMEcomposer).
 
-Run the Application
+Run the application
 -------------------
 
 Now that the application has been compiled, the next step is to run it on the sliceKIT Core
@@ -90,7 +90,7 @@ Board using the tools to load the application over JTAG into the xCORE multicore
       host machine.
    #. Terminating the application will cause the USB device to be removed.
 
-Next Steps
+Next steps
 ----------
 
    #. Open ``app_hid_mouse_demo/src/main.xc`` and look at the ``main()`` function.

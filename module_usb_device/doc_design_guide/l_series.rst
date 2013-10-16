@@ -1,13 +1,13 @@
 .. _l_series_support:
 
-L-Series Support
+L-Series support
 ================
 
 The USB Device Library has been designed primarily for use with xCORE-USB (U-Series)
 devices. However, it does also support L-Series devices. This section describe the
 resource usage on the L-Series and changes required to build for L-Series devices.
 
-Resource Requirements
+Resource requirements
 ---------------------
 
 The resources used by the USB device and XUD libraries combined on an L-Series
@@ -37,8 +37,8 @@ the default for all ports when enabled it is important that if a port
 is not required to be clocked from this 60MHz clock, then it is configured
 to use another clock block.
 
-Ports/Pins
-----------
+Ports and pins
+--------------
 
 The ports used for the physical connection to the external ULPI transceiver must
 be connected as shown in :ref:`table_usb_device_ulpi_required_pin_port`.
@@ -87,7 +87,7 @@ an XS1-L8-128 device should not be used.
 Please refer to the device datasheet for further information on which ports
 are available.
 
-Reset Requirements
+Reset requirements
 ------------------
 
 On the L-Series the ``XUD_Manager`` requires a reset port and a reset clock block

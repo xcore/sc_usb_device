@@ -1,10 +1,10 @@
-USB Library Overview
+USB library overview
 ====================
 
 The XMOS USB library is divided into the XMOS USB Device (XUD)
 Library and the USB Device Helper Functions.
 
-XUD Library
+XUD library
 -----------
 
 The XUD Library performs all the low-level I/O operations required to meet
@@ -53,7 +53,7 @@ be on the same tile as the library itself*.
 
    XUD Overview
 
-XUD Core
+XUD core
 ~~~~~~~~
 
 The main XUD task is ``XUD_Manager()`` (see :ref:`xud_manager`) that 
@@ -64,7 +64,7 @@ This function should be called directly from the top-level ``par``
 statement in ``main()`` to ensure that the XUD Library is ready
 within the 100ms allowed by the USB specification. 
 
-Endpoint Communication with ``XUD_Manager()``
+Endpoint communication with ``XUD_Manager()``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Communication state between a core and the XUD Library is encapsulated
@@ -82,7 +82,7 @@ Endpoint data is sent/received using ``XUD_SetBuffer()``
 These functions will automatically deal with any low-level complications required
 such as Packet ID toggling etc.
 
-Endpoint Type Table 
+Endpoint type table 
 ~~~~~~~~~~~~~~~~~~~
 
 The endpoint type table should take an array of ``XUD_EpType`` to inform XUD
@@ -96,7 +96,7 @@ Traffic to Endpoints that are not in used will be ``NAKed``.
 
 .. _xud_status_reporting:
 
-Status Reporting
+Status reporting
 ~~~~~~~~~~~~~~~~
 
 Status reporting on an endpoint can be enabled so that bus state is
@@ -127,7 +127,7 @@ After a reset notification has been received, the endpoint must call the
 ``XUD_ResetEndpoint()`` function. This will return the current bus
 speed.
 
-SOF Channel
+SOF channel
 ~~~~~~~~~~~
 
 An application can pass a channel-end to the ``c_sof`` parameter of 
@@ -141,7 +141,7 @@ blocked attempting to send these messages.
 
 .. _xud_usb_test_modes:
 
-USB Test Modes
+USB test modes
 ~~~~~~~~~~~~~~
 
 XUD supports the required test modes for USB Compliance testing. The
@@ -178,14 +178,14 @@ As per the USB 2.0 specification a power cycle or reboot is required to exit the
 
 .. _sec_usb_device_helpers:
 
-USB Device Helper Functions
+USB device helper functions
 ---------------------------
 
 The USB Device Helper Functions provide a set of standard functions to aid the creation
 of USB devices. USB devices must provide an implementation of endpoint 0
 and can optionally provide a number of other IN and OUT endpoints.
 
-Standard Requests and Endpoint 0
+Standard requests and endpoint 0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Endpoint 0 must deal with enumeration and configuration requests from the host. 

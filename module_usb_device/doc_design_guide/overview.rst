@@ -17,7 +17,7 @@ Features
 
    * Support for USB 2.0 full and high speed devices.
 
-Memory Requirements
+Memory requirements
 +++++++++++++++++++
 
 The approximate memory usage for the USB device library including the XUD
@@ -31,7 +31,7 @@ library is:
 | Program          | 12kB          |
 +------------------+---------------+
 
-Resource Requirements
+Resource requirements
 +++++++++++++++++++++
 
 The resources used by the device application and libraries on the xCORE-USB
@@ -54,7 +54,7 @@ are shown below:
 |                  | 4 and 5         |
 +------------------+-----------------+
 
-Core Speed
+Core speed
 ++++++++++
 
 Due to I/O timing requirements, the library requires a guaranteed MIPS rate to
@@ -67,8 +67,8 @@ cores shall execute at any one time when using the XUD.
 This restriction is only a requirement on the tile on which the XUD is running. 
 For example, a different tile on an U16 device is unaffected by this restriction.
 
-Ports/Pins
-++++++++++
+Ports and pins
+++++++++++++++
 
 The U-Series of processors has an integrated USB transceiver. Some ports
 are used to communicate with the USB transceiver inside the U-Series packages.

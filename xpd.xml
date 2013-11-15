@@ -44,8 +44,9 @@
         <uri>git://github.com/xcore/sc_periph</uri>
     </dependency>
     <dependency repo = "sc_util">
-        <githash>e6b1b0cd0bf368d09c51ee3586724bb1edc8390c</githash>
+        <githash>d0531d7c68ab67334582c324828e36d617baf8b3</githash>
         <uri>git://github.com/xcore/sc_util</uri>
+        <version>1.0.3rc0</version>
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
     <docdir>app_hid_mouse_demo/doc_quickstart</docdir>

@@ -31,9 +31,8 @@
         </component>
     </components>
     <dependency repo = "sc_xud">
-        <githash>1bd7ecf3c600656c08a5edb2f16d8cc60d1ad1de</githash>
+        <githash>29b05a59cabef784210d8b34add8879f6e88215f</githash>
         <uri>git://git/apps/sc_xud</uri>
-        <version>1.0.1beta0</version>
     </dependency>
     <dependency repo = "sc_usb">
         <githash>2fb1d2a5376129feb6d9d09f45a74db8603c742b</githash>
@@ -41,14 +40,12 @@
         <version>1.0.1beta0</version>
     </dependency>
     <dependency repo = "sc_periph">
-        <githash>28460a6d9ed5dbd31d420b321d56c68d52f9ed8c</githash>
+        <githash>b8fc09c18c9cb8848e047c66e93bbd284f39a97a</githash>
         <uri>git://github.com/xcore/sc_periph</uri>
-        <version>1.0.0rc1</version>
     </dependency>
     <dependency repo = "sc_util">
-        <githash>d0531d7c68ab67334582c324828e36d617baf8b3</githash>
+        <githash>e6b1b0cd0bf368d09c51ee3586724bb1edc8390c</githash>
         <uri>git://github.com/xcore/sc_util</uri>
-        <version>1.0.3rc0</version>
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
     <docdir>app_hid_mouse_demo/doc_quickstart</docdir>

@@ -7,7 +7,7 @@
 
 int MassStorageEndpoint0Requests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, SetupPacket sp) {
     unsigned char buffer[1] = {0};
-    switch(sp.bRequest ) { 
+    switch(sp.bRequest ) {
     case 0xFE:
         return XUD_DoGetRequest(c_ep0_out, c_ep0_in, buffer,  1, sp.wLength);
     }
@@ -39,7 +39,7 @@ static unsigned char blockBuffer[MASS_STORAGE_BLOCKLENGTH];
 /*
  * This function responds to mass storage requests.
  */
-void massStorageClass(chanend chan_ep1_out, chanend chan_ep1_in, int writeProtect) 
+void massStorageClass(chanend chan_ep1_out, chanend chan_ep1_in, int writeProtect)
 {
     unsigned char commandBlock[64];
     unsigned char commandStatus[16];
@@ -51,12 +51,12 @@ void massStorageClass(chanend chan_ep1_out, chanend chan_ep1_in, int writeProtec
 
     XUD_ep c_ep1_out = XUD_Init_Ep(chan_ep1_out);
     XUD_ep c_ep1_in = XUD_Init_Ep(chan_ep1_in);
-    
+
     int ready = 1;
 
 
     massStorageInit();
-    while(1) 
+    while(1)
     {
         int failure = 0;
         XUD_GetBuffer(c_ep1_out, commandBlock);
@@ -89,7 +89,7 @@ void massStorageClass(chanend chan_ep1_out, chanend chan_ep1_in, int writeProtec
             ready = ((commandBlock[19] >> 1) & 1) == 0;
             break;
         case 0x1e: // Medium removal
-            break;            
+            break;
         case 0x23: // Read Format capacity
             lengths[0] = byterev(8);
             lengths[1] = byterev(massStorageSize());

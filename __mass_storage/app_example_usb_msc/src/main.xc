@@ -4,8 +4,8 @@
  * Build:   85182b6a76f9342326aad3e7c15c1d1a3111f60e
  * File:    main.xc
  *
- * The copyrights, all other intellectual and industrial 
- * property rights are retained by XMOS and/or its licensors. 
+ * The copyrights, all other intellectual and industrial
+ * property rights are retained by XMOS and/or its licensors.
  * Terms and conditions covering the use of this code can
  * be found in the Xmos End User License Agreement.
  *
@@ -13,10 +13,10 @@
  *
  * In the case where this code is a modification of existing code
  * under a separate license, the separate license terms are shown
- * below. The modifications to the code are still covered by the 
+ * below. The modifications to the code are still covered by the
  * copyright notice above.
  *
- **/                                   
+ **/
 #include <xs1.h>
 #include <platform.h>
 #include <print.h>
@@ -66,11 +66,11 @@ void Endpoint0( chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
  */
 
 
-int main(void) 
+int main(void)
 {
     chan c_ep_out[2], c_ep_in[2];
 #ifdef TEST_MODE_SUPPORT
-#warning Building with USB test mode support     
+#warning Building with USB test mode support
     chan c_usb_test;
 #else
 #define c_usb_test null
@@ -78,20 +78,20 @@ int main(void)
 
     chan c;
 
-    par 
+    par
     {
-      
+
 #if 1
         on stdcore[USB_CORE]: XUD_Manager( c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
-                                p_usb_rst, clk, -1, XUD_SPEED_HS, c_usb_test); 
+                                p_usb_rst, clk, -1, XUD_SPEED_HS, c_usb_test);
 
         on stdcore[USB_CORE]:
         {
             set_thread_fast_mode_on();
             Endpoint0( c_ep_out[0], c_ep_in[0], c_usb_test);
         }
-       
+
         on stdcore[USB_CORE]:
         {
             set_thread_fast_mode_on();

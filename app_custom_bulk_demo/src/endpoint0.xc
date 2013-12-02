@@ -11,23 +11,23 @@
 #define MANUFACTURER_STR_INDEX  0x0001
 #define PRODUCT_STR_INDEX       0x0002
 
-#include "null_descs.h" 
+#include "null_descs.h"
 
 /* Device Descriptor */
-static unsigned char devDesc[] = 
-{ 
+static unsigned char devDesc[] =
+{
     0x12,                   /* 0  bLength */
-    USB_DEVICE,             /* 1  bdescriptorType */ 
-    0x00,                   /* 2  bcdUSB */ 
-    0x02,                   /* 3  bcdUSB */ 
-    0xFF,                   /* 4  bDeviceClass */ 
-    0xFF,                   /* 5  bDeviceSubClass */ 
-    0xFF,                   /* 6  bDeviceProtocol */ 
-    0x40,                   /* 7  bMaxPacketSize */ 
-    (VENDOR_ID & 0xFF),     /* 8  idVendor */ 
-    (VENDOR_ID >> 8),       /* 9  idVendor */ 
-    (PRODUCT_ID & 0xFF),    /* 10 idProduct */ 
-    (PRODUCT_ID >> 8),      /* 11 idProduct */ 
+    USB_DEVICE,             /* 1  bdescriptorType */
+    0x00,                   /* 2  bcdUSB */
+    0x02,                   /* 3  bcdUSB */
+    0xFF,                   /* 4  bDeviceClass */
+    0xFF,                   /* 5  bDeviceSubClass */
+    0xFF,                   /* 6  bDeviceProtocol */
+    0x40,                   /* 7  bMaxPacketSize */
+    (VENDOR_ID & 0xFF),     /* 8  idVendor */
+    (VENDOR_ID >> 8),       /* 9  idVendor */
+    (PRODUCT_ID & 0xFF),    /* 10 idProduct */
+    (PRODUCT_ID >> 8),      /* 11 idProduct */
     (BCD_DEVICE & 0xFF),    /* 12 bcdDevice */
     (BCD_DEVICE >> 8),      /* 13 bcdDevice */
     MANUFACTURER_STR_INDEX, /* 14 iManufacturer */
@@ -38,48 +38,48 @@ static unsigned char devDesc[] =
 
 
 /* Configuration Descriptor */
-static unsigned char cfgDesc[] = {  
-  0x09,                 /* 0  bLength */ 
-  0x02,                 /* 1  bDescriptortype */ 
-  0x20, 0x00,           /* 2  wTotalLength */ 
-  0x01,                 /* 4  bNumInterfaces */ 
+static unsigned char cfgDesc[] = {
+  0x09,                 /* 0  bLength */
+  0x02,                 /* 1  bDescriptortype */
+  0x20, 0x00,           /* 2  wTotalLength */
+  0x01,                 /* 4  bNumInterfaces */
   0x01,                 /* 5  bConfigurationValue */
   0x00,                 /* 6  iConfiguration */
-  0x80,                 /* 7  bmAttributes */ 
+  0x80,                 /* 7  bmAttributes */
   0xFA,                 /* 8  bMaxPower */
-  
+
   0x09,                 /* 0  bLength */
-  0x04,                 /* 1  bDescriptorType */ 
+  0x04,                 /* 1  bDescriptorType */
   0x00,                 /* 2  bInterfacecNumber */
   0x00,                 /* 3  bAlternateSetting */
   0x02,                 /* 4: bNumEndpoints */
-  0xFF,                 /* 5: bInterfaceClass */ 
-  0xFF,                 /* 6: bInterfaceSubClass */ 
-  0xFF,                 /* 7: bInterfaceProtocol*/ 
-  0x03,                 /* 8  iInterface */ 
-  
-  0x07,                 /* 0  bLength */ 
-  0x05,                 /* 1  bDescriptorType */ 
-  0x01,                 /* 2  bEndpointAddress */ 
-  0x02,                 /* 3  bmAttributes */ 
-  0x00,                 /* 4  wMaxPacketSize */ 
-  0x02,                 /* 5  wMaxPacketSize */ 
-  0x01,                 /* 6  bInterval */ 
-  
-  0x07,                 /* 0  bLength */ 
-  0x05,                 /* 1  bDescriptorType */ 
-  0x81,                 /* 2  bEndpointAddress */ 
-  0x02,                 /* 3  bmAttributes */ 
-  0x00,                 /* 4  wMaxPacketSize */ 
-  0x02,                 /* 5  wMaxPacketSize */ 
-  0x01                  /* 6  bInterval */ 
-}; 
+  0xFF,                 /* 5: bInterfaceClass */
+  0xFF,                 /* 6: bInterfaceSubClass */
+  0xFF,                 /* 7: bInterfaceProtocol*/
+  0x03,                 /* 8  iInterface */
+
+  0x07,                 /* 0  bLength */
+  0x05,                 /* 1  bDescriptorType */
+  0x01,                 /* 2  bEndpointAddress */
+  0x02,                 /* 3  bmAttributes */
+  0x00,                 /* 4  wMaxPacketSize */
+  0x02,                 /* 5  wMaxPacketSize */
+  0x01,                 /* 6  bInterval */
+
+  0x07,                 /* 0  bLength */
+  0x05,                 /* 1  bDescriptorType */
+  0x81,                 /* 2  bEndpointAddress */
+  0x02,                 /* 3  bmAttributes */
+  0x00,                 /* 4  wMaxPacketSize */
+  0x02,                 /* 5  wMaxPacketSize */
+  0x01                  /* 6  bInterval */
+};
 
 /* String table */
-static unsigned char stringDescriptors[][40] = 
+static unsigned char stringDescriptors[][40] =
 {
     "  ",                                      // Language string
-    "XMOS",                                    // iManufacturer 
+    "XMOS",                                    // iManufacturer
     "XMOS Custom Bulk Transfer Device",        // iProduct
     "Custom Interface",                        // iInterface
     "Config",                                  // iConfiguration
@@ -96,12 +96,12 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     // Set language string to US English
     stringDescriptors[0][0] = 0x9;
     stringDescriptors[0][1] = 0x4;
-    
+
     while(1)
     {
         /* Returns 0 on success, < 0 for USB RESET */
         int retVal = USB_GetSetupPacket(ep0_out, ep0_in, sp);
-        
+
         if(retVal == 0)
         {
             if(USE_XSCOPE)
@@ -125,7 +125,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
                         devDesc_Null, sizeof(devDesc_Null),
                         cfgDesc_Null, sizeof(cfgDesc_Null),
-                        stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]), 
+                        stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]),
                         sp, c_usb_test, usbBusSpeed);
         }
 
@@ -136,10 +136,10 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
         }
     }
 }
-//: 
+//:
 
 
- 
+
 
 
 

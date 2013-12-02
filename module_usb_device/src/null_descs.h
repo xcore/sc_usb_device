@@ -29,28 +29,28 @@
 #warning PRODUCT_STR_INDEX not defined, using 0x0002
 #endif
 
-unsigned char devDesc_Null[] = 
+unsigned char devDesc_Null[] =
 {
-    18,                             /* 0  bLength : Size of descriptor in Bytes (18 Bytes) */ 
-    USB_DEVICE,                     /* 1  bdescriptorType */ 
-    0,                              /* 2  bcdUSB */ 
-    2,                              /* 3  bcdUSB */ 
-    0x0,                            /* 4  bDeviceClass */ 
-    0x0,                            /* 5  bDeviceSubClass */ 
-    0x00,                           /* 6  bDeviceProtocol */ 
-    64,                             /* 7  bMaxPacketSize */ 
-    (VENDOR_ID & 0xFF),             /* 8  idVendor */ 
-    (VENDOR_ID >> 8),               /* 9  idVendor */ 
-    (PRODUCT_ID & 0xFF),            /* 10 idProduct */ 
-    (PRODUCT_ID >> 8),              /* 11 idProduct */ 
-    (BCD_DEVICE & 0xFF),            /* 12 bcdDevice : Device release number */ 
-    (BCD_DEVICE >> 8),              /* 13 bcdDevice : Device release number */ 
-    MANUFACTURER_STR_INDEX,         /* 14 iManufacturer : Index of manufacturer string */ 
-    PRODUCT_STR_INDEX,              /* 15 iProduct : Index of product string descriptor */ 
-    0,//SERIAL_STR_INDEX,           /* 16 iSerialNumber : Index of serial number decriptor */ 
+    18,                             /* 0  bLength : Size of descriptor in Bytes (18 Bytes) */
+    USB_DEVICE,                     /* 1  bdescriptorType */
+    0,                              /* 2  bcdUSB */
+    2,                              /* 3  bcdUSB */
+    0x0,                            /* 4  bDeviceClass */
+    0x0,                            /* 5  bDeviceSubClass */
+    0x00,                           /* 6  bDeviceProtocol */
+    64,                             /* 7  bMaxPacketSize */
+    (VENDOR_ID & 0xFF),             /* 8  idVendor */
+    (VENDOR_ID >> 8),               /* 9  idVendor */
+    (PRODUCT_ID & 0xFF),            /* 10 idProduct */
+    (PRODUCT_ID >> 8),              /* 11 idProduct */
+    (BCD_DEVICE & 0xFF),            /* 12 bcdDevice : Device release number */
+    (BCD_DEVICE >> 8),              /* 13 bcdDevice : Device release number */
+    MANUFACTURER_STR_INDEX,         /* 14 iManufacturer : Index of manufacturer string */
+    PRODUCT_STR_INDEX,              /* 15 iProduct : Index of product string descriptor */
+    0,//SERIAL_STR_INDEX,           /* 16 iSerialNumber : Index of serial number decriptor */
     0x01                            /* 17 bNumConfigurations : Number of possible configs */
 };
-unsigned char cfgDesc_Null[] = 
+unsigned char cfgDesc_Null[] =
 {
     0x09,                           /* 0  bLength */
     USB_CONFIGURATION,              /* 1  bDescriptorType */
@@ -63,7 +63,7 @@ unsigned char cfgDesc_Null[] =
     192,                            /* 7  bmAttributes */
     0,                              /* 8  bMaxPower */
 #else
-    128, 
+    128,
     250,                            /* 8  bMaxPower */
 #endif
     0x09,                           /* 0 bLength : Size of this descriptor, in bytes. (field size 1 bytes) */
@@ -75,7 +75,7 @@ unsigned char cfgDesc_Null[] =
     0x00,                           /* 6 bInterfaceSubclass */
     0x00,                           /* 7 bInterfaceProtocol : Unused. (field size 1 bytes) */
     0x00,                           /* 8 iInterface : Unused. (field size 1 bytes) */
-    0x09,                           /* 0  bLength */ 
+    0x09,                           /* 0  bLength */
 };
 
 #endif

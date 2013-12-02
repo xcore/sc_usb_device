@@ -42,7 +42,7 @@ static fl_SPIPorts f = {
 
 fl_DeviceSpec spiSpec[2] = {
   FL_DEVICE_ATMEL_AT25DF041A, FL_DEVICE_MICRON_M25P40
-}; 
+};
 
 int pagesPerBlock;
 int bytesPerPage;

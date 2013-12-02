@@ -1,6 +1,6 @@
 /*
- * The copyrights, all other intellectual and industrial 
- * property rights are retained by XMOS and/or its licensors. 
+ * The copyrights, all other intellectual and industrial
+ * property rights are retained by XMOS and/or its licensors.
  * Terms and conditions covering the use of this code can
  * be found in the Xmos End User License Agreement.
  *
@@ -8,11 +8,11 @@
  *
  * In the case where this code is a modification of existing code
  * under a separate license, the separate license terms are shown
- * below. The modifications to the code are still covered by the 
+ * below. The modifications to the code are still covered by the
  * copyright notice above.
  *
- **/                                   
-/* 
+ **/
+/*
  * @brief      USB Device helper functions
  */
 
@@ -22,10 +22,10 @@
 #include "usb.h"
 #include "xud.h"
 
-/** 
-  * \brief    This function deals with common requests This includes Standard Device Requests listed 
-  *           in table 9-3 of the USB 2.0 Spec all devices must respond to these requests, in some 
-  *           cases a bare minimum implementation is provided and should be extended in the devices EP0 code 
+/**
+  * \brief    This function deals with common requests This includes Standard Device Requests listed
+  *           in table 9-3 of the USB 2.0 Spec all devices must respond to these requests, in some
+  *           cases a bare minimum implementation is provided and should be extended in the devices EP0 code
   *           It handles the following standard requests appropriately using values passed to it:
   *
   *   Get Device Descriptor (using devDesc_hs/devDesc_fs arguments)
@@ -50,7 +50,7 @@
   *
   *
   * \param     ep_out   Endpoint from XUD (ep 0)
-  * \param     ep_in    Endpoint from XUD (ep 0) 
+  * \param     ep_in    Endpoint from XUD (ep 0)
   * \param     devDesc_hs The Device descriptor to use, encoded according to the USB standard
   * \param     devDescLength_hs Length of device descriptor in bytes
   * \param     cfgDesc_hs Configuration descriptor
@@ -65,13 +65,13 @@
   * \param     c_usb_test Optional channel param for USB test mode support
   * \param     usbBusSpeed The current bus speed (XUD_SPEED_HS or XUD_SPEED_FS)
   *
-  *  \return   Returns 0 if the request has been dealt with successfully, 1 if not. -1 for bus reset 
+  *  \return   Returns 0 if the request has been dealt with successfully, 1 if not. -1 for bus reset
   */
-int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in, 
-        unsigned char devDesc_hs[], int devDescLength_hs, 
+int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
+        unsigned char devDesc_hs[], int devDescLength_hs,
         unsigned char cfgDesc_hs[], int cfgDescLength_hs,
-        unsigned char ?devDesc_fs[], int devDescLength_fs, 
-        unsigned char ?cfgDesc_fs[], int cfgDescLength_fs, 
+        unsigned char ?devDesc_fs[], int devDescLength_fs,
+        unsigned char ?cfgDesc_fs[], int cfgDescLength_fs,
         unsigned char strDescs[][40], int strDescsLength,
         USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed);
 /**

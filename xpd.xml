@@ -2,37 +2,43 @@
 <xpd>
     <components>
         <component description = "An example High Speed USB 2.0 Custom Class Device" type = "demoCode" scope = "General Use" path = "app_custom_bulk_demo" local = "false" id = "app_custom_bulk_demo" name = "Custom Class USB Device Demo">
-            <componentDependency>module_xud</componentDependency>
-            <componentDependency>module_logging</componentDependency>
-            <componentDependency>module_usb_shared</componentDependency>
-            <componentDependency>module_usb_device</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_xud" version = "1.0.1">module_xud</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_usb_device" version = "1.0.1">module_usb_device</componentDependency>
+            <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.3">module_logging</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_xud" version = "1.0.1">module_xud</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_usb" version = "1.0.1">module_usb_shared</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_usb" version = "1.0.1">module_usb_shared</componentDependency>
             <keyword>usb</keyword>
             <keyword>bulk</keyword>
             <keyword>custom</keyword>
             <keyword>device</keyword>
         </component>
         <component description = "An example High Speed USB 2.0 HID Class Device; a mouse application." type = "demoCode" scope = "General Use" path = "app_hid_mouse_demo" local = "false" id = "app_hid_mouse_demo" name = "HID Class USB Device Demo">
-            <componentDependency>module_usb_shared</componentDependency>
-            <componentDependency>module_usb_tile_support</componentDependency>
-            <componentDependency>module_logging</componentDependency>
-            <componentDependency>module_usb_device</componentDependency>
-            <componentDependency>module_xud</componentDependency>
-            <componentDependency>module_xassert</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_usb_device" version = "1.0.1">module_usb_device</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_xud" version = "1.0.1">module_xud</componentDependency>
+            <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.3">module_logging</componentDependency>
+            <componentDependency repo = "origin" version = "1.0.0">module_usb_tile_support</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_xud" version = "1.0.1">module_xud</componentDependency>
+            <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.3">module_xassert</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_usb" version = "1.0.1">module_usb_shared</componentDependency>
+            <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.3">module_logging</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_usb" version = "1.0.1">module_usb_shared</componentDependency>
             <keyword>usb</keyword>
             <keyword>mouse</keyword>
             <keyword>hid</keyword>
             <keyword>device</keyword>
         </component>
         <component name = "xCORE-USB Device Library" type = "component" buildresults_path = "module_usb_device/.module_usb_device.buildinfo" scope = "General Use" path = "module_usb_device" metainfo_path = "module_usb_device/module_usb_device.metainfo" local = "false" id = "module_usb_device" description = "Library providing USB-device capabilities on xCORE-USB devices.">
-            <componentDependency>module_xud</componentDependency>
-            <componentDependency>module_usb_shared</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_xud" version = "1.0.1">module_xud</componentDependency>
+            <componentDependency repo = "git://git/apps/sc_usb" version = "1.0.1">module_usb_shared</componentDependency>
             <keyword>usb</keyword>
             <keyword>endpoint</keyword>
         </component>
     </components>
     <dependency repo = "sc_xud">
-        <githash>29b05a59cabef784210d8b34add8879f6e88215f</githash>
+        <githash>e9ee5e52e9500663d7fe009f23f7692ad3c65bca</githash>
         <uri>git://git/apps/sc_xud</uri>
+        <version>1.0.1beta2</version>
     </dependency>
     <dependency repo = "sc_usb">
         <githash>2fb1d2a5376129feb6d9d09f45a74db8603c742b</githash>
@@ -40,8 +46,9 @@
         <version>1.0.1beta0</version>
     </dependency>
     <dependency repo = "sc_periph">
-        <githash>b8fc09c18c9cb8848e047c66e93bbd284f39a97a</githash>
+        <githash>28460a6d9ed5dbd31d420b321d56c68d52f9ed8c</githash>
         <uri>git://github.com/xcore/sc_periph</uri>
+        <version>1.0.0rc1</version>
     </dependency>
     <dependency repo = "sc_util">
         <githash>d0531d7c68ab67334582c324828e36d617baf8b3</githash>

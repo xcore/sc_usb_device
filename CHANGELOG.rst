@@ -9,15 +9,15 @@ sc_usb_device Change Log
 
   * Changes to dependencies:
 
-    - sc_xud: 1.0.0rc6 -> 1.0.1beta2
+    - sc_xud: 1.0.0rc6 -> 1.0.1beta3
 
-      + CHANGE:   Power signalling state machines simplified in order to reduce memory usage.
-      + RESOLVED: (Minor) Reduced delay before transmitting k-chirp for high-speed mode, this improves high-speed handshake reliability on some hosts
-      + RESOLVED: (Major) Resolved a compatibility issue with Intel USB 3.0 xHCI host controllers relating to tight inter-packet timing resulting in packet loss
+      + CHANGE:     Power signalling state machines simplified in order to reduce memory usage.
+      + RESOLVED:   (Minor) Reduced delay before transmitting k-chirp for high-speed mode, this improves high-speed handshake reliability on some hosts
+      + RESOLVED:   (Major) Resolved a compatibility issue with Intel USB 3.0 xHCI host controllers relating to tight inter-packet timing resulting in packet loss
 
-    - sc_usb: 1.0.0rc0 -> 1.0.1beta0
+    - sc_usb: 1.0.0rc0 -> 1.0.1beta1
 
-      + CHANGE:   Updates to use latest XUD version
+      + CHANGE:     Updates to use XUD version 1.0.1
 
 1.0.1
 -----

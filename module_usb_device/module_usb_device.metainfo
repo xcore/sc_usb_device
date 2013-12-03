@@ -248,7 +248,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
              *         -1 of USB Reset */
             retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc_Null,
                         sizeof(devDesc_Null), cfgDesc_Null, sizeof(cfgDesc_Null),
-                        null, 0, null, 0, stringDescriptors, sp,
+                        null, 0, null, 0, stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]), sp,
                         c_usb_test, usbBusSpeed);
         }
 

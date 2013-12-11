@@ -42,6 +42,10 @@ INCLUDE_ONLY_IN_l8_noadc =
 XCC_FLAGS_l16_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
 INCLUDE_ONLY_IN_l16_noadc = 
 
+# G4 series not using ADC (it has no ADC)
+XCC_FLAGS_g4_noadc = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=3 -DUSB_TILE=tile[1] -march=xs1b
+INCLUDE_ONLY_IN_g4_noadc = 
+
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_usb_tile_support module_logging
 
@@ -75,6 +79,10 @@ ifeq ($(CONFIG), l16_noadc)
 	MODULE_LIBRARIES = xud_l 
 endif
 
+ifeq ($(CONFIG), g4_noadc) 
+	TARGET = xdk.xn
+	MODULE_LIBRARIES = xud_g 
+endif
 
 #=============================================================================
 # The following part of the Makefile includes the common build infrastructure

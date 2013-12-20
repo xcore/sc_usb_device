@@ -3,7 +3,11 @@ sc_usb_device Change Log
 
 1.0.3
 -----
-  * CHANGE:    Updated sc_xud dependancy
+  * Changes to dependencies:
+
+    - sc_xud: 1.0.1beta3 -> 1.0.2alpha1
+
+      + ADDED:        Re-instated support for G devices (xud_g library)
 
 1.0.2
 -----

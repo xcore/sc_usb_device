@@ -36,14 +36,14 @@
         </component>
     </components>
     <dependency repo = "sc_xud">
-        <githash>3140cdbc6c10be518b076a23082b488aa7b0e3b1</githash>
+        <githash>662bfdde7e8c4ba9deae0a239d8087fa16b621da</githash>
         <uri>git://git/apps/sc_xud</uri>
-        <version>1.0.2alpha1</version>
+        <version>1.0.3alpha1</version>
     </dependency>
     <dependency repo = "sc_usb">
-        <githash>b5ad82614a597aa6a485c0ec12b178a695be1e55</githash>
+        <githash>05c0827e24ea067f36ab2d0dfba12e60c453bd16</githash>
         <uri>git://git/apps/sc_usb</uri>
-        <version>1.0.1beta1</version>
+        <version>1.0.2beta0</version>
     </dependency>
     <dependency repo = "sc_periph">
         <githash>28460a6d9ed5dbd31d420b321d56c68d52f9ed8c</githash>
@@ -70,7 +70,7 @@
     <release parenthash = "9eec245876e03b5f230d71082ff418e5559d2ce4" version = "1.0.0rc4" githash = "5bbb297edf92abd33ceb95d35446b2f14c17a2be"></release>
     <release parenthash = "8a74e958803fea292ae7b378db1f85dde6fbe496" version = "1.0.1rc0" githash = "383468ebf24cb9ef33d21a2040f642249e9e1ca5"></release>
     <release parenthash = "7be9fd433d628ef948a0397d754dc3842ca5e015" version = "1.0.2beta0" githash = "e4a781dfe42bf669d45ae04264216025d354e55c"></release>
-    <release parenthash = "b396fa9d0b2c7a2b02c56c91bf0461a6d6478c15" version = "1.0.3beta0"></release>
+    <release parenthash = "b396fa9d0b2c7a2b02c56c91bf0461a6d6478c15" version = "1.0.3beta0" githash = "845054f30c85369cf377fb0883b73ce9f3d3b7bc"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <version_defines></version_defines>

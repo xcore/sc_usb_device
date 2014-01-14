@@ -5,9 +5,13 @@ sc_usb_device Change Log
 -----
   * Changes to dependencies:
 
-    - sc_xud: 1.0.1beta3 -> 1.0.2alpha1
+    - sc_xud: 1.0.1beta3 -> 1.0.3alpha2
 
-      + ADDED:        Re-instated support for G devices (xud_g library)
+      + RESOLVED:   (Minor) ULPI data-lines driven hard low and XMOS pull-up on STP line disabled
+
+    - sc_usb: 1.0.1beta1 -> 1.0.2beta0
+
+      + ADDED:   USB_BMREQ_D2H_VENDOR_DEV and USB_BMREQ_D2H_VENDOR_DEV defines for vendor device requests
 
 1.0.2
 -----

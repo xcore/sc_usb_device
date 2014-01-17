@@ -5,9 +5,11 @@ sc_usb_device Change Log
 -----
   * Changes to dependencies:
 
-    - sc_xud: 1.0.1beta3 -> 1.0.3alpha2
+    - sc_xud: 1.0.1beta3 -> 1.0.3alpha5
 
       + RESOLVED:   (Minor) ULPI data-lines driven hard low and XMOS pull-up on STP line disabled
+      + RESOLVED:   (Minor) Fixes to improve memory usage such as adding missing resource usage
+      + RESOLVED:   (Minor) Moved to using supplied tools support for communicating with the USB tile
 
     - sc_usb: 1.0.1beta1 -> 1.0.2beta0
 

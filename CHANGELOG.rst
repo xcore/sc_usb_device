@@ -1,6 +1,10 @@
 sc_usb_device Change Log
 ========================
 
+1.0.4
+-----
+    - CHANGE:     devDesc_hs and cfgDesc_hs params to USB_StandardRequests() now nullable (usefull for full-speed only devices)
+
 1.0.3
 -----
   * Changes to dependencies:

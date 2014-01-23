@@ -125,8 +125,8 @@ int SetEndpointHalt(unsigned epNum, unsigned halt)
 
 #pragma unsafe arrays
 int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
-    unsigned char devDesc_hs[], int devDescLength_hs,
-    unsigned char cfgDesc_hs[], int cfgDescLength_hs,
+    unsigned char ?devDesc_hs[], int devDescLength_hs,
+    unsigned char ?cfgDesc_hs[], int cfgDescLength_hs,
     unsigned char ?devDesc_fs[], int devDescLength_fs,
     unsigned char ?cfgDesc_fs[], int cfgDescLength_fs,
     unsigned char strDescs[][40], int strDescsLength,
@@ -355,7 +355,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
 
                                 if((usbBusSpeed == XUD_SPEED_HS) && (devDescLength_fs != 0))
                                 {
-                                    /* Create devQual from FS */
+                                    /* Create devQual from FS Device Descriptor*/
                                     devQualDesc[0] = 10;                   /* 0  bLength */
                                     devQualDesc[1] = USB_DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_fs[2];
@@ -372,7 +372,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 }
                                 else if(devDescLength_hs != 0)
                                 {
-                                    /* Running in FS so create devQual from HS */
+                                    /* Running in FS so create devQual from HS Device Descriptor */
                                     devQualDesc[0] = 10;                   /* 0  bLength */
                                     devQualDesc[1] = USB_DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_hs[2];
@@ -387,6 +387,9 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                     /* Do get request (send descriptor then 0 length status stage) */
                                     return XUD_DoGetRequest(ep_out, ep_in, devQualDesc, 10, sp.wLength);
                                 }
+
+                                /* Not handled if devDescLength_hs == 0 and running in full-speed.
+                                 * This should result in a STALL as per USB spec */
                             }
                             break;
 
@@ -406,6 +409,9 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                     cfgDesc_hs[1] = USB_OTHER_SPEED_CONFIGURATION;
                                     return  XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
+                                
+                                /* Not handled if cfgDescLength_hs == 0 and running in full-speed.
+                                 * This should result in a STALL as per USB spec */
                             }
                             break;
 

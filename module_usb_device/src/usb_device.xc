@@ -409,7 +409,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                     cfgDesc_hs[1] = USB_OTHER_SPEED_CONFIGURATION;
                                     return  XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
-                                
+
                                 /* Not handled if cfgDescLength_hs == 0 and running in full-speed.
                                  * This should result in a STALL as per USB spec */
                             }

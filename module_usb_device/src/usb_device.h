@@ -19,6 +19,7 @@
 #ifndef _USB_DEVICE_H_
 #define _USB_DEVICE_H_
 
+#include <xccompat.h>
 #include "usb.h"
 #include "xud.h"
 
@@ -68,12 +69,12 @@
   *  \return   Returns 0 if the request has been dealt with successfully, 1 if not. -1 for bus reset
   */
 int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
-        unsigned char (&?devDesc_hs)[], int devDescLength_hs,
-        unsigned char (&?cfgDesc_hs)[], int cfgDescLength_hs,
-        unsigned char (&?devDesc_fs)[], int devDescLength_fs,
-        unsigned char (&?cfgDesc_fs)[], int cfgDescLength_fs,
-        unsigned char strDescs[][40], int strDescsLength,
-        USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed);
+    NULLABLE_ARRAY_OF(unsigned char, devDesc_hs), int devDescLength_hs,
+    NULLABLE_ARRAY_OF(unsigned char, cfgDesc_hs), int cfgDescLength_hs,
+    NULLABLE_ARRAY_OF(unsigned char, devDesc_fs), int devDescLength_fs,
+    NULLABLE_ARRAY_OF(unsigned char, cfgDesc_fs), int cfgDescLength_fs,
+    unsigned char strDescs[][40], int strDescsLength,
+    USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed);
 /**
  *  \brief  Receives a Setup data packet and parses it into the passed USB_SetupPacket_t structure.
  *  \param  ep_out   OUT endpint from XUD

@@ -4,9 +4,10 @@ sc_usb_device Change Log
 1.0.4
 -----
     - CHANGE:     devDesc_hs and cfgDesc_hs params to USB_StandardRequests() now nullable (useful for full-speed only devices)
-    - CHANGE:     Nullable descriptor array parameters to USB_StandardRequests()changed from ?array[] to (?&array)[] 
-                  due to compiler warning that the former being interpreted as an array of nullable items (rather than
-                  a nullable reference to an array.
+    - CHANGE:     Nullable descriptor array parameters to USB_StandardRequests() changed from ?array[] to (?&array)[] due to 
+                  the compiler warning that future compilers will interpret the former as an array of nullable items (rather 
+                  than a nullable reference to an array). Note: The NULLABLE_ARRAY_OF macro (from xccompat.h) is used retain 
+                  compatibility with older tools version (i.e. 12).
 
 1.0.3
 -----

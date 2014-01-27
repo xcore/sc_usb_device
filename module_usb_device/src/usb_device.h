@@ -68,10 +68,10 @@
   *  \return   Returns 0 if the request has been dealt with successfully, 1 if not. -1 for bus reset
   */
 int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
-        unsigned char ?devDesc_hs[], int devDescLength_hs,
-        unsigned char ?cfgDesc_hs[], int cfgDescLength_hs,
-        unsigned char ?devDesc_fs[], int devDescLength_fs,
-        unsigned char ?cfgDesc_fs[], int cfgDescLength_fs,
+        unsigned char (&?devDesc_hs)[], int devDescLength_hs,
+        unsigned char (&?cfgDesc_hs)[], int cfgDescLength_hs,
+        unsigned char (&?devDesc_fs)[], int devDescLength_fs,
+        unsigned char (&?cfgDesc_fs)[], int cfgDescLength_fs,
         unsigned char strDescs[][40], int strDescsLength,
         USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed);
 /**

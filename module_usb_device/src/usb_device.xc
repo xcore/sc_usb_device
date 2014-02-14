@@ -67,23 +67,23 @@ void USB_PrintSetupPacket(USB_SetupPacket_t sp)
 }
 
 #pragma unsafe arrays
-int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp)
+XUD_Result_t USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp)
 {
     unsigned char sbuffer[120];
-    int retVal;
+    unsigned length;
 
-    retVal = XUD_GetSetupBuffer(ep_out, ep_in, sbuffer);
+    XUD_Result_t result;
 
-    if(retVal < 0)
+    if((result = XUD_GetSetupBuffer(ep_out, sbuffer, length)) != XUD_RES_OKAY)
     {
-        return retVal;
+        return result;
     }
 
     /* Parse data buffer end populate SetupPacket struct */
     USB_ParseSetupPacket(sbuffer, sp);
 
     /* Return 0 for success */
-    return 0;
+    return result;
 }
 
 /* Used when setting/clearing EP halt */

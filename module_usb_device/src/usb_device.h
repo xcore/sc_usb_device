@@ -75,14 +75,15 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_fs), int cfgDescLength_fs,
     unsigned char strDescs[][40], int strDescsLength,
     USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed);
+
 /**
  *  \brief  Receives a Setup data packet and parses it into the passed USB_SetupPacket_t structure.
  *  \param  ep_out   OUT endpint from XUD
  *  \param  ep_in    IN endpoint to XUD
  *  \param  sp       SetupPacket structure to be filled in (passed by ref)
- *  \return          0 on non-error, -1 for bus-reset
+ *  \return          XUD_Status_t
  */
-int USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp);
+XUD_Result_t USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp);
 
 /**
  *  \brief Prints out passed ``USB_SetupPacket_t`` struct using debug IO

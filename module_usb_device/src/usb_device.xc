@@ -75,7 +75,7 @@ XUD_Result_t USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &
     XUD_Result_t result;
 
     if((result = XUD_GetSetupBuffer(ep_out, sbuffer, length)) != XUD_RES_OKAY)
-    {
+    {   
         return result;
     }
 
@@ -166,11 +166,11 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
 
                     if((sp.wValue < 128) && (sp.wIndex == 0) && (sp.wLength == 0))
                     {
-                        int retVal;
+                        XUD_Result_t retVal;
 
                         /* Status stage: Send a zero length packet */
                         retVal = XUD_DoSetRequestStatus(ep_in);
-                        if(retVal < 0)
+                        if(retVal != XUD_RES_OKAY)
                             return retVal;
 
                         /* Note: Really we should wait until ACK is received for status stage before changing address

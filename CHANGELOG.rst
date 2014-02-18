@@ -1,6 +1,10 @@
 sc_usb_device Change Log
 ========================
 
+1.1.0 (UNRELEASED)
+-----
+    - CHANGE:     Functions changed to use new XUD_Result_t type and return value from XUD user functions
+
 1.0.4
 -----
     - CHANGE:     devDesc_hs and cfgDesc_hs params to USB_StandardRequests() now nullable (useful for full-speed only devices)

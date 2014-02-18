@@ -166,12 +166,13 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
 
                     if((sp.wValue < 128) && (sp.wIndex == 0) && (sp.wLength == 0))
                     {
-                        XUD_Result_t retVal;
+                        XUD_Result_t result;
 
                         /* Status stage: Send a zero length packet */
-                        retVal = XUD_DoSetRequestStatus(ep_in);
-                        if(retVal != XUD_RES_OKAY)
-                            return retVal;
+                        if((result = XUD_DoSetRequestStatus(ep_in)) != XUD_RES_OKAY)
+                        {
+                            return result;
+                        }
 
                         /* Note: Really we should wait until ACK is received for status stage before changing address
                          * We will just wait some time... */
@@ -250,10 +251,9 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 case USB_WINDEX_TEST_PACKET:
                                 case USB_WINDEX_TEST_FORCE_ENABLE:
                                     {
-                                        int retVal;
-                                        retVal = XUD_DoSetRequestStatus(ep_in);
-                                        if(retVal < 0)
-                                            return retVal;
+                                        XUD_Result_t result;
+                                        if((result = XUD_DoSetRequestStatus(ep_in)) != XUD_RES_OKAY)
+                                            return result;
 
                                         c_usb_test <: (unsigned)sp.wIndex;
 
@@ -428,7 +428,6 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             /* String table bounds check */
                             if(stringID < strDescsLength)
                             {
-
                                 datalength = safestrlen(strDescs[ stringID ] );
 
                                 /* String 0 (LangIDs) is a special case*/

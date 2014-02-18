@@ -59,7 +59,8 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
 void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
 {
     int host_transfer_buf[BUFFER_SIZE];
-    int host_transfer_length = 0;
+    unsigned host_transfer_length = 0;
+    XUD_Result_t result;
 
     XUD_ep ep_from_host = XUD_InitEp(chan_ep_from_host);
     XUD_ep ep_to_host = XUD_InitEp(chan_ep_to_host);
@@ -67,8 +68,8 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
     while(1)
     {
         /* Receive a buffer (512-bytes) of data from the host */
-        host_transfer_length = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]));
-        if(host_transfer_length < 0) {
+        if((result = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length)) == XUD_RES_RST)
+        {
             XUD_ResetEndpoint(ep_from_host, ep_to_host);
             continue;
         }
@@ -78,9 +79,10 @@ void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
             host_transfer_buf[i]++;
 
         /* Send the modified buffer back to the host */
-        host_transfer_length = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length);
-        if(host_transfer_length < 0)
+        if((result = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length)) == XUD_RES_RST)
+        {
             XUD_ResetEndpoint(ep_from_host, ep_to_host);
+        }
     }
 }
 

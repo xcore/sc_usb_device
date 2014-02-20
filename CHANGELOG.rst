@@ -4,6 +4,7 @@ sc_usb_device Change Log
 1.1.0 (UNRELEASED)
 -----
     - CHANGE:     Functions changed to use new XUD_Result_t type and return value from XUD user functions
+    - CHANGE:     XUD_BusSpeed_t now used
 
 1.0.4
 -----

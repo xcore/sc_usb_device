@@ -130,7 +130,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_fs), int devDescLength_fs,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_fs), int cfgDescLength_fs,
     unsigned char strDescs[][40], int strDescsLength,
-    USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed usbBusSpeed)
+    USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed_t usbBusSpeed)
 {
      /* Return value */
     int datalength;

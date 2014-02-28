@@ -1,10 +1,11 @@
 /**
- * @brief      Implements standard USB requests
+ * @brief      Implements USB Device standard requests
  * @author     Ross Owen, XMOS Limited
  */
 
-#include "xud.h"     /* XUD Functions and defines */
-#include "usb_device.h"     /* Defines related to the USB 2.0 Spec */
+#include "xud.h"                 /* XUD Functions and defines */
+#include "usb_device.h"          /* Defines related to the USB 2.0 Spec */
+#include "usb_std_descriptors.h"
 
 #include <safestring.h>
 #include <xs1.h>
@@ -25,46 +26,6 @@ unsigned char g_interfaceAlt[MAX_INTS]; /* Global endpoint status arrays */
 
 unsigned short g_epStatusOut[MAX_EPS];
 unsigned short g_epStatusIn[MAX_EPS];
-
-void USB_ParseSetupPacket(unsigned char b[], USB_SetupPacket_t &p)
-{
-  // Byte 0: bmRequestType.
-  p.bmRequestType.Recipient = b[0] & 0x1f;
-  p.bmRequestType.Type      = (b[0] & 0x60) >> 5;
-  p.bmRequestType.Direction = b[0] >> 7;
-
-  // Byte 1:  bRequest
-  p.bRequest = b[1];
-
-  // Bytes [2:3] wValue
-  p.wValue = (b[3] << 8) | (b[2]);
-
-  // Bytes [4:5] wIndex
-  p.wIndex = (b[5] << 8) | (b[4]);
-
-  // Bytes [6:7] wLength
-  p.wLength = (b[7] << 8) | (b[6]);
-
-}
-
-void USB_PrintSetupPacket(USB_SetupPacket_t sp)
-{
-    printstr("Setup data\n");
-    printstr("bmRequestType.Recipient: ");
-    printhexln(sp.bmRequestType.Recipient);
-    printstr("bmRequestType.Type: ");
-    printhexln(sp.bmRequestType.Type);
-    printstr("bmRequestType.Direction: ");
-    printhexln(sp.bmRequestType.Direction);
-    printstr("bRequest: ");
-    printhexln(sp.bRequest);
-    printstr("bmRequestType.wValue: ");
-    printhexln(sp.wValue);
-    printstr("bmRequestType.wIndex: ");
-    printhexln(sp.wIndex);
-    printstr("bmRequestType.wLength: ");
-    printhexln(sp.wLength);
-}
 
 #pragma unsafe arrays
 XUD_Result_t USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, USB_SetupPacket_t &sp)
@@ -119,9 +80,6 @@ int SetEndpointHalt(unsigned epNum, unsigned halt)
 
     return 1;
 }
-
-
-
 
 #pragma unsafe arrays
 int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
@@ -324,7 +282,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             break;
 
                         /* Configuration Descriptor */
-                        case USB_WVALUE_GETDESC_CONFIG:
+                        case (USB_DESCTYPE_CONFIGURATION << 8):
 
                             /* Currently only 1 configuration descriptor supported */
                             /* TODO We currently return the same for all configs */
@@ -333,20 +291,20 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
                                 {
                                     /* Return full-speed configuration descriptor */
-                                    cfgDesc_fs[1] = USB_CONFIGURATION;
+                                    cfgDesc_fs[1] = USB_DESCTYPE_CONFIGURATION;
                                     return XUD_DoGetRequest(ep_out, ep_in, cfgDesc_fs, cfgDescLength_fs, sp.wLength);
                                 }
                                 else if(cfgDescLength_hs != 0)
                                 {
                                     /* Do get request (send descriptor then 0 length status stage) */
-                                    cfgDesc_hs[1] = USB_CONFIGURATION;
+                                    cfgDesc_hs[1] = USB_DESCTYPE_CONFIGURATION;
                                     return XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
                             }
                             break;
 
                         /* Device qualifier descriptor */
-                        case USB_WVALUE_GETDESC_DEVQUAL:
+                        case (USB_DESCTYPE_DEVICE_QUALIFIER << 8):
 
                             if((sp.wValue & 0xff) == 0)
                             {
@@ -357,7 +315,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 {
                                     /* Create devQual from FS Device Descriptor*/
                                     devQualDesc[0] = 10;                   /* 0  bLength */
-                                    devQualDesc[1] = USB_DEVICE_QUALIFIER; /* 1  bDescriptorType */
+                                    devQualDesc[1] = USB_DESCTYPE_DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_fs[2];
                                     devQualDesc[3] = devDesc_fs[3];
                                     devQualDesc[4] = devDesc_fs[4];
@@ -374,7 +332,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 {
                                     /* Running in FS so create devQual from HS Device Descriptor */
                                     devQualDesc[0] = 10;                   /* 0  bLength */
-                                    devQualDesc[1] = USB_DEVICE_QUALIFIER; /* 1  bDescriptorType */
+                                    devQualDesc[1] = USB_DESCTYPE_DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_hs[2];
                                     devQualDesc[3] = devDesc_hs[3];
                                     devQualDesc[4] = devDesc_hs[4];
@@ -394,19 +352,19 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             break;
 
                         /* Other Speed Configuration Descriptor */
-                        case USB_WVALUE_GETDESC_OSPEED_CFG:
+                        case (USB_DESCTYPE_OTHER_SPEED << 8):
 
                             /* Accepts any configuration number */
                             //if((sp.wValue & 0xff) == 0)
                             {
                                 if((usbBusSpeed == XUD_SPEED_HS) && (cfgDescLength_fs != 0))
                                 {
-                                    cfgDesc_fs[1] = USB_OTHER_SPEED_CONFIGURATION;
+                                    cfgDesc_fs[1] = USB_DESCTYPE_OTHER_SPEED;
                                     return  XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_fs, cfgDescLength_fs, sp.wLength);
                                 }
                                 else if(cfgDescLength_hs != 0)
                                 {
-                                    cfgDesc_hs[1] = USB_OTHER_SPEED_CONFIGURATION;
+                                    cfgDesc_hs[1] = USB_DESCTYPE_OTHER_SPEED;
                                     return  XUD_DoGetRequest(ep_out, ep_in,  cfgDesc_hs, cfgDescLength_hs, sp.wLength);
                                 }
 
@@ -416,10 +374,10 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                             break;
 
                         /* String Descriptor */
-                        case USB_WVALUE_GETDESC_STRING:
+                        case (USB_DESCTYPE_STRING << 8):
 
                             /* Set descriptor type */
-                            buffer[1] = USB_STRING;
+                            buffer[1] = USB_DESCTYPE_STRING;
 
                             /* Send the string that was requested (low byte of wValue) */
                             /* First, generate valid descriptor from string */

@@ -20,7 +20,7 @@
 #define _USB_DEVICE_H_
 
 #include <xccompat.h>
-#include "usb.h"
+#include "usb_std_requests.h"
 #include "xud.h"
 
 /**
@@ -84,10 +84,5 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
  *  \return          XUD_Status_t
  */
 XUD_Result_t USB_GetSetupPacket(XUD_ep ep_out, XUD_ep ep_in, REFERENCE_PARAM(USB_SetupPacket_t, sp));
-
-/**
- *  \brief Prints out passed ``USB_SetupPacket_t`` struct using debug IO
- */
-void USB_PrintSetupPacket(USB_SetupPacket_t sp);
 
 #endif

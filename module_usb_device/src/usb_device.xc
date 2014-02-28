@@ -262,12 +262,12 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     switch(sp.wValue & 0xff00)
                     {
                         /* Device descriptor */
-                        case USB_WVALUE_GETDESC_DEV:
+                        case (USB_DESCTYPE_DEVICE << 8):
 
                             /* Currently only 1 device descriptor supported */
                             if((sp.wValue & 0xff) == 0)
                             {
-                                if((usbBusSpeed == XUD_SPEED_FS) && (cfgDescLength_fs != 0))
+                                if((usbBusSpeed == XUD_SPEED_FS) && (devDescLength_fs != 0))
                                 {
                                     /* Return full-speed device descriptor */
                                     return XUD_DoGetRequest(ep_out, ep_in, devDesc_fs, devDescLength_fs, sp.wLength);

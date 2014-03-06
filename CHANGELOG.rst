@@ -1,10 +1,15 @@
 sc_usb_device Change Log
 ========================
 
-1.1.0 (UNRELEASED)
+1.1.0
 -----
     - CHANGE:     Functions changed to use new XUD_Result_t type and return value from XUD user functions
-    - CHANGE:     XUD_BusSpeed_t now used
+    - CHANGE:     XUD_BusSpeed_t now used (previously used unsigned)
+    - CHANGE:     Function prototypes now use macros from xccompat.h such that they can be called from
+                  standard C
+    - CHANGE:     Latest enums/defines from module_usb_shared now used
+    - RESOLVED:   (Minor) devDescLength_fs now inspected instead of cfgDescLength when checking for 
+                  full-speed Device Descriptor
 
 1.0.4
 -----

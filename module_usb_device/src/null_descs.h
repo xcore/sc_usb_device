@@ -3,6 +3,7 @@
 #define _NULL_DESCS_H_
 
 #include "usb_defs.h"
+#include "usb_std_descriptors.h"
 
 #ifndef VENDOR_ID
 #define VENDOR_ID 0x20B1
@@ -32,7 +33,7 @@
 unsigned char devDesc_Null[] =
 {
     18,                             /* 0  bLength : Size of descriptor in Bytes (18 Bytes) */
-    USB_DEVICE,                     /* 1  bdescriptorType */
+    USB_DESCTYPE_DEVICE,            /* 1  bdescriptorType */
     0,                              /* 2  bcdUSB */
     2,                              /* 3  bcdUSB */
     0x0,                            /* 4  bDeviceClass */
@@ -53,7 +54,7 @@ unsigned char devDesc_Null[] =
 unsigned char cfgDesc_Null[] =
 {
     0x09,                           /* 0  bLength */
-    USB_CONFIGURATION,              /* 1  bDescriptorType */
+    USB_DESCTYPE_CONFIGURATION,     /* 1  bDescriptorType */
     0x12,                           /* 2  wTotalLength */
     0x00,                           /* 3  wTotalLength */
     0x01,                           /* 4  bNumInterface: Number of interfaces*/

@@ -8,15 +8,36 @@ sc_usb_device Change Log
     - CHANGE:     Function prototypes now use macros from xccompat.h such that they can be called from
                   standard C
     - CHANGE:     Latest enums/defines from module_usb_shared now used
-    - RESOLVED:   (Minor) devDescLength_fs now inspected instead of cfgDescLength when checking for 
+    - RESOLVED:   (Minor) devDescLength_fs now inspected instead of cfgDescLength when checking for
                   full-speed Device Descriptor
+
+  * Changes to dependencies:
+
+    - sc_xud: 1.0.3beta1 -> 2.0.0beta0
+
+      + CHANGE:     All XUD functions now return XUD_Result_t. Functions that previously returned
+      + CHANGE:     Endpoint ready flags are now reset on bus-reset (if XUD_STATUS_ENABLE used). This
+      + CHANGE:     Reset notifications are now longer hand-shaken back to XUD_Manager in
+      + CHANGE:     XUD_SetReady_In now implemented using XUD_SetReady_InPtr (previously was duplicated
+      + CHANGE:     XUD_ResetEndpoint now in XC. Previously was an ASM wrapper.
+      + CHANGE:     Modifications to xud.h including the use of macros from xccompat.h such that it
+      + CHANGE:     XUD_BusSpeed type renamed to XUD_BusSpeed_t in line with naming conventions
+      + CHANGE:     XUD_SetData_Select now takes a reference to XUD_Result_t instead an int
+      + CHANGE:     XUD_GetData_Select now takes an additional XUD_Result_t parameter by reference
+      + CHANGE:     XUD_GetData_Select now returns XUD_RES_ERR instead of a 0 length on packet error
+
+    - sc_usb: 1.0.2beta1 -> 1.0.3beta0
+
+      + CHANGE:  Various descriptor structures added, particularly for Audio Class
+      + CHANGE:  Added ComposeSetupBuffer() for creating a buffer from a USB_Setup_Packet_t
+      + CHANGE:  Various function prototypes now using macros from xccompat.h such that then can be
 
 1.0.4
 -----
     - CHANGE:     devDesc_hs and cfgDesc_hs params to USB_StandardRequests() now nullable (useful for full-speed only devices)
-    - CHANGE:     Nullable descriptor array parameters to USB_StandardRequests() changed from ?array[] to (?&array)[] due to 
-                  the compiler warning that future compilers will interpret the former as an array of nullable items (rather 
-                  than a nullable reference to an array). Note: The NULLABLE_ARRAY_OF macro (from xccompat.h) is used retain 
+    - CHANGE:     Nullable descriptor array parameters to USB_StandardRequests() changed from ?array[] to (?&array)[] due to
+                  the compiler warning that future compilers will interpret the former as an array of nullable items (rather
+                  than a nullable reference to an array). Note: The NULLABLE_ARRAY_OF macro (from xccompat.h) is used retain
                   compatibility with older tools version (i.e. 12).
 
 1.0.3

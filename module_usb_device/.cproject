@@ -158,6 +158,7 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src/class}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
@@ -281,6 +282,7 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/gcc&quot;"/>
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src/class}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />
@@ -410,6 +412,7 @@
 									<listOptionValue builtIn="false" value="&quot;${XMOS_TOOL_PATH}/target/include/c++/4.2.1/xcore-xmos-elf&quot;"/>
                                     <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_device}&quot;' />
+<listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src/class}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared/src}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_usb_shared}&quot;' />
 <listOptionValue builtIn="false" value='&quot;${workspace_loc:/module_xud/include}&quot;' />

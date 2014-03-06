@@ -1,13 +1,14 @@
 /*
  * @brief Implements endpoint zero for an example HID mouse device.
  */
+#include <xs1.h>
 
 #include "hid_mouse_demo.h"
 #include "usb_device.h"
+#include "usb_std_requests.h"
+#include "usb_std_descriptors.h"
 #include "hid.h"
 #include "debug_print.h"
-
-#include <xs1.h>
 
 /* Select the type of positional data sent from the device,
  * either relative or absolute
@@ -30,7 +31,7 @@
 static unsigned char devDesc[] =
 {
     0x12,                  /* 0  bLength */
-    USB_DEVICE,            /* 1  bdescriptorType */
+    USB_DESCTYPE_DEVICE,   /* 1  bdescriptorType */
     0x00,                  /* 2  bcdUSB */
     0x02,                  /* 3  bcdUSB */
     0x00,                  /* 4  bDeviceClass */
@@ -222,7 +223,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     USB_SetupPacket_t sp;
 
     unsigned bmRequestType;
-    XUD_BusSpeed usbBusSpeed;
+    XUD_BusSpeed_t usbBusSpeed;
 
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);

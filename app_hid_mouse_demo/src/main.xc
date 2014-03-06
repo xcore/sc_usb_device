@@ -15,7 +15,6 @@
 
 #include "hid_mouse_demo.h"
 #include "xud.h"
-#include "usb.h"
 
 #if (USE_XSCOPE == 1)
 void xscope_user_init(void) {

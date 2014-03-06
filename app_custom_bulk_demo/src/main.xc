@@ -15,7 +15,6 @@
 
 #include "custom_bulk_demo.h"
 #include "xud.h"
-#include "usb.h"
 #include "debug_print.h"
 
 #include <platform.h>

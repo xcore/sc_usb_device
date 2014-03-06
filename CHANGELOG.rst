@@ -13,7 +13,7 @@ sc_usb_device Change Log
 
   * Changes to dependencies:
 
-    - sc_xud: 1.0.3beta1 -> 2.0.0beta0
+    - sc_xud: 1.0.3beta1 -> 2.0.0beta1
 
       + CHANGE:     All XUD functions now return XUD_Result_t. Functions that previously returned
       + CHANGE:     Endpoint ready flags are now reset on bus-reset (if XUD_STATUS_ENABLE used). This
@@ -26,11 +26,11 @@ sc_usb_device Change Log
       + CHANGE:     XUD_GetData_Select now takes an additional XUD_Result_t parameter by reference
       + CHANGE:     XUD_GetData_Select now returns XUD_RES_ERR instead of a 0 length on packet error
 
-    - sc_usb: 1.0.2beta1 -> 1.0.3beta0
+    - sc_usb: 1.0.2beta1 -> 1.0.3beta1
 
-      + CHANGE:  Various descriptor structures added, particularly for Audio Class
-      + CHANGE:  Added ComposeSetupBuffer() for creating a buffer from a USB_Setup_Packet_t
-      + CHANGE:  Various function prototypes now using macros from xccompat.h such that then can be
+      + CHANGE:     Various descriptor structures added, particularly for Audio Class
+      + CHANGE:     Added ComposeSetupBuffer() for creating a buffer from a USB_Setup_Packet_t
+      + CHANGE:     Various function prototypes now using macros from xccompat.h such that then can be
 
 1.0.4
 -----

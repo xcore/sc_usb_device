@@ -158,7 +158,7 @@ function getConfigStatus()
 end
 
 generatedCode = {
-   includes = {"usb.h", "xud.h", "usb_device.h", "hid.h", "null_descs.h"},
+   includes = {"usb_std_requests.h", "xud.h", "usb_device.h", "hid.h", "null_descs.h"},
    globals  = 
        [[
 /* Endpoint type tables */
@@ -182,7 +182,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     USB_SetupPacket_t sp;
 
     unsigned bmRequestType; 
-    XUD_BusSpeed usbBusSpeed;
+    XUD_BusSpeed_t usbBusSpeed;
     
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);

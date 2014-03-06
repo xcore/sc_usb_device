@@ -1,9 +1,12 @@
+#include <xs1.h>
 #include "custom_bulk_demo.h"
+#include "xud.h"
 #include "usb_device.h"
 #include "hid.h"
 #include "debug_print.h"
+#include "usb_std_descriptors.h"
+#include "usb_std_requests.h"
 
-#include <xs1.h>
 
 #define BCD_DEVICE              0x1000
 #define VENDOR_ID               0x20B1
@@ -17,7 +20,7 @@
 static unsigned char devDesc[] =
 {
     0x12,                   /* 0  bLength */
-    USB_DEVICE,             /* 1  bdescriptorType */
+    USB_DESCTYPE_DEVICE,    /* 1  bdescriptorType */
     0x00,                   /* 2  bcdUSB */
     0x02,                   /* 3  bcdUSB */
     0xFF,                   /* 4  bDeviceClass */
@@ -89,7 +92,7 @@ static unsigned char stringDescriptors[][40] =
 void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
 {
     USB_SetupPacket_t sp;
-    XUD_BusSpeed usbBusSpeed;
+    XUD_BusSpeed_t usbBusSpeed;
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
 

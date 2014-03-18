@@ -157,8 +157,7 @@ static unsigned char hidReportDescriptor[] =
 };
 
 /* HID Class Requests */
-int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
-        USB_SetupPacket_t sp)
+XUD_Result_t HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_SetupPacket_t sp)
 {
     unsigned buffer[64];
     unsigned tmp;
@@ -173,8 +172,7 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
             asm("ldw %0, %1[0]": "=r"(tmp) : "r"(tmp));
             buffer[0] = tmp;
 
-            return XUD_DoGetRequest(c_ep0_out, c_ep0_in,
-                        (buffer, unsigned char []), 4, sp.wLength);
+            return XUD_DoGetRequest(c_ep0_out, c_ep0_in, (buffer, unsigned char []), 4, sp.wLength);
             break;
 
         case HID_GET_IDLE:
@@ -214,7 +212,7 @@ int HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in,
             break;
     }
 
-    return 1;
+    return XUD_RES_ERR;
 }
 
 /* Endpoint 0 Task */
@@ -228,19 +226,15 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
 
-    // Set language string to US English
-    stringDescriptors[0][0] = 0x9;
-    stringDescriptors[0][1] = 0x4;
-
     while(1)
     {
-        /* Returns 0 on success, < 0 for USB RESET */
-        int retVal = USB_GetSetupPacket(ep0_out, ep0_in, sp);
+        /* Returns XUD_RES_OKAY on success */
+        XUD_Result_t result = USB_GetSetupPacket(ep0_out, ep0_in, sp);
 
-        if(!retVal)
+        if(result == XUD_RES_OKAY)
         {
-            /* Set retVal to non-zero, we expect it to get set to 0 if a request is handled */
-            retVal = 1;
+            /* Set result to ERR, we expect it to get set to OKAY if a request is handled */
+            result = XUD_RES_ERR;
 
             /* Stick bmRequest type back together for an easier parse... */
             bmRequestType = (sp.bmRequestType.Direction<<7) |
@@ -280,13 +274,11 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                             switch(descriptorType)
                             {
                                 case HID_HID:
-                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor,
-                                        sizeof(hidDescriptor), sp.wLength);
+                                    result = XUD_DoGetRequest(ep0_out, ep0_in, hidDescriptor, sizeof(hidDescriptor), sp.wLength);
                                     break;
 
                                 case HID_REPORT:
-                                    retVal = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor,
-                                        sizeof(hidReportDescriptor), sp.wLength);
+                                    result = XUD_DoGetRequest(ep0_out, ep0_in, hidReportDescriptor, sizeof(hidReportDescriptor), sp.wLength);
                                     break;
                             }
                         }
@@ -303,30 +295,29 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                     /* Inspect for HID interface num */
                     if(sp.wIndex == 0)
                     {
-                        /* Returns  0 if handled,
-                         *          1 if not handled,
-                         *         -1 for bus reset */
-                        retVal = HidInterfaceClassRequests(ep0_out, ep0_in, sp);
+                        /* Returns  XUD_RES_OKAY if handled,
+                         *          XUD_RES_ERR if not handled,
+                         *          XUD_RES_RST for bus reset */
+                        result = HidInterfaceClassRequests(ep0_out, ep0_in, sp);
                     }
                     break;
             }
         }
 
-        /* If we haven't handled the request about,
-         * then do standard enumeration requests  */
-        if(retVal > 0)
+        /* If we haven't handled the request about then do standard enumeration requests */
+        if(result == XUD_RES_ERR )
         {
-            /* Returns  0 if handled okay,
-             *          1 if request was not handled (STALLed),
-             *         -1 for USB Reset */
-            retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc,
+            /* Returns  XUD_RES_OKAY if handled okay,
+             *          XUD_RES_ERR if request was not handled (STALLed),
+             *          XUD_RES_RST for USB Reset */
+            result = USB_StandardRequests(ep0_out, ep0_in, devDesc,
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
                         null, 0, null, 0, stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]),
                         sp, c_usb_test, usbBusSpeed);
         }
 
         /* USB bus reset detected, reset EP and get new bus speed */
-        if(retVal < 0)
+        if(result == XUD_RES_RST)
         {
             usbBusSpeed = XUD_ResetEndpoint(ep0_out, ep0_in);
         }

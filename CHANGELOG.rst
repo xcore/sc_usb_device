@@ -4,6 +4,7 @@ sc_usb_device Change Log
 1.1.1
 -----
     - CHANGE:     USB_StandardRequests() now returns XUD_Result_t instead of int
+    - CHANGE:     app_hid_mouse_demo now uses XUD_Result_t
 
 1.1.0
 -----

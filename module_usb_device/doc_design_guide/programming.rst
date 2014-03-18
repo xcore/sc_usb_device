@@ -83,14 +83,6 @@ Sending and receiving data
 An application specific endpoint can send data using ``XUD_SetBuffer()``
 and receive data using ``XUD_GetBuffer()``.
 
-Device descriptors
-------------------
-
-USB device descriptors must be provided for each USB device. They are used
-to identify the USB device's vendor ID, product ID and detail all the 
-attributes of the advice as specified in the USB 2.0 standard. It is beyond
-the scope of this document to give details of writing a descriptor.
-
 Endpoint 0 implementation
 -------------------------
 
@@ -157,10 +149,20 @@ Note, class specific code should be inserted before ``USB_StandardRequests()`` i
 since if ``USB_StandardRequests()`` cannot handle a request it marks the Endpoint stalled
 to indicate to the host that the request is not supported by the device.
 
+``USB_StandardRequests()`` takes char array parameters for device descriptors for both high and full-speed.
+Note, if ``null`` is passed as the full-speed descriptor the high-speed descriptor is used in full-speed mode 
+and vice versa.
+
 Note that on reset the ``XUD_ResetEndpoint()`` function returns the negotiated USB speed
 (i.e. full or high speed).
 
+Device descriptors
+------------------
 
+USB device descriptors must be provided for each USB device. They are used
+to identify the USB device's vendor ID, product ID and detail all the 
+attributes of the advice as specified in the USB 2.0 standard. It is beyond
+the scope of this document to give details of writing a descriptor, please see the relavant USB Specification Documents.
 
 Worked example
 --------------

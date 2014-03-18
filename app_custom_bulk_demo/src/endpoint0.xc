@@ -41,7 +41,7 @@ static unsigned char devDesc[] =
 
 
 /* Configuration Descriptor */
-static unsigned char cfgDesc[] = 
+static unsigned char cfgDesc[] =
 {
     0x09,                     /* 0  bLength */
     0x02,                     /* 1  bDescriptortype */

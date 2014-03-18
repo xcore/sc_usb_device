@@ -82,7 +82,7 @@ int SetEndpointHalt(unsigned epNum, unsigned halt)
 }
 
 #pragma unsafe arrays
-int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
+XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_hs), int devDescLength_hs,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_hs), int cfgDescLength_hs,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_fs), int devDescLength_fs,
@@ -142,10 +142,8 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                         }
 
                         /* Set the device address in XUD */
-                        XUD_SetDevAddr(sp.wValue);
+                        return XUD_SetDevAddr(sp.wValue);
 
-                        /* Return 0 to indicate request handled successfully */
-                        return 0;
                     }
                     break;
 
@@ -314,7 +312,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 if((usbBusSpeed == XUD_SPEED_HS) && (devDescLength_fs != 0))
                                 {
                                     /* Create devQual from FS Device Descriptor*/
-                                    devQualDesc[0] = 10;                   /* 0  bLength */
+                                    devQualDesc[0] = 10;                            /* 0  bLength */
                                     devQualDesc[1] = USB_DESCTYPE_DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_fs[2];
                                     devQualDesc[3] = devDesc_fs[3];
@@ -322,7 +320,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                     devQualDesc[5] = devDesc_fs[5];
                                     devQualDesc[6] = devDesc_fs[6];
                                     devQualDesc[7] = devDesc_fs[7];
-                                    devQualDesc[8] = devDesc_fs[17];       /* 8  bNumConfigurations */
+                                    devQualDesc[8] = devDesc_fs[17];                /* 8  bNumConfigurations */
                                     devQualDesc[9] = 0;
 
                                     /* Do get request (send descriptor then 0 length status stage) */
@@ -331,7 +329,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 else if(devDescLength_hs != 0)
                                 {
                                     /* Running in FS so create devQual from HS Device Descriptor */
-                                    devQualDesc[0] = 10;                   /* 0  bLength */
+                                    devQualDesc[0] = 10;                            /* 0  bLength */
                                     devQualDesc[1] = USB_DESCTYPE_DEVICE_QUALIFIER; /* 1  bDescriptorType */
                                     devQualDesc[2] = devDesc_hs[2];
                                     devQualDesc[3] = devDesc_hs[3];
@@ -339,7 +337,7 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                     devQualDesc[5] = devDesc_hs[5];
                                     devQualDesc[6] = devDesc_hs[6];
                                     devQualDesc[7] = devDesc_hs[7];
-                                    devQualDesc[8] = devDesc_hs[17];       /* 8  bNumConfigurations */
+                                    devQualDesc[8] = devDesc_hs[17];                /* 8  bNumConfigurations */
                                     devQualDesc[9] = 0;
 
                                     /* Do get request (send descriptor then 0 length status stage) */
@@ -612,5 +610,5 @@ int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
      * the general case of a functional stall */
     XUD_SetStall(ep_out);
     XUD_SetStall(ep_in);
-    return 1;
+    return XUD_RES_ERR;
 }

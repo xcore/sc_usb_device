@@ -1,18 +1,4 @@
 /*
- * The copyrights, all other intellectual and industrial
- * property rights are retained by XMOS and/or its licensors.
- * Terms and conditions covering the use of this code can
- * be found in the Xmos End User License Agreement.
- *
- * Copyright XMOS Ltd 2010
- *
- * In the case where this code is a modification of existing code
- * under a separate license, the separate license terms are shown
- * below. The modifications to the code are still covered by the
- * copyright notice above.
- *
- **/
-/*
  * @brief      USB Device helper functions
  */
 
@@ -66,9 +52,9 @@
   * \param     c_usb_test Optional channel param for USB test mode support
   * \param     usbBusSpeed The current bus speed (XUD_SPEED_HS or XUD_SPEED_FS)
   *
-  *  \return   Returns 0 if the request has been dealt with successfully, 1 if not. -1 for bus reset
+  * \return   Returns XUD_RES_OKAY on success.
   */
-int USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
+XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_hs), int devDescLength_hs,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_hs), int cfgDescLength_hs,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_fs), int devDescLength_fs,

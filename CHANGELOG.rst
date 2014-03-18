@@ -1,6 +1,10 @@
 sc_usb_device Change Log
 ========================
 
+1.1.1
+-----
+    - CHANGE:     USB_StandardRequests() now returns XUD_Result_t instead of int
+
 1.1.0
 -----
     - CHANGE:     Functions changed to use new XUD_Result_t type and return value from XUD user functions

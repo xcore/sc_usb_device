@@ -1,4 +1,4 @@
-USB custom class device demo quick start
+USB custom bulk device demo quick start
 ========================================
 
 Quick start guide (app_custom_bulk_demo)

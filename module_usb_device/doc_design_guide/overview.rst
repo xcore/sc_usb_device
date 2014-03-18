@@ -3,10 +3,15 @@
 Overview
 ========
 
-This document describes the XMOS USB Device Library, its API and provides a worked
+This document describes using the XMOS USB Device (XUD) Library and provides a worked
 example of a USB Human Interface Device (HID) Class compliant mouse using the
-library. This library is aimed primarily for use with xCORE-USB (U-Series) 
+library.
+
+
+This library is aimed primarily for use with xCORE-USB (U-Series) 
 devices but it does also support L-Series devices (see :ref:`l_series_support`).
+
+For full XUD API listing and documentation please see the document `XMOS USB Device (XUD) Library`.
 
 This document assumes familiarity with the XMOS xCORE architecture, the Universal
 Serial Bus 2.0 Specification (and related specifications), the XMOS tool chain
@@ -20,8 +25,8 @@ Features
 Memory requirements
 +++++++++++++++++++
 
-The approximate memory usage for the USB device library including the XUD
-library is:
+The approximate memory usage for the USB device module including the XUD
+library is as follows:
 
 +------------------+---------------+
 |                  | Usage         |

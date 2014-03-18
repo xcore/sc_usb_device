@@ -7,7 +7,7 @@ Device library.
 Includes
 --------
 
-The application needs to include ``xud.h`` and ``usb.h``.
+The application needs to include ``xud.h``.
 
 Declarations
 ------------
@@ -39,78 +39,11 @@ The endpoint types are:
 And ``XUD_STATUS_ENABLE`` is ORed in to the endpoints that wish to be informed of
 USB bus resets (see :ref:`xud_status_reporting`).
 
-Endpoint 0 implementation
--------------------------
 
-It is necessary to create an implementation for endpoint 0 which takes two channels,
-one for IN and one for OUT. It can take an optional channel for test
-(see :ref:`xud_usb_test_modes`).
+``main()``
+----------
 
-::
-
-   void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
-   {
-
-Every endpoint must be initialized using the ``XUD_InitEp()`` function. For endpoint 0
-this is looks like:
-
-::
-
-    XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
-    XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
-
-Typically the minimal code for endpoint 0 loops making call to ``USB_GetSetupPacket()``,
-parses the ``USB_SetupPacket_t`` for any class/applicaton specific requests.
-Then makes a call to ``USB_StandardRequests()``. And finally, calls
-``XUD_ResetEndpoint()`` if there have been any errors. For example:
-
-::
-
-    while(1)
-    {
-        /* Returns 0 on success, < 0 for USB RESET */
-        int retVal = USB_GetSetupPacket(ep0_out, ep0_in, sp);
-
-        if(retVal == 0) 
-        {
-            switch(sp.bmRequestType.Type) 
-            {
-                case BM_REQTYPE_TYPE_CLASS:
-                    switch(sp.bmRequestType.Receipient)
-                    {
-                        case BM_REQTYPE_RECIP_INTER:
-                            // Optional class specific requests.
-                            break;
-
-                        ...
-                    }
-
-                    break;
-
-                ...
-            }
-
-            retval = USB_StandardRequests(ep0_out, ep0_in,
-                    devDesc, devDescLen, ...);
-        }
-
-        if(retVal < 0)
-            usbBusSpeed = XUD_ResetEndpoint(ep0_out, ep0_in);
-    }
-
-The code above could also over-ride any of the requests handled in
-``USB_StandardRequests()`` for custom functionality.
-
-Note, class specific code should be inserted before ``USB_StandardRequests()`` is called
-since if ``USB_StandardRequests()`` cannot handle a request it marks the Endpoint stalled
-to indicate to the host that the request is not supported by the device.
-
-Note that on reset the XUD returns the negotiated USB speed (full speed/high speed).
-
-Main
-----
-
-Within the main function it is necessary to allocate the channels to connect 
+Within the ``main()`` function it is necessary to allocate the channels to connect 
 the endpoints and then create the top-level ``par`` containing
 the XUD_Manager, endpoint 0 and any application specific endpoints.
 
@@ -148,8 +81,7 @@ Sending and receiving data
 --------------------------
 
 An application specific endpoint can send data using ``XUD_SetBuffer()``
-(see :ref:`sec_xud_set_buffer`) and receive data using ``XUD_GetBuffer()``
-(see :ref:`sec_xud_get_buffer`).
+and receive data using ``XUD_GetBuffer()``.
 
 Device descriptors
 ------------------
@@ -158,6 +90,77 @@ USB device descriptors must be provided for each USB device. They are used
 to identify the USB device's vendor ID, product ID and detail all the 
 attributes of the advice as specified in the USB 2.0 standard. It is beyond
 the scope of this document to give details of writing a descriptor.
+
+Endpoint 0 implementation
+-------------------------
+
+It is necessary to create an implementation for endpoint 0 which takes two channels,
+one for IN and one for OUT. It can take an optional channel for test
+(see the ``Test Modes`` section of ``XMOS USB Device (XUD) Library``).
+
+::
+
+   void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
+   {
+
+Every endpoint must be initialized using the ``XUD_InitEp()`` function. For endpoint 0
+this is looks like:
+
+::
+
+    XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
+    XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
+
+Typically the minimal code for endpoint 0 loops making call to ``USB_GetSetupPacket()``,
+parses the ``USB_SetupPacket_t`` for any class/applicaton specific requests.
+Then makes a call to ``USB_StandardRequests()``. And finally, calls
+``XUD_ResetEndpoint()`` if there have been a bus-reset. For example:
+
+::
+
+    while(1)
+    {
+        /* Returns XUD_RES_OKAY on success, XUD_RES_RST for USB reset */
+        XUD_Result_t result = USB_GetSetupPacket(ep0_out, ep0_in, sp);
+
+        if(result == XUD_RES_OKAY) 
+        {
+            switch(sp.bmRequestType.Type) 
+            {
+                case BM_REQTYPE_TYPE_CLASS:
+                    switch(sp.bmRequestType.Receipient)
+                    {
+                        case BM_REQTYPE_RECIP_INTER:
+                            // Optional class specific requests.
+                            break;
+
+                        ...
+                    }
+
+                    break;
+
+                ...
+            }
+
+            result = USB_StandardRequests(ep0_out, ep0_in,
+                    devDesc, devDescLen, ...);
+        }
+
+        if(result ==  XUD_RES_RST)
+            usbBusSpeed = XUD_ResetEndpoint(ep0_out, ep0_in);
+    }
+
+The code above could also over-ride any of the requests handled in
+``USB_StandardRequests()`` for custom functionality.
+
+Note, class specific code should be inserted before ``USB_StandardRequests()`` is called
+since if ``USB_StandardRequests()`` cannot handle a request it marks the Endpoint stalled
+to indicate to the host that the request is not supported by the device.
+
+Note that on reset the ``XUD_ResetEndpoint()`` function returns the negotiated USB speed
+(i.e. full or high speed).
+
+
 
 Worked example
 --------------

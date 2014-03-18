@@ -2,123 +2,42 @@ API
 ===
 
 The XMOS USB Device library is provided by ``module_xud`` and the
-USB Device Helper Functions are provided by ``module_usb_device``. The
-APIs of both of these modules are detailed in this section.
+USB Device Helper Functions are provided by ``module_usb_device``. 
 
-module_xud
-----------
+The APIs of ``module_xud`` is listed in `XMOS USB Device (XUD) Library`. The API of 
+``module_usb_device`` is detailed in this section.
 
-.. _xud_manager:
+Please note, both ``module_xud`` and ``module_usb_device`` depend on the module ``module_usb_shared``
 
-``XUD_Manager()``
-+++++++++++++++++
-
-.. doxygenfunction:: XUD_Manager
-
-.. _xud_ep:
-
-``XUD_ep``
-++++++++++
-
-.. doxygentypedef:: XUD_ep
-
-``XUD_InitEp()``
-++++++++++++++++
-
-.. doxygenfunction:: XUD_InitEp
-
-.. _sec_xud_get_buffer:
-
-``XUD_GetBuffer()``
-~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_GetBuffer
-
-.. _sec_xud_set_buffer:
-
-``XUD_SetBuffer()``
-~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_SetBuffer
-
-``XUD_SetBuffer_EpMax()``
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This function provides a similar function to ``XUD_SetBuffer`` function
-but it cuts the data up in packets of a fixed
-maximum size. This is especially useful for control transfers where large 
-descriptors must be sent in typically 64 byte transactions.
-
-.. doxygenfunction:: XUD_SetBuffer_EpMax
-
-``XUD_DoGetRequest()``
-~~~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_DoGetRequest
-
-``XUD_DoSetRequestStatus()``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_DoSetRequestStatus
-
-``XUD_SetDevAddr()``
-~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_SetDevAddr
-
-``XUD_ResetEndpoint()``
-~~~~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_ResetEndpoint
-
-
-``XUD_SetStallByAddr()``
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_SetStallByAddr
-
-``XUD_SetStall()``
-~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_SetStall
-
-``XUD_ClearStallByAddr()``
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_ClearStallByAddr
-
-``XUD_ClearStall()``
-~~~~~~~~~~~~~~~~~~~~
-
-.. doxygenfunction:: XUD_ClearStall
-
-module_usb_device
+module_usb_shared
 -----------------
 
 .. _usb_setup_packet_t:
 
-Data structure
-++++++++++++++
+``USB_SetupPacket_t``
+~~~~~~~~~~~~~~~~~~~~
 
 This structure closely matches the structure defined in the USB 2.0 Specification:
 
-.. literalinclude:: sc_usb/module_usb_shared/src/usb.h
+.. literalinclude:: sc_usb/module_usb_shared/src/usb_std_requests.h
     :start-after: \brief   Typedef for setup packet structure
-    :end-before: #endif
+    :end-before: /**
 
 .. _usb_get_setup_packet:
 
-Setup function
-++++++++++++++
+module_usb_device
+-----------------
+
+``USB_GetSetupPacket()``
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. doxygenfunction:: USB_GetSetupPacket
 
-Note, this function can return -1 to indicate a bus-reset condition.
-
 .. _usb_standard_requests:
 
-Standard requests
-+++++++++++++++++
+
+``USB_StandardRequests()``
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This function takes a populated ``USB_SetupPacket_t`` structure as an argument. 
 
@@ -126,8 +45,11 @@ This function takes a populated ``USB_SetupPacket_t`` structure as an argument.
 
 .. _usb_standard_request_types:
 
-Standard device request types
-+++++++++++++++++++++++++++++
+Standard Device Request Types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``USB_StandardRequests()`` handles the following Standard Device Requests:
+
 
 - ``SET_ADDRESS``
 
@@ -176,8 +98,10 @@ In addition the following test mode requests are dealt with (with the correct te
 
     - ``FORCE_ENABLE``
 
-Standard interface requests
-+++++++++++++++++++++++++++
+Standard Interface Requests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``USB_StandardRequests()`` handles the following Standard Interface Requests:
 
 - ``SET_INTERFACE``
 
@@ -188,8 +112,10 @@ Standard interface requests
 
     - Returns the value written by ``SET_INTERFACE``.
 
-Standard endpoint requests
-++++++++++++++++++++++++++
+Standard Endpoint Requests
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``USB_StandardRequests()`` handles the following Standard Endpoint Requests:
 
 - ``SET_FEATURE``
 
@@ -198,6 +124,8 @@ Standard endpoint requests
 - ``GET_STATUS``
 
 If parsing the request does not result in a match, the request is not handled, the Endpoint is
-marked "Halted" (Using ``XUD_SetStall_Out()`` and ``XUD_SetStall_In()``) and the function returns 1.
-The function returns 0 if a request was handled without error (See also Status Reporting).
+marked "Halted" (Using ``XUD_SetStall_Out()`` and ``XUD_SetStall_In()``) and the function returns 
+XUD_RES_ERR.
+
+The function returns XUD_RES_OKAY if a request was handled without error (See also ``Status Reporting``).
 

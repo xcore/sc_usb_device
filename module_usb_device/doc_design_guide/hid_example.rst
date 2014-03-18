@@ -10,8 +10,7 @@ with external ULPI transceiver, with only the declarations and call to
 ``XUD_Manager()`` being different.
 
 The full source for this demo is released as the ``HID Class USB Device Demo``
-available through the XMOS xTIMEcomposer tool. The tool can be downloaded
-free from www.xmos.com.
+available through the XMOS xTIMEcomposer tool. The tool can be downloaded from ``www.xmos.com``.
 
 Declarations
 ------------
@@ -21,7 +20,6 @@ Declarations
     #include <xs1.h>
 
     #include "xud.h"
-    #include "usb.h"
 
     #define XUD_EP_COUNT_OUT  1
     #define XUD_EP_COUNT_IN   2
@@ -38,8 +36,8 @@ Main program
 ------------
 
 The main function creates three tasks: the XUD manager, endpoint
-0, and HID. An array of channels is used for both in and out endpoints,
-endpoint 0 requires both, HID is just an IN endpoint for the mouse data to the host.
+0, and HID process. An array of channels is used for both in and out endpoints,
+endpoint 0 requires both, the HID process is simply an IN endpoint sending mouse data to the host.
 
 ::
 
@@ -123,7 +121,7 @@ return when the packet transmission is complete.
 
 .. _sec_hid_ex_descriptors:
 
-Standard descriptors
+Device Descriptors
 --------------------
 
 The ``USB_StandardRequests()`` function expects descriptors be declared as
@@ -188,8 +186,9 @@ String descriptors
 ~~~~~~~~~~~~~~~~~~
 An array of strings supplies all the strings that are referenced from
 the descriptors (using fields such as ‘iInterface’, ‘iProduct’ etc.).
-String 0 is the language descriptor, and is interpreted as “no string
-supplied” when used as an index value.  The ``USB_StandardRequests()``
+Note that String 0 is always language ID descriptor.  
+
+The ``USB_StandardRequests()``
 function deals with requests for strings using the table of strings
 passed to it.  The string table for the HID mouse example is shown below:
 
@@ -253,7 +252,7 @@ details:
     :start-after: /* HID Class Requests
     :end-before: /* Endpoint 0 Task
 
-If the HID request is not handles, the function returns 1.  This results in
+If the HID request is not handles, the function returns ``XUD_RES_ERR``.  This results in
 ``USB_StandardRequests()`` being called, and eventually the endpoint being
 STALLed to indicate an unknown request.
 

@@ -1,15 +1,17 @@
 USB library overview
 ====================
 
-The XMOS USB library is divided into the XMOS USB Device (XUD)
-Library and the USB Device Helper Functions.
+The XMOS USB device support is divided into the XMOS USB Device (XUD)
+Library (module_xud) and the USB Device Helper Functions (module_usb_device)
 
 XUD library
 -----------
 
+For full XUD API listing and documentation please see the document `XMOS USB Device (XUD) Library`
+
 The XUD Library performs all the low-level I/O operations required to meet
 the USB 2.0 specification. This processing goes up to and includes the
-transaction level. It removes all low-level timing requirements from the
+transaction level. It removes all low-level timincg requirements from the
 application, allowing quick development of all manner of USB devices.
 
 The XUD Library allows the implementation of both full-speed and
@@ -90,10 +92,6 @@ about endpoints being used.  This is mainly used to indicate the transfer-type
 of each endpoint (bulk, control, isochronous or interrupt) as well as
 whether the endpoint wishes to be informed about bus-resets (see :ref:`xud_status_reporting`).
 
-*Note:* endpoints can also be marked as disabled.
-
-Traffic to Endpoints that are not in used will be ``NAKed``.
-
 .. _xud_status_reporting:
 
 Status reporting
@@ -105,76 +103,14 @@ endpoint in the endpoint type table.
 
 This means that endpoints are notified of USB bus resets (and
 bus-speed changes). The XUD access functions discussed previously
-(``XUD_SetBuffer()``, ``XUD_GetBuffer()``) return less than 0 if
+(``XUD_SetBuffer()``, ``XUD_GetBuffer()``) return XUD_RES_RST if
 a USB bus reset is detected.
-
-This reset notification is important if an endpoint core is expecting
-alternating INs and OUTs. For example, consider the case where an
-endpoint is always expecting the sequence OUT, IN, OUT (such as a control
-transfer). If an unplug/reset event was received after the first OUT,
-the host would return to sending the initial OUT after a replug, while
-the endpoint would hang on the IN. The endpoint needs to know of the bus
-reset in order to reset its state machine.
-
-*Endpoint 0 therefore requires this functionality since it deals with
-bi-directional control transfers.*
-
-This is also important for high-speed devices, since it is not
-guaranteed that the host will detect the device as a high-speed device.
-The device therefore needs to know what speed it is running at.
 
 After a reset notification has been received, the endpoint must call the
 ``XUD_ResetEndpoint()`` function. This will return the current bus
 speed.
 
-SOF channel
-~~~~~~~~~~~
-
-An application can pass a channel-end to the ``c_sof`` parameter of 
-``XUD_Manager()``.  This will cause a word of data to be output every time
-the device receives a SOF from the host.  This can be used for timing
-information for audio devices etc.  If this functionality is not required
-``null`` should be passed as the parameter.  Please note, if a channel-end
-is passed into ``XUD_Manager()`` there must be a responsive task ready to
-receive SOF notifications since else the ``XUD_Manager()`` task will be
-blocked attempting to send these messages.
-
-.. _xud_usb_test_modes:
-
-USB test modes
-~~~~~~~~~~~~~~
-
-XUD supports the required test modes for USB Compliance testing. The
-``XUD_Manager()`` task can take a channel-end argument for controlling the
-test mode required.  ``null`` can be passed if this functionality is not required.  
-
-XUD accepts a single word for from this channel to signal which test mode
-to enter, these commands are based on the definitions of the Test Mode Selector
-Codes in the USB 2.0 Specification Table 11-24.  The supported test modes are
-summarised in the :ref:`table_test_modes`.
-
-.. _table_test_modes:
-
-.. table:: Supported Test Mode Selector Codes
-    :class: horizontal-borders vertical_borders
-
-    +--------+-------------------------------------+
-    | Value  | Test Mode Description               |                
-    +========+=====================================+
-    | 1      | Test_J                              |
-    +--------+-------------------------------------+
-    | 2      | Test_K                              |
-    +--------+-------------------------------------+
-    | 3      | Test_SE0_NAK                        |
-    +--------+-------------------------------------+
-    | 4      | Test_Packet                         |
-    +--------+-------------------------------------+
-    | 5      | Test_Force_Enable                   |
-    +--------+-------------------------------------+
-
-The use of other codes results in undefined behaviour.
-
-As per the USB 2.0 specification a power cycle or reboot is required to exit the test mode.
+See `XMOS USB Device (XUD) Library` for full details.
 
 .. _sec_usb_device_helpers:
 

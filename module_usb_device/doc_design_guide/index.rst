@@ -1,14 +1,13 @@
-XMOS USB device design guide
+XMOS USB Device Design Guide
 ============================
 
-This document is a design guide for using the XMOS USB Device (XUD) Library
-to create both Full and High Speed USB 2.0 devices on the XMOS xCORE devices.
+This document is a design guide for creating both Full and High Speed USB 2.0 devices on XMOS devices.
 
 .. toctree::
 
     Overview <overview>
     Hardware requirements <hw>
-    System <system>
+    System Overview <system>
     API <api>
     Programming guide <programming>
     Example application <hid_example>

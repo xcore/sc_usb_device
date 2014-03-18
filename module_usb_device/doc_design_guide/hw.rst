@@ -29,13 +29,3 @@ This application demonstrates how to write a Human Interface Device (HID) Class 
     * Package: HID Class USB Device Demo
     * Application: app_hid_mouse_demo
 
-Custom class USB device demo
-++++++++++++++++++++++++++++
-
-This application demonstrates how to write a Custom Class USB Device using bulk transfers.
-It provides both the xCORE application, host application and Windows drivers (drivers not
-required on MacOSX and Linux).
-
-    * Package: Custom Class USB Device Demo
-    * Application: app_custom_bulk_demo
-

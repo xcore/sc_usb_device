@@ -105,13 +105,15 @@ static unsigned char hidDescriptor[] =
     0x00,               /* 8  wDescriptorLength */
 };
 
+#define STR_USENG 0x0409
+
 /* String table */
 static unsigned char stringDescriptors[][40] =
 {
-    "  ",                       // Language string
-    "XMOS",                     // iManufacturer
-    "Example HID Mouse",        // iProduct
-    "Config",                   // iConfiguration
+    {STR_USENG & 0xff, STR_USENG >> 8, '\0'},   // Language string
+    "XMOS",                                     // iManufacturer
+    "Example HID Mouse",                        // iProduct
+    "Config",                                   // iConfiguration
 };
 
 /* HID Report Descriptor */

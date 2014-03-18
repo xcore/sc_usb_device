@@ -78,10 +78,13 @@ static unsigned char cfgDesc[] = {
   0x01                  /* 6  bInterval */
 };
 
+// Set language string to US English
+#define STR_USENG 0x0409
+
 /* String table */
 static unsigned char stringDescriptors[][40] =
 {
-    "  ",                                      // Language string
+    {STR_USENG & 0xff, STR_USENG >> 8, '\0'},  // Language string
     "XMOS",                                    // iManufacturer
     "XMOS Custom Bulk Transfer Device",        // iProduct
     "Custom Interface",                        // iInterface
@@ -95,10 +98,6 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     XUD_BusSpeed_t usbBusSpeed;
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
-
-    // Set language string to US English
-    stringDescriptors[0][0] = 0x9;
-    stringDescriptors[0][1] = 0x4;
 
     while(1)
     {

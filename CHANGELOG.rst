@@ -5,7 +5,7 @@ sc_usb_device Change Log
 -----
     - CHANGE:     USB_StandardRequests() now returns XUD_Result_t instead of int
     - CHANGE:     app_hid_mouse_demo now uses XUD_Result_t
-    - CHANGE:     LangID string in demo applications now set at build time (rather than run time)
+    - CHANGE:     LangID string in demo applications now set at build-time (rather than run-time)
 
 1.1.0
 -----

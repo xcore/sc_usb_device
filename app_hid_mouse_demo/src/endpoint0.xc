@@ -105,16 +105,16 @@ static unsigned char hidDescriptor[] =
     0x00,               /* 8  wDescriptorLength */
 };
 
-#define STR_USENG 0x0409
 
+unsafe{
 /* String table */
-static unsigned char stringDescriptors[][40] =
+static char * unsafe stringDescriptors[]=
 {
-    {STR_USENG & 0xff, STR_USENG >> 8, '\0'},   // Language string
-    "XMOS",                                     // iManufacturer
-    "Example HID Mouse",                        // iProduct
-    "Config",                                   // iConfiguration
-};
+    "",                     // Language string place holder. We would like to init to {{'4', '9', '\0'}, but XC currently does not allow this.
+    "XMOS",                 // iManufacturer
+    "Example HID Mouse",    // iProduct
+    "Config",               // iConfiguration
+};}
 
 /* HID Report Descriptor */
 static unsigned char hidReportDescriptor[] =
@@ -228,6 +228,11 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
 
+    // Set language string to US English
+    unsafe {
+    stringDescriptors[0][0] = 0x9;
+    stringDescriptors[0][1] = 0x4;
+    }
     while(1)
     {
         /* Returns XUD_RES_OKAY on success */
@@ -312,10 +317,12 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             /* Returns  XUD_RES_OKAY if handled okay,
              *          XUD_RES_ERR if request was not handled (STALLed),
              *          XUD_RES_RST for USB Reset */
+             unsafe{
             result = USB_StandardRequests(ep0_out, ep0_in, devDesc,
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
                         null, 0, null, 0, stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]),
                         sp, c_usb_test, usbBusSpeed);
+             }
         }
 
         /* USB bus reset detected, reset EP and get new bus speed */

@@ -172,7 +172,7 @@ unsafe
 {
 static char * unsafe stringDescriptors[] = 
 {
-    "\\004\\009",               // Language string
+    "\x09\x04",                 // Language ID string (US English)
     "XMOS",                     // iManufacturer 
     "Empty Device",             // iProduct
     "",                         // unUsed

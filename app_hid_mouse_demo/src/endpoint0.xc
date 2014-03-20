@@ -110,7 +110,7 @@ unsafe{
 /* String table */
 static char * unsafe stringDescriptors[]=
 {
-    "",                     // Language string place holder. We would like to init to {{'4', '9', '\0'}, but XC currently does not allow this.
+    "\x09\x04",             // Language ID string (US English)
     "XMOS",                 // iManufacturer
     "Example HID Mouse",    // iProduct
     "Config",               // iConfiguration
@@ -227,12 +227,6 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
 
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
-
-    // Set language string to US English
-    unsafe {
-    stringDescriptors[0][0] = 0x9;
-    stringDescriptors[0][1] = 0x4;
-    }
 
     while(1)
     {

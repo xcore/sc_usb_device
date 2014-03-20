@@ -233,6 +233,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     stringDescriptors[0][0] = 0x9;
     stringDescriptors[0][1] = 0x4;
     }
+
     while(1)
     {
         /* Returns XUD_RES_OKAY on success */

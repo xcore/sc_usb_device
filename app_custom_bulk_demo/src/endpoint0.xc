@@ -83,14 +83,17 @@ static unsigned char cfgDesc[] =
 #define STR_USENG 0x0409
 
 /* String table */
-static unsigned char stringDescriptors[][40] =
+unsafe
 {
-    {STR_USENG & 0xff, STR_USENG >> 8, '\0'},  // Language string
-    "XMOS",                                    // iManufacturer
-    "XMOS Custom Bulk Transfer Device",        // iProduct
-    "Custom Interface",                        // iInterface
-    "Config",                                  // iConfiguration
+static char *stringDescriptors[] =
+{
+    "",                                     // Language string place-holder
+    "XMOS",                                 // iManufacturer
+    "XMOS Custom Bulk Transfer Device",     // iProduct
+    "Custom Interface",                     // iInterface
+    "Config",                               // iConfiguration
 };
+}
 
 /* Endpoint 0 Task */
 void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
@@ -99,6 +102,12 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
     XUD_BusSpeed_t usbBusSpeed;
     XUD_ep ep0_out = XUD_InitEp(chan_ep0_out);
     XUD_ep ep0_in  = XUD_InitEp(chan_ep0_in);
+
+    // Set language string to US English
+    unsafe {
+    stringDescriptors[0][0] = 0x9;
+    stringDescriptors[0][1] = 0x4;
+    }
 
     while(1)
     {

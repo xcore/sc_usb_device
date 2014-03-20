@@ -85,7 +85,7 @@ static unsigned char cfgDesc[] =
 /* String table */
 unsafe
 {
-static char *stringDescriptors[] =
+static char * unsafe stringDescriptors[] =
 {
     "",                                     // Language string place-holder
     "XMOS",                                 // iManufacturer

@@ -92,8 +92,8 @@ XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     unsigned char * unsafe strDescs[],
 #else
 #error
-    unsigned char strDescs[][40], 
-#endif    
+    unsigned char strDescs[][40],
+#endif
     int strDescsLength,
     USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed_t usbBusSpeed)
 {

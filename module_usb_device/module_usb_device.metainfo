@@ -168,7 +168,9 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
 ${device_code}
 
 /* String table */
-static unsigned char stringDescriptors[][40] = 
+unsafe
+{
+static char * unsafe stringDescriptors[] = 
 {
     "\\004\\009",               // Language string
     "XMOS",                     // iManufacturer 
@@ -176,7 +178,7 @@ static unsigned char stringDescriptors[][40] =
     "",                         // unUsed
     "Config",                   // iConfiguration
 };
-
+}
 void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
 {
     USB_SetupPacket_t sp;

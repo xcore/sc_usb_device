@@ -54,14 +54,18 @@
   *
   * \return   Returns XUD_RES_OKAY on success.
   */
+
 XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_hs), int devDescLength_hs,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_hs), int cfgDescLength_hs,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_fs), int devDescLength_fs,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_fs), int cfgDescLength_fs,
-    unsigned char strDescs[][40], int strDescsLength,
+#ifdef __XC__
+   char * unsafe strDescs[], int strDescsLength,
+#else
+   char * strDescs[], int strDescsLength,
+#endif
     REFERENCE_PARAM(USB_SetupPacket_t, sp), NULLABLE_RESOURCE(chanend, c_usb_test), XUD_BusSpeed_t usbBusSpeed);
-
 /**
  *  \brief  Receives a Setup data packet and parses it into the passed USB_SetupPacket_t structure.
  *  \param  ep_out   OUT endpint from XUD

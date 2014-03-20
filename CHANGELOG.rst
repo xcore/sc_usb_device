@@ -6,7 +6,7 @@ sc_usb_device Change Log
     - CHANGE:     USB_StandardRequests() now returns XUD_Result_t instead of int
     - CHANGE:     app_hid_mouse_demo now uses XUD_Result_t
     - CHANGE:     app_custom_bulk_demo now uses XUD_Result_t
-    - CHANGE:     USB_StandardRequests now takes the string table as an array of char pointers rather 
+    - CHANGE:     USB_StandardRequests() now takes the string table as an array of char pointers rather 
                   than a fixed size 2D array. This allows for a more space efficient string table 
                   representation. Please note, requires tools 13 or later for XC pointer support.
 

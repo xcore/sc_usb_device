@@ -88,13 +88,7 @@ XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_hs), int cfgDescLength_hs,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_fs), int devDescLength_fs,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_fs), int cfgDescLength_fs,
-#if XCC_VERSION_MAJOR >= 1300
-    unsigned char * unsafe strDescs[],
-#else
-#error
-    unsigned char strDescs[][40],
-#endif
-    int strDescsLength,
+    char * unsafe strDescs[], int strDescsLength,
     USB_SetupPacket_t &sp, chanend ?c_usb_test, XUD_BusSpeed_t usbBusSpeed)
 {
      /* Return value */
@@ -392,6 +386,7 @@ XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                 unsafe
                                 {
                                 datalength = strlen((char*)strDescs[stringID]);
+                                
                                 /* String 0 (LangIDs) is a special case*/
                                 if( stringID == 0 )
                                 {
@@ -425,7 +420,7 @@ XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                                     }
                                 }
                                 }
-
+                                
                                 /* Send back string */
                                 return XUD_DoGetRequest(ep_out, ep_in, buffer, datalength + 2, sp.wLength);
                             } /* if(stringID < stringDescs_length) */

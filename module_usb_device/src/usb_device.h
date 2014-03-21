@@ -61,11 +61,11 @@ XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
     NULLABLE_ARRAY_OF(unsigned char, devDesc_fs), int devDescLength_fs,
     NULLABLE_ARRAY_OF(unsigned char, cfgDesc_fs), int cfgDescLength_fs,
 #ifdef __XC__
-   char * unsafe strDescs[], int strDescsLength,
+    char * unsafe strDescs[],
 #else
-   char * strDescs[], int strDescsLength,
+    char * strDescs[],
 #endif
-    REFERENCE_PARAM(USB_SetupPacket_t, sp), NULLABLE_RESOURCE(chanend, c_usb_test), XUD_BusSpeed_t usbBusSpeed);
+    int strDescsLength, REFERENCE_PARAM(USB_SetupPacket_t, sp), NULLABLE_RESOURCE(chanend, c_usb_test), XUD_BusSpeed_t usbBusSpeed);
 /**
  *  \brief  Receives a Setup data packet and parses it into the passed USB_SetupPacket_t structure.
  *  \param  ep_out   OUT endpint from XUD

@@ -1,7 +1,7 @@
 sc_usb_device
 .............
 
-:Latest release: 1.2.0beta1
+:Latest release: 1.2.0beta2
 :Maintainer: XMOS
 :Description: Device-Class USB Modules and Applications
 
@@ -36,7 +36,7 @@ Issues may be submitted via the Issues tab in this github repo. Response to any 
 Required software (dependencies)
 ================================
 
-  * sc_periph (git://github.com/xcore/sc_periph)
+  * sc_u_series_support (git@github.com:xcore/sc_u_series_support.git)
   * sc_util (git://github.com/xcore/sc_util)
   * sc_xud (git://git/apps/sc_xud)
   * sc_usb (git://git/apps/sc_usb)

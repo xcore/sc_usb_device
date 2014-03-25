@@ -10,6 +10,7 @@ sc_usb_device Change Log
                   than a fixed size 2D array. This allows for a more space efficient string table
                   representation. Please note, requires tools 13 or later for XC pointer support.
     - CHANGE:     Demo applications now set LangID string at build-time (rather than run-time)
+    - CHANGE:     Test mode support no longer guarded by TEST_MODE_SUPPORT
 
   * Changes to dependencies:
 

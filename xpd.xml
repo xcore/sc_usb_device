@@ -45,11 +45,6 @@
         <uri>git://git/apps/sc_usb</uri>
         <version>1.0.3beta3</version>
     </dependency>
-    <dependency repo = "sc_periph">
-        <githash>28460a6d9ed5dbd31d420b321d56c68d52f9ed8c</githash>
-        <uri>git://github.com/xcore/sc_periph</uri>
-        <version>1.0.0rc1</version>
-    </dependency>
     <dependency repo = "sc_util">
         <githash>f09fda14976cf969ae792e7c28b4e5a30e4c1eb9</githash>
         <uri>git://github.com/xcore/sc_util</uri>

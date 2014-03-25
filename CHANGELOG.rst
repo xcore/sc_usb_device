@@ -6,10 +6,19 @@ sc_usb_device Change Log
     - CHANGE:     USB_StandardRequests() now returns XUD_Result_t instead of int
     - CHANGE:     app_hid_mouse_demo now uses XUD_Result_t
     - CHANGE:     app_custom_bulk_demo now uses XUD_Result_t
-    - CHANGE:     USB_StandardRequests() now takes the string table as an array of char pointers rather 
-                  than a fixed size 2D array. This allows for a more space efficient string table 
+    - CHANGE:     USB_StandardRequests() now takes the string table as an array of char pointers rather
+                  than a fixed size 2D array. This allows for a more space efficient string table
                   representation. Please note, requires tools 13 or later for XC pointer support.
     - CHANGE:     Demo applications now set LangID string at build-time (rather than run-time)
+
+  * Changes to dependencies:
+
+    - sc_util: 1.0.3rc0 -> 1.0.4rc0
+
+      + module_logging now compiled at -Os
+      + debug_printf in module_logging uses a buffer to deliver messages unfragmented
+      + Fix thread local storage calculation bug in libtrycatch
+      + Fix debug_printf itoa to work for unsigned values > 0x80000000
 
 1.1.0
 -----

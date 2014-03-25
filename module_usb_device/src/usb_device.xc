@@ -7,7 +7,6 @@
 #include "usb_device.h"          /* Defines related to the USB 2.0 Spec */
 #include "usb_std_descriptors.h"
 
-#include <safestring.h>
 #include <string.h>
 #include <xs1.h>
 #include <print.h>

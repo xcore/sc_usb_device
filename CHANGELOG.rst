@@ -1,6 +1,10 @@
 sc_usb_device Change Log
 ========================
 
+1.2.1
+-----
+    - RESOLVED:   (Minor) Build issue in Windows host app for bulk demo
+
 1.2.0
 -----
     - CHANGE:     USB_StandardRequests() now returns XUD_Result_t instead of int

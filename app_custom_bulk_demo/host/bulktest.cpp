@@ -29,7 +29,6 @@ static int find_xmos_bulk_device(unsigned int id) {
         }
       }
     }
-  }
 
   if (!devh)
     return -1;

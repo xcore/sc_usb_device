@@ -4,6 +4,13 @@ sc_usb_device Change Log
 1.2.2
 -----
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.0.0rc0 -> 2.0.1rc0
+
+      + RESOLVED:   (Minor) XUD_GetRequest failed to send a zero-length packet at the end of a transfer
+      + RESOLVED:   (Minor) Error when building module_xud in xTimeComposer due to invalid project
+
 1.2.1
 -----
     - RESOLVED:   (Minor) Build issue in Windows host app for bulk demo

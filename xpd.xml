@@ -37,9 +37,9 @@
     </components>
     <dependency repo = "sc_xud">
         <gitbranch>master</gitbranch>
-        <githash>9965086934c44fc066e2dbfaf9a150e5db4ecd6e</githash>
+        <githash>57493339e4978fbbca88a1344ecff8c144d3dc18</githash>
         <uri>git://git/apps/sc_xud</uri>
-        <version>2.0.0rc0</version>
+        <version>2.0.1rc0</version>
     </dependency>
     <dependency repo = "sc_usb">
         <gitbranch>master</gitbranch>
@@ -90,7 +90,7 @@
     <release parenthash = "57081a156a4ca4372abec14503db4afe5df2c459" version = "1.2.0beta3" githash = "b92ab235e13c62a89e72b5d26e9c53843ec67f07"></release>
     <release parenthash = "b92ab235e13c62a89e72b5d26e9c53843ec67f07" version = "1.2.0beta4" githash = "19789b2f1e79b24c5d0a9bff2ae53d365d3fc4d3"></release>
     <release parenthash = "19789b2f1e79b24c5d0a9bff2ae53d365d3fc4d3" version = "1.2.0rc0" githash = "d1270f03b4954391667d5e0ce06689ebec7b5ea0"></release>
-    <release parenthash = "fe703c10de7e5979abcad18ff81f5ff0021f10ed" version = "1.2.1rc0"></release>
+    <release parenthash = "fe703c10de7e5979abcad18ff81f5ff0021f10ed" version = "1.2.1rc0" githash = "84278005953216be2bf9a72bc1e3e522aee4d3fb"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <version_defines></version_defines>

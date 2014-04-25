@@ -2,27 +2,27 @@
 <xpd>
     <components>
         <component description = "An example High Speed USB 2.0 Custom Class Device" type = "demoCode" scope = "General Use" path = "app_custom_bulk_demo" local = "false" id = "app_custom_bulk_demo" name = "Custom Class USB Device Demo">
+            <componentDependency version = "1.0.3">module_usb_shared</componentDependency>
+            <componentDependency version = "1.0.3">module_usb_shared</componentDependency>
+            <componentDependency version = "1.2.2">module_usb_device</componentDependency>
             <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.4">module_logging</componentDependency>
             <componentDependency version = "2.0.1">module_xud</componentDependency>
             <componentDependency version = "2.0.1">module_xud</componentDependency>
-            <componentDependency version = "1.0.3">module_usb_shared</componentDependency>
-            <componentDependency version = "1.2.1">module_usb_device</componentDependency>
-            <componentDependency version = "1.0.3">module_usb_shared</componentDependency>
             <keyword>usb</keyword>
             <keyword>bulk</keyword>
             <keyword>custom</keyword>
             <keyword>device</keyword>
         </component>
         <component description = "An example High Speed USB 2.0 HID Class Device; a mouse application." type = "demoCode" scope = "General Use" path = "app_hid_mouse_demo" local = "false" id = "app_hid_mouse_demo" name = "HID Class USB Device Demo">
-            <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.4">module_logging</componentDependency>
             <componentDependency version = "1.0.3">module_usb_shared</componentDependency>
-            <componentDependency version = "1.2.1">module_usb_device</componentDependency>
+            <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.4">module_logging</componentDependency>
+            <componentDependency version = "1.2.2">module_usb_device</componentDependency>
+            <componentDependency version = "2.0.1">module_xud</componentDependency>
             <componentDependency repo = "git://github.com/xcore/sc_u_series_support" version = "1.0.2">module_usb_tile_support</componentDependency>
             <componentDependency version = "1.0.3">module_usb_shared</componentDependency>
-            <componentDependency version = "2.0.1">module_xud</componentDependency>
-            <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.4">module_xassert</componentDependency>
             <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.4">module_logging</componentDependency>
             <componentDependency version = "2.0.1">module_xud</componentDependency>
+            <componentDependency repo = "git://github.com/xcore/sc_util" version = "1.0.4">module_xassert</componentDependency>
             <keyword>usb</keyword>
             <keyword>mouse</keyword>
             <keyword>hid</keyword>
@@ -91,7 +91,8 @@
     <release parenthash = "b92ab235e13c62a89e72b5d26e9c53843ec67f07" version = "1.2.0beta4" githash = "19789b2f1e79b24c5d0a9bff2ae53d365d3fc4d3"></release>
     <release parenthash = "19789b2f1e79b24c5d0a9bff2ae53d365d3fc4d3" version = "1.2.0rc0" githash = "d1270f03b4954391667d5e0ce06689ebec7b5ea0"></release>
     <release parenthash = "fe703c10de7e5979abcad18ff81f5ff0021f10ed" version = "1.2.1rc0" githash = "84278005953216be2bf9a72bc1e3e522aee4d3fb"></release>
-    <release parenthash = "e998ae79c0d9f280c6e358f585a17dda15a2bab3" version = "1.2.2rc0"></release>
+    <release parenthash = "e998ae79c0d9f280c6e358f585a17dda15a2bab3" version = "1.2.2rc0" githash = "67b7cabf9f9c66555650973475b84261e3a82827"></release>
+    <release parenthash = "5b67e3fa9332ff5eb0e4c9a7bfba5456a3c73bb6" version = "1.2.2rc1"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <version_defines></version_defines>

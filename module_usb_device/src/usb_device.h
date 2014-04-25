@@ -21,8 +21,6 @@
   *
   *   String requests (using strDesc argument)
   *
-  *   Get Microsoft OS String Descriptor (re-uses product ID string)
-  *
   *   Get Device_Qualifier Descriptor
   *
   *   Get Other-Speed Configuration Descriptor

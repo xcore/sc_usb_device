@@ -192,29 +192,24 @@ XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                  /* Standard Device Request: SetFeature (USB Spec 9.4.9) */
                  case USB_SET_FEATURE:
 
-                    /* Check we have a test mode channel to XUD.. */
-                    if(!isnull(c_usb_test))
+                    if((sp.wValue == USB_TEST_MODE) && (sp.wLength == 0))
                     {
-                        if((sp.wValue == USB_TEST_MODE) && (sp.wLength == 0))
+                        /* Inspect for Test Selector (high byte of wIndex, lower byte must be zero) */
+                        switch(sp.wIndex)
                         {
-                            /* Inspect for Test Selector (high byte of wIndex, lower byte must be zero) */
-                            switch(sp.wIndex)
+                            case USB_WINDEX_TEST_J:
+                            case USB_WINDEX_TEST_K:
+                            case USB_WINDEX_TEST_SE0_NAK:
+                            case USB_WINDEX_TEST_PACKET:
+                            case USB_WINDEX_TEST_FORCE_ENABLE:
                             {
-                                case USB_WINDEX_TEST_J:
-                                case USB_WINDEX_TEST_K:
-                                case USB_WINDEX_TEST_SE0_NAK:
-                                case USB_WINDEX_TEST_PACKET:
-                                case USB_WINDEX_TEST_FORCE_ENABLE:
-                                    {
-                                        XUD_Result_t result;
-                                        if((result = XUD_DoSetRequestStatus(ep_in)) != XUD_RES_OKAY)
-                                            return result;
+                                XUD_Result_t result;
+                                if((result = XUD_DoSetRequestStatus(ep_in)) != XUD_RES_OKAY)
+                                    return result;
 
-                                        c_usb_test <: (unsigned)sp.wIndex;
-
-                                    }
-                                    break;
+                                XUD_SetTestMode(ep_out, sp.wIndex);
                             }
+                            break;
                         }
                     }
                     break;

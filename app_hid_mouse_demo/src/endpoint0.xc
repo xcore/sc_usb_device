@@ -218,7 +218,7 @@ XUD_Result_t HidInterfaceClassRequests(XUD_ep c_ep0_out, XUD_ep c_ep0_in, USB_Se
 }
 
 /* Endpoint 0 Task */
-void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
+void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in)
 {
     USB_SetupPacket_t sp;
 
@@ -316,7 +316,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             result = USB_StandardRequests(ep0_out, ep0_in, devDesc,
                         sizeof(devDesc), cfgDesc, sizeof(cfgDesc),
                         null, 0, null, 0, stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]),
-                        sp, c_usb_test, usbBusSpeed);
+                        sp, usbBusSpeed);
              }
         }
 

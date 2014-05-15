@@ -27,7 +27,7 @@ void xscope_user_init(void) {
 #define XUD_EP_COUNT_IN    2
 
 /* Prototype for Endpoint0 function in endpoint0.xc */
-void Endpoint0(chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
+void Endpoint0(chanend c_ep0_out, chanend c_ep0_in);
 
 /* Endpoint type tables - informs XUD what the transfer types for each Endpoint in use and also
  * if the endpoint wishes to be informed of USB bus resets
@@ -223,12 +223,6 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 int main()
 {
     chan c_ep_out[XUD_EP_COUNT_OUT], c_ep_in[XUD_EP_COUNT_IN];
-#ifdef TEST_MODE_SUPPORT
-    chan c_usb_test;
-#else
-#define c_usb_test null
-#endif
-
 #ifdef ADC
     chan c_adc;
 #else
@@ -239,9 +233,9 @@ int main()
     {
         on USB_TILE: XUD_Manager(c_ep_out, XUD_EP_COUNT_OUT, c_ep_in, XUD_EP_COUNT_IN,
                                 null, epTypeTableOut, epTypeTableIn,
-                                p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, c_usb_test, PWR_MODE);
+                                p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, PWR_MODE);
 
-        on USB_TILE: Endpoint0(c_ep_out[0], c_ep_in[0], c_usb_test);
+        on USB_TILE: Endpoint0(c_ep_out[0], c_ep_in[0]);
 
         on USB_TILE: hid_mouse(c_ep_in[1], c_adc);
 

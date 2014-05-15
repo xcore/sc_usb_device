@@ -33,11 +33,17 @@ void xscope_user_init(void) {
 /* Prototype for Endpoint0 function in endpoint0.xc */
 void Endpoint0(chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
 
+#ifdef ISO
+#define DATA_EP_TYPE XUD_EPTYPE_ISO
+#else
+#define DATA_EP_TYPE XUD_EPTYPE_BULK
+#endif
+
 /* Endpoint type tables - infoms XUD what the transfer types for each Endpoint in use and also
  * if the endpoint wishes to be informed of USB bus resets
  */
-XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL | XUD_STATUS_ENABLE};
-XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, XUD_EPTYPE_BUL | XUD_STATUS_ENABLE};
+XUD_EpType epTypeTableOut[XUD_EP_COUNT_OUT] = {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, DATA_EP_TYPE | XUD_STATUS_ENABLE};
+XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABLE, DATA_EP_TYPE | XUD_STATUS_ENABLE};
 
 #if (XUD_SERIES_SUPPORT == XUD_U_SERIES)
   /* USB Reset not required for U series - pass null to XUD */
@@ -49,39 +55,59 @@ XUD_EpType epTypeTableIn[XUD_EP_COUNT_IN] =   {XUD_EPTYPE_CTL | XUD_STATUS_ENABL
   on USB_TILE: clock    clk_usb_rst = XS1_CLKBLK_3;
 #endif
 
-#define BUFFER_SIZE 128
+#define BUFFER_SIZE 1024
 /* A basic endpoint function that receives 512-byte packets of data, processes
  * them and sends them back to the host. If at any point an error is detected
  * (return value < 0) then the process needs to be started again so that
  * both host and device stay in sync.
  */
-void bulk_endpoint(chanend chan_ep_from_host, chanend chan_ep_to_host)
+void out_endpoint(chanend chan_ep_from_host)
 {
     int host_transfer_buf[BUFFER_SIZE];
-    unsigned host_transfer_length = 0;
+    unsigned host_transfer_length = 128;
     XUD_Result_t result;
 
     XUD_ep ep_from_host = XUD_InitEp(chan_ep_from_host);
-    XUD_ep ep_to_host = XUD_InitEp(chan_ep_to_host);
 
     while(1)
     {
         /* Receive a buffer (512-bytes) of data from the host */
         if((result = XUD_GetBuffer(ep_from_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length)) == XUD_RES_RST)
         {
-            XUD_ResetEndpoint(ep_from_host, ep_to_host);
+            XUD_ResetEndpoint(ep_from_host, null);
             continue;
         }
 
         /* Perform basic processing (increment data) */
-        for (int i = 0; i < host_transfer_length/4; i++)
-            host_transfer_buf[i]++;
+        //for (int i = 0; i < host_transfer_length/4; i++)
+          //  host_transfer_buf[i]++;
+    }
+}
+void in_endpoint(chanend chan_ep_to_host)
+{
+    int host_transfer_buf[BUFFER_SIZE];
+    unsigned host_transfer_length = 128;
+    XUD_Result_t result;
+    int counter = 0;
 
+    for(int i = 0; i< BUFFER_SIZE; i++)
+    {
+        host_transfer_buf[i] = i;
+    }
+
+    XUD_ep ep_to_host = XUD_InitEp(chan_ep_to_host);
+
+    while(1)
+    {
         /* Send the modified buffer back to the host */
         if((result = XUD_SetBuffer(ep_to_host, (host_transfer_buf, char[BUFFER_SIZE * 4]), host_transfer_length)) == XUD_RES_RST)
         {
-            XUD_ResetEndpoint(ep_from_host, ep_to_host);
+            XUD_ResetEndpoint(ep_to_host, null);
+            counter = 0;
+            host_transfer_length = 128;
         }
+
+        host_transfer_buf[0] = counter++;
     }
 }
 
@@ -103,7 +129,8 @@ int main()
 
         on USB_TILE: Endpoint0(c_ep_out[0], c_ep_in[0], null);
 
-        on USB_TILE: bulk_endpoint(c_ep_out[1], c_ep_in[1]);
+        on USB_TILE: in_endpoint(c_ep_in[1]);
+        on USB_TILE: out_endpoint(c_ep_out[1]);
     }
 
     return 0;

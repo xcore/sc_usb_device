@@ -65,17 +65,29 @@ static unsigned char cfgDesc[] =
     0x07,                     /* 0  bLength */
     0x05,                     /* 1  bDescriptorType */
     0x01,                     /* 2  bEndpointAddress */
+#ifdef ISO
+    0x01,                     /* 3  bmAttributes */
+    0x00,                     /* 4  wMaxPacketSize */
+    0x04,                     /* 5  wMaxPacketSize */
+#else
     0x02,                     /* 3  bmAttributes */
     0x00,                     /* 4  wMaxPacketSize */
     0x02,                     /* 5  wMaxPacketSize */
+#endif
     0x01,                     /* 6  bInterval */
 
     0x07,                     /* 0  bLength */
     0x05,                     /* 1  bDescriptorType */
     0x81,                     /* 2  bEndpointAddress */
+#ifdef ISO
+    0x01,                     /* 3  bmAttributes */
+    0x00,                     /* 4  wMaxPacketSize */
+    0x04,                     /* 5  wMaxPacketSize */
+#else
     0x02,                     /* 3  bmAttributes */
     0x00,                     /* 4  wMaxPacketSize */
     0x02,                     /* 5  wMaxPacketSize */
+#endif
     0x01                      /* 6  bInterval */
 };
 

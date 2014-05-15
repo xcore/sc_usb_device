@@ -47,7 +47,6 @@
   * \param     strDescs
   * \param     strDescsLength
   * \param     sp ``USB_SetupPacket_t`` (passed by ref) in which the setup data is returned
-  * \param     c_usb_test Optional channel param for USB test mode support
   * \param     usbBusSpeed The current bus speed (XUD_SPEED_HS or XUD_SPEED_FS)
   *
   * \return   Returns XUD_RES_OKAY on success.
@@ -63,7 +62,7 @@ XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
 #else
     char * strDescs[],
 #endif
-    int strDescsLength, REFERENCE_PARAM(USB_SetupPacket_t, sp), NULLABLE_RESOURCE(chanend, c_usb_test), XUD_BusSpeed_t usbBusSpeed);
+    int strDescsLength, REFERENCE_PARAM(USB_SetupPacket_t, sp), XUD_BusSpeed_t usbBusSpeed);
 /**
  *  \brief  Receives a Setup data packet and parses it into the passed USB_SetupPacket_t structure.
  *  \param  ep_out   OUT endpint from XUD

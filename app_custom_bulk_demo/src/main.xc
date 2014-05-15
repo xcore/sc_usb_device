@@ -31,7 +31,7 @@ void xscope_user_init(void) {
 #define XUD_EP_COUNT_IN    2
 
 /* Prototype for Endpoint0 function in endpoint0.xc */
-void Endpoint0(chanend c_ep0_out, chanend c_ep0_in, chanend ?c_usb_test);
+void Endpoint0(chanend c_ep0_out, chanend c_ep0_in);
 
 /* Endpoint type tables - infoms XUD what the transfer types for each Endpoint in use and also
  * if the endpoint wishes to be informed of USB bus resets
@@ -101,7 +101,7 @@ int main()
                                    null, epTypeTableOut, epTypeTableIn,
                                    p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, XUD_PWR_BUS);
 
-        on USB_TILE: Endpoint0(c_ep_out[0], c_ep_in[0], null);
+        on USB_TILE: Endpoint0(c_ep_out[0], c_ep_in[0]);
 
         on USB_TILE: bulk_endpoint(c_ep_out[1], c_ep_in[1]);
     }

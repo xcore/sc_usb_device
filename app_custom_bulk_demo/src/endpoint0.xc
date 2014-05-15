@@ -96,7 +96,7 @@ static char * unsafe stringDescriptors[] =
 }
 
 /* Endpoint 0 Task */
-void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
+void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in)
 {
     USB_SetupPacket_t sp;
     XUD_BusSpeed_t usbBusSpeed;
@@ -132,7 +132,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                         devDesc_Null, sizeof(devDesc_Null),
                         cfgDesc_Null, sizeof(cfgDesc_Null),
                         stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]),
-                        sp, c_usb_test, usbBusSpeed);
+                        sp, usbBusSpeed);
         }
 
         /* USB bus reset detected, reset EP and get new bus speed */

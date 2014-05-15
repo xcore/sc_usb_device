@@ -62,7 +62,7 @@ unsigned char g_reportBuffer[] = {0, 0, 0, 0};
 
 #ifdef ADC
 
-#ifdef U16
+#if (U16 == 1)
 #define BITS 5          // Overall precision
 #define DEAD_ZONE 2     // Ensure that the mouse is stable when the joystick is not used
 #else
@@ -209,7 +209,7 @@ void hid_mouse(chanend chan_ep_hid, chanend ?c_adc)
 }
 #endif // ADC
 
-#ifdef U16
+#if (U16 == 1)
 #define PWR_MODE XUD_PWR_SELF
 #else
 #define PWR_MODE XUD_PWR_BUS

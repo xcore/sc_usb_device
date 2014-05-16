@@ -179,7 +179,7 @@ static char * unsafe stringDescriptors[] =
     "Config",                   // iConfiguration
 };
 }
-void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
+void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in)
 {
     USB_SetupPacket_t sp;
 
@@ -251,7 +251,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
             retVal = USB_StandardRequests(ep0_out, ep0_in, devDesc_Null,
                         sizeof(devDesc_Null), cfgDesc_Null, sizeof(cfgDesc_Null),
                         null, 0, null, 0, stringDescriptors, sizeof(stringDescriptors)/sizeof(stringDescriptors[0]), sp,
-                        c_usb_test, usbBusSpeed);
+                        usbBusSpeed);
         }
 
         /* USB bus reset detected, reset EP and get new bus speed */
@@ -270,7 +270,7 @@ void Endpoint0(chanend chan_ep0_out, chanend chan_ep0_in, chanend ?c_usb_test)
                                 null, epTypeTableOut, epTypeTableIn,
                                 p_usb_rst, clk_usb_rst, -1, XUD_SPEED_HS, XUD_PWR_BUS); 
 
-        Endpoint0(c_ep_out[0], c_ep_in[0], null);
+        Endpoint0(c_ep_out[0], c_ep_in[0]);
     }
        ]]
 }

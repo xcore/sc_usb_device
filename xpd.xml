@@ -37,9 +37,9 @@
     </components>
     <dependency repo = "sc_xud">
         <gitbranch>master</gitbranch>
-        <githash>a94e5f41d69de8c70b11b9ec29f486cd4eca564f</githash>
+        <githash>b463e51d37c46adbf3b88b302bcc55e5b48ea745</githash>
         <uri>git://git/apps/sc_xud</uri>
-        <version>2.0.1rc3</version>
+        <version>2.1.0beta0</version>
     </dependency>
     <dependency repo = "sc_usb">
         <gitbranch>master</gitbranch>
@@ -63,7 +63,7 @@
     <docdir>app_custom_bulk_demo/doc_quickstart</docdir>
     <docdir>module_usb_device/doc_design_guide</docdir>
     <exclude_dir>mass_storage</exclude_dir>
-    <location>git://git/apps/sc_usb_device</location>
+    <location>ssh://git@github.com/xcore/sc_usb_device</location>
     <name>sc_usb_device</name>
     <maintainer>XMOS</maintainer>
     <partnumber>XM-002851-DH</partnumber>
@@ -95,7 +95,7 @@
     <release parenthash = "5b67e3fa9332ff5eb0e4c9a7bfba5456a3c73bb6" version = "1.2.2rc1" githash = "526f75bfb217b9354c7d0a9fea4643d550833db4"></release>
     <release parenthash = "08c50876921f277485ec789aeaab8811bc56e743" version = "1.2.2rc2" githash = "fcec44c8e3ae98dd074ca84380f33054df8a6232"></release>
     <release parenthash = "6043aa9e2b7a093a103394d50e6d4d14586f8ee4" version = "1.2.2rc3" githash = "287c366f96479bc3aad60c8eb846b17f674852ea"></release>
-    <release parenthash = "9fa09c306873a9dbbcf15f4c1d2f209d13220540" version = "1.2.2rc4"></release>
+    <release parenthash = "9fa09c306873a9dbbcf15f4c1d2f209d13220540" version = "1.2.2rc4" githash = "bbc3d2aefc8ac9f13093a7d8b7a453b7fbed863c"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <version_defines></version_defines>

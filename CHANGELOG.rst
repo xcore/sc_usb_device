@@ -6,6 +6,12 @@ sc_usb_device Change Log
     - CHANGE:  Required updates for XUD API change relating to USB test-mode-support
 
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.0.1rc3 -> 2.1.0beta0
+
+      + CHANGE:     XUD no longer takes a additional chanend parameter for enabling USB test-modes.
+
 1.2.2
 -----
 

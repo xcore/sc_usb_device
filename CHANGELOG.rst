@@ -8,8 +8,9 @@ sc_usb_device Change Log
 
   * Changes to dependencies:
 
-    - sc_xud: 2.0.1rc3 -> 2.1.0beta0
+    - sc_xud: 2.0.1rc3 -> 2.1.1rc0
 
+      + ADDED:      Warning emitted when number of cores is greater than 6
       + CHANGE:     XUD no longer takes a additional chanend parameter for enabling USB test-modes.
 
 1.2.2

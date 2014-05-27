@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<allbuildresults>
+<buildresults component="module_usb_device" packagename="xm-local-sc_usb_device(7b3ce033)" packageversion="7b3ce033" toolsversion="latest">
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="2"/>
+<parameter id="num_ep_out" value="1"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7836"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="7"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="2"/>
+<parameter id="num_ep_out" value="2"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7872"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="8"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="2"/>
+<parameter id="num_ep_out" value="3"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7912"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="9"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="2"/>
+<parameter id="num_ep_out" value="4"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7952"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="10"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="3"/>
+<parameter id="num_ep_out" value="1"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7872"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="8"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="3"/>
+<parameter id="num_ep_out" value="2"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7912"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="9"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="3"/>
+<parameter id="num_ep_out" value="3"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7952"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="10"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="3"/>
+<parameter id="num_ep_out" value="4"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13336"/>
+<resourceusageitem id="datamemory" value="7992"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="11"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="4"/>
+<parameter id="num_ep_out" value="1"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7912"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="9"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="4"/>
+<parameter id="num_ep_out" value="2"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13208"/>
+<resourceusageitem id="datamemory" value="7952"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="10"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="4"/>
+<parameter id="num_ep_out" value="3"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13336"/>
+<resourceusageitem id="datamemory" value="7992"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="11"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="1"/>
+<parameter id="num_ep_in" value="4"/>
+<parameter id="num_ep_out" value="4"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="13336"/>
+<resourceusageitem id="datamemory" value="8036"/>
+<resourceusageitem id="ports1bit" value="4"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="12"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="2"/>
+<parameter id="num_ep_out" value="1"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7776"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="5"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="2"/>
+<parameter id="num_ep_out" value="2"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7812"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="6"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="2"/>
+<parameter id="num_ep_out" value="3"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7852"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="7"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="2"/>
+<parameter id="num_ep_out" value="4"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7892"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="8"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="3"/>
+<parameter id="num_ep_out" value="1"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7812"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="6"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="3"/>
+<parameter id="num_ep_out" value="2"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7852"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="7"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="3"/>
+<parameter id="num_ep_out" value="3"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7892"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="8"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="3"/>
+<parameter id="num_ep_out" value="4"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12728"/>
+<resourceusageitem id="datamemory" value="7932"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="9"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="4"/>
+<parameter id="num_ep_out" value="1"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7852"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="7"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="4"/>
+<parameter id="num_ep_out" value="2"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12600"/>
+<resourceusageitem id="datamemory" value="7892"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="8"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="4"/>
+<parameter id="num_ep_out" value="3"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12728"/>
+<resourceusageitem id="datamemory" value="7932"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="9"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+<buildresult>
+<configuration>
+<parameter id="series" value="2"/>
+<parameter id="num_ep_in" value="4"/>
+<parameter id="num_ep_out" value="4"/>
+</configuration>
+<resourceusage>
+<resourceusageitem id="cores" value="3"/>
+<resourceusageitem id="memory" value="0"/>
+<resourceusageitem id="codememory" value="12728"/>
+<resourceusageitem id="datamemory" value="7976"/>
+<resourceusageitem id="ports1bit" value="5"/>
+<resourceusageitem id="ports4bit" value="0"/>
+<resourceusageitem id="ports8bit" value="4"/>
+<resourceusageitem id="ports16bit" value="0"/>
+<resourceusageitem id="ports32bit" value="0"/>
+<resourceusageitem id="clocks" value="0"/>
+<resourceusageitem id="chanends" value="10"/>
+<resourceusageitem id="timers" value="5"/>
+<resourceusageitem id="hwtimers" value="3"/>
+<resourceusageitem id="distributed_tasks" value="0"/>
+<resourceusageitem id="combined_tasks" value="0"/>
+</resourceusage>
+</buildresult>
+</buildresults>
+</allbuildresults>

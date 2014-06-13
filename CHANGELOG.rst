@@ -4,6 +4,13 @@ sc_usb_device Change Log
 1.3.1
 -----
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.1.1rc0 -> 2.2.0rc0
+
+      + CHANGE:     Timer usage optimisation - usage reduced by one.
+      + CHANGE:     OTG Flags register explicitly cleared at start up - useful if previously running
+
 1.3.0
 -----
     - CHANGE:  Required updates for XUD API change relating to USB test-mode-support

@@ -4,6 +4,12 @@ sc_usb_device Change Log
 1.3.2
 -----
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.2.0rc0 -> 2.2.1rc0
+
+      + RESOLVED:   Slight optimisations (long jumps replaced with short) to aid inter-packet gaps.
+
 1.3.1
 -----
 

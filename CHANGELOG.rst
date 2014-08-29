@@ -4,6 +4,16 @@ sc_usb_device Change Log
 1.3.3
 -----
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.2.1rc0 -> 2.2.2alpha0
+
+      + CHANGE:     Header file comment clarification only
+
+    - sc_usb: 1.0.3rc0 -> 1.0.4alpha0
+
+      + ADDED:      Structs for Audio Class 2.0 Mixer and Extension Units
+
 1.3.2
 -----
 

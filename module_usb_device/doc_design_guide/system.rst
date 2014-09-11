@@ -4,6 +4,11 @@ USB library overview
 The XMOS USB device support is divided into the XMOS USB Device (XUD)
 Library (module_xud) and the USB Device Helper Functions (module_usb_device)
 
+Although only XUD is required to develop a full USB device it is highly recommended
+to use this the helper functions/wrappers in module_usb_device. The use of these
+will greatly decrease development time and reduced required verification and testing
+efforts.
+
 XUD library
 -----------
 
@@ -43,9 +48,9 @@ Cores must be ready to communicate with the XUD Library whenever the
 host demands its attention. If not, the XUD Library will NAK.
 
 It is important to note that, for performance reasons, cores
-communicate with the XUD Library using both XC channels and shared
-memory communication. Therefore, *all cores using the XUD Library must
-be on the same tile as the library itself*.
+communicate with the XUD Library using a combination of both XC channels and shared
+memory. It is therefore madatory that *all cores that directly communicate with the
+XUD Library must be on the same tile as the library itself*.
 
 .. _figure_xud_overview:
 

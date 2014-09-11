@@ -4,7 +4,7 @@ API
 The XMOS USB Device library is provided by ``module_xud`` and the
 USB Device Helper Functions are provided by ``module_usb_device``. 
 
-The APIs of ``module_xud`` is listed in `XMOS USB Device (XUD) Library`. The API of 
+The API of ``module_xud`` is listed in `XMOS USB Device (XUD) Library`. The API of 
 ``module_usb_device`` is detailed in this section.
 
 Please note, both ``module_xud`` and ``module_usb_device`` depend on the module ``module_usb_shared``

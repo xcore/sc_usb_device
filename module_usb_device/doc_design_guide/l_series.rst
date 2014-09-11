@@ -24,7 +24,7 @@ device are shown below:
 |                  | per IN and OUT  |
 |                  | endpoint        |
 +------------------+-----------------+
-| Timers           | 4 timers        |
+| Timers           | 3 timers        |
 +------------------+-----------------+
 | Clock blocks     | Clock block 0   |
 |                  |                 |

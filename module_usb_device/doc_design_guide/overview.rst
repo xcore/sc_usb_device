@@ -50,10 +50,10 @@ are shown below:
 +------------------+-----------------+
 | Channels         | 2 for Endpoint0 |
 |                  | and 1 additional|
-|                  | per IN and OUT  |
+|                  | per IN or OUT  |
 |                  | endpoint        |
 +------------------+-----------------+
-| Timers           | 4 timers        |
+| Timers           | 3 timers        |
 +------------------+-----------------+
 | Clock blocks     | Clock blocks    |
 |                  | 4 and 5         |

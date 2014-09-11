@@ -7,7 +7,8 @@ Device library.
 Includes
 --------
 
-The application needs to include ``xud.h``.
+The application needs to include ``usb_device.h`` (this header file also includes
+``xud.h``.
 
 Declarations
 ------------
@@ -59,7 +60,7 @@ the XUD_Manager, endpoint 0 and any application specific endpoints.
                         null, null, null, XUD_SPEED_HS, null);  
             Endpoint0(c_ep_out[0], c_ep_in[0]);
 
-            // Application specific endpoints
+            // Application specific cores
             ...
         }
         return 0;

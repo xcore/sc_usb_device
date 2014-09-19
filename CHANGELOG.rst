@@ -6,6 +6,12 @@ sc_usb_device Change Log
     * Minor documentation updates only
 
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.2.2alpha0 -> 2.2.3rc0
+
+      + RESOLVED:   (Minor) XUD_ResetEpStateByAddr() could operate on corresponding OUT endpoint
+
 1.3.3
 -----
 

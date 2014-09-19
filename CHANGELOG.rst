@@ -3,7 +3,7 @@ sc_usb_device Change Log
 
 1.3.4
 -----
-    * Minor documentation updates
+    * Minor documentation updates only
 
 
 1.3.3

@@ -8,9 +8,13 @@ sc_usb_device Change Log
 
   * Changes to dependencies:
 
-    - sc_xud: 2.2.2alpha0 -> 2.2.3rc0
+    - sc_xud: 2.2.2alpha0 -> 2.2.4rc0
 
+      + RESOLVED:   (L/G series only) Potential for lock-up when waiting for USB clock on startup.
+        (Port buffers enabled on USB clock port)
       + RESOLVED:   (Minor) XUD_ResetEpStateByAddr() could operate on corresponding OUT endpoint
+        instead of the desired IN endpoint address as passed into the function (and
+        vice versa)
 
 1.3.3
 -----

@@ -3,32 +3,19 @@ sc_usb_device Change Log
 
 1.3.5
 -----
-                  (Port buffers enabled on USB clock port)
-  * Changes to dependencies:
-
-    - sc_xud: 2.2.3rc0 -> 2.2.4rc0
-
-      + RESOLVED:   (L/G series only) Potential for lock-up when waiting for USB clock on startup.
-        (Port buffers enabled on USB clock port)
 
 1.3.4
 -----
-                  (Port buffers enabled on USB clock port)    * Minor documentation updates only
-
-
   * Changes to dependencies:
 
     - sc_xud: 2.2.2alpha0 -> 2.2.4rc0
 
-      + RESOLVED:   (L/G series only) Potential for lock-up when waiting for USB clock on startup.
-        (Port buffers enabled on USB clock port)
       + RESOLVED:   (Minor) XUD_ResetEpStateByAddr() could operate on corresponding OUT endpoint
         instead of the desired IN endpoint address as passed into the function (and
         vice versa)
 
 1.3.3
 -----
-                  (Port buffers enabled on USB clock port)
   * Changes to dependencies:
 
     - sc_xud: 2.2.1rc0 -> 2.2.2alpha0
@@ -41,7 +28,6 @@ sc_usb_device Change Log
 
 1.3.2
 -----
-                  (Port buffers enabled on USB clock port)
   * Changes to dependencies:
 
     - sc_xud: 2.2.0rc0 -> 2.2.1rc0
@@ -50,7 +36,6 @@ sc_usb_device Change Log
 
 1.3.1
 -----
-                  (Port buffers enabled on USB clock port)
   * Changes to dependencies:
 
     - sc_xud: 2.1.1rc0 -> 2.2.0rc0
@@ -60,8 +45,7 @@ sc_usb_device Change Log
 
 1.3.0
 -----
-                  (Port buffers enabled on USB clock port)    - CHANGE:  Required updates for XUD API change relating to USB test-mode-support
-
+    - CHANGE:  Required updates for XUD API change relating to USB test-mode-support
 
   * Changes to dependencies:
 
@@ -72,7 +56,6 @@ sc_usb_device Change Log
 
 1.2.2
 -----
-                  (Port buffers enabled on USB clock port)
   * Changes to dependencies:
 
     - sc_xud: 2.0.0rc0 -> 2.0.1rc3
@@ -81,11 +64,11 @@ sc_usb_device Change Log
 
 1.2.1
 -----
-                  (Port buffers enabled on USB clock port)    - RESOLVED:   (Minor) Build issue in Windows host app for bulk demo
+    - RESOLVED:   (Minor) Build issue in Windows host app for bulk demo
 
 1.2.0
 -----
-                  (Port buffers enabled on USB clock port)    - CHANGE:     USB_StandardRequests() now returns XUD_Result_t instead of int
+    - CHANGE:     USB_StandardRequests() now returns XUD_Result_t instead of int
     - CHANGE:     app_hid_mouse_demo now uses XUD_Result_t
     - CHANGE:     app_custom_bulk_demo now uses XUD_Result_t
     - CHANGE:     USB_StandardRequests() now takes the string table as an array of char pointers rather
@@ -105,7 +88,7 @@ sc_usb_device Change Log
 
 1.1.0
 -----
-                  (Port buffers enabled on USB clock port)    - CHANGE:     Functions changed to use new XUD_Result_t type and return value from XUD user functions
+    - CHANGE:     Functions changed to use new XUD_Result_t type and return value from XUD user functions
     - CHANGE:     XUD_BusSpeed_t now used (previously used unsigned)
     - CHANGE:     Function prototypes now use macros from xccompat.h such that they can be called from
                   standard C
@@ -136,7 +119,7 @@ sc_usb_device Change Log
 
 1.0.4
 -----
-                  (Port buffers enabled on USB clock port)    - CHANGE:     devDesc_hs and cfgDesc_hs params to USB_StandardRequests() now nullable (useful for full-speed only devices)
+    - CHANGE:     devDesc_hs and cfgDesc_hs params to USB_StandardRequests() now nullable (useful for full-speed only devices)
     - CHANGE:     Nullable descriptor array parameters to USB_StandardRequests() changed from ?array[] to (?&array)[] due to
                   the compiler warning that future compilers will interpret the former as an array of nullable items (rather
                   than a nullable reference to an array). Note: The NULLABLE_ARRAY_OF macro (from xccompat.h) is used retain
@@ -144,7 +127,7 @@ sc_usb_device Change Log
 
 1.0.3
 -----
-                  (Port buffers enabled on USB clock port)  * Changes to dependencies:
+  * Changes to dependencies:
 
     - sc_xud: 1.0.1beta3 -> 1.0.3alpha5
 
@@ -158,7 +141,7 @@ sc_usb_device Change Log
 
 1.0.2
 -----
-                  (Port buffers enabled on USB clock port)  * CHANGE:    USB_StandardRequests() function now takes length of string table as an extra parameter such that bounds checking can be performed.
+  * CHANGE:    USB_StandardRequests() function now takes length of string table as an extra parameter such that bounds checking can be performed.
   * RESOLVED:  Removed invalid response to Microsoft OS String request. Request is now STALLed by default.
   * RESOLVED:  USB_StandardRequestsi() now makes calls to XUD_ResetEpStateByAddr() in SET_CONFIGURATION to resolve some PID toggling issues on bulk EP's
 
@@ -176,8 +159,8 @@ sc_usb_device Change Log
 
 1.0.1
 -----
-                  (Port buffers enabled on USB clock port)  * Moving to sc_xud 1.0.0rc6
+    * Moving to sc_xud 1.0.0rc6
 
 1.0.0
 -----
-                  (Port buffers enabled on USB clock port)  * Initial Version
+    * Initial Version

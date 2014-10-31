@@ -4,6 +4,8 @@ sc_usb_device Change Log
 1.3.5
 -----
 
+    * RESOLVED:   (Minor) Design Guide documentation build errors
+
   * Changes to dependencies:
 
     - sc_xud: 2.2.3rc0 -> 2.2.4rc3

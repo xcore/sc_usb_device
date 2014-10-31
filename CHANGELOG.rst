@@ -4,6 +4,13 @@ sc_usb_device Change Log
 1.3.5
 -----
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.2.3rc0 -> 2.2.4rc3
+
+      + RESOLVED:   (Minor) Potential for lock-up when waiting for USB clock on startup. This is is
+        avoided by enabling port buffering on the USB clock port. Affects L/G series only.
+
 1.3.4
 -----
   * Changes to dependencies:

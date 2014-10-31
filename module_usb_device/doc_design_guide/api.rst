@@ -15,7 +15,7 @@ module_usb_shared
 .. _usb_setup_packet_t:
 
 ``USB_SetupPacket_t``
-~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
 
 This structure closely matches the structure defined in the USB 2.0 Specification:
 

@@ -50,7 +50,7 @@ are shown below:
 +------------------+-----------------+
 | Channels         | 2 for Endpoint0 |
 |                  | and 1 additional|
-|                  | per IN or OUT  |
+|                  | per IN or OUT   |
 |                  | endpoint        |
 +------------------+-----------------+
 | Timers           | 3 timers        |

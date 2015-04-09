@@ -4,6 +4,17 @@ sc_usb_device Change Log
 1.3.6
 -----
 
+  * Changes to dependencies:
+
+    - sc_util: 1.0.4rc0 -> 1.0.5alpha0
+
+      + xCORE-200 Compatiblity fixes to module_locks
+
+    - sc_xud: 2.2.4rc3 -> 2.3.0alpha0
+
+      + ADDED:      Support for XCORE-200 (libxud_x200.a)
+      + CHANGE:     Compatibilty fixes for XMOS toolset version 14 (dual-issue support etc)
+
 1.3.5
 -----
 

@@ -37,9 +37,9 @@
     </components>
     <dependency repo = "sc_xud">
         <gitbranch>master</gitbranch>
-        <githash>a3ad822584c507255121e64bdb86c62f7a9ed7b4</githash>
+        <githash>0f426ee77bd62996b8f3b4371c5361040ac4130d</githash>
         <uri>git://git/apps/sc_xud</uri>
-        <version>2.2.4rc3</version>
+        <version>2.3.0alpha0</version>
     </dependency>
     <dependency repo = "sc_usb">
         <gitbranch>master</gitbranch>
@@ -48,15 +48,16 @@
         <version>1.0.4rc0</version>
     </dependency>
     <dependency repo = "sc_util">
-        <githash>f09fda14976cf969ae792e7c28b4e5a30e4c1eb9</githash>
+        <gitbranch>master</gitbranch>
+        <githash>490b9efd7f38f02bb5314c95fdfd727f08504c45</githash>
         <uri>git://github.com/xcore/sc_util</uri>
-        <version>1.0.4rc0</version>
+        <version>1.0.5alpha0</version>
     </dependency>
     <dependency repo = "sc_u_series_support">
         <gitbranch>master</gitbranch>
-        <githash>2289648be3f6ae3f9ee8031abd47b5e2021a23b0</githash>
+        <githash>2ea706d68afe3b5354333003cae14a07002e5a7c</githash>
         <uri>git@github.com:xcore/sc_u_series_support.git</uri>
-        <version>1.0.2rc0</version>
+        <version>1.0.3alpha0</version>
     </dependency>
     <description>Device-Class USB Modules and Applications</description>
     <docdir>app_hid_mouse_demo/doc_quickstart</docdir>
@@ -104,7 +105,7 @@
     <release parenthash = "31b7e5a07c9294cc9e6f251eeeb6c377e93bd142" version = "1.3.4rc0" githash = "20122712abf65739c41bddf7b64b19f81c4b7734"></release>
     <release parenthash = "371215f848d8f509cb35f7e3759055ad7cb7694a" version = "1.3.5rc0" githash = "36fbac59947dcd2ce87b3379718a776c95e9e5a9"></release>
     <release parenthash = "f845b5c3115cd577d782bbbd8d814486b4266855" version = "1.3.5rc1" githash = "e8361da2c4f3957b282aaf40f5bcd686b8a1757d"></release>
-    <release parenthash = "0c0bc9742d7e066f24158fce67f6d839408d72cb" version = "1.3.5rc2"></release>
+    <release parenthash = "0c0bc9742d7e066f24158fce67f6d839408d72cb" version = "1.3.5rc2" githash = "eadb96bb64a09b0b9289efc0e31ac2388454b455"></release>
     <subpartnumber>XM-002852-SM</subpartnumber>
     <vendor>XMOS</vendor>
     <version_defines></version_defines>

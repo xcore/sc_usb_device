@@ -34,8 +34,8 @@ XCC_FLAGS_l = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=2
 INCLUDE_ONLY_IN_l = 
 
 #G series
-XCC_FLAGS_g = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=3 -DUSB_TILE=tile[1] -march=xs1b
-INCLUDE_ONLY_IN_g = 
+#XCC_FLAGS_g = $(BUILD_FLAGS) -DXUD_SERIES_SUPPORT=3 -DUSB_TILE=tile[1] -march=xs1b
+#INCLUDE_ONLY_IN_g = 
 
 # The USED_MODULES variable lists other module used by the application. 
 USED_MODULES = module_usb_shared module_usb_device module_xud module_logging
@@ -55,10 +55,10 @@ ifeq ($(CONFIG), l)
 	MODULE_LIBRARIES = xud_l 
 endif
 
-ifeq ($(CONFIG), g) 
-	TARGET = xdk.xn 
-	MODULE_LIBRARIES = xud_g 
-endif
+#ifeq ($(CONFIG), g) 
+#	TARGET = xdk.xn 
+#	MODULE_LIBRARIES = xud_g 
+#endif
 
 #=============================================================================
 # The following part of the Makefile includes the common build infrastructure

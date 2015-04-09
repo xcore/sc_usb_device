@@ -6,6 +6,9 @@ sc_usb_device Change Log
 
   * Changes to dependencies:
 
+    - sc_u_series_support: 1.0.2rc0 -> 1.0.3alpha1
+
+
     - sc_util: 1.0.4rc0 -> 1.0.5alpha0
 
       + xCORE-200 Compatiblity fixes to module_locks

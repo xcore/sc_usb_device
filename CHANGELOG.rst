@@ -4,6 +4,16 @@ sc_usb_device Change Log
 1.3.7
 -----
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.3.0alpha0 -> 2.3.2alpha0
+
+      + CHANGE:     Interrupts disabled during any access to usb_tile. Allows greater reliablity
+        if user suspend/resume functions enabled interrupts e.g. for roleswitch
+      + RESOLVED:   (Minor) XUD_ResetEpStateByAddr() could operate on corresponding OUT endpoint
+        instead of the desired IN endpoint address as passed into the function (and
+        vice versa). Re-introduced into 2.3.0 due to manual merge with lib_usb.
+
 1.3.6
 -----
 

@@ -6,7 +6,7 @@ sc_usb_device Change Log
 
   * Changes to dependencies:
 
-    - sc_xud: 2.3.0alpha0 -> 2.3.2alpha0
+    - sc_xud: 2.3.0alpha0 -> 2.3.2rc0
 
       + CHANGE:     Interrupts disabled during any access to usb_tile. Allows greater reliablity
         if user suspend/resume functions enabled interrupts e.g. for roleswitch

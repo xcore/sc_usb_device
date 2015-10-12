@@ -5,6 +5,16 @@ sc_usb_device Change Log
 -----
 
 
+  * Changes to dependencies:
+
+    - sc_xud: 2.3.2rc0 -> 2.4.0beta0
+
+      + RESOLVED:   Intermittent initialisation issues with xCORE-200.
+      + RESOLVED:   SETUP transaction data CRC not properly checked
+      + RESOLVED:   RxError line from phy handled
+      + RESOLVED:   Isochronous IN endpoints now send an 0-length packet if not ready rather than
+        an (invalid) NAK.
+
 1.3.7
 -----
 

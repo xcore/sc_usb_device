@@ -6,10 +6,15 @@ sc_usb_device Change Log
 
   * Changes to dependencies:
 
-    - sc_xud: 2.3.0alpha0 -> 2.3.2rc0
+    - sc_xud: 2.3.0alpha0 -> 2.4.0beta0
 
-      + CHANGE:     Interrupts disabled during any access to usb_tile. Allows greater reliablity
-        if user suspend/resume functions enabled interrupts e.g. for roleswitch
+      + RESOLVED:   Intermittent initialisation issues with xCORE-200.
+      + RESOLVED:   SETUP transaction data CRC not properly checked
+      + RESOLVED:   RxError line from phy handled
+      + RESOLVED:   Isochronous IN endpoints now send an 0-length packet if not ready rather than
+        an (invalid) NAK.
+      + CHANGE:     Interrupts disabled during any access to usb_tile. Allows greater reliability
+        if user suspend/resume functions enabled interrupts e.g. for role-switch
       + RESOLVED:   (Minor) XUD_ResetEpStateByAddr() could operate on corresponding OUT endpoint
         instead of the desired IN endpoint address as passed into the function (and
         vice versa). Re-introduced into 2.3.0 due to manual merge with lib_usb.

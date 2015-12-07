@@ -7,6 +7,10 @@ sc_usb_device Change Log
 
   * Changes to dependencies:
 
+    - sc_util: 1.0.5rc0 -> 1.0.6rc0
+
+      + xCORE-200 compatibility fixes to module_trycatch
+
     - sc_xud: 2.3.2rc0 -> 2.4.0rc0
 
       + RESOLVED:   Intermittent initialisation issues with xCORE-200.

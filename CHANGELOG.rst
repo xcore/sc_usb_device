@@ -3,9 +3,19 @@ sc_usb_device Change Log
 
 1.3.9
 -----
-    
+
     * RESOLVED:   Value from HS config descriptor used for FS GET_STATUS request. Causes USB CV
                   test fail.
+
+  * Changes to dependencies:
+
+    - sc_util: 1.0.5rc0 -> 1.0.6rc0
+
+      + xCORE-200 compatibility fixes to module_trycatch
+
+    - sc_xud: 2.4.0rc0 -> 2.4.1rc0
+
+      + RESOLVED:   Initialisation failure on U-series devices
 
 1.3.8
 -----

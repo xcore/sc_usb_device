@@ -1,9 +1,14 @@
 sc_usb_device Change Log
 ========================
 
+1.3.9
+-----
+    
+    * RESOLVED:   Value from HS config descriptor used for FS GET_STATUS request. Causes USB CV
+                  test fail.
+
 1.3.8
 -----
-
 
   * Changes to dependencies:
 

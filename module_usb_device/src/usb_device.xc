@@ -228,8 +228,9 @@ XUD_Result_t USB_StandardRequests(XUD_ep ep_out, XUD_ep ep_in,
                     buffer[1] = 0;
 
                     /* Pull self/bus powered bit from the config descriptor */
-                    if (cfgDesc_hs[7] & 0x40)
-                        buffer[0] = 0x1;
+                    if (((usbBusSpeed == XUD_SPEED_HS) && (cfgDesc_hs[7] & 0x40)) ||
+                        ((usbBusSpeed == XUD_SPEED_FS) && (cfgDesc_fs[7] & 0x40)))
+                        buffer[0] = 1;
                     else
                         buffer[0] = 0;
 

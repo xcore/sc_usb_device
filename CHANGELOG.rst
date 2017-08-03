@@ -6,6 +6,24 @@ sc_usb_device Change Log
 
     * CHANGED:    Module build flags now optimise for small memory footprint
 
+  * Changes to dependencies:
+
+    - sc_util: 1.0.5rc0 -> 1.0.6rc0
+
+      + xCORE-200 compatibility fixes to module_trycatch
+
+    - sc_xud: 2.4.1rc0 -> 2.5.0rc0
+
+      + RESOLVED:   xCORE-200 USB phy parameters tuned for optimal Tx performance resulting
+        in much improved TX eye diagram and compliance test results
+      + CHANGE:     VBUS connection to xCORE-200 no longer required when using XUD_PWR_BUS i.e.
+        for bus-powered devices. This removes the need to any protection circuitry and
+        allows for a reduced BOM.
+        Note, VBUS should still be present for self powered devices in order to pass USB
+        compliance tests.
+      + RESOLVED:   Device might hang during resume if host follows resume signality with activity
+        after a time close to specified minimum of 1.33us
+
 1.3.9
 -----
 

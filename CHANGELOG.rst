@@ -1,6 +1,11 @@
 sc_usb_device Change Log
 ========================
 
+1.3.10
+------
+
+    * CHANGED:    Module build flags now optimise for small memory footprint
+
 1.3.9
 -----
 
